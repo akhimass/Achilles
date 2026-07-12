@@ -16,6 +16,8 @@ from __future__ import annotations
 
 import asyncio
 import json
+import os
+import sys
 from pathlib import Path
 from uuid import NAMESPACE_URL, UUID, uuid5
 
@@ -421,10 +423,19 @@ async def _seed_public() -> None:
     )
 
 
-async def main() -> None:
+async def main(public_only: bool = False) -> None:
     # Prefer the local BurkData snapshot (private, gitignored); otherwise fall back
     # to the fully public demo so a fresh clone still seeds a working graph.
-    if SNAPSHOT_BURK.exists():
+    #
+    # `public_only` forces the PUBLIC (PubMLST + committed public caches) path even if
+    # a BurkData snapshot is present — this is what the DEPLOYED database is seeded
+    # with, guaranteeing no private data can reach a public deployment. On this path
+    # collateral_sensitivity comes out empty (it derives from private BurkData), so the
+    # cycling panel honestly shows its empty state rather than being backfilled.
+    if public_only:
+        print("seed: PUBLIC-only path (deploy/reproduction mode) — BurkData ignored")
+        await _seed_public()
+    elif SNAPSHOT_BURK.exists():
         await _seed_burkdata()
     else:
         await _seed_public()
@@ -454,4 +465,11 @@ async def main() -> None:
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    # `python -m app.ingestion.seed --public` (or ACHILLES_SEED_PUBLIC=1) forces the
+    # public reproduction path — used to seed the deployed database.
+    _public = "--public" in sys.argv or os.getenv("ACHILLES_SEED_PUBLIC", "").lower() in (
+        "1",
+        "true",
+        "yes",
+    )
+    asyncio.run(main(public_only=_public))

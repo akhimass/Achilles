@@ -1,0 +1,22 @@
+# Railway service config for the Achilles backend.
+# Set the service's Root Directory to `backend/` in Railway so this Dockerfile's
+# build context is correct. Railway injects $PORT (honored by the Dockerfile CMD).
+#
+# Required service variables:
+#   DATABASE_URL      postgresql+asyncpg://<user>:<pass>@<host>:<port>/<db>
+#   ALLOWED_ORIGINS   https://<your-vercel-frontend>.vercel.app
+# Optional (all demo endpoints are deterministic/cached and work without it):
+#   ANTHROPIC_API_KEY sk-ant-...   (only for the opt-in ?narrate=true LLM path)
+#
+# One-off, after Postgres is provisioned and db/schema.sql is applied:
+#   python -m app.ingestion.seed --public     # PUBLIC reproduction seed (no BurkData)
+
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+startCommand = "sh -c 'uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}'"
+healthcheckPath = "/health"
+healthcheckTimeout = 120
+restartPolicyType = "ON_FAILURE"

@@ -16,6 +16,13 @@ class Settings(BaseSettings):
     # Database
     database_url: str = "postgresql+asyncpg://switchback:switchback@localhost:5432/switchback"
 
+    # Deployment / server. `allowed_origins` is a comma-separated list of browser
+    # origins the API accepts (CORS) — set to the deployed frontend URL in prod, never
+    # hard-coded in a module. `*` allows any origin. `port` is honored by the start
+    # command so a PaaS ($PORT) can bind it.
+    allowed_origins: str = "http://localhost:3000"
+    port: int = 8000
+
     # Anthropic
     anthropic_api_key: str = ""
     # Current defaults (Jul 2026). Sonnet 5 for high-volume extraction; Opus 4.8 for
@@ -41,6 +48,14 @@ class Settings(BaseSettings):
     tamarind_base: str = "https://app.tamarind.bio/api/"
     tamarind_poll_max_seconds: int = 900
     tamarind_max_jobs: int = 25
+
+    @property
+    def cors_origins(self) -> list[str]:
+        """Parse `allowed_origins` into a list. `*` → allow-all (single wildcard)."""
+        raw = (self.allowed_origins or "").strip()
+        if raw == "*":
+            return ["*"]
+        return [o.strip() for o in raw.split(",") if o.strip()]
 
 
 settings = Settings()

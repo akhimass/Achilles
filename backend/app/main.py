@@ -1,7 +1,7 @@
 """Achilles API entrypoint.
 
-Phase 0: health check + router wiring so the frontend can round-trip immediately.
-Each router carries its own phase TODOs.
+Health check + router wiring. CORS origins are env-driven (`ALLOWED_ORIGINS`) so the
+deployed frontend URL is configured, never hard-coded.
 """
 
 from __future__ import annotations
@@ -9,13 +9,14 @@ from __future__ import annotations
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.config import settings
 from app.routers import graph, literature, structure, targets, treatment
 
 app = FastAPI(title="Achilles API", version="0.1.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=settings.cors_origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )
