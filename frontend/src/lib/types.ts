@@ -247,6 +247,31 @@ export interface CycleResponse {
   counts: { pairs: number; reciprocal: number; cycle_length: number };
 }
 
+// Grounded search over the evidence graph (from /api/search).
+export interface SearchResult {
+  kind: "paper" | "gene" | "edge";
+  id?: string | null;
+  title?: string | null;
+  snippet?: string | null;
+  score: number;
+  grounded: boolean;
+  provenance: {
+    pmid?: string | null;
+    pubmed_url?: string | null;
+    db?: string | null;
+    acc?: string | null;
+    ref_url?: string | null;
+  };
+  extra: Record<string, unknown>;
+  semantic_similarity?: number | null;
+}
+export interface SearchResponse {
+  query: string;
+  mode: "lexical" | "semantic";
+  results: SearchResult[];
+  counts: { total: number; grounded: number; by_kind: Record<string, number> };
+}
+
 // Retrieved counterfactual: what real lineages did after a resistance event
 // (from /api/trajectory). RETRIEVAL over real data — never predicted/generated.
 export interface ObservedNext {

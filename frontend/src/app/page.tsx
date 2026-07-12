@@ -12,6 +12,7 @@ import { TargetGraph } from "@/components/TargetGraph";
 import { EvidencePanel } from "@/components/EvidencePanel";
 import { CyclingView } from "@/components/CyclingView";
 import { TrajectoryPanel } from "@/components/TrajectoryPanel";
+import { SearchPanel } from "@/components/SearchPanel";
 import { HowItWorks } from "@/components/HowItWorks";
 
 const ORGANISM = "Burkholderia multivorans";
@@ -47,6 +48,8 @@ export default function Page() {
 
       <main className="mx-auto max-w-7xl space-y-6 px-6 pb-20 pt-9">
         <Hero overview={overview} status={status} />
+
+        <SearchPanel />
 
         <section className="grid gap-5 lg:grid-cols-[1.55fr_1fr]">
           <Panel
