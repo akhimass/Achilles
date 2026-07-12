@@ -181,10 +181,25 @@ def build_sql() -> str:
         "id", ["mechanism", "tractability", "pdb_ids", "rank_score", "metadata"],
     ))
 
+    # collateral_sensitivity — PUBLIC, cited reciprocal CS pairs (redistributable), so
+    # the cycling beat renders on the public deploy WITH provenance (never blank).
+    from app.ingestion.seed_collateral import load_public_cs_pairs
+    cs_pairs = load_public_cs_pairs()
+    if cs_pairs:
+        out.append(_insert(
+            "collateral_sensitivity",
+            ["organism", "drug_a", "drug_b", "reciprocal", "strength", "n_lineages", "metadata"],
+            [[_lit(p.organism), _lit(p.drug_a), _lit(p.drug_b), _lit(p.reciprocal),
+              _lit(p.strength), _lit(p.n_lineages), _lit(p.metadata)] for p in cs_pairs],
+            "organism, drug_a, drug_b",
+            ["reciprocal", "strength", "n_lineages", "metadata"],
+        ))
+
     out.append("COMMIT;")
     counts = (
         f"-- counts: {len(genes)} genes, {len(strains)} strains, {len(variants)} variants, "
-        f"{len(papers)} papers, {len(edges)} edges, {len(targets)} targets, 0 collateral (public)"
+        f"{len(papers)} papers, {len(edges)} edges, {len(targets)} targets, "
+        f"{len(cs_pairs)} collateral (public/cited)"
     )
     out.append(counts)
     return "\n".join(out) + "\n"

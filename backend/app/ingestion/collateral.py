@@ -52,18 +52,27 @@ def compute_collateral_pairs(
     return sorted(pairs, key=lambda p: (not p.reciprocal, -(p.n_lineages or 0)))
 
 
-def propose_cycle(pairs: list[CollateralPair], *, max_len: int = 4) -> list[str]:
+def propose_cycle(
+    pairs: list[CollateralPair], *, max_len: int = 4, starts: set[str] | None = None
+) -> list[str]:
     """Propose an antibiotic cycle by walking the reciprocal-CS graph.
 
     Greedy longest-simple-path over RCS edges: each hop goes to a drug the current
     one sensitizes toward (and back), which is exactly the property that lets an
     alternating regimen keep resistance from fixing. Returns an ordered drug list.
     This is a hypothesis generator, not a treatment plan.
+
+    When `starts` is given, only paths beginning at one of those drugs are considered —
+    this is how a cycle is *anchored* to a specific strain's current resistance (start
+    from a drug it is already resistant to, then alternate). Drugs in `starts` that
+    aren't in the reciprocal graph are ignored; if none remain, returns [].
     """
     adj: dict[str, list[str]] = defaultdict(list)
     for p in pairs:
         if p.reciprocal:
             adj[p.drug_a].append(p.drug_b)
+
+    start_nodes = list(adj) if starts is None else [s for s in adj if s in starts]
 
     best: list[str] = []
 
@@ -77,6 +86,6 @@ def propose_cycle(pairs: list[CollateralPair], *, max_len: int = 4) -> list[str]
             if nxt not in visited:
                 walk(nxt, [*visited, nxt])
 
-    for start in adj:
+    for start in start_nodes:
         walk(start, [start])
     return best

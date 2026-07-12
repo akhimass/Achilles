@@ -26,7 +26,42 @@ from app.ingestion.collateral import (
 _DEMO = Path(__file__).resolve().parents[3] / "data" / "demo"
 SNAPSHOT_BURK = _DEMO / "bmultivorans_burkdata.json"
 SNAPSHOT_PUBLIC = _DEMO / "bmultivorans_pubmlst.json"
+PUBLIC_CS = _DEMO / "collateral" / "public_cs.json"
 ORGANISM = "Burkholderia multivorans"
+
+
+def load_public_cs_pairs(organism: str = ORGANISM) -> list[CollateralPair]:
+    """Public, CITED reciprocal CS pairs (redistributable) as CollateralPairs. Pure.
+
+    Each literature-reported reciprocal pair expands to both directed rows (A→B and
+    B→A), marked reciprocal, carrying its PMID in metadata so the cycle renders with
+    provenance on the public deploy. Support counts are left null — these are reported
+    relationships, not values computed here, and we never fabricate a count.
+    """
+    if not PUBLIC_CS.exists():
+        return []
+    data = json.loads(PUBLIC_CS.read_text())
+    cite = data.get("citation", {}) or {}
+    pairs: list[CollateralPair] = []
+    for rp in data.get("reciprocal_pairs", []):
+        a, b = rp.get("drug_a"), rp.get("drug_b")
+        if not a or not b or a == b:
+            continue
+        base_meta = {
+            "source": "literature",
+            "pmid": cite.get("pmid"),
+            "doi": cite.get("doi"),
+            "tier": rp.get("tier"),
+            "abbr": {a: rp.get("abbr_a"), b: rp.get("abbr_b")},
+        }
+        for x, y in ((a, b), (b, a)):
+            pairs.append(
+                CollateralPair(
+                    organism=organism, drug_a=x, drug_b=y, reciprocal=True,
+                    strength=None, n_lineages=None, metadata=dict(base_meta),
+                )
+            )
+    return pairs
 
 
 def observations_from_res_sens(
@@ -84,12 +119,13 @@ async def seed_collateral(organism: str = ORGANISM) -> dict:
 
     from app.db import SessionLocal
 
+    # Public cited pairs seed on EVERY path (they carry provenance and are
+    # redistributable); BurkData-derived pairs are layered on top when present and
+    # override duplicates with real lineage counts.
+    public_pairs = load_public_cs_pairs(organism)
     snapshot = _load_snapshot()
-    if snapshot is None:
-        print("seed(collateral): skipped — no resistance/sensitivity data in snapshot")
-        return {"pairs": 0, "reciprocal": 0}
-
-    pairs = build_collateral_pairs(snapshot, organism)
+    burk_pairs = build_collateral_pairs(snapshot, organism) if snapshot else []
+    pairs = public_pairs + burk_pairs
     if pairs:
         async with SessionLocal() as session:
             async with session.begin():
@@ -121,6 +157,10 @@ async def seed_collateral(organism: str = ORGANISM) -> dict:
     reciprocal = sum(1 for p in pairs if p.reciprocal)
     print(
         f"seed(collateral): {len(pairs)} collateral-sensitivity pairs "
-        f"({reciprocal} reciprocal) — {organism} (BurkData, local)"
+        f"({reciprocal} reciprocal) — {len(public_pairs)} public/cited, "
+        f"{len(burk_pairs)} BurkData — {organism}"
     )
-    return {"pairs": len(pairs), "reciprocal": reciprocal}
+    return {
+        "pairs": len(pairs), "reciprocal": reciprocal,
+        "public": len(public_pairs), "burkdata": len(burk_pairs),
+    }

@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 import type { LineageStatus } from "@/lib/useLineage";
 
@@ -6,7 +7,7 @@ export function Header({ status }: { status: LineageStatus }) {
   return (
     <header className="animate-fade sticky top-0 z-30 border-b border-line/8 bg-bg/60 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-3">
-        <div className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3 transition-opacity hover:opacity-80">
           <Mark />
           <div className="leading-none">
             <div className="flex items-center gap-2">
@@ -21,7 +22,7 @@ export function Header({ status }: { status: LineageStatus }) {
               Antimicrobial-resistance target &amp; treatment intelligence
             </div>
           </div>
-        </div>
+        </Link>
 
         <div className="flex items-center gap-2.5">
           <ConnectionPill status={status} />

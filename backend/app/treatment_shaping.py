@@ -24,6 +24,23 @@ def _pair_index(pairs: list[CollateralPair]) -> dict[tuple[str, str], Collateral
     return {(p.drug_a, p.drug_b): p for p in pairs}
 
 
+def _provenance(pair: CollateralPair | None) -> dict | None:
+    """Citation view for a pair, when it comes from published literature."""
+    if not pair:
+        return None
+    meta = pair.metadata or {}
+    pmid = meta.get("pmid")
+    if not pmid:
+        return None
+    return {
+        "pmid": pmid,
+        "pubmed_url": f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/",
+        "doi": meta.get("doi"),
+        "source": meta.get("source") or "literature",
+        "tier": meta.get("tier"),
+    }
+
+
 def _steps(cycle: list[str], idx: dict[tuple[str, str], CollateralPair]) -> list[dict]:
     """Consecutive hops of the cycle (wrapping back to the start), annotated from the
     computed pairs. `reciprocal`/support come straight from the deterministic pairs."""
@@ -44,6 +61,7 @@ def _steps(cycle: list[str], idx: dict[tuple[str, str], CollateralPair]) -> list
                 "reciprocal": bool(pair.reciprocal) if pair else False,
                 "n_lineages": (pair.n_lineages if pair else None),
                 "strength": (pair.strength if pair else None),
+                "provenance": _provenance(pair),
                 "closes_loop": i == n - 1,
             }
         )
@@ -75,18 +93,29 @@ def next_experiment(cycle: list[str], reciprocal: list[CollateralPair]) -> dict 
     if not cycle or not reciprocal:
         return None
     p = reciprocal[0]
+    prov = _provenance(p)
     n = p.n_lineages or 0
-    lin = f"{n} evolved lineage{'' if n == 1 else 's'}"
+    if prov and not p.n_lineages:
+        # Literature-reported reciprocal CS — cite it rather than invent a lineage count.
+        detail = (
+            f"Challenge {p.drug_a}-resistant isolates with {p.drug_b}: this reciprocal "
+            f"re-sensitization is reported in B. multivorans (PMID {prov['pmid']}). "
+            f"Confirming it in your isolates anchors the {p.drug_a} ⇄ {p.drug_b} cycle above."
+        )
+    else:
+        lin = f"{n} evolved lineage{'' if n == 1 else 's'}"
+        detail = (
+            f"Challenge {p.drug_a}-resistant isolates with {p.drug_b}: {lin} in this cohort "
+            f"show that reversal. If it holds in vitro, the {p.drug_a} ⇄ {p.drug_b} pair "
+            "anchors the cycle above."
+        )
     return {
         "drug_a": p.drug_a,
         "drug_b": p.drug_b,
         "n_lineages": n,
+        "provenance": prov,
         "headline": f"Test {p.drug_a} → {p.drug_b} re-sensitization",
-        "detail": (
-            f"Challenge {p.drug_a}-resistant isolates with {p.drug_b}: {lin} in this cohort "
-            f"show that reversal. If it holds in vitro, the {p.drug_a} ⇄ {p.drug_b} pair "
-            "anchors the cycle above."
-        ),
+        "detail": detail,
     }
 
 
@@ -96,6 +125,7 @@ def shape_cycle(
     pairs: list[CollateralPair],
     narrative: dict | None = None,
     narrative_source: str | None = None,
+    anchor: dict | None = None,
 ) -> dict:
     """Assemble the /api/treatment/cycle payload. Pure; never alters the cycle.
 
@@ -133,9 +163,11 @@ def shape_cycle(
                 "reciprocal": p.reciprocal,
                 "n_lineages": p.n_lineages,
                 "strength": p.strength,
+                "provenance": _provenance(p),
             }
             for p in reciprocal
         ],
+        "anchor": anchor,
         "narrative": narr_block,
         "narrative_source": narrative_source if narr_block else None,
         "next_experiment": next_experiment(cycle, reciprocal),
@@ -144,6 +176,7 @@ def shape_cycle(
         "counts": {
             "pairs": len(pairs),
             "reciprocal": len(reciprocal),
+            "cited": sum(1 for p in reciprocal if _provenance(p)),
             "cycle_length": len(cycle),
         },
     }

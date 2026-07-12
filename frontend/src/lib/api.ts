@@ -73,8 +73,11 @@ export const api = {
         ? `/api/targets?strain_id=${encodeURIComponent(strainId)}`
         : `/api/targets?organism=${encodeURIComponent(organism)}`,
     ),
-  cycle: (organism: string) =>
-    get<CycleResponse>(`/api/treatment/cycle?organism=${encodeURIComponent(organism)}`),
+  cycle: (organism: string, strainId?: string | null) =>
+    get<CycleResponse>(
+      `/api/treatment/cycle?organism=${encodeURIComponent(organism)}` +
+        (strainId ? `&strain_id=${encodeURIComponent(strainId)}` : ""),
+    ),
   search: (q: string) => get<SearchResponse>(`/api/search?q=${encodeURIComponent(q)}`),
   validation: () => get<ValidationReport>("/api/validation"),
   docking: () => get<DockingResponse>("/api/docking"),

@@ -213,12 +213,20 @@ export interface TargetsResponse {
 }
 
 // Antibiotic cycling proposal (from /api/treatment/cycle). Mirrors treatment_shaping.
+export interface CsProvenance {
+  pmid: string;
+  pubmed_url: string;
+  doi?: string | null;
+  source?: string | null;
+  tier?: string | null;
+}
 export interface CycleStep {
   from: string;
   to: string;
   reciprocal: boolean;
   n_lineages?: number | null;
   strength?: number | null;
+  provenance?: CsProvenance | null;
   closes_loop: boolean;
 }
 export interface RcsPair {
@@ -227,6 +235,15 @@ export interface RcsPair {
   reciprocal: boolean;
   n_lineages?: number | null;
   strength?: number | null;
+  provenance?: CsProvenance | null;
+}
+export interface CycleAnchor {
+  anchored: boolean;
+  strain?: string | null;
+  requested: string[];
+  matched: string[];
+  unmatched: string[];
+  reason: string;
 }
 export interface CycleNarrative {
   summary?: string | null;
@@ -238,6 +255,7 @@ export interface NextExperiment {
   drug_a: string;
   drug_b: string;
   n_lineages: number;
+  provenance?: CsProvenance | null;
   headline: string;
   detail: string;
 }
@@ -247,12 +265,13 @@ export interface CycleResponse {
   summary: string; // deterministic one-liner (no LLM)
   steps: CycleStep[];
   rcs_pairs: RcsPair[];
+  anchor?: CycleAnchor | null; // strain/drug the cycle was anchored to (if any)
   narrative: CycleNarrative | null; // cached by default, or live when narrate=true
   narrative_source?: "cached" | "llm" | null;
   next_experiment?: NextExperiment | null; // deterministic single wet-lab next step
   is_hypothesis: boolean; // always true
   caveats: string[];
-  counts: { pairs: number; reciprocal: number; cycle_length: number };
+  counts: { pairs: number; reciprocal: number; cited: number; cycle_length: number };
 }
 
 // Bring-your-own-strains result (from /api/ingest/upload) — a LineageGraph + summary.

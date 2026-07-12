@@ -6,9 +6,17 @@
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
 import { Panel, Badge } from "./ui";
-import type { CycleResponse } from "@/lib/types";
+import type { CycleResponse, RcsPair } from "@/lib/types";
 
-export function CyclingView({ organism }: { organism: string }) {
+export function CyclingView({
+  organism,
+  strainId,
+  strainLabel,
+}: {
+  organism: string;
+  strainId?: string | null;
+  strainLabel?: string | null;
+}) {
   const [data, setData] = useState<CycleResponse | null>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "empty" | "error">("loading");
 
@@ -17,7 +25,7 @@ export function CyclingView({ organism }: { organism: string }) {
     setStatus("loading");
     setData(null);
     api
-      .cycle(organism)
+      .cycle(organism, strainId)
       .then((d) => {
         if (!live) return;
         setData(d);
@@ -27,7 +35,7 @@ export function CyclingView({ organism }: { organism: string }) {
     return () => {
       live = false;
     };
-  }, [organism]);
+  }, [organism, strainId]);
 
   const counts = data?.counts;
 
@@ -54,6 +62,8 @@ export function CyclingView({ organism }: { organism: string }) {
       {status === "empty" && <CyclingEmpty />}
       {status === "ready" && data && (
         <div className="animate-fade">
+          {data.anchor && <AnchorBanner anchor={data.anchor} strainLabel={strainLabel} />}
+
           <CycleLoop cycle={data.cycle} />
 
           <p className="mt-3 text-[0.78rem] leading-relaxed text-text">
@@ -69,6 +79,11 @@ export function CyclingView({ organism }: { organism: string }) {
               <p className="mt-1 text-[0.74rem] leading-relaxed text-muted">
                 {data.next_experiment.detail}
               </p>
+              {data.next_experiment.provenance && (
+                <div className="mt-1.5">
+                  <PmidChip prov={data.next_experiment.provenance} />
+                </div>
+              )}
             </div>
           )}
 
@@ -78,21 +93,46 @@ export function CyclingView({ organism }: { organism: string }) {
                 Reciprocal collateral sensitivity
               </div>
               <p className="mb-1.5 text-[0.68rem] leading-relaxed text-muted">
-                Each hop is a reversion <span className="text-text">observed in real
-                lineages</span> (see &ldquo;What real evolution did next&rdquo; above) — the
-                cycle is the actionable output of that retrieved reality, not a prediction.
+                {allCited(data.rcs_pairs) ? (
+                  <>
+                    Each pair is a reciprocal collateral-sensitivity relationship{" "}
+                    <span className="text-text">reported in the literature</span> and cited
+                    below — the cycle is retrieval over published reversions, not a prediction.
+                  </>
+                ) : (
+                  <>
+                    Each hop is a reversion <span className="text-text">observed in real
+                    lineages</span> (see &ldquo;What real evolution did next&rdquo; above) — the
+                    cycle is the actionable output of that retrieved reality, not a prediction.
+                  </>
+                )}
               </p>
               <ul className="flex flex-wrap gap-1.5">
                 {data.rcs_pairs.slice(0, 8).map((p) => (
                   <li
                     key={`${p.drug_a}-${p.drug_b}`}
                     className="inline-flex items-center gap-1 rounded-md border border-line/12 bg-surface2/40 px-1.5 py-0.5 font-mono text-[0.64rem] text-muted"
-                    title={`${p.n_lineages ?? 0} lineages of support`}
+                    title={
+                      p.provenance
+                        ? `Reported in PMID ${p.provenance.pmid}`
+                        : `${p.n_lineages ?? 0} lineages of support`
+                    }
                   >
                     <span className="text-text">{p.drug_a}</span>
                     <Swap />
                     <span className="text-text">{p.drug_b}</span>
                     {p.n_lineages ? <span className="text-faint">·{p.n_lineages}</span> : null}
+                    {p.provenance && (
+                      <a
+                        href={p.provenance.pubmed_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="ml-0.5 text-accentStrong hover:underline"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        cite
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -117,6 +157,64 @@ export function CyclingView({ organism }: { organism: string }) {
         </div>
       )}
     </Panel>
+  );
+}
+
+function allCited(pairs: RcsPair[]): boolean {
+  return pairs.length > 0 && pairs.every((p) => !!p.provenance);
+}
+
+function AnchorBanner({
+  anchor,
+  strainLabel,
+}: {
+  anchor: NonNullable<CycleResponse["anchor"]>;
+  strainLabel?: string | null;
+}) {
+  const who = anchor.strain || strainLabel;
+  if (anchor.anchored) {
+    return (
+      <div className="mb-3 rounded-xl border border-accent/30 bg-accent/[0.07] p-2.5">
+        <div className="flex items-center gap-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-accentStrong">
+          <Pin /> Anchored{who ? ` · ${who}` : ""}
+        </div>
+        <p className="mt-1 text-[0.74rem] leading-relaxed text-text">
+          Starting from <span className="font-mono">{anchor.matched[0]}</span>
+          {who ? " — a drug this strain is resistant to" : ""}, then alternating along its
+          reciprocal partners.
+        </p>
+      </div>
+    );
+  }
+  // A strain/drug was supplied but nothing matched — say so honestly.
+  if (who || anchor.requested.length) {
+    return (
+      <div className="mb-3 rounded-lg border border-line/15 bg-surface2/40 p-2.5">
+        <p className="text-[0.72rem] leading-relaxed text-muted">{anchor.reason}</p>
+      </div>
+    );
+  }
+  return null;
+}
+
+function PmidChip({ prov }: { prov: NonNullable<RcsPair["provenance"]> }) {
+  return (
+    <a
+      href={prov.pubmed_url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-1 rounded-md bg-accent/10 px-1.5 py-0.5 font-mono text-[0.6rem] text-accentStrong ring-1 ring-inset ring-accent/25 hover:brightness-110"
+    >
+      PMID {prov.pmid}
+    </a>
+  );
+}
+
+function Pin() {
+  return (
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M12 17v5M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z" />
+    </svg>
   );
 }
 
