@@ -1,0 +1,21 @@
+{
+  "_about": "Independent, public ground-truth controls for the self-validation engine. POSITIVE controls are well-established resistance relationships (each cited to a public CARD/ARO accession or the canonical literature); the engine must recover them from GROUNDED evidence edges. NEGATIVE controls are mechanistically false or unsupported relationships; the engine must NOT assert them (0 fabrications). This checks that the grounded graph captures real biology and refuses falsehood — a property a search tool can't demonstrate.",
+  "organism": "Burkholderia multivorans",
+  "positives": [
+    {"gene": "MarR", "locus": "A8H40_RS07590", "relation": "implicates", "target_terms": ["efflux"], "citation": "CARD:ARO:3000718", "note": "MarR represses marRAB; derepression drives efflux — textbook."},
+    {"gene": "MarR", "locus": "A8H40_RS07590", "relation": "implicates", "target_terms": ["AcrAB", "acrB"], "citation": "CARD:ARO:3003378", "note": "MarR → AcrAB-TolC multidrug efflux pump."},
+    {"gene": "MarR", "locus": "A8H40_RS07590", "relation": "confers_resistance", "target_terms": ["ciprofloxacin", "fluoroquinolone"], "citation": "CARD:ARO:3003378", "note": "MarR derepression → fluoroquinolone resistance."},
+    {"gene": "AraC/MarA", "locus": "A8H40_RS24275", "relation": "confers_resistance", "target_terms": ["multidrug", "MDR"], "citation": "CARD:ARO:3000823", "note": "MarA-family activator → AcrAB-TolC overexpression → MDR."},
+    {"gene": "AraC/MarA", "locus": "A8H40_RS24275", "relation": "confers_resistance", "target_terms": ["tigecycline"], "citation": "CARD:ARO:3000823", "note": "MarA activation → tigecycline resistance via efflux."},
+    {"gene": "AraC/MarA", "locus": "A8H40_RS24275", "relation": "confers_resistance", "target_terms": ["ciprofloxacin", "fluoroquinolone"], "citation": "CARD:ARO:3000823", "note": "MarA → fluoroquinolone resistance."},
+    {"gene": "efflux (DMT)", "locus": "A8H40_RS19975", "relation": "confers_resistance", "target_terms": ["tetracycline"], "citation": "CARD:ARO:3007321", "note": "DMT-family efflux transporter → tetracycline resistance."},
+    {"gene": "efflux (DMT)", "locus": "A8H40_RS19975", "relation": "implicates", "target_terms": ["efflux", "MexF"], "citation": "CARD:ARO:3000798", "note": "DMT transporter → efflux activity."},
+    {"gene": "efflux (DMT)", "locus": "A8H40_RS19975", "relation": "is_target_of", "target_terms": ["CCCP", "inhibitor"], "citation": "CARD:ARO:3000074", "note": "Efflux is collapsed by the protonophore CCCP / efflux-pump inhibitors."}
+  ],
+  "negatives": [
+    {"gene": "MarR", "locus": "A8H40_RS07590", "relation": "confers_resistance", "target_terms": ["vancomycin"], "reason": "Vancomycin targets Gram-positive cell-wall synthesis; Burkholderia is intrinsically vancomycin-resistant via its outer membrane, not via MarR/efflux. A MarR→vancomycin resistance edge would be a fabrication."},
+    {"gene": "MarR", "locus": "A8H40_RS07590", "relation": "is_target_of", "target_terms": ["penicillin"], "reason": "MarR is a transcriptional regulator, not a penicillin target. Nonsense pairing."},
+    {"gene": "LysR", "locus": "A8H40_RS17945", "relation": "confers_resistance", "target_terms": ["tetracycline"], "reason": "No grounded evidence links this LysR-family regulator to tetracycline resistance. The engine must refuse, not invent."},
+    {"gene": "response regulator", "locus": "A8H40_RS00780", "relation": "confers_resistance", "target_terms": ["ciprofloxacin"], "reason": "This two-component response regulator has no grounded fluoroquinolone-resistance evidence; asserting it would be unsupported."}
+  ]
+}

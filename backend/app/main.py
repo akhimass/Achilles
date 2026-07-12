@@ -20,6 +20,7 @@ from app.routers import (
     targets,
     trajectory,
     treatment,
+    validation,
 )
 
 app = FastAPI(title="Achilles API", version="0.1.0")
@@ -39,6 +40,7 @@ app.include_router(treatment.router)
 app.include_router(trajectory.router)
 app.include_router(export.router)
 app.include_router(search.router)
+app.include_router(validation.router)
 app.include_router(ingest.router)
 
 

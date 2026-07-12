@@ -269,6 +269,49 @@ export interface UploadResult extends LineageGraph {
   summary: UploadSummary;
 }
 
+// Self-validation ("prove-it") — the engine checked against public ground truth.
+export interface ValidationItem {
+  gene: string;
+  locus: string;
+  relation: string;
+  target_terms: string[];
+  kind: "positive" | "negative";
+  status:
+    | "recovered"
+    | "literature_only"
+    | "missing"
+    | "refused"
+    | "fabricated"
+    | "weakly_asserted";
+  matched_target?: string | null;
+  grounded: boolean;
+  provenance: {
+    pmid?: string | null;
+    pubmed_url?: string | null;
+    db?: string | null;
+    acc?: string | null;
+    ref_url?: string | null;
+  };
+  expected_citation?: string | null;
+  note?: string | null;
+}
+export interface ValidationReport {
+  organism: string;
+  items: ValidationItem[];
+  metrics: {
+    positives: number;
+    recovered: number;
+    literature_only: number;
+    missing: number;
+    recovery_rate: number;
+    negatives: number;
+    refused: number;
+    fabricated: number;
+    weakly_asserted: number;
+    clean: boolean;
+  };
+}
+
 // Grounded search over the evidence graph (from /api/search).
 export interface SearchResult {
   kind: "paper" | "gene" | "edge";

@@ -10,6 +10,7 @@ import type {
   TrajectoryEvidence,
   SearchResponse,
   UploadResult,
+  ValidationReport,
 } from "./types";
 
 const BASE = process.env.NEXT_PUBLIC_API_BASE ?? "http://localhost:8000";
@@ -72,6 +73,7 @@ export const api = {
   cycle: (organism: string) =>
     get<CycleResponse>(`/api/treatment/cycle?organism=${encodeURIComponent(organism)}`),
   search: (q: string) => get<SearchResponse>(`/api/search?q=${encodeURIComponent(q)}`),
+  validation: () => get<ValidationReport>("/api/validation"),
   // Bring-your-own-strains: POST a genotype CSV → lineage graph + flippers.
   uploadStrains: (csv: string, organism = "your cohort") =>
     postCsv<UploadResult>(`/api/ingest/upload?organism=${encodeURIComponent(organism)}`, csv),

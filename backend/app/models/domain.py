@@ -198,3 +198,41 @@ class TrajectoryEvidence(BaseModel):
     kind: str = "retrieved"  # NEVER 'predicted' / 'generated' / 'simulated'
     note: str | None = None
     provenance: dict = Field(default_factory=dict)
+
+
+# ─── Self-validation ("prove-it") — the engine held to public ground truth ────
+
+
+class ValidationItem(BaseModel):
+    """One ground-truth control checked against the grounded graph.
+
+    POSITIVE controls (established, publicly-cited relationships) should be
+    ``recovered`` from a grounded edge; NEGATIVE controls (false/unsupported) should be
+    ``refused`` (no grounded edge). Any negative that finds a grounded edge is a
+    ``fabricated`` — the number that must be zero.
+    """
+
+    gene: str
+    locus: str
+    relation: str
+    target_terms: list[str] = Field(default_factory=list)
+    kind: str  # 'positive' | 'negative'
+    status: str  # recovered | literature_only | missing | refused | fabricated | weakly_asserted
+    matched_target: str | None = None
+    grounded: bool = False
+    provenance: dict = Field(default_factory=dict)
+    expected_citation: str | None = None
+    note: str | None = None
+
+
+class ValidationReport(BaseModel):
+    """Result of running the grounded graph against public ground-truth controls.
+
+    The headline is deterministic and testable: recovery rate on known-true
+    relationships, and ``fabrications`` (grounded support for a known-false control) —
+    which must be 0. A retrieval/search tool can't produce this self-check.
+    """
+
+    organism: str
+    items: list[ValidationItem] = Field(default_factory=list)
+    metrics: dict = Field(default_factory=dict)
