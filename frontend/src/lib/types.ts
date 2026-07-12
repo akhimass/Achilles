@@ -247,6 +247,36 @@ export interface CycleResponse {
   counts: { pairs: number; reciprocal: number; cycle_length: number };
 }
 
+// Retrieved counterfactual: what real lineages did after a resistance event
+// (from /api/trajectory). RETRIEVAL over real data — never predicted/generated.
+export interface ObservedNext {
+  sensitized_to: string; // drug that became viable again
+  n_lineages: number;
+  n_strains: number;
+  backing_strains: string[]; // real strain external ids
+  lineages: string[];
+}
+export interface TrajectoryEvidence {
+  organism: string;
+  resisted: string;
+  event_strain?: string | null;
+  observed_next: ObservedNext[];
+  support_lineages: number;
+  backing_strains: string[];
+  sufficient: boolean; // false → honest "insufficient real evidence" state
+  kind: "retrieved"; // never 'predicted'/'generated'
+  note?: string | null;
+  provenance: Record<string, unknown>;
+  // Attached by the API (Slice 3): narration of the RETRIEVED trajectory.
+  narrative?: TrajectoryNarrative | null;
+  narrative_source?: "cached" | "llm" | null;
+}
+export interface TrajectoryNarrative {
+  summary?: string | null;
+  citations: string[];
+  source?: "cached" | "llm" | null;
+}
+
 // Predicted / experimental 3D structure for a gene (from /api/structure).
 export interface StructureResult {
   locus_tag: string;

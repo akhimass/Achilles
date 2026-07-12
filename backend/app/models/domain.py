@@ -158,3 +158,38 @@ class CollateralPair(BaseModel):
     strength: float | None = None
     n_lineages: int | None = None
     metadata: dict = Field(default_factory=dict)
+
+
+# ─── Trajectory retrieval (deterministic; the counterfactual beat) ────────────
+
+
+class ObservedNext(BaseModel):
+    """One drug that became sensitive again ('viable') in real lineages after a
+    resistance event. Purely observed — retrieved from the data, never predicted."""
+
+    sensitized_to: str
+    n_lineages: int
+    n_strains: int
+    backing_strains: list[str] = Field(default_factory=list)  # real strain external ids
+    lineages: list[str] = Field(default_factory=list)
+
+
+class TrajectoryEvidence(BaseModel):
+    """What real evolved lineages DID after acquiring resistance to `resisted`.
+
+    This is RETRIEVAL over real observed transitions, never generation. Every entry
+    traces to specific real strains/lineages. `kind` is always ``"retrieved"``; if the
+    data can't support an answer, ``sufficient`` is False and `note` says so — a gap is
+    shown honestly, never filled with a fabricated trajectory.
+    """
+
+    organism: str
+    resisted: str
+    event_strain: str | None = None  # external id of the anchoring strain, if any
+    observed_next: list[ObservedNext] = Field(default_factory=list)
+    support_lineages: int = 0
+    backing_strains: list[str] = Field(default_factory=list)
+    sufficient: bool = False
+    kind: str = "retrieved"  # NEVER 'predicted' / 'generated' / 'simulated'
+    note: str | None = None
+    provenance: dict = Field(default_factory=dict)

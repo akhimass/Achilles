@@ -86,7 +86,11 @@ def build_burk_dataset(records: dict) -> tuple[list[Strain], list[Gene], list[Va
             "lineage_label": ", ".join(strain_lineages.get(s, [])) or None,
             "founder": s in founders,
         }
-        if s in founders and s in res_sens:
+        # Persist observed resistance/sensitivity for EVERY strain that has it (not just
+        # founders) so the deterministic trajectory retrieval can trace "what real
+        # lineages did next" back to specific strains. Local BurkData only; the public
+        # path has no such record, so the trajectory beat shows its honest empty state.
+        if s in res_sens:
             meta["resistance"] = res_sens[s].get("resistance", [])
             meta["sensitivity"] = res_sens[s].get("sensitivity", [])
         strains.append(
