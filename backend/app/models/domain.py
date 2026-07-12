@@ -172,6 +172,10 @@ class ObservedNext(BaseModel):
     n_strains: int
     backing_strains: list[str] = Field(default_factory=list)  # real strain external ids
     lineages: list[str] = Field(default_factory=list)
+    # True when the reverse transition is ALSO observed in real data (resistance to the
+    # sensitized drug came with sensitivity back to the original). Reciprocal reversions
+    # are exactly what an antibiotic cycle exploits — the "reversible target".
+    reciprocal: bool = False
 
 
 class TrajectoryEvidence(BaseModel):
@@ -189,6 +193,7 @@ class TrajectoryEvidence(BaseModel):
     observed_next: list[ObservedNext] = Field(default_factory=list)
     support_lineages: int = 0
     backing_strains: list[str] = Field(default_factory=list)
+    reciprocal_count: int = 0  # how many observed_next are reciprocal (cycle-eligible)
     sufficient: bool = False
     kind: str = "retrieved"  # NEVER 'predicted' / 'generated' / 'simulated'
     note: str | None = None

@@ -20,6 +20,7 @@ FIXTURE = [
     LineageResSens("167", ["L2"], ["MEM"], ["CAZ"]),
     LineageResSens("9", ["L1"], ["MEM"], ["MEM"]),      # self-pair → dropped
     LineageResSens("30", ["L3"], ["LVX"], ["MEM"]),      # different resisted drug
+    LineageResSens("40", ["L1"], ["SXT"], ["MEM"]),      # reverse of MEM→SXT (reciprocal)
 ]
 
 
@@ -39,6 +40,16 @@ def test_retrieves_observed_next_with_support_and_backing():
     # Aggregate backing + support.
     assert t.backing_strains == ["2", "9", "10", "167"]
     assert t.support_lineages == 2  # L1, L2
+
+
+def test_reciprocal_reversions_are_flagged_for_cycling():
+    # MEM→SXT and SXT→MEM are both observed → SXT is reciprocal (cycle-eligible).
+    # MEM→CAZ is observed but CAZ→MEM is not → CAZ is not reciprocal.
+    t = retrieve_trajectory(FIXTURE, "MEM", organism=ORG)
+    drugs = {o.sensitized_to: o for o in t.observed_next}
+    assert drugs["SXT"].reciprocal is True
+    assert drugs["CAZ"].reciprocal is False
+    assert t.reciprocal_count == 1
 
 
 def test_retrieval_is_input_order_independent():

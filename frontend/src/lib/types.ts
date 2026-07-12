@@ -255,6 +255,7 @@ export interface ObservedNext {
   n_strains: number;
   backing_strains: string[]; // real strain external ids
   lineages: string[];
+  reciprocal: boolean; // reverse also observed → cycle-eligible reversible target
 }
 export interface TrajectoryEvidence {
   organism: string;
@@ -263,6 +264,7 @@ export interface TrajectoryEvidence {
   observed_next: ObservedNext[];
   support_lineages: number;
   backing_strains: string[];
+  reciprocal_count: number; // observed_next that are reciprocal (feed the cycle)
   sufficient: boolean; // false → honest "insufficient real evidence" state
   kind: "retrieved"; // never 'predicted'/'generated'
   note?: string | null;

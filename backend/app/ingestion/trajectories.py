@@ -60,6 +60,14 @@ def retrieve_trajectory(
     """
     backing = [r for r in records if resisted in (r.resistance or [])]
 
+    # All observed directed (resisted → sensitized) transitions, to flag reciprocity.
+    directed: set[tuple[str, str]] = set()
+    for r in records:
+        for a in r.resistance or []:
+            for b in r.sensitivity or []:
+                if a != b:
+                    directed.add((a, b))
+
     by_drug: dict[str, dict[str, set]] = {}
     for r in backing:
         for b in r.sensitivity or []:
@@ -76,6 +84,9 @@ def retrieve_trajectory(
             n_strains=len(v["strains"]),
             backing_strains=sorted(v["strains"], key=_natural),
             lineages=sorted(v["lineages"]),
+            # Reciprocal iff the reverse (drug resisted → resisted-drug sensitive) is
+            # ALSO observed in real data — the property a cycle exploits.
+            reciprocal=(drug, resisted) in directed,
         )
         for drug, v in by_drug.items()
     ]
@@ -104,6 +115,7 @@ def retrieve_trajectory(
         observed_next=observed,
         support_lineages=support_lineages,
         backing_strains=all_backing,
+        reciprocal_count=sum(1 for o in observed if o.reciprocal),
         sufficient=sufficient,
         kind="retrieved",
         note=note,

@@ -115,7 +115,10 @@ function Ready({
                 <span className="font-mono text-accentStrong">{o.sensitized_to}</span> became
                 viable again
               </div>
-              <Badge tone="accent">observed</Badge>
+              <span className="flex items-center gap-1.5">
+                {o.reciprocal && <Badge tone="accent">reversible · cycle-eligible</Badge>}
+                <Badge tone="neutral">observed</Badge>
+              </span>
             </div>
             <div className="mt-1 text-[0.66rem] text-muted">
               in {o.n_lineages} real lineage{o.n_lineages === 1 ? "" : "s"} ({o.n_strains} strain
@@ -141,6 +144,21 @@ function Ready({
           </li>
         ))}
       </ul>
+
+      {data.reciprocal_count > 0 && (
+        <div className="mt-2.5 flex items-start gap-2 rounded-xl border border-accent/25 bg-accent/[0.05] p-3">
+          <ArrowLoop />
+          <p className="text-[0.74rem] leading-relaxed text-muted">
+            <span className="text-text">{data.reciprocal_count}</span> of these reversions
+            {" "}
+            {data.reciprocal_count === 1 ? "is" : "are"} reciprocal in the real data — the{" "}
+            <span className="text-accentStrong">reversible target</span> resistance opened.
+            That reciprocity is exactly what the{" "}
+            <span className="text-text">antibiotic cycle</span> below exploits: strain →
+            resistance → real trajectory → reversible target → cycle.
+          </p>
+        </div>
+      )}
 
       {data.narrative?.summary && (
         <div className="mt-3 rounded-xl border border-line/12 bg-surface2/40 p-3">
@@ -205,6 +223,17 @@ function Empty({ children }: { children: React.ReactNode }) {
     <div className="flex min-h-[9rem] items-center justify-center rounded-xl border border-dashed border-line/15 bg-surface2/40 px-4 text-center">
       <p className="max-w-sm text-xs leading-relaxed text-muted">{children}</p>
     </div>
+  );
+}
+
+function ArrowLoop() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(var(--accent))" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 shrink-0" aria-hidden>
+      <path d="M17 2.1 21 6l-4 3.9" />
+      <path d="M3 12a9 9 0 0 1 9-9h9" />
+      <path d="M7 21.9 3 18l4-3.9" />
+      <path d="M21 12a9 9 0 0 1-9 9H3" />
+    </svg>
   );
 }
 

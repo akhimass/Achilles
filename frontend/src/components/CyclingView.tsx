@@ -65,6 +65,11 @@ export function CyclingView({ organism }: { organism: string }) {
               <div className="mb-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-faint">
                 Reciprocal collateral sensitivity
               </div>
+              <p className="mb-1.5 text-[0.68rem] leading-relaxed text-muted">
+                Each hop is a reversion <span className="text-text">observed in real
+                lineages</span> (see &ldquo;What real evolution did next&rdquo; above) — the
+                cycle is the actionable output of that retrieved reality, not a prediction.
+              </p>
               <ul className="flex flex-wrap gap-1.5">
                 {data.rcs_pairs.slice(0, 8).map((p) => (
                   <li
