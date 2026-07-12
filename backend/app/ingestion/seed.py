@@ -446,6 +446,12 @@ async def main() -> None:
 
         await seed_targets(ORGANISM)
 
+    # Phase 4: collateral-sensitivity pairs from the per-lineage resistance/sensitivity
+    # record (deterministic; BurkData-local, gracefully empty on the public path).
+    from app.ingestion.seed_collateral import seed_collateral
+
+    await seed_collateral(ORGANISM)
+
 
 if __name__ == "__main__":
     asyncio.run(main())
