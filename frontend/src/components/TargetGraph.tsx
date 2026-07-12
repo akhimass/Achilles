@@ -145,8 +145,19 @@ function TargetCard({
           {t.rationale_citations.map((c) => (
             <Citation key={c} id={c} />
           ))}
-          <span className="ml-0.5 text-[0.6rem] uppercase tracking-wide text-faint">
-            {t.rationale_source === "llm" ? "narrated" : "computed"}
+          <span
+            className="ml-0.5 text-[0.6rem] uppercase tracking-wide text-faint"
+            title={
+              t.rationale_source === "deterministic"
+                ? "Composed deterministically from the grounded edges — no LLM"
+                : `Pre-reviewed model narration${t.rationale_model ? ` (${t.rationale_model})` : ""}; the score is still computed, never narrated`
+            }
+          >
+            {t.rationale_source === "llm"
+              ? "narrated"
+              : t.rationale_source === "cached"
+                ? "reviewed"
+                : "computed"}
           </span>
         </div>
       )}

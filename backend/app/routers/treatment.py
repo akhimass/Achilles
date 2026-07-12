@@ -61,10 +61,22 @@ async def cycle(
     proposed = propose_cycle(pairs)
 
     narrative: dict | None = None
-    if narrate and proposed:
-        narrative = await _narrate(organism, pairs, proposed)
+    narrative_source: str | None = None
+    if proposed:
+        if narrate:
+            # Opt-in live override.
+            narrative = await _narrate(organism, pairs, proposed)
+            narrative_source = "llm" if narrative else None
+        else:
+            # Default: pre-reviewed committed narration (cached) when available.
+            from app.ai.narration_cache import cycle_narrative
 
-    return shape_cycle(organism, proposed, pairs, narrative=narrative)
+            narrative = cycle_narrative(organism)
+            narrative_source = "cached" if narrative else None
+
+    return shape_cycle(
+        organism, proposed, pairs, narrative=narrative, narrative_source=narrative_source
+    )
 
 
 async def _narrate(organism: str, pairs: list[CollateralPair], proposed: list[str]) -> dict | None:

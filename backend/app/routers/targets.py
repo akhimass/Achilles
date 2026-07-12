@@ -14,7 +14,7 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import get_session
-from app.targets_shaping import shape_targets
+from app.targets_shaping import apply_cached_rationales, shape_targets
 
 router = APIRouter(prefix="/api/targets", tags=["targets"])
 
@@ -111,7 +111,14 @@ async def list_targets(
     payload = shape_targets(strain_view, resolved_org, target_rows, edges_by_gene, strain_flags)
 
     if narrate:
+        # Opt-in live override: call the model now (best-effort, never blocks/raises).
         await _enrich_with_narration(payload)
+    else:
+        # Default: serve pre-reviewed, committed narration (cached) when available;
+        # otherwise the deterministic rationale already set by shaping. No live call.
+        from app.ai.narration_cache import load_target_rationales
+
+        apply_cached_rationales(payload, load_target_rationales())
 
     return payload
 

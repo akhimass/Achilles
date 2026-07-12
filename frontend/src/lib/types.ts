@@ -187,7 +187,8 @@ export interface RankedTarget {
   strain_flipper: boolean;
   rationale: string;
   rationale_citations: string[];
-  rationale_source: "deterministic" | "llm";
+  rationale_source: "deterministic" | "llm" | "cached";
+  rationale_model?: string | null; // model id when rationale_source is "cached"/"llm"
 }
 export interface TargetsResponse {
   strain: { id: string; label: string } | null;
@@ -216,6 +217,7 @@ export interface CycleNarrative {
   summary?: string | null;
   caveats: string[];
   citations: string[];
+  source?: "cached" | "llm" | null;
 }
 export interface CycleResponse {
   organism: string;
@@ -223,7 +225,8 @@ export interface CycleResponse {
   summary: string; // deterministic one-liner (no LLM)
   steps: CycleStep[];
   rcs_pairs: RcsPair[];
-  narrative: CycleNarrative | null; // present only when narrate=true and a key is set
+  narrative: CycleNarrative | null; // cached by default, or live when narrate=true
+  narrative_source?: "cached" | "llm" | null;
   is_hypothesis: boolean; // always true
   caveats: string[];
   counts: { pairs: number; reciprocal: number; cycle_length: number };

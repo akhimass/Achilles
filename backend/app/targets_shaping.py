@@ -193,3 +193,25 @@ def shape_targets(
         "targets": targets,
         "counts": {"targets": len(targets), "with_structure": sum(1 for t in targets if t["structure"]["available"])},
     }
+
+
+def apply_cached_rationales(payload: dict, cache: dict) -> dict:
+    """Replace each target's deterministic rationale with a pre-reviewed cached one
+    where the cache has an entry (keyed by locus_tag). Pure and in-place-safe.
+
+    A cached entry must carry a ``narrative``; its ``citations`` (if present) replace
+    the deterministic citations so the served text stays auditable. Targets without a
+    cache entry keep their deterministic rationale untouched — never fabricated. The
+    ``rationale_source`` flips to ``"cached"`` so the UI can label it honestly.
+    """
+    if not cache:
+        return payload
+    for t in payload.get("targets", []):
+        entry = cache.get(t.get("locus_tag"))
+        if isinstance(entry, dict) and entry.get("narrative"):
+            t["rationale"] = entry["narrative"]
+            if entry.get("citations"):
+                t["rationale_citations"] = list(entry["citations"])
+            t["rationale_source"] = "cached"
+            t["rationale_model"] = entry.get("model")
+    return payload

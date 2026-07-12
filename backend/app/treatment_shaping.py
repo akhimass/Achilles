@@ -73,8 +73,15 @@ def shape_cycle(
     cycle: list[str],
     pairs: list[CollateralPair],
     narrative: dict | None = None,
+    narrative_source: str | None = None,
 ) -> dict:
-    """Assemble the /api/treatment/cycle payload. Pure; never alters the cycle."""
+    """Assemble the /api/treatment/cycle payload. Pure; never alters the cycle.
+
+    `narrative` is an optional LLM narration block; `narrative_source` labels it
+    (`"cached"` for pre-reviewed committed narration, `"llm"` for a live call) so the
+    UI can be honest about what produced it. The deterministic `summary` is always
+    present regardless, and the cycle itself is never touched by narration.
+    """
     idx = _pair_index(pairs)
     reciprocal = [p for p in pairs if p.reciprocal]
     reciprocal.sort(key=lambda p: (-(p.n_lineages or 0), p.drug_a, p.drug_b))
@@ -86,6 +93,7 @@ def shape_cycle(
             "summary": narrative.get("summary"),
             "caveats": narrative.get("caveats") or [],
             "citations": narrative.get("citations") or [],
+            "source": narrative_source,
         }
         for c in narr_block["caveats"]:
             if c and c not in caveats:
@@ -107,6 +115,7 @@ def shape_cycle(
             for p in reciprocal
         ],
         "narrative": narr_block,
+        "narrative_source": narrative_source if narr_block else None,
         "is_hypothesis": True,
         "caveats": caveats,
         "counts": {
