@@ -21,6 +21,7 @@ import sys
 from pathlib import Path
 from uuid import NAMESPACE_URL, UUID, uuid5
 
+from app.ingestion.domains import BURKHOLDERIA
 from app.ingestion.flippers import LineagePath, build_lineage_paths, detect_flippers, detect_mlst_flippers
 from app.ingestion.lineage import MLST_LOCI, annotate_effects, build_mst_lineage
 from app.ingestion.parsers import mlst_reference_alleles, mlst_variant_table, parse_variant_table
@@ -29,7 +30,9 @@ from app.models.domain import Gene, Strain, Variant, VariantEffect, VariantKind
 _DEMO = Path(__file__).resolve().parents[3] / "data" / "demo"
 SNAPSHOT = _DEMO / "bmultivorans_pubmlst.json"
 SNAPSHOT_BURK = _DEMO / "bmultivorans_burkdata.json"
-ORGANISM = "Burkholderia multivorans"
+# Organism is sourced from the domain registry so the config is the single source of
+# truth for what drives ingestion (see app/ingestion/domains.py).
+ORGANISM = BURKHOLDERIA.organism
 
 # Replicon offsets so a genome-wide coordinate is unique across the 3 replicons
 # (each replicon numbers from 1). Used as `ref_position` for indel variants.
@@ -197,19 +200,9 @@ LOCUS_GENES: dict[str, tuple[str, str]] = {
 # genome GCF_001718455 / NZ_CP020397-9 — all public annotation). These are the gene
 # families the committed literature corpus is keyed to, seeded so the evidence graph
 # and structure viewer work in the public demo even without the private BurkData
-# snapshot. Gene id uses `_burk_gene_id(locus)` to match the corpus edges' source.
-PUBLIC_REFERENCE_GENES: list[dict] = [
-    {"locus_tag": "A8H40_RS07590", "name": "MarR", "wp": "WP_006410546.1",
-     "product": "MarR family winged helix-turn-helix transcriptional regulator"},
-    {"locus_tag": "A8H40_RS24275", "name": "AraC/MarA-family activator", "wp": None,
-     "product": "AraC family transcriptional regulator"},
-    {"locus_tag": "A8H40_RS17945", "name": "LysR-family regulator", "wp": None,
-     "product": "LysR family transcriptional regulator"},
-    {"locus_tag": "A8H40_RS19975", "name": "drug/efflux transporter", "wp": None,
-     "product": "DMT family transporter"},
-    {"locus_tag": "A8H40_RS00780", "name": "two-component response regulator", "wp": "WP_006409650.1",
-     "product": "response regulator"},
-]
+# snapshot. Sourced from the domain registry (single source of truth); gene id uses
+# `_burk_gene_id(locus)` to match the corpus edges' source.
+PUBLIC_REFERENCE_GENES: list[dict] = [dict(g) for g in BURKHOLDERIA.reference_genes]
 
 
 def reference_genes() -> list[Gene]:

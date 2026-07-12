@@ -57,20 +57,25 @@ async def fetch_isolates(
     *,
     limit: int = 70,
     scan: int = 200,
+    isolates_db: str = BCC_ISOLATES_DB,
+    loci: tuple[str, ...] = MLST_LOCI,
 ) -> list[dict]:
-    """Fetch complete, dated isolates for `organism` from PubMLST BCC.
+    """Fetch complete, dated isolates for `organism` from a PubMLST isolates database.
 
-    Real HTTP via httpx. Keeps only isolates with a full 7-locus MLST profile and a
+    Real HTTP via httpx. Keeps only isolates with a full MLST profile (all `loci`) and a
     collection year + country (so the lineage/flipper stages have real signal).
     Deterministic: isolates are scanned in ascending id order and the first `limit`
     complete ones are returned. Raw per-isolate JSON is cached under data/pubmlst/.
+
+    `isolates_db` + `loci` come from the domain registry (app/ingestion/domains.py), so
+    the SAME fetch path serves any configured organism — Burkholderia is just the default.
     """
     cache = _cache_dir()
     async with httpx.AsyncClient(timeout=90) as client:
-        urls = await _search_isolate_urls(client, organism, cap=scan, cache=cache)
+        urls = await _search_isolate_urls(client, organism, cap=scan, cache=cache, db=isolates_db)
         records: list[dict] = []
         for url in urls:
-            rec = await _fetch_one(client, url, cache)
+            rec = await _fetch_one(client, url, cache, db=isolates_db, loci=loci)
             if rec is None:
                 continue
             records.append(rec)
@@ -79,13 +84,19 @@ async def fetch_isolates(
     return records
 
 
+async def fetch_domain_isolates(domain, *, limit: int = 70, scan: int = 200) -> list[dict]:
+    """Fetch isolates for a DomainConfig (uses its PubMLST db + MLST scheme)."""
+    return await fetch_isolates(
+        domain.organism, limit=limit, scan=scan,
+        isolates_db=domain.pubmlst_isolates_db, loci=tuple(domain.mlst_loci),
+    )
+
+
 async def _search_isolate_urls(
-    client: httpx.AsyncClient, organism: str, *, cap: int, cache: Path
+    client: httpx.AsyncClient, organism: str, *, cap: int, cache: Path, db: str = BCC_ISOLATES_DB
 ) -> list[str]:
     urls: list[str] = []
-    resp = await client.post(
-        f"{BCC_ISOLATES_DB}/isolates/search", json={"field.species": organism}
-    )
+    resp = await client.post(f"{db}/isolates/search", json={"field.species": organism})
     resp.raise_for_status()
     data = resp.json()
     urls.extend(data.get("isolates", []))
@@ -97,14 +108,17 @@ async def _search_isolate_urls(
     return urls[:cap]
 
 
-async def _fetch_one(client: httpx.AsyncClient, url: str, cache: Path) -> dict | None:
+async def _fetch_one(
+    client: httpx.AsyncClient, url: str, cache: Path,
+    *, db: str = BCC_ISOLATES_DB, loci: tuple[str, ...] = MLST_LOCI,
+) -> dict | None:
     isolate_id = url.rstrip("/").rsplit("/", 1)[-1]
     cached = cache / f"isolate_{isolate_id}.json"
     if cached.exists():
         raw = json.loads(cached.read_text())
     else:
         rec = (await client.get(url)).json()
-        alleles = (await client.get(f"{BCC_ISOLATES_DB}/isolates/{isolate_id}/allele_ids")).json()
+        alleles = (await client.get(f"{db}/isolates/{isolate_id}/allele_ids")).json()
         raw = {"record": rec, "alleles": alleles}
         cached.write_text(json.dumps(raw))
 
@@ -122,7 +136,7 @@ async def _fetch_one(client: httpx.AsyncClient, url: str, cache: Path) -> dict |
             if isinstance(allele, int):
                 profile[locus] = allele
 
-    if len(profile) != len(MLST_LOCI):
+    if len(profile) != len(loci):
         return None
     if not provenance.get("year") or not provenance.get("country"):
         return None

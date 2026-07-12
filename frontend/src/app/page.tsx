@@ -71,7 +71,7 @@ function Hero() {
         <div className="stagger">
           <div className="mb-5 flex flex-wrap items-center gap-2">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/25 bg-accent/10 px-2.5 py-1 text-[0.7rem] font-medium text-accentStrong">
-              <Dot /> reversible targets, not just genes
+              <Dot /> bring your own data
             </span>
             <span className="rounded-full border border-line/12 px-2.5 py-1 font-mono text-[0.68rem] text-muted">
               provenance on every edge
@@ -79,17 +79,18 @@ function Hero() {
           </div>
 
           <h1 className="text-[2.7rem] font-semibold leading-[1.02] tracking-tightest text-text sm:text-[4rem]">
-            The vulnerability
+            An evidence-grounded
             <br />
-            resistance <span className="text-gradient-green">creates</span>.
+            <span className="text-gradient-green">discovery console</span>.
           </h1>
 
           <p className="mt-6 max-w-xl text-[1.02rem] leading-relaxed text-muted">
-            Achilles is an AI-native database for antimicrobial-resistance target ID.
-            It doesn&apos;t just name a gene <em>associated</em> with resistance — it names
-            the <span className="text-text">reversible target</span> resistance opens
-            through collateral sensitivity, folds it in 3D, and grounds every claim in
-            what real evolved lineages actually did next.
+            Point Achilles at your data — strains, variants, entities, a literature set —
+            and it builds a <span className="text-text">provenance-checked evidence
+            graph</span>: every claim carries a citation, a deterministic core does the math,
+            and the model only reads, retrieves, and cites. Nothing is asserted without a
+            source. Shown end-to-end on <span className="text-text">antimicrobial
+            resistance</span> — but the console is domain-agnostic.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -148,7 +149,7 @@ function HeroGraphic() {
     <div className="glass hover-lift rounded-2xl border border-line/10 p-5 shadow-card">
       <div className="mb-3 flex items-center justify-between">
         <span className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-faint">
-          the evidence graph
+          the evidence graph · AMR example
         </span>
         <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-2 py-0.5 text-[0.62rem] font-medium text-accentStrong">
           <Dot /> live
@@ -249,7 +250,7 @@ function HeroGraphic() {
 function Idea() {
   return (
     <section id="idea" className="mx-auto max-w-6xl px-6 py-20">
-      <SectionHeading eyebrow="the idea" title="Most tools stop at the gene. Achilles finds the opening." />
+      <SectionHeading eyebrow="the idea · shown on AMR" title="Most tools stop at the gene. Achilles finds the opening." />
       <div className="reveal mt-10 grid gap-5 md:grid-cols-2">
         <div className="rounded-2xl border border-line/10 bg-surface2/30 p-6">
           <div className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-faint">
@@ -289,14 +290,14 @@ function Capabilities() {
   const items = [
     { icon: <IconTree />, title: "Lineage & flippers", body: "Reconstruct the evolutionary tree and detect reversible (flipper) loci along it — deterministically." },
     { icon: <IconCube />, title: "AlphaFold structures", body: "Fold any flipper gene's protein via Tamarind Bio, colored by per-residue pLDDT confidence." },
-    { icon: <IconDoc />, title: "Grounded evidence", body: "Every resistance edge cites a PMID and, where corroborated, a CARD/UniProt accession." },
+    { icon: <IconDoc />, title: "Grounded evidence", body: "Every edge cites a PMID and, where corroborated, a reference-DB accession (CARD/UniProt/ChEMBL)." },
     { icon: <IconTarget />, title: "Ranked targets", body: "Evidence-supported genes promoted to targets with a deterministic score + ChEMBL tractability." },
     { icon: <IconCycle />, title: "Cycling hypotheses", body: "A reciprocal-CS antibiotic cycle with a concrete next-experiment call — a hypothesis, never advice." },
     { icon: <IconUpload />, title: "Bring your own strains", body: "Drop a genotype CSV; the same core reconstructs your lineage and flippers. Nothing stored." },
   ];
   return (
     <section id="capabilities" className="mx-auto max-w-6xl px-6 py-20">
-      <SectionHeading eyebrow="what it does" title="Five grounded steps, one continuous graph." />
+      <SectionHeading eyebrow="what it does · AMR example" title="Six grounded steps, one continuous graph." />
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((it) => (
           <div
@@ -333,9 +334,9 @@ function ProveIt() {
           center
         />
         <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-muted">
-          Achilles is held to independent, publicly-cited ground truth: it must recover
-          known resistance biology <em>and</em> refuse planted false claims. Computed live,
-          every recovery cited.
+          On the example dataset, Achilles is held to independent, publicly-cited ground
+          truth: it must recover known biology <em>and</em> refuse planted false claims.
+          Computed live, every recovery cited — the same discipline holds for any dataset.
         </p>
         <div className="mt-10 grid grid-cols-2 gap-5 lg:grid-cols-4">
           {stats.map((s) => (
@@ -385,11 +386,12 @@ function FinalCta() {
         <div className="bg-grid pointer-events-none absolute inset-0 opacity-40" aria-hidden />
         <div className="relative">
           <h2 className="text-3xl font-semibold tracking-tightest text-text sm:text-[2.6rem]">
-            Find the pathogen&apos;s <span className="text-gradient-green">Achilles&apos; heel</span>.
+            Ground your discovery in <span className="text-gradient-green">evidence</span>.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-[0.95rem] leading-relaxed text-muted">
-            Explore the live evidence graph — lineage, structures, grounded targets, and a
-            cycling hypothesis — all reproducible from public data.
+            Open the console blank and bring your own data, or load the antimicrobial-
+            resistance example — lineage, structures, grounded targets, and a cited cycling
+            hypothesis, all reproducible from public data.
           </p>
           <Link
             href="/explore"
@@ -413,7 +415,7 @@ function Footer() {
           core · AlphaFold on top · provenance on every edge
         </span>
         <span>
-          Public data only · BurkData stays local ·{" "}
+          Public data + your own · domain-agnostic ·{" "}
           <a href="https://github.com/akhimass/Achilles" target="_blank" rel="noopener noreferrer" className="hover:text-text">
             MIT
           </a>

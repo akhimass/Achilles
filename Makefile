@@ -35,3 +35,6 @@ fold-targets:  ## fold every ranked target via Tamarind AlphaFold (needs TAMARIN
 
 dock-targets:  ## dock cited inhibitors + run ADMET via Tamarind (needs TAMARIND_API_KEY)
 	cd backend && python -m app.sources.dock
+
+fetch-domain:  ## fetch a domain's real PubMLST isolates → snapshot (e.g. DOMAIN=pseudomonas)
+	cd backend && python -m app.sources.fetch_domain $(DOMAIN)
