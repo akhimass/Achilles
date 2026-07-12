@@ -79,10 +79,12 @@ export function TargetGraph({
       {status === "ready" && data && (
         <div className="animate-fade">
           <p className="mb-3 text-[0.72rem] leading-relaxed text-muted">
-            Candidate targets for{" "}
+            <span className="text-text">Reversible targets</span> for{" "}
             <span className="text-text">{data.strain ? `strain ${data.strain.label}` : data.organism}</span>
-            , ranked by a deterministic 0–1 score over grounded evidence and flipper
-            strength. Chips carried by the strain are marked.
+            {" "}— vulnerabilities resistance opens (flipper reversibility + collateral
+            sensitivity), not just resistance-associated genes — ranked by a deterministic
+            0–1 score over grounded evidence and flipper strength. Chips carried by the
+            strain are marked.
           </p>
           <ul className="space-y-2.5">
             {data.targets.map((t) => (

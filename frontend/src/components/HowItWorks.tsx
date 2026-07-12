@@ -15,6 +15,13 @@ export function HowItWorks() {
         <span className="font-mono text-[0.68rem] text-faint">not an LLM shell</span>
       }
     >
+      <p className="mb-3 text-[0.82rem] leading-relaxed text-text">
+        The object here is the <span className="text-accentStrong">reversible target</span> —
+        the vulnerability resistance <em>creates</em> (collateral sensitivity), not just a
+        gene associated with resistance — and every counterfactual (&ldquo;what happened
+        next&rdquo;) is <span className="text-accentStrong">retrieved from real evolved
+        lineages</span>, never generated.
+      </p>
       <p className="text-[0.82rem] leading-relaxed text-muted">
         A <span className="text-text">deterministic Python core</span> computes everything you
         see — lineage and flipper detection, the target{" "}

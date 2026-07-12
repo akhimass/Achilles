@@ -16,21 +16,22 @@ export function Hero({
       <div className="stagger grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-end">
         <div>
           <div className="mb-3 flex flex-wrap items-center gap-2">
-            <Badge tone="accent">Nextstrain, continued</Badge>
+            <Badge tone="accent">reversible targets, not just genes</Badge>
             <Badge tone="neutral">
               <span className="font-mono">provenance on every edge</span>
             </Badge>
           </div>
           <h1 className="text-[2rem] font-semibold leading-[1.08] tracking-tightest text-text sm:text-[2.7rem]">
-            Collateral sensitivity is the pathogen&apos;s{" "}
-            <span className="text-gradient-green">Achilles&apos; heel</span>.
+            The vulnerability resistance{" "}
+            <span className="text-gradient-green">creates</span>.
           </h1>
           <p className="mt-4 max-w-xl text-[0.95rem] leading-relaxed text-muted">
-            Trace resistance along a real bacterial lineage — strain → flipper →
-            structure → target → evidence — and turn reversible
-            (&ldquo;flipper&rdquo;) mutation structure into evidence-backed
-            antibiotic-cycling hypotheses. A deterministic core does the math;
-            AlphaFold folds the targets; the model only reads and cites.
+            Most target-ID tools name a gene <em>associated</em> with resistance.
+            Achilles names the vulnerability resistance <span className="text-text">creates</span>
+            {" "}— the <span className="text-text">reversible target</span> it opens through
+            collateral sensitivity — and grounds it in what real evolved lineages
+            actually did next. A deterministic core does the math; AlphaFold folds the
+            targets; the model only reads, retrieves, and cites.
           </p>
         </div>
 
