@@ -41,9 +41,20 @@ invents a number.**
    shows each resistance edge — relation + target, a confidence gradient, a
    grounded/abstract-only badge, and clickable **PMID / CARD-ARO / UniProt** chips.
    Grounded edges look solid; abstract-only edges are honestly weaker.
+4. **Rank the druggable targets.** The **Targets panel** promotes evidence-supported
+   genes to candidate targets, each with a **deterministic 0–1 rank_score** (grounded-
+   evidence support × flipper strength), a **ChEMBL tractability** signal (a *novel*
+   target with no known chemical matter, or *drugged*), a **citation-backed rationale**,
+   and a one-click jump to its 3D structure. MarR lands as a top target with its
+   AlphaFold model reachable.
+5. **Read the cycling hypothesis.** The **Cycling panel** renders a deterministic
+   antibiotic **cycle** walked over the reciprocal collateral-sensitivity graph (e.g.
+   `SXT → MEM → CAZ → CHL`), with its supporting RCS pairs, a plain summary, and
+   always-on **caveats** — a research hypothesis, never a treatment recommendation.
 
 Everything runs **fully offline** from a committed public corpus — the demo never
-depends on a live API succeeding on camera.
+depends on a live API succeeding on camera. The rank_score, cycle, and tractability
+are all computed deterministically; the LLM only narrates (opt-in), never scores.
 
 ## How grounding works (the credibility gate)
 
@@ -64,13 +75,13 @@ proposes, deterministic rules dispose.
 
 ```mermaid
 flowchart TD
-  A["Public data<br/>Europe PMC · CARD/ARO · UniProt · PubMLST · NCBI"] --> B["ingestion / sources<br/>(deterministic: parse · lineage · flipper detect)"]
+  A["Public data<br/>Europe PMC · CARD/ARO · UniProt · ChEMBL · PubMLST · NCBI"] --> B["ingestion / sources<br/>(deterministic: parse · lineage · flipper · score · collateral)"]
   B --> C[("Postgres + pgvector<br/>the evidence graph")]
   C --> D["AI layer (Claude)<br/>extract · ground · narrate — never computes numbers"]
   T["Tamarind Bio · AlphaFold"] --> C
   D --> C
   C --> E["FastAPI"]
-  E --> F["Next.js app<br/>lineage tree · 3D structure · evidence panel"]
+  E --> F["Next.js app<br/>lineage · 3D structure · evidence · targets · cycling"]
 ```
 
 - **Backend:** FastAPI, SQLAlchemy 2 (async), Pydantic v2, Postgres + pgvector.
@@ -114,9 +125,9 @@ targets on demand.
 |---|---|---|
 | 1 | Data in, lineage tree out | ✅ shipped |
 | 2 | Literature → grounded evidence edges | ✅ shipped |
+| 3 | Target ranking + ChEMBL tractability | ✅ shipped |
+| 4 | Collateral-sensitivity cycling | ✅ shipped |
 | 5 (beat) | AlphaFold structure viewer (Tamarind) | ✅ shipped |
-| 3 | Target ranking + pgvector retrieval | ▶ next |
-| 4 | Collateral-sensitivity cycling | ▶ next |
 
 See `CLAUDE.md` for the full design brief and phase plan.
 

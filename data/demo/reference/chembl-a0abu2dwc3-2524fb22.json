@@ -1,0 +1,8 @@
+{
+  "acc": "A0ABU2DWC3",
+  "record": {
+    "queried_acc": "A0ABU2DWC3",
+    "chembl_target_id": null,
+    "note": "No ChEMBL target maps to this UniProt accession (target.json total_count=0)."
+  }
+}
