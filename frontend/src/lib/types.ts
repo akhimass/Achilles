@@ -196,6 +196,39 @@ export interface TargetsResponse {
   counts: { targets: number; with_structure: number };
 }
 
+// Antibiotic cycling proposal (from /api/treatment/cycle). Mirrors treatment_shaping.
+export interface CycleStep {
+  from: string;
+  to: string;
+  reciprocal: boolean;
+  n_lineages?: number | null;
+  strength?: number | null;
+  closes_loop: boolean;
+}
+export interface RcsPair {
+  drug_a: string;
+  drug_b: string;
+  reciprocal: boolean;
+  n_lineages?: number | null;
+  strength?: number | null;
+}
+export interface CycleNarrative {
+  summary?: string | null;
+  caveats: string[];
+  citations: string[];
+}
+export interface CycleResponse {
+  organism: string;
+  cycle: string[];
+  summary: string; // deterministic one-liner (no LLM)
+  steps: CycleStep[];
+  rcs_pairs: RcsPair[];
+  narrative: CycleNarrative | null; // present only when narrate=true and a key is set
+  is_hypothesis: boolean; // always true
+  caveats: string[];
+  counts: { pairs: number; reciprocal: number; cycle_length: number };
+}
+
 // Predicted / experimental 3D structure for a gene (from /api/structure).
 export interface StructureResult {
   locus_tag: string;

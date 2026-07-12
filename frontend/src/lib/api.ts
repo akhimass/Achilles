@@ -3,10 +3,10 @@ import type {
   LineageGraph,
   EvidenceEdge,
   EvidenceSubgraph,
-  CollateralPair,
   StrainDetail,
   StructureResult,
   TargetsResponse,
+  CycleResponse,
 } from "./types";
 
 const BASE = process.env.NEXT_PUBLIC_API_BASE ?? "http://localhost:8000";
@@ -45,7 +45,5 @@ export const api = {
         : `/api/targets?organism=${encodeURIComponent(organism)}`,
     ),
   cycle: (organism: string) =>
-    get<{ cycle: string[]; narrative: string | null; rcs?: CollateralPair[] }>(
-      `/api/treatment/cycle?organism=${encodeURIComponent(organism)}`,
-    ),
+    get<CycleResponse>(`/api/treatment/cycle?organism=${encodeURIComponent(organism)}`),
 };

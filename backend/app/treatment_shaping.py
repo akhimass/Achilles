@@ -50,6 +50,24 @@ def _steps(cycle: list[str], idx: dict[tuple[str, str], CollateralPair]) -> list
     return steps
 
 
+def deterministic_summary(cycle: list[str], reciprocal: list[CollateralPair]) -> str:
+    """A factual one-liner describing the computed cycle (no LLM, no invention)."""
+    if not cycle:
+        return (
+            "No reciprocal collateral-sensitivity loop was found in the current data, "
+            "so no cycle is proposed."
+        )
+    n_lin = sorted({l for p in reciprocal for l in [p.n_lineages or 0]}, reverse=True)
+    max_lin = n_lin[0] if n_lin else 0
+    arrow = " → ".join(cycle)
+    return (
+        f"Proposed {len(cycle)}-drug alternating cycle {arrow}, walked over "
+        f"{len(reciprocal)} reciprocal collateral-sensitivity pairs (up to {max_lin} "
+        "lineages of support). Alternating between reciprocally sensitizing drugs is "
+        "hypothesized to keep resistance from fixing."
+    )
+
+
 def shape_cycle(
     organism: str,
     cycle: list[str],
@@ -76,6 +94,7 @@ def shape_cycle(
     return {
         "organism": organism,
         "cycle": cycle,
+        "summary": deterministic_summary(cycle, reciprocal),
         "steps": _steps(cycle, idx),
         "rcs_pairs": [
             {
