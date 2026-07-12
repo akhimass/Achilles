@@ -9,6 +9,7 @@ import type {
   CycleResponse,
   TrajectoryEvidence,
   SearchResponse,
+  UploadResult,
 } from "./types";
 
 const BASE = process.env.NEXT_PUBLIC_API_BASE ?? "http://localhost:8000";
@@ -17,6 +18,19 @@ async function get<T>(path: string): Promise<T> {
   const res = await fetch(`${BASE}${path}`, { cache: "no-store" });
   if (!res.ok) throw new Error(`${res.status} ${res.statusText} for ${path}`);
   return res.json() as Promise<T>;
+}
+
+/** POST raw CSV text; surfaces the backend's 400 detail as the thrown message. */
+async function postCsv<T>(path: string, csv: string): Promise<T> {
+  const res = await fetch(`${BASE}${path}`, {
+    method: "POST",
+    headers: { "Content-Type": "text/csv" },
+    body: csv,
+    cache: "no-store",
+  });
+  const body = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(body?.detail || `${res.status} ${res.statusText}`);
+  return body as T;
 }
 
 export const api = {
@@ -58,6 +72,11 @@ export const api = {
   cycle: (organism: string) =>
     get<CycleResponse>(`/api/treatment/cycle?organism=${encodeURIComponent(organism)}`),
   search: (q: string) => get<SearchResponse>(`/api/search?q=${encodeURIComponent(q)}`),
+  // Bring-your-own-strains: POST a genotype CSV → lineage graph + flippers.
+  uploadStrains: (csv: string, organism = "your cohort") =>
+    postCsv<UploadResult>(`/api/ingest/upload?organism=${encodeURIComponent(organism)}`, csv),
+  ingestExample: () =>
+    fetch(`${BASE}/api/ingest/example`, { cache: "no-store" }).then((r) => r.text()),
   trajectory: (strainId: string | null, resisted?: string | null) => {
     const params = new URLSearchParams();
     if (strainId) params.set("strain_id", strainId);

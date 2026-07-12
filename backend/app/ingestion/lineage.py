@@ -23,12 +23,17 @@ def parent_map(strains: list[Strain]) -> dict[UUID, UUID | None]:
     return {s.id: s.parent_id for s in strains if s.id is not None}
 
 
-def allelic_distance(a: dict[str, int], b: dict[str, int]) -> int:
-    """Number of MLST loci at which two profiles differ (0..7). Hamming over loci."""
-    return sum(1 for locus in MLST_LOCI if a.get(locus) != b.get(locus))
+def allelic_distance(
+    a: dict[str, int], b: dict[str, int], loci: tuple[str, ...] | list[str] = MLST_LOCI
+) -> int:
+    """Number of loci at which two profiles differ. Hamming over `loci` (defaults to
+    the 7 MLST housekeeping loci; pass any locus set for user-uploaded genotypes)."""
+    return sum(1 for locus in loci if a.get(locus) != b.get(locus))
 
 
-def build_mst_lineage(records: list[dict]) -> dict[Hashable, Hashable | None]:
+def build_mst_lineage(
+    records: list[dict], loci: tuple[str, ...] | list[str] = MLST_LOCI
+) -> dict[Hashable, Hashable | None]:
     """Reconstruct a lineage as a minimum spanning tree over MLST allelic distance.
 
     An MST over allelic distance is the standard way MLST relationships are drawn
@@ -65,7 +70,7 @@ def build_mst_lineage(records: list[dict]) -> dict[Hashable, Hashable | None]:
         for child in remaining:
             cr = by_id[child]
             for anchor in inside:
-                d = allelic_distance(cr["profile"], by_id[anchor]["profile"])
+                d = allelic_distance(cr["profile"], by_id[anchor]["profile"], loci)
                 key = (d, year_of(cr), child, anchor)
                 if best_key is None or key < best_key:
                     best_key, best_child, best_parent = key, child, anchor

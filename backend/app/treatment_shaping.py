@@ -68,6 +68,28 @@ def deterministic_summary(cycle: list[str], reciprocal: list[CollateralPair]) ->
     )
 
 
+def next_experiment(cycle: list[str], reciprocal: list[CollateralPair]) -> dict | None:
+    """The single highest-leverage wet-lab test implied by the cycle — deterministic,
+    grounded in lineage support. Turns the hypothesis into one concrete next step.
+    `reciprocal` must be pre-sorted by descending support (as shape_cycle does)."""
+    if not cycle or not reciprocal:
+        return None
+    p = reciprocal[0]
+    n = p.n_lineages or 0
+    lin = f"{n} evolved lineage{'' if n == 1 else 's'}"
+    return {
+        "drug_a": p.drug_a,
+        "drug_b": p.drug_b,
+        "n_lineages": n,
+        "headline": f"Test {p.drug_a} → {p.drug_b} re-sensitization",
+        "detail": (
+            f"Challenge {p.drug_a}-resistant isolates with {p.drug_b}: {lin} in this cohort "
+            f"show that reversal. If it holds in vitro, the {p.drug_a} ⇄ {p.drug_b} pair "
+            "anchors the cycle above."
+        ),
+    }
+
+
 def shape_cycle(
     organism: str,
     cycle: list[str],
@@ -116,6 +138,7 @@ def shape_cycle(
         ],
         "narrative": narr_block,
         "narrative_source": narrative_source if narr_block else None,
+        "next_experiment": next_experiment(cycle, reciprocal),
         "is_hypothesis": True,
         "caveats": caveats,
         "counts": {

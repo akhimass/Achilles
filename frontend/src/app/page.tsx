@@ -13,6 +13,7 @@ import { EvidencePanel } from "@/components/EvidencePanel";
 import { CyclingView } from "@/components/CyclingView";
 import { TrajectoryPanel } from "@/components/TrajectoryPanel";
 import { SearchPanel } from "@/components/SearchPanel";
+import { UploadPanel } from "@/components/UploadPanel";
 import { HowItWorks } from "@/components/HowItWorks";
 
 const ORGANISM = "Burkholderia multivorans";
@@ -71,6 +72,8 @@ export default function Page() {
 
           <StructureViewer locus={selectedGene?.locus ?? null} label={selectedGene?.label} />
         </section>
+
+        <UploadPanel />
 
         <section className="grid gap-5 lg:grid-cols-[1fr_1fr]">
           <StrainDetail

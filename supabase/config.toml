@@ -1,0 +1,7 @@
+# Supabase project config for Achilles. `supabase init` regenerates the full file;
+# this minimal version is enough to `supabase link` + `supabase db push` a hosted
+# project and to `supabase db reset` locally (applies migrations/ then seed.sql).
+project_id = "achilles"
+
+[db]
+major_version = 16

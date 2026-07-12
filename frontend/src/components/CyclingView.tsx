@@ -60,6 +60,18 @@ export function CyclingView({ organism }: { organism: string }) {
             {data.narrative?.summary ?? data.summary}
           </p>
 
+          {data.next_experiment && (
+            <div className="mt-3 rounded-xl border border-accent/30 bg-accent/[0.07] p-3">
+              <div className="mb-1 flex items-center gap-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-accentStrong">
+                <Beaker /> Next experiment
+              </div>
+              <div className="text-sm font-medium text-text">{data.next_experiment.headline}</div>
+              <p className="mt-1 text-[0.74rem] leading-relaxed text-muted">
+                {data.next_experiment.detail}
+              </p>
+            </div>
+          )}
+
           {data.rcs_pairs.length > 0 && (
             <div className="mt-3">
               <div className="mb-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-faint">
@@ -227,6 +239,15 @@ function Warn() {
     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
       <path d="M12 9v4M12 17h.01" />
+    </svg>
+  );
+}
+
+function Beaker() {
+  return (
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M9 3h6M10 3v6.5L5 18a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-8.5V3" />
+      <path d="M7.5 14h9" />
     </svg>
   );
 }

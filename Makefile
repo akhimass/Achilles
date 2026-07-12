@@ -1,4 +1,4 @@
-.PHONY: dev db backend frontend seed seed-public test fmt
+.PHONY: dev db backend frontend seed seed-public seed-sql supabase-bundle test fmt
 
 db:            ## start Postgres+pgvector with schema loaded
 	docker compose up -d db
@@ -20,6 +20,9 @@ seed-public:   ## load ONLY public data (PubMLST + committed caches) — deploy/
 
 seed-sql:      ## export the PUBLIC seed as a SQL bundle (for Supabase/any Postgres)
 	cd backend && python -m app.ingestion.export_seed_sql ../achilles_public_seed.sql
+
+supabase-bundle: ## regenerate the committed Supabase project seed (public only)
+	cd backend && python -m app.ingestion.export_seed_sql ../supabase/seed.sql
 
 test:
 	cd backend && pytest -q

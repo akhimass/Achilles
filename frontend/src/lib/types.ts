@@ -234,6 +234,13 @@ export interface CycleNarrative {
   citations: string[];
   source?: "cached" | "llm" | null;
 }
+export interface NextExperiment {
+  drug_a: string;
+  drug_b: string;
+  n_lineages: number;
+  headline: string;
+  detail: string;
+}
 export interface CycleResponse {
   organism: string;
   cycle: string[];
@@ -242,9 +249,24 @@ export interface CycleResponse {
   rcs_pairs: RcsPair[];
   narrative: CycleNarrative | null; // cached by default, or live when narrate=true
   narrative_source?: "cached" | "llm" | null;
+  next_experiment?: NextExperiment | null; // deterministic single wet-lab next step
   is_hypothesis: boolean; // always true
   caveats: string[];
   counts: { pairs: number; reciprocal: number; cycle_length: number };
+}
+
+// Bring-your-own-strains result (from /api/ingest/upload) — a LineageGraph + summary.
+export interface UploadSummary {
+  organism: string;
+  strains: number;
+  loci: number;
+  flipper_carrying: number;
+  max_flipper: number;
+  roots: number;
+  warnings?: { dropped_rows?: number };
+}
+export interface UploadResult extends LineageGraph {
+  summary: UploadSummary;
 }
 
 // Grounded search over the evidence graph (from /api/search).

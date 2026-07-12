@@ -118,7 +118,9 @@ def detect_flippers(
 
 
 def detect_mlst_flippers(
-    profiles_by_strain: dict[UUID, dict[str, int]], paths: list[LineagePath]
+    profiles_by_strain: dict[UUID, dict[str, int]],
+    paths: list[LineagePath],
+    loci: tuple[str, ...] | list[str] = _MLST_LOCI,
 ) -> dict[UUID, set[tuple[str, int]]]:
     """Find MLST (locus, allele) states that reverse across the lineage, per strain.
 
@@ -136,7 +138,7 @@ def detect_mlst_flippers(
     allele), ...}}.
     """
     # allele universe per locus
-    universe: dict[str, set[int]] = {locus: set() for locus in _MLST_LOCI}
+    universe: dict[str, set[int]] = {locus: set() for locus in loci}
     for prof in profiles_by_strain.values():
         for locus, allele in prof.items():
             if locus in universe:
@@ -148,7 +150,7 @@ def detect_mlst_flippers(
 
     decode: dict[int, tuple[str, int]] = {}
     synthetic: dict[UUID, list[Variant]] = {sid: [] for sid in profiles_by_strain}
-    for locus_idx, locus in enumerate(_MLST_LOCI):
+    for locus_idx, locus in enumerate(loci):
         for allele in universe[locus]:
             pos = encode(locus_idx, allele)
             decode[pos] = (locus, allele)

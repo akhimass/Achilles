@@ -13,6 +13,7 @@ from app.config import settings
 from app.routers import (
     export,
     graph,
+    ingest,
     literature,
     search,
     structure,
@@ -38,6 +39,7 @@ app.include_router(treatment.router)
 app.include_router(trajectory.router)
 app.include_router(export.router)
 app.include_router(search.router)
+app.include_router(ingest.router)
 
 
 @app.get("/health")

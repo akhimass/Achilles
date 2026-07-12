@@ -107,6 +107,33 @@ corpus (PubMed abstracts + CARD/UniProt reference facts) into the evidence graph
 `ANTHROPIC_API_KEY` / `TAMARIND_API_KEY` only to *build new* literature or fold *new*
 targets on demand.
 
+## Deploy on Supabase (Postgres + pgvector)
+
+Achilles ships a turnkey Supabase project under [`supabase/`](supabase/):
+
+```bash
+supabase link --project-ref <your-ref>      # from the Supabase dashboard
+supabase db push                            # applies supabase/migrations/ (the schema)
+psql "$SUPABASE_DB_URL" -f supabase/seed.sql # loads the public evidence graph
+```
+
+Then point the API at it with an **asyncpg** URL:
+`DATABASE_URL=postgresql+asyncpg://postgres:<pwd>@db.<ref>.supabase.co:5432/postgres`.
+
+`supabase/seed.sql` is **public data only** (regenerate with `make supabase-bundle`);
+BurkData is never included. See [`supabase/README.md`](supabase/README.md) for the
+psql-only path and details. The Supabase **MCP connector** can automate provisioning
+but must be authorized first (claude.ai connector settings, or `/mcp` in interactive
+Claude Code) — it can't OAuth from a sandboxed session.
+
+## Bring your own strains
+
+Drop a genotype CSV (one row per isolate: an `id` column + one column per locus —
+MLST alleles, gene presence/absence, or SNP calls; optional `year`/`country`) into the
+**"Bring your own strains"** panel. The same deterministic core reconstructs your
+lineage (MST over allelic distance) and detects reversible (flipper) loci — stateless,
+nothing stored. `POST /api/ingest/upload` (raw CSV body) returns the lineage graph.
+
 ## Data & ethics
 
 - **Public sources only** in this repo: Europe PMC / PubMed, CARD (ARO via EBI OLS),
