@@ -20,6 +20,9 @@ from pathlib import Path
 NARRATION_DIR = Path(__file__).resolve().parents[2] / "data" / "demo" / "narration"
 TARGETS_FILE = NARRATION_DIR / "targets.json"
 CYCLE_FILE = NARRATION_DIR / "cycle.json"
+# Trajectory narration derives from the private BurkData record → LOCAL-only, never
+# committed (stays {}); the public path has no trajectory to narrate.
+TRAJECTORY_FILE = NARRATION_DIR / "trajectory.json"
 
 
 def _load(path: Path) -> dict:
@@ -40,6 +43,11 @@ def _target_cache() -> dict:
 @lru_cache(maxsize=1)
 def _cycle_cache() -> dict:
     return _load(CYCLE_FILE)
+
+
+@lru_cache(maxsize=1)
+def _trajectory_cache() -> dict:
+    return _load(TRAJECTORY_FILE)
 
 
 def load_target_rationales() -> dict:
@@ -70,7 +78,20 @@ def cycle_narrative(organism: str | None) -> dict | None:
     return entry if isinstance(entry, dict) and entry.get("summary") else None
 
 
+def trajectory_narrative(organism: str | None, resisted: str | None) -> dict | None:
+    """Cached narration for a retrieved trajectory (keyed ``organism|resisted``), or None.
+
+    Local-only in practice (trajectory derives from private data); committed cache stays
+    empty, so the default path serves no narration and the retrieved data speaks for
+    itself. Shape: ``{summary, citations, model, generated_at}``."""
+    if not organism or not resisted:
+        return None
+    entry = _trajectory_cache().get(f"{organism}|{resisted}")
+    return entry if isinstance(entry, dict) and entry.get("summary") else None
+
+
 def reset_cache() -> None:
     """Clear the memoized reads (used by the snapshot builder and by tests)."""
     _target_cache.cache_clear()
     _cycle_cache.cache_clear()
+    _trajectory_cache.cache_clear()

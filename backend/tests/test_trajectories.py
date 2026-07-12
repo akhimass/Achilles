@@ -70,3 +70,37 @@ def test_provenance_declares_no_prediction():
     assert t.event_strain == "10"
     assert "no prediction" in t.provenance["method"]
     assert "simulation" in t.provenance["method"] or "generation" in t.provenance["method"]
+
+
+# ─── Router helper + cache reader (Slice 3) ──────────────────────────────────
+
+
+def test_as_list_handles_list_json_and_none():
+    from app.routers.trajectory import _as_list
+
+    assert _as_list(["MEM", "SXT"]) == ["MEM", "SXT"]
+    assert _as_list('["MEM", "SXT"]') == ["MEM", "SXT"]  # jsonb-as-string path
+    assert _as_list(None) == [] and _as_list("not json") == []
+
+
+def test_trajectory_cache_reader(tmp_path, monkeypatch):
+    import json as _json
+
+    from app.ai import narration_cache
+
+    tf = tmp_path / "trajectory.json"
+    tf.write_text(_json.dumps({
+        "Burkholderia multivorans|MEM": {
+            "summary": "In 3 real lineages, meropenem resistance was followed by SXT sensitivity.",
+            "citations": ["strain 183", "strain 555"], "model": "claude-opus-4-8",
+        }
+    }))
+    monkeypatch.setattr(narration_cache, "TRAJECTORY_FILE", tf)
+    narration_cache.reset_cache()
+    entry = narration_cache.trajectory_narrative("Burkholderia multivorans", "MEM")
+    assert entry and entry["summary"].startswith("In 3 real lineages")
+    assert narration_cache.trajectory_narrative("Burkholderia multivorans", "NOPE") is None
+    # An entry without a summary is treated as absent (never served as fabricated).
+    tf.write_text(_json.dumps({"O|D": {"citations": ["x"]}}))
+    narration_cache.reset_cache()
+    assert narration_cache.trajectory_narrative("O", "D") is None

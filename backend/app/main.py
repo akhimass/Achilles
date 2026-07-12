@@ -10,7 +10,15 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
-from app.routers import export, graph, literature, structure, targets, treatment
+from app.routers import (
+    export,
+    graph,
+    literature,
+    structure,
+    targets,
+    trajectory,
+    treatment,
+)
 
 app = FastAPI(title="Achilles API", version="0.1.0")
 
@@ -26,6 +34,7 @@ app.include_router(structure.router)
 app.include_router(targets.router)
 app.include_router(literature.router)
 app.include_router(treatment.router)
+app.include_router(trajectory.router)
 app.include_router(export.router)
 
 

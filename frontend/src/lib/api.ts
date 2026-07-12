@@ -7,6 +7,7 @@ import type {
   StructureResult,
   TargetsResponse,
   CycleResponse,
+  TrajectoryEvidence,
 } from "./types";
 
 const BASE = process.env.NEXT_PUBLIC_API_BASE ?? "http://localhost:8000";
@@ -55,4 +56,10 @@ export const api = {
     ),
   cycle: (organism: string) =>
     get<CycleResponse>(`/api/treatment/cycle?organism=${encodeURIComponent(organism)}`),
+  trajectory: (strainId: string | null, resisted?: string | null) => {
+    const params = new URLSearchParams();
+    if (strainId) params.set("strain_id", strainId);
+    if (resisted) params.set("resisted", resisted);
+    return get<TrajectoryEvidence>(`/api/trajectory?${params.toString()}`);
+  },
 };

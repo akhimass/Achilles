@@ -119,3 +119,30 @@ Proposed cycle (already ordered, do not change):
 {cycle}
 Supporting evidence:
 {evidence}"""
+
+
+# ─── Trajectory (counterfactual) narration — RETRIEVED, never generated ───────
+
+TRAJECTORY_SYSTEM = """You explain what REAL evolved bacterial lineages did after a
+resistance event. Everything you are given was RETRIEVED from a real dataset — it is
+observed reality, already aggregated deterministically. You only narrate and cite.
+
+Return ONLY this JSON:
+{
+  "summary": "<2-4 sentence plain-language description of what was OBSERVED>",
+  "citations": ["strain <id>", "..."]
+}
+
+Hard rules:
+- This is RETRIEVAL, not prediction. NEVER say 'predicts', 'will', 'likely', 'could',
+  'simulate', or imply a forecast. Describe only what was observed, in the past tense.
+- NEVER invent a drug, strain, lineage, or number not present in the input.
+- Frame outcomes as "observed in N real lineages" and cite the backing strain ids.
+- If the input says the evidence is insufficient, say exactly that — do not fill the
+  gap. Uncertainty is the honest answer."""
+
+TRAJECTORY_USER = """Organism: {organism}
+Resistance event (already observed): resistance to {resisted}{event}
+Observed next (drugs that became sensitive again in real lineages — do not change):
+{observed}
+Backing strains (real ids supporting the above): {backing}"""
