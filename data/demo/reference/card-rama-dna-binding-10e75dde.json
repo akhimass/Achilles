@@ -1,0 +1,32 @@
+{
+  "subject": "RamA",
+  "object": "DNA binding",
+  "facts": [
+    {
+      "acc": "ARO:3000823",
+      "label": "ramA",
+      "desc": "RamA (resistance antibiotic multiple) is a positive regulator of AcrAB-TolC and leads to high level multidrug resistance in Klebsiella pneumoniae, Salmonella enterica, and Enterobacter aerugenes, increasing the expression of both the mar operon as well as AcrAB. RamA also decreases OmpF expression."
+    },
+    {
+      "acc": "ARO:3000824",
+      "label": "ramR",
+      "desc": "RamR is a repressor that regulates RamA expression. Mutations lead to the upregulation of AcrAB, which is positively regulated by RamA."
+    },
+    {
+      "acc": "ARO:3003379",
+      "label": "Salmonella enterica ramR mutants",
+      "desc": "RamR is a repressor that regulates RamA expression. Mutations lead to the upregulation of AcrAB, which is positively regulated by RamA."
+    },
+    {
+      "acc": "ARO:3003380",
+      "label": "Klebsiella pneumoniae ramR mutants",
+      "desc": "RamR is a repressor that regulates RamA expression. Mutations lead to the upregulation of AcrAB, which is positively regulated by RamA."
+    },
+    {
+      "acc": "ARO:3003479",
+      "label": "tetR",
+      "desc": "TetR is the repressor of the tetracycline resistance element; its N-terminal region forms a helix-turn-helix structure and binds DNA. Binding of tetracycline to TetR reduces the repressor affinity for the tetracycline resistance gene (tetA) promoter operator sites. Mutations arise within tetR results in lower affinity for tetracyclin."
+    }
+  ],
+  "block": "CARD/ARO ARO:3000823 \u2014 ramA: RamA (resistance antibiotic multiple) is a positive regulator of AcrAB-TolC and leads to high level multidrug resistance in Klebsiella pneumoniae, Salmonella enterica, and Enterobacter aerugenes, increasing the expression of both the mar operon as well as AcrAB. RamA also decreases OmpF expression.\nCARD/ARO ARO:3000824 \u2014 ramR: RamR is a repressor that regulates RamA expression. Mutations lead to the upregulation of AcrAB, which is positively regulated by RamA.\nCARD/ARO ARO:3003379 \u2014 Salmonella enterica ramR mutants: RamR is a repressor that regulates RamA expression. Mutations lead to the upregulation of AcrAB, which is positively regulated by RamA.\nCARD/ARO ARO:3003380 \u2014 Klebsiella pneumoniae ramR mutants: RamR is a repressor that regulates RamA expression. Mutations lead to the upregulation of AcrAB, which is positively regulated by RamA.\nCARD/ARO ARO:3003479 \u2014 tetR: TetR is the repressor of the tetracycline resistance element; its N-terminal region forms a helix-turn-helix structure and binds DNA. Binding of tetracycline to TetR reduces the repressor affinity for the tetracycline resistance gene (tetA) promoter operator sites. Mutations arise within tetR results in lower affinity for tetracyclin."
+}

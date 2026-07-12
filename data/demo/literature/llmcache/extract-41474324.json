@@ -1,0 +1,92 @@
+{
+  "claims": [
+    {
+      "subject": "MhqR",
+      "relation": "implicates",
+      "object": "quinone and antimicrobial resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "important determinant of quinone and antimicrobial resistance in S. aureus",
+      "confidence": 0.9
+    },
+    {
+      "subject": "mhqRED operon",
+      "relation": "confers_resistance",
+      "object": "quinones and quinone-like antimicrobials",
+      "object_kind": "drug",
+      "evidence_span": "control resistance toward quinones and quinone-like antimicrobials",
+      "confidence": 0.8
+    },
+    {
+      "subject": "F11",
+      "relation": "implicates",
+      "object": "quinone sensing",
+      "object_kind": "mechanism",
+      "evidence_span": "F11, F39, and H111 are required for quinone sensing",
+      "confidence": 0.85
+    },
+    {
+      "subject": "F39",
+      "relation": "implicates",
+      "object": "quinone sensing",
+      "object_kind": "mechanism",
+      "evidence_span": "F11, F39, and H111 are required for quinone sensing",
+      "confidence": 0.85
+    },
+    {
+      "subject": "H111",
+      "relation": "implicates",
+      "object": "quinone sensing",
+      "object_kind": "mechanism",
+      "evidence_span": "F11, F39, and H111 are required for quinone sensing",
+      "confidence": 0.85
+    },
+    {
+      "subject": "S65",
+      "relation": "implicates",
+      "object": "DNA binding",
+      "object_kind": "mechanism",
+      "evidence_span": "S65 and S66 of the allosteric loop... are essential for DNA binding",
+      "confidence": 0.8
+    },
+    {
+      "subject": "S66",
+      "relation": "implicates",
+      "object": "DNA binding",
+      "object_kind": "mechanism",
+      "evidence_span": "S65 and S66 of the allosteric loop... are essential for DNA binding",
+      "confidence": 0.8
+    },
+    {
+      "subject": "D88",
+      "relation": "implicates",
+      "object": "DNA binding",
+      "object_kind": "mechanism",
+      "evidence_span": "D88, K89, V91, and Y92 of the \u03b21/\u03b22-wing are essential for DNA binding",
+      "confidence": 0.8
+    },
+    {
+      "subject": "K89",
+      "relation": "implicates",
+      "object": "DNA binding",
+      "object_kind": "mechanism",
+      "evidence_span": "D88, K89, V91, and Y92 of the \u03b21/\u03b22-wing are essential for DNA binding",
+      "confidence": 0.8
+    },
+    {
+      "subject": "V91",
+      "relation": "implicates",
+      "object": "DNA binding",
+      "object_kind": "mechanism",
+      "evidence_span": "D88, K89, V91, and Y92 of the \u03b21/\u03b22-wing are essential for DNA binding",
+      "confidence": 0.8
+    },
+    {
+      "subject": "Y92",
+      "relation": "implicates",
+      "object": "DNA binding",
+      "object_kind": "mechanism",
+      "evidence_span": "D88, K89, V91, and Y92 of the \u03b21/\u03b22-wing are essential for DNA binding",
+      "confidence": 0.8
+    }
+  ]
+}

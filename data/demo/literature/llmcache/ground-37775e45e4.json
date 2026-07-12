@@ -1,0 +1,7 @@
+{
+  "supported": true,
+  "provenance_db": "CARD",
+  "provenance_acc": "ARO:3007321",
+  "adjusted_confidence": 0.85,
+  "reason": "CARD documents efflux pumps (e.g., tetK, NorA) as antibiotic resistance mechanisms targeted by inhibitors."
+}

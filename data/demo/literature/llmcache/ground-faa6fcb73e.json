@@ -1,0 +1,7 @@
+{
+  "supported": true,
+  "provenance_db": "CARD",
+  "provenance_acc": "ARO:3000718",
+  "adjusted_confidence": 0.8,
+  "reason": "MarR is described as a transcriptional repressor of marRAB, implying DNA-binding activity."
+}

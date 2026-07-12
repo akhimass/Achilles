@@ -1,0 +1,7 @@
+{
+  "supported": true,
+  "provenance_db": "CARD",
+  "provenance_acc": "ARO:3000823",
+  "adjusted_confidence": 0.8,
+  "reason": "RamA upregulates AcrAB-TolC efflux causing multidrug resistance including fluoroquinolones like ciprofloxacin."
+}

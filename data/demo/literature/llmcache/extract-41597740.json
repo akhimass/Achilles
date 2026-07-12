@@ -1,0 +1,28 @@
+{
+  "claims": [
+    {
+      "subject": "mex gene family",
+      "relation": "confers_resistance",
+      "object": "efflux pump-mediated antibiotic resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "encoding for efflux pumps (mex and spe gene families) substantially more prevalent",
+      "confidence": 0.6
+    },
+    {
+      "subject": "spe gene family",
+      "relation": "confers_resistance",
+      "object": "efflux pump-mediated antibiotic resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "encoding for efflux pumps (mex and spe gene families) substantially more prevalent",
+      "confidence": 0.6
+    },
+    {
+      "subject": "metal contamination",
+      "relation": "implicates",
+      "object": "mex and spe gene families",
+      "object_kind": "gene",
+      "evidence_span": "substantially more prevalent in the BPMD sites, elucidating a specific AMR marker fingerprint",
+      "confidence": 0.65
+    }
+  ]
+}

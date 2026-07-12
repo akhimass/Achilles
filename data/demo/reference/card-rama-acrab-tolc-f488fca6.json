@@ -1,0 +1,32 @@
+{
+  "subject": "RamA",
+  "object": "AcrAB-TolC",
+  "facts": [
+    {
+      "acc": "ARO:3000823",
+      "label": "ramA",
+      "desc": "RamA (resistance antibiotic multiple) is a positive regulator of AcrAB-TolC and leads to high level multidrug resistance in Klebsiella pneumoniae, Salmonella enterica, and Enterobacter aerugenes, increasing the expression of both the mar operon as well as AcrAB. RamA also decreases OmpF expression."
+    },
+    {
+      "acc": "ARO:3000824",
+      "label": "ramR",
+      "desc": "RamR is a repressor that regulates RamA expression. Mutations lead to the upregulation of AcrAB, which is positively regulated by RamA."
+    },
+    {
+      "acc": "ARO:3003379",
+      "label": "Salmonella enterica ramR mutants",
+      "desc": "RamR is a repressor that regulates RamA expression. Mutations lead to the upregulation of AcrAB, which is positively regulated by RamA."
+    },
+    {
+      "acc": "ARO:3003380",
+      "label": "Klebsiella pneumoniae ramR mutants",
+      "desc": "RamR is a repressor that regulates RamA expression. Mutations lead to the upregulation of AcrAB, which is positively regulated by RamA."
+    },
+    {
+      "acc": "ARO:3000384",
+      "label": "AcrAB-TolC",
+      "desc": "AcrAB-TolC is a tripartite RND efflux system that confers resistance to tetracycline, chloramphenicol, ampicillin, nalidixic acid, and rifampin  in Gram-negative bacteria. The system spans the cell membrane (AcrB) and the outer-membrane (TolC), and is linked together in the periplasm by AcrA."
+    }
+  ],
+  "block": "CARD/ARO ARO:3000823 \u2014 ramA: RamA (resistance antibiotic multiple) is a positive regulator of AcrAB-TolC and leads to high level multidrug resistance in Klebsiella pneumoniae, Salmonella enterica, and Enterobacter aerugenes, increasing the expression of both the mar operon as well as AcrAB. RamA also decreases OmpF expression.\nCARD/ARO ARO:3000824 \u2014 ramR: RamR is a repressor that regulates RamA expression. Mutations lead to the upregulation of AcrAB, which is positively regulated by RamA.\nCARD/ARO ARO:3003379 \u2014 Salmonella enterica ramR mutants: RamR is a repressor that regulates RamA expression. Mutations lead to the upregulation of AcrAB, which is positively regulated by RamA.\nCARD/ARO ARO:3003380 \u2014 Klebsiella pneumoniae ramR mutants: RamR is a repressor that regulates RamA expression. Mutations lead to the upregulation of AcrAB, which is positively regulated by RamA.\nCARD/ARO ARO:3000384 \u2014 AcrAB-TolC: AcrAB-TolC is a tripartite RND efflux system that confers resistance to tetracycline, chloramphenicol, ampicillin, nalidixic acid, and rifampin  in Gram-negative bacteria. The system spans the cell membrane (AcrB) and the outer-membrane (TolC), and is linked together in the periplasm by AcrA."
+}

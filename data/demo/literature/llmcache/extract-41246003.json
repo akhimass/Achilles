@@ -1,0 +1,20 @@
+{
+  "claims": [
+    {
+      "subject": "RND family efflux pump genes",
+      "relation": "confers_resistance",
+      "object": "fluoroquinolone",
+      "object_kind": "drug",
+      "evidence_span": "five RND family efflux pump genes resistant to fluoroquinolone were all located on chromosomes",
+      "confidence": 0.8
+    },
+    {
+      "subject": "HhutSZ1",
+      "relation": "confers_resistance",
+      "object": "ciprofloxacin",
+      "object_kind": "drug",
+      "evidence_span": "HhutSZ1 exhibited intermediate resistance to ciprofloxacin",
+      "confidence": 0.9
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "claims": [
+    {
+      "subject": "acrAB-tolC",
+      "relation": "confers_resistance",
+      "object": "carbapenems",
+      "object_kind": "drug",
+      "evidence_span": "> 5-fold up-regulated acrAB-tolC on chromosome",
+      "confidence": 0.7
+    },
+    {
+      "subject": "blaNDM-1",
+      "relation": "confers_resistance",
+      "object": "carbapenems",
+      "object_kind": "drug",
+      "evidence_span": "plasmid-borne blaNDM-1 carbapenemase rendered ECC virtually untreatable",
+      "confidence": 0.9
+    },
+    {
+      "subject": "blaACT",
+      "relation": "confers_resistance",
+      "object": "cephalosporins and carbapenems",
+      "object_kind": "drug",
+      "evidence_span": "constitutive chromosomal expression of blaACT-type AmpC further blunted the activity of cephalosporins and carbapenems",
+      "confidence": 0.85
+    },
+    {
+      "subject": "blaCTX-M-15",
+      "relation": "confers_resistance",
+      "object": "cephalosporins",
+      "object_kind": "drug",
+      "evidence_span": "These replicons also carried ESBLs (blaCTX-M-15)",
+      "confidence": 0.6
+    },
+    {
+      "subject": "blaTEM-1",
+      "relation": "confers_resistance",
+      "object": "beta-lactams",
+      "object_kind": "drug",
+      "evidence_span": "blaTEM-1, aminoglycoside- modifying enzymes",
+      "confidence": 0.5
+    },
+    {
+      "subject": "armA",
+      "relation": "confers_resistance",
+      "object": "aminoglycosides",
+      "object_kind": "drug",
+      "evidence_span": "aminoglycoside- modifying enzymes (armA, aadA1)",
+      "confidence": 0.7
+    },
+    {
+      "subject": "aadA1",
+      "relation": "confers_resistance",
+      "object": "aminoglycosides",
+      "object_kind": "drug",
+      "evidence_span": "aminoglycoside- modifying enzymes (armA, aadA1)",
+      "confidence": 0.7
+    },
+    {
+      "subject": "ramR",
+      "relation": "implicates",
+      "object": "AcrAB-TolC efflux pump overexpression",
+      "object_kind": "mechanism",
+      "evidence_span": "Mutations in ramR and soxR regulators... amplify either system",
+      "confidence": 0.5
+    },
+    {
+      "subject": "soxR",
+      "relation": "implicates",
+      "object": "AcrAB-TolC efflux pump overexpression",
+      "object_kind": "mechanism",
+      "evidence_span": "Mutations in ramR and soxR regulators... amplify either system",
+      "confidence": 0.5
+    }
+  ]
+}

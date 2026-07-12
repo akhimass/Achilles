@@ -1,0 +1,7 @@
+{
+  "supported": true,
+  "provenance_db": "CARD",
+  "provenance_acc": "ARO:3003378",
+  "adjusted_confidence": 0.9,
+  "reason": "CARD confirms MarR regulates marA, which activates AcrAB-TolC efflux pump expression."
+}

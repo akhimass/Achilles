@@ -1,0 +1,7 @@
+{
+  "supported": false,
+  "provenance_db": null,
+  "provenance_acc": null,
+  "adjusted_confidence": 0.05,
+  "reason": "Reference facts describe RamA as a multidrug resistance regulator, not a target of anti-virulence agents."
+}

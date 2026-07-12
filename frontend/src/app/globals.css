@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design tokens ──────────────────────────────────────────────────────────
+   Colors are RGB channel triplets so Tailwind opacity modifiers work
+   (`text-text/60`, `border-line/12`). Light + dark are two swaps of the same set.
+   Built on the domain palette: teal = collateral sensitivity (the "heel"),
+   coral = resistance. */
+:root {
+  color-scheme: light;
+
+  --bg: 244 246 243;
+  --surface: 255 255 255;
+  --surface-2: 249 251 249;
+  --surface-3: 242 245 242;
+  --line: 21 32 28;
+
+  --text: 18 28 24;
+  --muted: 78 92 85;
+  --faint: 120 134 127;
+
+  --accent: 21 148 108; /* teal — sensitivity / reversal */
+  --accent-strong: 15 122 89;
+  --danger: 210 84 44; /* coral — resistance */
+  --amber: 194 138 40;
+
+  --tree-neutral: 200 208 203;
+
+  --shadow-color: 20 40 32;
+  --grid: 21 32 28;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --bg: 8 13 11;
+  --surface: 16 23 20;
+  --surface-2: 21 30 26;
+  --surface-3: 27 37 32;
+  --line: 214 226 219;
+
+  --text: 226 234 229;
+  --muted: 150 166 158;
+  --faint: 108 124 116;
+
+  --accent: 45 194 141;
+  --accent-strong: 74 214 163;
+  --danger: 232 122 84;
+  --amber: 219 176 92;
+
+  --tree-neutral: 74 90 83;
+
+  --shadow-color: 0 0 0;
+  --grid: 214 226 219;
+}
+
+* {
+  border-color: rgb(var(--line) / 0.1);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
+}
+
+body {
+  background-color: rgb(var(--bg));
+  color: rgb(var(--text));
+  font-feature-settings: "cv11", "ss01";
+  /* Two whisper-quiet radial washes give the page depth without noise. */
+  background-image:
+    radial-gradient(60rem 40rem at 12% -8%, rgb(var(--accent) / 0.06), transparent 60%),
+    radial-gradient(50rem 40rem at 105% 0%, rgb(var(--danger) / 0.04), transparent 55%);
+  background-attachment: fixed;
+}
+
+/* Fine dotted grid used behind hero surfaces. */
+.bg-grid {
+  background-image: radial-gradient(rgb(var(--grid) / 0.06) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* ─── Scrollbars ─────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--line) / 0.16);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--line) / 0.28);
+  background-clip: padding-box;
+}
+::selection {
+  background: rgb(var(--accent) / 0.24);
+}
+
+/* ─── Motion ─────────────────────────────────────────────────────────────── */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgb(var(--accent) / 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgb(var(--accent) / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgb(var(--accent) / 0);
+  }
+}
+@keyframes dash {
+  to {
+    stroke-dashoffset: -16;
+  }
+}
+
+.animate-rise {
+  animation: rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.animate-fade {
+  animation: fade 0.6s ease both;
+}
+.pulse-dot {
+  animation: pulse-ring 2.2s ease-out infinite;
+}
+
+/* Staggered entrance for grids of cards. */
+.stagger > * {
+  animation: rise 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.stagger > *:nth-child(1) { animation-delay: 0.02s; }
+.stagger > *:nth-child(2) { animation-delay: 0.07s; }
+.stagger > *:nth-child(3) { animation-delay: 0.12s; }
+.stagger > *:nth-child(4) { animation-delay: 0.17s; }
+.stagger > *:nth-child(5) { animation-delay: 0.22s; }
+.stagger > *:nth-child(6) { animation-delay: 0.27s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  .animate-rise,
+  .animate-fade,
+  .stagger > * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Loading shimmer skeleton. */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: rgb(var(--line) / 0.06);
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(var(--line) / 0.08),
+    transparent
+  );
+  animation: shimmer 1.6s infinite;
+}
+
+/* Focus ring for keyboard users. */
+:focus-visible {
+  outline: 2px solid rgb(var(--accent) / 0.6);
+  outline-offset: 2px;
+  border-radius: 4px;
+}

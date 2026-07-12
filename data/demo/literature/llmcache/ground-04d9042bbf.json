@@ -1,0 +1,7 @@
+{
+  "supported": false,
+  "provenance_db": null,
+  "provenance_acc": null,
+  "adjusted_confidence": 0.1,
+  "reason": "MarR is linked to ciprofloxacin/tetracycline resistance via AcrAB-TolC, not meropenem."
+}

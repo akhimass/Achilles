@@ -1,0 +1,11 @@
+{
+  "subject": "MarR",
+  "organism": "Burkholderia multivorans",
+  "record": {
+    "acc": "A0A0H3KEU2",
+    "name": "MarR family transcriptional regulator",
+    "function": null,
+    "organism": "Burkholderia multivorans (strain ATCC 17616 / 249)"
+  },
+  "block": "UniProt A0A0H3KEU2 \u2014 MarR family transcriptional regulator [Burkholderia multivorans (strain ATCC 17616 / 249)]"
+}

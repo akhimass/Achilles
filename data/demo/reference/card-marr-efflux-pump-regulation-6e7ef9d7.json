@@ -1,0 +1,32 @@
+{
+  "subject": "MarR",
+  "object": "efflux pump regulation",
+  "facts": [
+    {
+      "acc": "ARO:3003378",
+      "label": "Escherichia coli AcrAB-TolC with MarR mutations conferring resistance to ciprofloxacin and tetracycline",
+      "desc": "MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB."
+    },
+    {
+      "acc": "ARO:3000718",
+      "label": "marR",
+      "desc": "MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB."
+    },
+    {
+      "acc": "ARO:3004055",
+      "label": "Escherichia coli CpxR",
+      "desc": "The Escherichia coli CpxR/CpxA system responds to general periplasmic stress and has been used as a model two-component system for transcription regulation in bacteria. CpxR/CpxA system facilitates Salmonella and E. coli resistance to cationic antimicrobial peptides.The CpxR/CpxA system can activate transcription of marRAB operon, thus facilitating multidrug-resistant regulator to enhance expression of TolC-dependent tripartite multidrug transporters."
+    },
+    {
+      "acc": "ARO:3004899",
+      "label": "isoniazid resistant inbR",
+      "desc": "inbR is part of the transcriptional factor family TetR. It acts as a repressor to regulate efflux pumps involved in antibiotic resistance."
+    },
+    {
+      "acc": "ARO:3007657",
+      "label": "metal transporters with antibiotic efflux",
+      "desc": "Efflux pumps also regulate the level of metal ions in the cytoplasm but are toxic when in excess. Metals often act as a facilitator in the proliferation and persistence of antibiotic resistance. Therefore, metal contamination in natural environments could have an important role in maintaining and promoting antibiotic resistance. The presence of metals co-selects for antibiotic resistance and leads to the development of cross-resistance. Micro-organisms adopt various mechanisms that may confer resistance against more than one antimicrobial, of which multidrug efflux systems are the most common."
+    }
+  ],
+  "block": "CARD/ARO ARO:3003378 \u2014 Escherichia coli AcrAB-TolC with MarR mutations conferring resistance to ciprofloxacin and tetracycline: MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB.\nCARD/ARO ARO:3000718 \u2014 marR: MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB.\nCARD/ARO ARO:3004055 \u2014 Escherichia coli CpxR: The Escherichia coli CpxR/CpxA system responds to general periplasmic stress and has been used as a model two-component system for transcription regulation in bacteria. CpxR/CpxA system facilitates Salmonella and E. coli resistance to cationic antimicrobial peptides.The CpxR/CpxA system can activate transcription of marRAB operon, thus facilitating multidrug-resistant regulator to enhance expression of TolC-dependent tripartite multidrug transporters.\nCARD/ARO ARO:3004899 \u2014 isoniazid resistant inbR: inbR is part of the transcriptional factor family TetR. It acts as a repressor to regulate efflux pumps involved in antibiotic resistance.\nCARD/ARO ARO:3007657 \u2014 metal transporters with antibiotic efflux: Efflux pumps also regulate the level of metal ions in the cytoplasm but are toxic when in excess. Metals often act as a facilitator in the proliferation and persistence of antibiotic resistance. Therefore, metal contamination in natural environments could have an important role in maintaining and promoting antibiotic resistance. The presence of metals co-selects for antibiotic resistance and leads to the development of cross-resistance. Micro-organisms adopt various mechanisms that may confer resistance against more than one antimicrobial, of which multidrug efflux systems are the most common."
+}

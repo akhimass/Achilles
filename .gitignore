@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+# Node
+node_modules/
+.next/
+out/
+# Env & data
+.env
+.env.local
+*.vcf
+*.parquet
+# Ignore everything under data/ by default, but keep the PUBLIC demo corpus.
+# (Excluding `data/` outright would make the re-include below impossible — git
+# cannot re-include a path whose parent directory is excluded.)
+/data/*
+!/data/demo/
+# BurkData is private (Dr. Sung's lab) — LOCAL DEMO ONLY. Never commit it or any
+# artifact derived from it. The snapshot below stays on disk but is never pushed;
+# a public clone falls back to the PubMLST demo (see ingestion/seed.py).
+/data/demo/bmultivorans_burkdata.json
+# OS
+.DS_Store

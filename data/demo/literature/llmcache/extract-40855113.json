@@ -1,0 +1,68 @@
+{
+  "claims": [
+    {
+      "subject": "GyrA",
+      "relation": "confers_resistance",
+      "object": "ciprofloxacin",
+      "object_kind": "drug",
+      "evidence_span": "mutations in GyrA, MarR, and AcrR",
+      "confidence": 0.7
+    },
+    {
+      "subject": "MarR",
+      "relation": "confers_resistance",
+      "object": "ciprofloxacin",
+      "object_kind": "drug",
+      "evidence_span": "mutations in GyrA, MarR, and AcrR",
+      "confidence": 0.6
+    },
+    {
+      "subject": "AcrR",
+      "relation": "confers_resistance",
+      "object": "ciprofloxacin",
+      "object_kind": "drug",
+      "evidence_span": "mutations in GyrA, MarR, and AcrR",
+      "confidence": 0.6
+    },
+    {
+      "subject": "MarR",
+      "relation": "implicates",
+      "object": "AcrAB-TolC drug efflux pump",
+      "object_kind": "mechanism",
+      "evidence_span": "correlated with overexpression of AcrAB-TolC drug efflux pump",
+      "confidence": 0.75
+    },
+    {
+      "subject": "AcrR",
+      "relation": "implicates",
+      "object": "AcrAB-TolC drug efflux pump",
+      "object_kind": "mechanism",
+      "evidence_span": "correlated with overexpression of AcrAB-TolC drug efflux pump",
+      "confidence": 0.75
+    },
+    {
+      "subject": "AcrAB-TolC drug efflux pump",
+      "relation": "confers_resistance",
+      "object": "ciprofloxacin",
+      "object_kind": "drug",
+      "evidence_span": "overexpression of AcrAB-TolC drug efflux pump",
+      "confidence": 0.6
+    },
+    {
+      "subject": "ibuprofen",
+      "relation": "sensitizes_to",
+      "object": "ciprofloxacin",
+      "object_kind": "drug",
+      "evidence_span": "ibuprofen and acetaminophen significantly increased mutation frequency and conferred high-level ciprofloxacin resistance",
+      "confidence": 0.85
+    },
+    {
+      "subject": "acetaminophen",
+      "relation": "sensitizes_to",
+      "object": "ciprofloxacin",
+      "object_kind": "drug",
+      "evidence_span": "ibuprofen and acetaminophen significantly increased mutation frequency and conferred high-level ciprofloxacin resistance",
+      "confidence": 0.85
+    }
+  ]
+}

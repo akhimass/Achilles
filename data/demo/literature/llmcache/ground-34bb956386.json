@@ -1,0 +1,7 @@
+{
+  "supported": false,
+  "provenance_db": null,
+  "provenance_acc": null,
+  "adjusted_confidence": 0.05,
+  "reason": "MarR mutations confer resistance to, not sensitization to, ciprofloxacin per CARD."
+}

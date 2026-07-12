@@ -1,0 +1,32 @@
+{
+  "subject": "MarR",
+  "object": "tigecycline",
+  "facts": [
+    {
+      "acc": "ARO:3003378",
+      "label": "Escherichia coli AcrAB-TolC with MarR mutations conferring resistance to ciprofloxacin and tetracycline",
+      "desc": "MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB."
+    },
+    {
+      "acc": "ARO:3000718",
+      "label": "marR",
+      "desc": "MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB."
+    },
+    {
+      "acc": "ARO:3004055",
+      "label": "Escherichia coli CpxR",
+      "desc": "The Escherichia coli CpxR/CpxA system responds to general periplasmic stress and has been used as a model two-component system for transcription regulation in bacteria. CpxR/CpxA system facilitates Salmonella and E. coli resistance to cationic antimicrobial peptides.The CpxR/CpxA system can activate transcription of marRAB operon, thus facilitating multidrug-resistant regulator to enhance expression of TolC-dependent tripartite multidrug transporters."
+    },
+    {
+      "acc": "ARO:0000030",
+      "label": "tigecycline",
+      "desc": "Tigecycline is an glycylcycline antibiotic. It works by inhibiting action of the prokaryotic 30S ribosome."
+    },
+    {
+      "acc": "ARO:0000042",
+      "label": "glycylcycline",
+      "desc": "Glycylcyclines are a new class of antibiotics derived from tetracycline. These tetracycline analogues are specifically designed to overcome two common mechanisms of tetracycline resistance. Presently, there is only one glycylcycline antibiotic for clinical use: tigecycline. It works by inhibiting action of the prokaryotic 30S ribosome, preventing the binding of aminoacyl-tRNA."
+    }
+  ],
+  "block": "CARD/ARO ARO:3003378 \u2014 Escherichia coli AcrAB-TolC with MarR mutations conferring resistance to ciprofloxacin and tetracycline: MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB.\nCARD/ARO ARO:3000718 \u2014 marR: MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB.\nCARD/ARO ARO:3004055 \u2014 Escherichia coli CpxR: The Escherichia coli CpxR/CpxA system responds to general periplasmic stress and has been used as a model two-component system for transcription regulation in bacteria. CpxR/CpxA system facilitates Salmonella and E. coli resistance to cationic antimicrobial peptides.The CpxR/CpxA system can activate transcription of marRAB operon, thus facilitating multidrug-resistant regulator to enhance expression of TolC-dependent tripartite multidrug transporters.\nCARD/ARO ARO:0000030 \u2014 tigecycline: Tigecycline is an glycylcycline antibiotic. It works by inhibiting action of the prokaryotic 30S ribosome.\nCARD/ARO ARO:0000042 \u2014 glycylcycline: Glycylcyclines are a new class of antibiotics derived from tetracycline. These tetracycline analogues are specifically designed to overcome two common mechanisms of tetracycline resistance. Presently, there is only one glycylcycline antibiotic for clinical use: tigecycline. It works by inhibiting action of the prokaryotic 30S ribosome, preventing the binding of aminoacyl-tRNA."
+}

@@ -1,0 +1,44 @@
+{
+  "claims": [
+    {
+      "subject": "tet(Y)",
+      "relation": "confers_resistance",
+      "object": "oxytetracycline",
+      "object_kind": "drug",
+      "evidence_span": "resistance phenotypes to several antibiotics (oxytetracycline...) were predominantly attributable to...tet(Y)",
+      "confidence": 0.85
+    },
+    {
+      "subject": "sul2",
+      "relation": "confers_resistance",
+      "object": "sulphonamides",
+      "object_kind": "drug",
+      "evidence_span": "resistance phenotypes to several antibiotics (...sulphonamides...) were predominantly attributable to...sul2",
+      "confidence": 0.85
+    },
+    {
+      "subject": "floR",
+      "relation": "confers_resistance",
+      "object": "florfenicol",
+      "object_kind": "drug",
+      "evidence_span": "resistance phenotypes to several antibiotics (...florfenicol) were predominantly attributable to...floR",
+      "confidence": 0.85
+    },
+    {
+      "subject": "PhoP/Q two-component system mutations",
+      "relation": "implicates",
+      "object": "colistin resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "isolates with low and high MIC values to colistin showed mutations in...PhoP/Q two-component system",
+      "confidence": 0.7
+    },
+    {
+      "subject": "LPS-modifying genes",
+      "relation": "implicates",
+      "object": "colistin resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "diversity of known LPS-modifying genes involved in colistin resistance was also detected in resistant isolates",
+      "confidence": 0.75
+    }
+  ]
+}

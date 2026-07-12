@@ -1,0 +1,7 @@
+{
+  "supported": false,
+  "provenance_db": null,
+  "provenance_acc": null,
+  "adjusted_confidence": 0.2,
+  "reason": "No reference fact directly links a generic efflux pump to fluoroquinolone resistance."
+}

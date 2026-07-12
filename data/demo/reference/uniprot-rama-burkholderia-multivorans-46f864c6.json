@@ -1,0 +1,11 @@
+{
+  "subject": "RamA",
+  "organism": "Burkholderia multivorans",
+  "record": {
+    "acc": "A0ABU2DWC3",
+    "name": "(R)-stereoselective amidase",
+    "function": null,
+    "organism": "Burkholderia pseudomultivorans"
+  },
+  "block": "UniProt A0ABU2DWC3 \u2014 (R)-stereoselective amidase [Burkholderia pseudomultivorans]"
+}

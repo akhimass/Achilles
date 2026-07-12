@@ -1,0 +1,60 @@
+{
+  "claims": [
+    {
+      "subject": "\u03b2-lactamase production",
+      "relation": "confers_resistance",
+      "object": "\u03b2-lactams",
+      "object_kind": "drug",
+      "evidence_span": "\u03b2-lactamase production",
+      "confidence": 0.6
+    },
+    {
+      "subject": "aminoglycoside-modifying enzymes",
+      "relation": "confers_resistance",
+      "object": "aminoglycosides",
+      "object_kind": "drug",
+      "evidence_span": "aminoglycoside-modifying enzymes",
+      "confidence": 0.6
+    },
+    {
+      "subject": "efflux pump overexpression",
+      "relation": "confers_resistance",
+      "object": "last-resort antimicrobials",
+      "object_kind": "drug",
+      "evidence_span": "efflux pump overexpression",
+      "confidence": 0.5
+    },
+    {
+      "subject": "target-site mutations",
+      "relation": "confers_resistance",
+      "object": "last-resort antimicrobials",
+      "object_kind": "drug",
+      "evidence_span": "target-site mutations",
+      "confidence": 0.5
+    },
+    {
+      "subject": "lipid A remodeling",
+      "relation": "confers_resistance",
+      "object": "last-resort antimicrobials",
+      "object_kind": "drug",
+      "evidence_span": "lipid A remodeling",
+      "confidence": 0.5
+    },
+    {
+      "subject": "AbaI/AbaR",
+      "relation": "implicates",
+      "object": "biofilm formation",
+      "object_kind": "mechanism",
+      "evidence_span": "AbaI/AbaR, which regulate biofilm formation, virulence, and antimicrobial tolerance",
+      "confidence": 0.8
+    },
+    {
+      "subject": "AbaI/AbaR",
+      "relation": "implicates",
+      "object": "antimicrobial tolerance",
+      "object_kind": "mechanism",
+      "evidence_span": "which regulate biofilm formation, virulence, and antimicrobial tolerance",
+      "confidence": 0.8
+    }
+  ]
+}

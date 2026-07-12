@@ -1,0 +1,52 @@
+{
+  "claims": [
+    {
+      "subject": "efflux pumps",
+      "relation": "confers_resistance",
+      "object": "PEt3AuCl",
+      "object_kind": "drug",
+      "evidence_span": "outer membrane permeability and efflux contribute to tolerance",
+      "confidence": 0.8
+    },
+    {
+      "subject": "outer membrane permeability",
+      "relation": "implicates",
+      "object": "PEt3AuCl tolerance",
+      "object_kind": "mechanism",
+      "evidence_span": "outer membrane permeability and efflux contribute to tolerance",
+      "confidence": 0.8
+    },
+    {
+      "subject": "glutathione (GSH) homeostasis",
+      "relation": "implicates",
+      "object": "PEt3AuCl resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "GSH depletion significantly potentiated AF-Cl, implicating redox homeostasis in resistance",
+      "confidence": 0.85
+    },
+    {
+      "subject": "polymyxin B",
+      "relation": "sensitizes_to",
+      "object": "PEt3AuCl",
+      "object_kind": "drug",
+      "evidence_span": "AF-Cl activity was markedly enhanced by PMB and efflux-pump inhibitors",
+      "confidence": 0.85
+    },
+    {
+      "subject": "efflux-pump inhibitors",
+      "relation": "sensitizes_to",
+      "object": "PEt3AuCl",
+      "object_kind": "drug",
+      "evidence_span": "AF-Cl activity was markedly enhanced by PMB and efflux-pump inhibitors",
+      "confidence": 0.85
+    },
+    {
+      "subject": "GSH depletors",
+      "relation": "sensitizes_to",
+      "object": "PEt3AuCl",
+      "object_kind": "drug",
+      "evidence_span": "GSH depletion significantly potentiated AF-Cl",
+      "confidence": 0.85
+    }
+  ]
+}

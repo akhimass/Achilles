@@ -1,0 +1,44 @@
+{
+  "claims": [
+    {
+      "subject": "AcrAB-TolC",
+      "relation": "confers_resistance",
+      "object": "antibiotics",
+      "object_kind": "drug",
+      "evidence_span": "important mediators of intrinsic and evolved antibiotic resistance",
+      "confidence": 0.8
+    },
+    {
+      "subject": "envR overexpression",
+      "relation": "sensitizes_to",
+      "object": "multidrug",
+      "object_kind": "drug",
+      "evidence_span": "conferred multidrug susceptibility",
+      "confidence": 0.9
+    },
+    {
+      "subject": "EnvR",
+      "relation": "implicates",
+      "object": "acrAB",
+      "object_kind": "gene",
+      "evidence_span": "EnvR bound to the promoter region upstream of the genes coding for the major efflux pump AcrAB",
+      "confidence": 0.95
+    },
+    {
+      "subject": "RamA",
+      "relation": "implicates",
+      "object": "acrB",
+      "object_kind": "gene",
+      "evidence_span": "expression of its major regulator RamA was very high",
+      "confidence": 0.6
+    },
+    {
+      "subject": "EnvR",
+      "relation": "reverts_with",
+      "object": "RamA",
+      "object_kind": "gene",
+      "evidence_span": "can override binding by RamA so preventing MDR to clinically useful drugs",
+      "confidence": 0.85
+    }
+  ]
+}

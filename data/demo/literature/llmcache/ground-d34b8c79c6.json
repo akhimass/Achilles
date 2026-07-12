@@ -1,0 +1,7 @@
+{
+  "supported": true,
+  "provenance_db": "CARD",
+  "provenance_acc": "ARO:3000718",
+  "adjusted_confidence": 0.85,
+  "reason": "CARD confirms MarR represses marRAB, regulating multidrug efflux pump AcrAB, implicating it in antibiotic resistance."
+}

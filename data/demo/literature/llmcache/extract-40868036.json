@@ -1,0 +1,44 @@
+{
+  "claims": [
+    {
+      "subject": "baeR",
+      "relation": "implicates",
+      "object": "cross-resistance to meropenem, gentamicin, and florfenicol",
+      "object_kind": "mechanism",
+      "evidence_span": "central roles of baeR, gadX, and marA in coordinating adaptive responses",
+      "confidence": 0.7
+    },
+    {
+      "subject": "gadX",
+      "relation": "implicates",
+      "object": "cross-resistance to meropenem, gentamicin, and florfenicol",
+      "object_kind": "mechanism",
+      "evidence_span": "central roles of baeR, gadX, and marA in coordinating adaptive responses",
+      "confidence": 0.7
+    },
+    {
+      "subject": "marA",
+      "relation": "implicates",
+      "object": "cross-resistance to meropenem, gentamicin, and florfenicol",
+      "object_kind": "mechanism",
+      "evidence_span": "central roles of baeR, gadX, and marA in coordinating adaptive responses",
+      "confidence": 0.7
+    },
+    {
+      "subject": "core resistome of 22 chromosomal loci",
+      "relation": "confers_resistance",
+      "object": "meropenem, gentamicin, and florfenicol",
+      "object_kind": "drug",
+      "evidence_span": "core resistome of 22 chromosomal loci shared across all three antibiotics",
+      "confidence": 0.75
+    },
+    {
+      "subject": "SOS-mediated division arrest and DNA-damage response",
+      "relation": "implicates",
+      "object": "meropenem",
+      "object_kind": "drug",
+      "evidence_span": "characteristic of SOS-mediated division arrest and DNA-damage response",
+      "confidence": 0.6
+    }
+  ]
+}

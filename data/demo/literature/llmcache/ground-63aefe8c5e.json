@@ -1,0 +1,7 @@
+{
+  "supported": true,
+  "provenance_db": "CARD",
+  "provenance_acc": "ARO:3000074",
+  "adjusted_confidence": 0.75,
+  "reason": "CARD entry for emrB efflux pump specifically lists CCCP as a recognized substrate/target."
+}

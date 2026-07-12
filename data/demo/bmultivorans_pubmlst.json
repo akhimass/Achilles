@@ -1,0 +1,1684 @@
+{
+  "meta": {
+    "organism": "Burkholderia multivorans",
+    "n_isolates": 70,
+    "loci": [
+      "atpD",
+      "gltB",
+      "gyrB",
+      "lepA",
+      "phaC",
+      "recA",
+      "trpB"
+    ],
+    "provenance": "PubMLST \u2014 Burkholderia cepacia complex isolates database",
+    "source_url": "https://rest.pubmlst.org/db/pubmlst_bcc_isolates",
+    "citation": "Jolley KA, Bray JE, Maiden MCJ (2018), pubmlst.org (public).",
+    "note": "Real isolates + real MLST allele profiles. Collection metadata is used only to reconstruct a lineage deterministically (see ingestion/lineage.py); it is not a validated phylogeny."
+  },
+  "records": [
+    {
+      "id": 15,
+      "isolate": "CF-A1-1",
+      "st": 15,
+      "year": 1998,
+      "country": "UK",
+      "continent": "Europe",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "9616509",
+        "10655415",
+        "11329449",
+        "12161410",
+        "16145124",
+        "18032622",
+        "18256220",
+        "19153076"
+      ],
+      "profile": {
+        "atpD": 8,
+        "gltB": 5,
+        "gyrB": 5,
+        "lepA": 7,
+        "phaC": 42,
+        "recA": 7,
+        "trpB": 5
+      }
+    },
+    {
+      "id": 18,
+      "isolate": "C1962",
+      "st": 18,
+      "year": 1995,
+      "country": "UK",
+      "continent": "Europe",
+      "source": "non-CF patient",
+      "detail": "Brain abcess",
+      "ncbi": null,
+      "pmids": [
+        "8605906",
+        "10655415",
+        "11329449",
+        "12161410",
+        "16145124",
+        "18032622",
+        "18256220"
+      ],
+      "profile": {
+        "atpD": 9,
+        "gltB": 75,
+        "gyrB": 54,
+        "lepA": 63,
+        "phaC": 35,
+        "recA": 93,
+        "trpB": 66
+      }
+    },
+    {
+      "id": 19,
+      "isolate": "C5393",
+      "st": 19,
+      "year": 1993,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "8940422",
+        "10655415",
+        "11023184",
+        "11329449",
+        "11403388",
+        "12161410",
+        "16145124",
+        "18032622",
+        "18057135",
+        "18195031",
+        "18256220"
+      ],
+      "profile": {
+        "atpD": 12,
+        "gltB": 6,
+        "gyrB": 118,
+        "lepA": 7,
+        "phaC": 100,
+        "recA": 9,
+        "trpB": 6
+      }
+    },
+    {
+      "id": 23,
+      "isolate": "CEP0093",
+      "st": 23,
+      "year": 1989,
+      "country": "USA",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Respiratory tract",
+      "ncbi": null,
+      "pmids": [
+        "16145124",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 7,
+        "gltB": 111,
+        "gyrB": 4,
+        "lepA": 6,
+        "phaC": 12,
+        "recA": 6,
+        "trpB": 4
+      }
+    },
+    {
+      "id": 25,
+      "isolate": "AU0066",
+      "st": 25,
+      "year": 1997,
+      "country": "USA",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": null,
+      "ncbi": null,
+      "pmids": [
+        "14612237",
+        "16145124",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 10,
+        "gltB": 60,
+        "gyrB": 4,
+        "lepA": 37,
+        "phaC": 35,
+        "recA": 77,
+        "trpB": 5
+      }
+    },
+    {
+      "id": 135,
+      "isolate": "D0400",
+      "st": 199,
+      "year": 2002,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "17141579"
+      ],
+      "profile": {
+        "atpD": 13,
+        "gltB": 5,
+        "gyrB": 172,
+        "lepA": 145,
+        "phaC": 96,
+        "recA": 133,
+        "trpB": 137
+      }
+    },
+    {
+      "id": 138,
+      "isolate": "D1203",
+      "st": 305,
+      "year": 2004,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "17141579"
+      ],
+      "profile": {
+        "atpD": 13,
+        "gltB": 190,
+        "gyrB": 283,
+        "lepA": 7,
+        "phaC": 96,
+        "recA": 133,
+        "trpB": 4
+      }
+    },
+    {
+      "id": 141,
+      "isolate": "C8814",
+      "st": 199,
+      "year": 1999,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "17141579"
+      ],
+      "profile": {
+        "atpD": 13,
+        "gltB": 5,
+        "gyrB": 172,
+        "lepA": 145,
+        "phaC": 96,
+        "recA": 133,
+        "trpB": 137
+      }
+    },
+    {
+      "id": 149,
+      "isolate": "D1415",
+      "st": 199,
+      "year": 2002,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "17141579",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 13,
+        "gltB": 5,
+        "gyrB": 172,
+        "lepA": 145,
+        "phaC": 96,
+        "recA": 133,
+        "trpB": 137
+      }
+    },
+    {
+      "id": 150,
+      "isolate": "D1451",
+      "st": 304,
+      "year": 2005,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "17141579"
+      ],
+      "profile": {
+        "atpD": 9,
+        "gltB": 205,
+        "gyrB": 285,
+        "lepA": 63,
+        "phaC": 35,
+        "recA": 141,
+        "trpB": 5
+      }
+    },
+    {
+      "id": 153,
+      "isolate": "D0999",
+      "st": 199,
+      "year": 2004,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "17141579"
+      ],
+      "profile": {
+        "atpD": 13,
+        "gltB": 5,
+        "gyrB": 172,
+        "lepA": 145,
+        "phaC": 96,
+        "recA": 133,
+        "trpB": 137
+      }
+    },
+    {
+      "id": 154,
+      "isolate": "C7463",
+      "st": 305,
+      "year": 1997,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "17141579"
+      ],
+      "profile": {
+        "atpD": 13,
+        "gltB": 190,
+        "gyrB": 283,
+        "lepA": 7,
+        "phaC": 96,
+        "recA": 133,
+        "trpB": 4
+      }
+    },
+    {
+      "id": 155,
+      "isolate": "C8298",
+      "st": 304,
+      "year": 1998,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "17141579",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 9,
+        "gltB": 205,
+        "gyrB": 285,
+        "lepA": 63,
+        "phaC": 35,
+        "recA": 141,
+        "trpB": 5
+      }
+    },
+    {
+      "id": 157,
+      "isolate": "D1268",
+      "st": 308,
+      "year": 2004,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "17141579",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 168,
+        "gltB": 190,
+        "gyrB": 259,
+        "lepA": 7,
+        "phaC": 96,
+        "recA": 133,
+        "trpB": 147
+      }
+    },
+    {
+      "id": 166,
+      "isolate": "C9861",
+      "st": 317,
+      "year": 2001,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "17141579",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 168,
+        "gltB": 190,
+        "gyrB": 259,
+        "lepA": 7,
+        "phaC": 96,
+        "recA": 133,
+        "trpB": 132
+      }
+    },
+    {
+      "id": 168,
+      "isolate": "C9876",
+      "st": 199,
+      "year": 2001,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "17141579",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 13,
+        "gltB": 5,
+        "gyrB": 172,
+        "lepA": 145,
+        "phaC": 96,
+        "recA": 133,
+        "trpB": 137
+      }
+    },
+    {
+      "id": 169,
+      "isolate": "D1348",
+      "st": 320,
+      "year": 2004,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "17141579",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 13,
+        "gltB": 5,
+        "gyrB": 172,
+        "lepA": 145,
+        "phaC": 96,
+        "recA": 133,
+        "trpB": 147
+      }
+    },
+    {
+      "id": 170,
+      "isolate": "C9862",
+      "st": 308,
+      "year": 2001,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "17141579"
+      ],
+      "profile": {
+        "atpD": 168,
+        "gltB": 190,
+        "gyrB": 259,
+        "lepA": 7,
+        "phaC": 96,
+        "recA": 133,
+        "trpB": 147
+      }
+    },
+    {
+      "id": 178,
+      "isolate": "AU0453",
+      "st": 21,
+      "year": 1998,
+      "country": "USA",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "17552100",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 13,
+        "gltB": 78,
+        "gyrB": 100,
+        "lepA": 92,
+        "phaC": 96,
+        "recA": 94,
+        "trpB": 6
+      }
+    },
+    {
+      "id": 179,
+      "isolate": "C9140",
+      "st": 21,
+      "year": 2000,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "17552100",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 13,
+        "gltB": 78,
+        "gyrB": 100,
+        "lepA": 92,
+        "phaC": 96,
+        "recA": 94,
+        "trpB": 6
+      }
+    },
+    {
+      "id": 205,
+      "isolate": "IST455",
+      "st": 375,
+      "year": 2000,
+      "country": "Portugal",
+      "continent": "Europe",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "12958234",
+        "17552100",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 9,
+        "gltB": 50,
+        "gyrB": 169,
+        "lepA": 63,
+        "phaC": 96,
+        "recA": 81,
+        "trpB": 133
+      }
+    },
+    {
+      "id": 323,
+      "isolate": "R-14502",
+      "st": 16,
+      "year": 1997,
+      "country": "France",
+      "continent": "Europe",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "9230381",
+        "10364586",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 8,
+        "gltB": 5,
+        "gyrB": 5,
+        "lepA": 7,
+        "phaC": 42,
+        "recA": 7,
+        "trpB": 105
+      }
+    },
+    {
+      "id": 324,
+      "isolate": "CEP0600",
+      "st": 16,
+      "year": 1996,
+      "country": "USA",
+      "continent": "North America",
+      "source": "non-CF patient",
+      "detail": "Human infection",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 8,
+        "gltB": 5,
+        "gyrB": 5,
+        "lepA": 7,
+        "phaC": 42,
+        "recA": 7,
+        "trpB": 105
+      }
+    },
+    {
+      "id": 325,
+      "isolate": "C6558",
+      "st": 16,
+      "year": 1995,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Respiratory tract",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 8,
+        "gltB": 5,
+        "gyrB": 5,
+        "lepA": 7,
+        "phaC": 42,
+        "recA": 7,
+        "trpB": 105
+      }
+    },
+    {
+      "id": 327,
+      "isolate": "LMG 14273",
+      "st": 16,
+      "year": 1993,
+      "country": "Belgium",
+      "continent": "Europe",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 8,
+        "gltB": 5,
+        "gyrB": 5,
+        "lepA": 7,
+        "phaC": 42,
+        "recA": 7,
+        "trpB": 105
+      }
+    },
+    {
+      "id": 328,
+      "isolate": "SBL03-088",
+      "st": 16,
+      "year": 2003,
+      "country": "New Zealand",
+      "continent": "Oceania",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 8,
+        "gltB": 5,
+        "gyrB": 5,
+        "lepA": 7,
+        "phaC": 42,
+        "recA": 7,
+        "trpB": 105
+      }
+    },
+    {
+      "id": 329,
+      "isolate": "SBL04-172",
+      "st": 16,
+      "year": 2004,
+      "country": "New Zealand",
+      "continent": "Oceania",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 8,
+        "gltB": 5,
+        "gyrB": 5,
+        "lepA": 7,
+        "phaC": 42,
+        "recA": 7,
+        "trpB": 105
+      }
+    },
+    {
+      "id": 332,
+      "isolate": "SBL03-316",
+      "st": 17,
+      "year": 2003,
+      "country": "New Zealand",
+      "continent": "Oceania",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 97,
+        "gltB": 50,
+        "gyrB": 4,
+        "lepA": 37,
+        "phaC": 63,
+        "recA": 79,
+        "trpB": 55
+      }
+    },
+    {
+      "id": 333,
+      "isolate": "R-13078",
+      "st": 419,
+      "year": 1997,
+      "country": "France",
+      "continent": "Europe",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [],
+      "profile": {
+        "atpD": 118,
+        "gltB": 50,
+        "gyrB": 158,
+        "lepA": 270,
+        "phaC": 96,
+        "recA": 6,
+        "trpB": 5
+      }
+    },
+    {
+      "id": 334,
+      "isolate": "D1442",
+      "st": 18,
+      "year": 2004,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 9,
+        "gltB": 75,
+        "gyrB": 54,
+        "lepA": 63,
+        "phaC": 35,
+        "recA": 93,
+        "trpB": 66
+      }
+    },
+    {
+      "id": 335,
+      "isolate": "D0913",
+      "st": 303,
+      "year": 2003,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 9,
+        "gltB": 50,
+        "gyrB": 172,
+        "lepA": 63,
+        "phaC": 96,
+        "recA": 81,
+        "trpB": 133
+      }
+    },
+    {
+      "id": 337,
+      "isolate": "249-2",
+      "st": 21,
+      "year": 1994,
+      "country": "USA",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Spontaneous mutant",
+      "ncbi": null,
+      "pmids": [
+        "10655415",
+        "12161410",
+        "18032622",
+        "18256220"
+      ],
+      "profile": {
+        "atpD": 13,
+        "gltB": 78,
+        "gyrB": 100,
+        "lepA": 92,
+        "phaC": 96,
+        "recA": 94,
+        "trpB": 6
+      }
+    },
+    {
+      "id": 340,
+      "isolate": "FC0442",
+      "st": 355,
+      "year": 1995,
+      "country": "USA",
+      "continent": "North America",
+      "source": "CGD patient",
+      "detail": "Blood",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 10,
+        "gltB": 153,
+        "gyrB": 315,
+        "lepA": 37,
+        "phaC": 96,
+        "recA": 93,
+        "trpB": 66
+      }
+    },
+    {
+      "id": 342,
+      "isolate": "R-11581",
+      "st": 373,
+      "year": 2000,
+      "country": "France",
+      "continent": "Europe",
+      "source": "industrial",
+      "detail": "Industrial contaminant",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 10,
+        "gltB": 50,
+        "gyrB": 170,
+        "lepA": 63,
+        "phaC": 35,
+        "recA": 6,
+        "trpB": 5
+      }
+    },
+    {
+      "id": 343,
+      "isolate": "R-20504",
+      "st": 374,
+      "year": 2002,
+      "country": "Belgium",
+      "continent": "Europe",
+      "source": "environmental",
+      "detail": "River",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 122,
+        "gltB": 232,
+        "gyrB": 323,
+        "lepA": 46,
+        "phaC": 96,
+        "recA": 133,
+        "trpB": 220
+      }
+    },
+    {
+      "id": 344,
+      "isolate": "R-24955",
+      "st": 24,
+      "year": 1998,
+      "country": "Brazil",
+      "continent": "South America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 80,
+        "gltB": 61,
+        "gyrB": 97,
+        "lepA": 64,
+        "phaC": 96,
+        "recA": 11,
+        "trpB": 104
+      }
+    },
+    {
+      "id": 347,
+      "isolate": "AU0508",
+      "st": 25,
+      "year": 1998,
+      "country": "USA",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "14612237",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 10,
+        "gltB": 60,
+        "gyrB": 4,
+        "lepA": 37,
+        "phaC": 35,
+        "recA": 77,
+        "trpB": 5
+      }
+    },
+    {
+      "id": 348,
+      "isolate": "AU0602",
+      "st": 25,
+      "year": 1998,
+      "country": "USA",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "14612237",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 10,
+        "gltB": 60,
+        "gyrB": 4,
+        "lepA": 37,
+        "phaC": 35,
+        "recA": 77,
+        "trpB": 5
+      }
+    },
+    {
+      "id": 349,
+      "isolate": "AU0541",
+      "st": 25,
+      "year": 1998,
+      "country": "USA",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "14612237",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 10,
+        "gltB": 60,
+        "gyrB": 4,
+        "lepA": 37,
+        "phaC": 35,
+        "recA": 77,
+        "trpB": 5
+      }
+    },
+    {
+      "id": 350,
+      "isolate": "AU0623",
+      "st": 25,
+      "year": 1998,
+      "country": "USA",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "14612237",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 10,
+        "gltB": 60,
+        "gyrB": 4,
+        "lepA": 37,
+        "phaC": 35,
+        "recA": 77,
+        "trpB": 5
+      }
+    },
+    {
+      "id": 351,
+      "isolate": "AU0064",
+      "st": 25,
+      "year": 1997,
+      "country": "USA",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "14612237",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 10,
+        "gltB": 60,
+        "gyrB": 4,
+        "lepA": 37,
+        "phaC": 35,
+        "recA": 77,
+        "trpB": 5
+      }
+    },
+    {
+      "id": 352,
+      "isolate": "SBL04-771",
+      "st": 406,
+      "year": 2004,
+      "country": "New Zealand",
+      "continent": "Oceania",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 123,
+        "gltB": 205,
+        "gyrB": 4,
+        "lepA": 37,
+        "phaC": 96,
+        "recA": 77,
+        "trpB": 67
+      }
+    },
+    {
+      "id": 353,
+      "isolate": "SBL04-843",
+      "st": 406,
+      "year": 2004,
+      "country": "New Zealand",
+      "continent": "Oceania",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 123,
+        "gltB": 205,
+        "gyrB": 4,
+        "lepA": 37,
+        "phaC": 96,
+        "recA": 77,
+        "trpB": 67
+      }
+    },
+    {
+      "id": 354,
+      "isolate": "AU0607",
+      "st": 117,
+      "year": 1998,
+      "country": "USA",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "14612237",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 76,
+        "gltB": 50,
+        "gyrB": 99,
+        "lepA": 37,
+        "phaC": 35,
+        "recA": 93,
+        "trpB": 111
+      }
+    },
+    {
+      "id": 355,
+      "isolate": "AU5099",
+      "st": 179,
+      "year": 2002,
+      "country": "USA",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "14612237",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 211,
+        "gltB": 205,
+        "gyrB": 170,
+        "lepA": 37,
+        "phaC": 35,
+        "recA": 93,
+        "trpB": 251
+      }
+    },
+    {
+      "id": 356,
+      "isolate": "AU1935",
+      "st": 179,
+      "year": 2000,
+      "country": "USA",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "14612237",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 211,
+        "gltB": 205,
+        "gyrB": 170,
+        "lepA": 37,
+        "phaC": 35,
+        "recA": 93,
+        "trpB": 251
+      }
+    },
+    {
+      "id": 357,
+      "isolate": "AU2380",
+      "st": 179,
+      "year": 2000,
+      "country": "USA",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "14612237",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 211,
+        "gltB": 205,
+        "gyrB": 170,
+        "lepA": 37,
+        "phaC": 35,
+        "recA": 93,
+        "trpB": 251
+      }
+    },
+    {
+      "id": 358,
+      "isolate": "AU0150",
+      "st": 179,
+      "year": 1997,
+      "country": "USA",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "14612237",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 211,
+        "gltB": 205,
+        "gyrB": 170,
+        "lepA": 37,
+        "phaC": 35,
+        "recA": 93,
+        "trpB": 251
+      }
+    },
+    {
+      "id": 359,
+      "isolate": "3-454",
+      "st": 180,
+      "year": 2002,
+      "country": "Czech Republic",
+      "continent": "Europe",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 118,
+        "gltB": 50,
+        "gyrB": 158,
+        "lepA": 37,
+        "phaC": 96,
+        "recA": 6,
+        "trpB": 5
+      }
+    },
+    {
+      "id": 360,
+      "isolate": "93-N331",
+      "st": 180,
+      "year": 2002,
+      "country": "Czech Republic",
+      "continent": "Europe",
+      "source": "non-CF patient",
+      "detail": "Human infection",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 118,
+        "gltB": 50,
+        "gyrB": 158,
+        "lepA": 37,
+        "phaC": 96,
+        "recA": 6,
+        "trpB": 5
+      }
+    },
+    {
+      "id": 361,
+      "isolate": "104-455",
+      "st": 180,
+      "year": 2002,
+      "country": "Czech Republic",
+      "continent": "Europe",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 118,
+        "gltB": 50,
+        "gyrB": 158,
+        "lepA": 37,
+        "phaC": 96,
+        "recA": 6,
+        "trpB": 5
+      }
+    },
+    {
+      "id": 362,
+      "isolate": "112-1228",
+      "st": 180,
+      "year": 2001,
+      "country": "Czech Republic",
+      "continent": "Europe",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 118,
+        "gltB": 50,
+        "gyrB": 158,
+        "lepA": 37,
+        "phaC": 96,
+        "recA": 6,
+        "trpB": 5
+      }
+    },
+    {
+      "id": 363,
+      "isolate": "110-1226",
+      "st": 181,
+      "year": 2002,
+      "country": "Czech Republic",
+      "continent": "Europe",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 9,
+        "gltB": 142,
+        "gyrB": 161,
+        "lepA": 137,
+        "phaC": 96,
+        "recA": 81,
+        "trpB": 66
+      }
+    },
+    {
+      "id": 364,
+      "isolate": "SBL03-199",
+      "st": 181,
+      "year": 2003,
+      "country": "New Zealand",
+      "continent": "Oceania",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 9,
+        "gltB": 142,
+        "gyrB": 161,
+        "lepA": 137,
+        "phaC": 96,
+        "recA": 81,
+        "trpB": 66
+      }
+    },
+    {
+      "id": 365,
+      "isolate": "54-1138",
+      "st": 181,
+      "year": 2003,
+      "country": "Czech Republic",
+      "continent": "Europe",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 9,
+        "gltB": 142,
+        "gyrB": 161,
+        "lepA": 137,
+        "phaC": 96,
+        "recA": 81,
+        "trpB": 66
+      }
+    },
+    {
+      "id": 366,
+      "isolate": "90-N320",
+      "st": 182,
+      "year": 2002,
+      "country": "Czech Republic",
+      "continent": "Europe",
+      "source": "non-CF patient",
+      "detail": "Human infection",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 13,
+        "gltB": 144,
+        "gyrB": 162,
+        "lepA": 138,
+        "phaC": 42,
+        "recA": 7,
+        "trpB": 4
+      }
+    },
+    {
+      "id": 367,
+      "isolate": "96-N337",
+      "st": 183,
+      "year": 2002,
+      "country": "Czech Republic",
+      "continent": "Europe",
+      "source": "non-CF patient",
+      "detail": "Human infection",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 13,
+        "gltB": 145,
+        "gyrB": 163,
+        "lepA": 10,
+        "phaC": 96,
+        "recA": 135,
+        "trpB": 104
+      }
+    },
+    {
+      "id": 370,
+      "isolate": "BCC0208",
+      "st": 189,
+      "year": 1999,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "18032622",
+        "28430818"
+      ],
+      "profile": {
+        "atpD": 123,
+        "gltB": 149,
+        "gyrB": 165,
+        "lepA": 37,
+        "phaC": 96,
+        "recA": 137,
+        "trpB": 5
+      }
+    },
+    {
+      "id": 371,
+      "isolate": "AU3248",
+      "st": 190,
+      "year": 2001,
+      "country": "USA",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 121,
+        "gltB": 138,
+        "gyrB": 167,
+        "lepA": 141,
+        "phaC": 42,
+        "recA": 138,
+        "trpB": 132
+      }
+    },
+    {
+      "id": 372,
+      "isolate": "C8467",
+      "st": 190,
+      "year": 1995,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Respiratory tract",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 121,
+        "gltB": 138,
+        "gyrB": 167,
+        "lepA": 141,
+        "phaC": 42,
+        "recA": 138,
+        "trpB": 132
+      }
+    },
+    {
+      "id": 373,
+      "isolate": "C0514",
+      "st": 191,
+      "year": 1983,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "8940422",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 13,
+        "gltB": 151,
+        "gyrB": 168,
+        "lepA": 142,
+        "phaC": 100,
+        "recA": 139,
+        "trpB": 132
+      }
+    },
+    {
+      "id": 374,
+      "isolate": "C7274",
+      "st": 191,
+      "year": 1996,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 13,
+        "gltB": 151,
+        "gyrB": 168,
+        "lepA": 142,
+        "phaC": 100,
+        "recA": 139,
+        "trpB": 132
+      }
+    },
+    {
+      "id": 375,
+      "isolate": "BCC0302",
+      "st": 192,
+      "year": 1998,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 13,
+        "gltB": 60,
+        "gyrB": 167,
+        "lepA": 37,
+        "phaC": 35,
+        "recA": 81,
+        "trpB": 5
+      }
+    },
+    {
+      "id": 379,
+      "isolate": "C6398",
+      "st": 195,
+      "year": 1995,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Respiratory tract",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 9,
+        "gltB": 50,
+        "gyrB": 53,
+        "lepA": 63,
+        "phaC": 96,
+        "recA": 81,
+        "trpB": 133
+      }
+    },
+    {
+      "id": 380,
+      "isolate": "LMG 18139",
+      "st": 196,
+      "year": 1996,
+      "country": "Belgium",
+      "continent": "Europe",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 125,
+        "gltB": 154,
+        "gyrB": 171,
+        "lepA": 144,
+        "phaC": 14,
+        "recA": 140,
+        "trpB": 136
+      }
+    },
+    {
+      "id": 381,
+      "isolate": "AU0071",
+      "st": 198,
+      "year": 1997,
+      "country": "USA",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 9,
+        "gltB": 50,
+        "gyrB": 84,
+        "lepA": 7,
+        "phaC": 96,
+        "recA": 141,
+        "trpB": 7
+      }
+    },
+    {
+      "id": 383,
+      "isolate": "D0998",
+      "st": 199,
+      "year": 2004,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "17141579",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 13,
+        "gltB": 5,
+        "gyrB": 172,
+        "lepA": 145,
+        "phaC": 96,
+        "recA": 133,
+        "trpB": 137
+      }
+    },
+    {
+      "id": 384,
+      "isolate": "C6935",
+      "st": 199,
+      "year": 1996,
+      "country": "Canada",
+      "continent": "North America",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "17141579",
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 13,
+        "gltB": 5,
+        "gyrB": 172,
+        "lepA": 145,
+        "phaC": 96,
+        "recA": 133,
+        "trpB": 137
+      }
+    },
+    {
+      "id": 385,
+      "isolate": "SBL03-779",
+      "st": 407,
+      "year": 2003,
+      "country": "New Zealand",
+      "continent": "Oceania",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 212,
+        "gltB": 5,
+        "gyrB": 346,
+        "lepA": 259,
+        "phaC": 42,
+        "recA": 94,
+        "trpB": 253
+      }
+    },
+    {
+      "id": 386,
+      "isolate": "SBL04-283",
+      "st": 408,
+      "year": 2004,
+      "country": "New Zealand",
+      "continent": "Oceania",
+      "source": "CF patient",
+      "detail": "Sputum",
+      "ncbi": null,
+      "pmids": [
+        "18032622"
+      ],
+      "profile": {
+        "atpD": 13,
+        "gltB": 61,
+        "gyrB": 253,
+        "lepA": 260,
+        "phaC": 96,
+        "recA": 80,
+        "trpB": 4
+      }
+    }
+  ]
+}

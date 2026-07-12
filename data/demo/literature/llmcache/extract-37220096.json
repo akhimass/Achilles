@@ -1,0 +1,12 @@
+{
+  "claims": [
+    {
+      "subject": "mar-sox-rob regulon",
+      "relation": "confers_resistance",
+      "object": "antimicrobial compounds",
+      "object_kind": "drug",
+      "evidence_span": "increased resistance to a wide array of antimicrobial compounds",
+      "confidence": 0.8
+    }
+  ]
+}

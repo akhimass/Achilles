@@ -1,0 +1,60 @@
+{
+  "claims": [
+    {
+      "subject": "MarA",
+      "relation": "confers_resistance",
+      "object": "multidrug resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "Global regulators of multidrug resistance, virulence and stress response",
+      "confidence": 0.6
+    },
+    {
+      "subject": "SoxS",
+      "relation": "confers_resistance",
+      "object": "multidrug resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "Global regulators of multidrug resistance, virulence and stress response",
+      "confidence": 0.6
+    },
+    {
+      "subject": "Rob",
+      "relation": "confers_resistance",
+      "object": "multidrug resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "Global regulators of multidrug resistance, virulence and stress response",
+      "confidence": 0.6
+    },
+    {
+      "subject": "MarA",
+      "relation": "is_target_of",
+      "object": "anti-virulence agents",
+      "object_kind": "drug",
+      "evidence_span": "explored as targets to develop new anti-virulence agents",
+      "confidence": 0.5
+    },
+    {
+      "subject": "SoxS",
+      "relation": "is_target_of",
+      "object": "anti-virulence agents",
+      "object_kind": "drug",
+      "evidence_span": "explored as targets to develop new anti-virulence agents",
+      "confidence": 0.5
+    },
+    {
+      "subject": "Rob",
+      "relation": "is_target_of",
+      "object": "anti-virulence agents",
+      "object_kind": "drug",
+      "evidence_span": "explored as targets to develop new anti-virulence agents",
+      "confidence": 0.5
+    },
+    {
+      "subject": "MarA",
+      "relation": "implicates",
+      "object": "oxidative stress, drugs, toxic compounds, acidic pH, host antimicrobial peptides",
+      "object_kind": "mechanism",
+      "evidence_span": "respond to multiple threats such as oxidative stress, drugs and toxic compounds, acidic pH",
+      "confidence": 0.5
+    }
+  ]
+}

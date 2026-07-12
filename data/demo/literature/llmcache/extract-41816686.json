@@ -1,0 +1,44 @@
+{
+  "claims": [
+    {
+      "subject": "outer membrane structure",
+      "relation": "implicates",
+      "object": "antibiotic resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "unique outer membrane structure...limits antibiotic penetration, serving as the core mechanism of resistance",
+      "confidence": 0.9
+    },
+    {
+      "subject": "efflux pumps",
+      "relation": "implicates",
+      "object": "antibiotic resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "inhibiting efflux pumps to block efflux functions",
+      "confidence": 0.6
+    },
+    {
+      "subject": "BAM complex",
+      "relation": "is_target_of",
+      "object": "darobactin",
+      "object_kind": "drug",
+      "evidence_span": "BAM complex inhibitors like darobactin and xenorceptides",
+      "confidence": 0.9
+    },
+    {
+      "subject": "BAM complex",
+      "relation": "is_target_of",
+      "object": "xenorceptides",
+      "object_kind": "drug",
+      "evidence_span": "BAM complex inhibitors like darobactin and xenorceptides",
+      "confidence": 0.9
+    },
+    {
+      "subject": "cefiderocol",
+      "relation": "sensitizes_to",
+      "object": "multidrug-resistant bacteria",
+      "object_kind": "mechanism",
+      "evidence_span": "cefiderocol have also successfully transitioned to clinical use",
+      "confidence": 0.5
+    }
+  ]
+}

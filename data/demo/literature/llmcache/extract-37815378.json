@@ -1,0 +1,44 @@
+{
+  "claims": [
+    {
+      "subject": "RamA",
+      "relation": "implicates",
+      "object": "acrAB",
+      "object_kind": "gene",
+      "evidence_span": "majority of compounds tested induced acrAB via the RamA-dependent pathway",
+      "confidence": 0.9
+    },
+    {
+      "subject": "MarA",
+      "relation": "implicates",
+      "object": "acrAB",
+      "object_kind": "gene",
+      "evidence_span": "induce acrAB expression in S. Typhimurium via RamA, MarA, SoxS, and Rob-dependent pathways",
+      "confidence": 0.7
+    },
+    {
+      "subject": "SoxS",
+      "relation": "implicates",
+      "object": "acrAB",
+      "object_kind": "gene",
+      "evidence_span": "induce acrAB expression in S. Typhimurium via RamA, MarA, SoxS, and Rob-dependent pathways",
+      "confidence": 0.7
+    },
+    {
+      "subject": "Rob",
+      "relation": "implicates",
+      "object": "acrAB",
+      "object_kind": "gene",
+      "evidence_span": "induce acrAB expression in S. Typhimurium via RamA, MarA, SoxS, and Rob-dependent pathways",
+      "confidence": 0.7
+    },
+    {
+      "subject": "AcrB",
+      "relation": "confers_resistance",
+      "object": "antibiotics",
+      "object_kind": "drug",
+      "evidence_span": "antibiotic substrates of the AcrB efflux pump",
+      "confidence": 0.6
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "supported": true,
+  "provenance_db": "CARD",
+  "provenance_acc": "ARO:3000112",
+  "adjusted_confidence": 0.75,
+  "reason": "CARD describes MATE efflux pumps as having diverse substrate specificity, linking efflux pumps to substrate specificity."
+}

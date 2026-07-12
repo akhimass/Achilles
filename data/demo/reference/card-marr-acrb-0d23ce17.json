@@ -1,0 +1,32 @@
+{
+  "subject": "MarR",
+  "object": "acrB",
+  "facts": [
+    {
+      "acc": "ARO:3003378",
+      "label": "Escherichia coli AcrAB-TolC with MarR mutations conferring resistance to ciprofloxacin and tetracycline",
+      "desc": "MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB."
+    },
+    {
+      "acc": "ARO:3000718",
+      "label": "marR",
+      "desc": "MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB."
+    },
+    {
+      "acc": "ARO:3004055",
+      "label": "Escherichia coli CpxR",
+      "desc": "The Escherichia coli CpxR/CpxA system responds to general periplasmic stress and has been used as a model two-component system for transcription regulation in bacteria. CpxR/CpxA system facilitates Salmonella and E. coli resistance to cationic antimicrobial peptides.The CpxR/CpxA system can activate transcription of marRAB operon, thus facilitating multidrug-resistant regulator to enhance expression of TolC-dependent tripartite multidrug transporters."
+    },
+    {
+      "acc": "ARO:3000216",
+      "label": "acrB",
+      "desc": "Protein subunit of AcrA-AcrB-TolC multidrug efflux complex. AcrB functions as a herterotrimer which forms the inner membrane component and is primarily responsible for substrate recognition and energy transduction by acting as a drug/proton antiporter."
+    },
+    {
+      "acc": "ARO:3000207",
+      "label": "acrA",
+      "desc": "Protein subunit of AcrA-AcrB-TolC multidrug efflux complex. AcrA represents the periplasmic portion of the transport protein."
+    }
+  ],
+  "block": "CARD/ARO ARO:3003378 \u2014 Escherichia coli AcrAB-TolC with MarR mutations conferring resistance to ciprofloxacin and tetracycline: MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB.\nCARD/ARO ARO:3000718 \u2014 marR: MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB.\nCARD/ARO ARO:3004055 \u2014 Escherichia coli CpxR: The Escherichia coli CpxR/CpxA system responds to general periplasmic stress and has been used as a model two-component system for transcription regulation in bacteria. CpxR/CpxA system facilitates Salmonella and E. coli resistance to cationic antimicrobial peptides.The CpxR/CpxA system can activate transcription of marRAB operon, thus facilitating multidrug-resistant regulator to enhance expression of TolC-dependent tripartite multidrug transporters.\nCARD/ARO ARO:3000216 \u2014 acrB: Protein subunit of AcrA-AcrB-TolC multidrug efflux complex. AcrB functions as a herterotrimer which forms the inner membrane component and is primarily responsible for substrate recognition and energy transduction by acting as a drug/proton antiporter.\nCARD/ARO ARO:3000207 \u2014 acrA: Protein subunit of AcrA-AcrB-TolC multidrug efflux complex. AcrA represents the periplasmic portion of the transport protein."
+}

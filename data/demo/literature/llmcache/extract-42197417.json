@@ -1,0 +1,36 @@
+{
+  "claims": [
+    {
+      "subject": "BaeSR",
+      "relation": "implicates",
+      "object": "multidrug efflux systems",
+      "object_kind": "mechanism",
+      "evidence_span": "Regulation of multidrug efflux systems by two-component signal transduction pathways, particularly the BaeSR system",
+      "confidence": 0.9
+    },
+    {
+      "subject": "His250",
+      "relation": "implicates",
+      "object": "BaeS autophosphorylation",
+      "object_kind": "mechanism",
+      "evidence_span": "His250 is indispensable for autophosphorylation",
+      "confidence": 0.95
+    },
+    {
+      "subject": "N364A",
+      "relation": "implicates",
+      "object": "BaeSR signaling and resistance-associated target genes",
+      "object_kind": "mechanism",
+      "evidence_span": "N364A mutation abolished this response",
+      "confidence": 0.9
+    },
+    {
+      "subject": "baeS deletion",
+      "relation": "implicates",
+      "object": "efflux-associated gene transcription",
+      "object_kind": "mechanism",
+      "evidence_span": "genetic deletion of baeS ... abolished this response",
+      "confidence": 0.9
+    }
+  ]
+}

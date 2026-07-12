@@ -1,0 +1,52 @@
+{
+  "claims": [
+    {
+      "subject": "tmexCD-toprJ",
+      "relation": "confers_resistance",
+      "object": "tigecycline",
+      "object_kind": "drug",
+      "evidence_span": "confers multidrug resistance (MDR), including tigecycline resistance",
+      "confidence": 0.95
+    },
+    {
+      "subject": "tmexCD-toprJ",
+      "relation": "confers_resistance",
+      "object": "multidrug resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "efflux pump tmexCD-toprJ gene cluster that confers multidrug resistance (MDR)",
+      "confidence": 0.9
+    },
+    {
+      "subject": "tet(X4)",
+      "relation": "confers_resistance",
+      "object": "tigecycline",
+      "object_kind": "drug",
+      "evidence_span": "co-carried two mobile tigecycline resistance genes, tet(X4) and tmexCD3-toprJ1b-like",
+      "confidence": 0.9
+    },
+    {
+      "subject": "tmexCD3-toprJ1b-like gene cluster",
+      "relation": "confers_resistance",
+      "object": "tigecycline",
+      "object_kind": "drug",
+      "evidence_span": "co-carried two mobile tigecycline resistance genes, tet(X4) and tmexCD3-toprJ1b-like",
+      "confidence": 0.9
+    },
+    {
+      "subject": "blaNDM-1",
+      "relation": "confers_resistance",
+      "object": "carbapenems",
+      "object_kind": "drug",
+      "evidence_span": "carried the carbapenemase gene blaNDM-1",
+      "confidence": 0.85
+    },
+    {
+      "subject": "pNUITM-VS2_2",
+      "relation": "confers_resistance",
+      "object": "tigecycline",
+      "object_kind": "drug",
+      "evidence_span": "conferred high-level resistance against many antimicrobials, including tigecycline",
+      "confidence": 0.9
+    }
+  ]
+}

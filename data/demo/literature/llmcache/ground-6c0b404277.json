@@ -1,0 +1,7 @@
+{
+  "supported": false,
+  "provenance_db": null,
+  "provenance_acc": null,
+  "adjusted_confidence": 0.2,
+  "reason": "No reference fact specifically mentions PA\u03b2N as an efflux pump inhibitor."
+}

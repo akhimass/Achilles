@@ -1,0 +1,100 @@
+{
+  "claims": [
+    {
+      "subject": "gyrA",
+      "relation": "confers_resistance",
+      "object": "levofloxacin",
+      "object_kind": "drug",
+      "evidence_span": "mutations...occur in drug targets (e.g., gyrA and parC)... resistance against...levofloxacin",
+      "confidence": 0.75
+    },
+    {
+      "subject": "parC",
+      "relation": "confers_resistance",
+      "object": "levofloxacin",
+      "object_kind": "drug",
+      "evidence_span": "mutations...occur in drug targets (e.g., gyrA and parC)... resistance against...levofloxacin",
+      "confidence": 0.75
+    },
+    {
+      "subject": "gyrA",
+      "relation": "is_target_of",
+      "object": "DNA gyrase",
+      "object_kind": "target",
+      "evidence_span": "gyrA and parC, which encode DNA gyrase and topoisomerase IV",
+      "confidence": 0.9
+    },
+    {
+      "subject": "parC",
+      "relation": "is_target_of",
+      "object": "topoisomerase IV",
+      "object_kind": "target",
+      "evidence_span": "gyrA and parC, which encode DNA gyrase and topoisomerase IV",
+      "confidence": 0.9
+    },
+    {
+      "subject": "sul",
+      "relation": "confers_resistance",
+      "object": "trimethoprim/sulfamethoxazole",
+      "object_kind": "drug",
+      "evidence_span": "Resistance genes, such as those encoding sulfonamide resistance (sul)",
+      "confidence": 0.8
+    },
+    {
+      "subject": "dfr",
+      "relation": "confers_resistance",
+      "object": "trimethoprim",
+      "object_kind": "drug",
+      "evidence_span": "trimethoprim resistance (dfr)",
+      "confidence": 0.85
+    },
+    {
+      "subject": "qnr",
+      "relation": "confers_resistance",
+      "object": "quinolone",
+      "object_kind": "drug",
+      "evidence_span": "quinolone resistance (qnr)",
+      "confidence": 0.85
+    },
+    {
+      "subject": "aminoglycoside-modifying enzymes",
+      "relation": "confers_resistance",
+      "object": "aminoglycoside",
+      "object_kind": "drug",
+      "evidence_span": "aminoglycoside-modifying enzymes",
+      "confidence": 0.8
+    },
+    {
+      "subject": "multidrug/biocide efflux pumps",
+      "relation": "confers_resistance",
+      "object": "biocide",
+      "object_kind": "drug",
+      "evidence_span": "multidrug/biocide efflux pumps",
+      "confidence": 0.7
+    },
+    {
+      "subject": "transcriptional regulators of multidrug efflux systems",
+      "relation": "implicates",
+      "object": "multidrug resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "more importantly, transcriptional regulators of multidrug efflux systems",
+      "confidence": 0.7
+    },
+    {
+      "subject": "drug uptake system mutations",
+      "relation": "confers_resistance",
+      "object": "cefiderocol",
+      "object_kind": "drug",
+      "evidence_span": "drug uptake systems... resistance against...cefiderocol",
+      "confidence": 0.6
+    },
+    {
+      "subject": "ribosomal protein mutations",
+      "relation": "confers_resistance",
+      "object": "minocycline",
+      "object_kind": "drug",
+      "evidence_span": "ribosomal proteins...resistance against...minocycline",
+      "confidence": 0.6
+    }
+  ]
+}

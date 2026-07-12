@@ -1,0 +1,7 @@
+{
+  "supported": false,
+  "provenance_db": null,
+  "provenance_acc": null,
+  "adjusted_confidence": 0.1,
+  "reason": "Reference facts link MarR to ciprofloxacin/tetracycline resistance via AcrAB, not imipenem."
+}

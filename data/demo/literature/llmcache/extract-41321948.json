@@ -1,0 +1,52 @@
+{
+  "claims": [
+    {
+      "subject": "RND (resistance-nodulation-division) efflux pumps",
+      "relation": "confers_resistance",
+      "object": "antimicrobial agents",
+      "object_kind": "drug",
+      "evidence_span": "implicated in the active extrusion of antimicrobial agents, facilitating MDR",
+      "confidence": 0.7
+    },
+    {
+      "subject": "ABC (ATP-binding cassette) efflux pumps",
+      "relation": "confers_resistance",
+      "object": "antimicrobial agents",
+      "object_kind": "drug",
+      "evidence_span": "implicated in the active extrusion of antimicrobial agents, facilitating MDR",
+      "confidence": 0.7
+    },
+    {
+      "subject": "MFS (major facilitator superfamily) efflux pumps",
+      "relation": "confers_resistance",
+      "object": "antimicrobial agents",
+      "object_kind": "drug",
+      "evidence_span": "implicated in the active extrusion of antimicrobial agents, facilitating MDR",
+      "confidence": 0.7
+    },
+    {
+      "subject": "efflux pumps",
+      "relation": "implicates",
+      "object": "biofilm formation",
+      "object_kind": "mechanism",
+      "evidence_span": "EPs also regulate biofilm formation, virulence factor secretion, and metabolic adaptation",
+      "confidence": 0.6
+    },
+    {
+      "subject": "efflux pump inhibitors (EPIs)",
+      "relation": "reverts_with",
+      "object": "efflux pump-mediated resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "Several natural and synthetic efflux pump inhibitors (EPIs) have demonstrated efficacy",
+      "confidence": 0.6
+    },
+    {
+      "subject": "CRISPR interference systems",
+      "relation": "reverts_with",
+      "object": "EP-mediated resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "CRISPR interference systems and combinatory therapies represent promising advances in overcoming EP-mediated resistance",
+      "confidence": 0.65
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "claims": [
+    {
+      "subject": "AcrAB",
+      "relation": "confers_resistance",
+      "object": "ciprofloxacin",
+      "object_kind": "drug",
+      "evidence_span": "Efflux-mediated resistance to ciprofloxacin and amikacin... underpinned by genetic variants in the AcrAB and OqxAB pumps",
+      "confidence": 0.85
+    },
+    {
+      "subject": "OqxAB",
+      "relation": "confers_resistance",
+      "object": "amikacin",
+      "object_kind": "drug",
+      "evidence_span": "Efflux-mediated resistance to ciprofloxacin and amikacin... underpinned by genetic variants in the AcrAB and OqxAB pumps",
+      "confidence": 0.85
+    },
+    {
+      "subject": "PA\u03b2N",
+      "relation": "reverts_with",
+      "object": "amikacin",
+      "object_kind": "drug",
+      "evidence_span": "PA\u03b2N produced a \u2265 4-fold MIC reduction in... 100% (amikacin) of resistant strains",
+      "confidence": 0.9
+    },
+    {
+      "subject": "PA\u03b2N",
+      "relation": "reverts_with",
+      "object": "ciprofloxacin",
+      "object_kind": "drug",
+      "evidence_span": "PA\u03b2N produced a \u2265 4-fold MIC reduction in 18.8% (ciprofloxacin)",
+      "confidence": 0.8
+    },
+    {
+      "subject": "CCCP",
+      "relation": "reverts_with",
+      "object": "ciprofloxacin",
+      "object_kind": "drug",
+      "evidence_span": "CCCP yielded a \u2265 3-fold decrease in 75% of ciprofloxacin resistant isolates",
+      "confidence": 0.9
+    },
+    {
+      "subject": "OqxB V19F",
+      "relation": "implicates",
+      "object": "efflux efficiency",
+      "object_kind": "mechanism",
+      "evidence_span": "OqxB c.56 G > T (V19F)... which may modulate efflux efficiency",
+      "confidence": 0.6
+    },
+    {
+      "subject": "OqxB P119H",
+      "relation": "implicates",
+      "object": "efflux efficiency",
+      "object_kind": "mechanism",
+      "evidence_span": "c.356 C > A (P119H), which may modulate efflux efficiency",
+      "confidence": 0.6
+    },
+    {
+      "subject": "AcrAB efflux pump",
+      "relation": "is_target_of",
+      "object": "PA\u03b2N",
+      "object_kind": "drug",
+      "evidence_span": "efflux pump inhibition as a promising complementary strategy against resistant K. pneumoniae",
+      "confidence": 0.5
+    },
+    {
+      "subject": "OqxAB efflux pump",
+      "relation": "is_target_of",
+      "object": "CCCP",
+      "object_kind": "drug",
+      "evidence_span": "efflux pump inhibition as a promising complementary strategy against resistant K. pneumoniae",
+      "confidence": 0.5
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "claims": [
+    {
+      "subject": "carbapenem resistance",
+      "relation": "implicates",
+      "object": "Acinetobacter baumannii",
+      "object_kind": "mechanism",
+      "evidence_span": "carbapenem-resistant Acinetobacter baumannii (CRAB) strains",
+      "confidence": 0.6
+    },
+    {
+      "subject": "efflux pumps",
+      "relation": "confers_resistance",
+      "object": "antimicrobials",
+      "object_kind": "mechanism",
+      "evidence_span": "employs multiple resistance mechanisms, including efflux pumps",
+      "confidence": 0.7
+    },
+    {
+      "subject": "OmpA",
+      "relation": "confers_resistance",
+      "object": "antimicrobials",
+      "object_kind": "mechanism",
+      "evidence_span": "porins like OmpA, making it highly difficult to treat",
+      "confidence": 0.6
+    },
+    {
+      "subject": "\u03b2-lactamases",
+      "relation": "confers_resistance",
+      "object": "\u03b2-lactam antibiotics",
+      "object_kind": "drug",
+      "evidence_span": "Resistance is further shaped by \u03b2-lactamases",
+      "confidence": 0.6
+    },
+    {
+      "subject": "integrons",
+      "relation": "implicates",
+      "object": "antimicrobial resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "Resistance is further shaped by \u03b2-lactamases, integrons",
+      "confidence": 0.5
+    },
+    {
+      "subject": "mobile genetic elements",
+      "relation": "implicates",
+      "object": "antimicrobial resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "integrons, and mobile genetic elements",
+      "confidence": 0.5
+    },
+    {
+      "subject": "tet(A/B)",
+      "relation": "confers_resistance",
+      "object": "tetracycline",
+      "object_kind": "drug",
+      "evidence_span": "genetic determinants, including tet(A/B), cmlA, and mdfA",
+      "confidence": 0.6
+    },
+    {
+      "subject": "cmlA",
+      "relation": "confers_resistance",
+      "object": "chloramphenicol",
+      "object_kind": "drug",
+      "evidence_span": "genetic determinants, including tet(A/B), cmlA, and mdfA",
+      "confidence": 0.6
+    },
+    {
+      "subject": "mdfA",
+      "relation": "confers_resistance",
+      "object": "multidrug efflux",
+      "object_kind": "mechanism",
+      "evidence_span": "genetic determinants, including tet(A/B), cmlA, and mdfA",
+      "confidence": 0.5
+    },
+    {
+      "subject": "nanoparticles (CNPs)",
+      "relation": "sensitizes_to",
+      "object": "antibiotics",
+      "object_kind": "drug",
+      "evidence_span": "nanoparticles (CNPs), which resensitize resistant isolates and enhance antibiotic efficacy",
+      "confidence": 0.8
+    },
+    {
+      "subject": "novel emergent phage therapy (NEPT)",
+      "relation": "reverts_with",
+      "object": "antiphage resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "novel emergent phage therapy (NEPT), which proactively counters antiphage resistance",
+      "confidence": 0.7
+    }
+  ]
+}

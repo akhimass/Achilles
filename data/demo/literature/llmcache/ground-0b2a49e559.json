@@ -1,0 +1,7 @@
+{
+  "supported": false,
+  "provenance_db": null,
+  "provenance_acc": null,
+  "adjusted_confidence": 0.15,
+  "reason": "Reference facts describe RamA's role in multidrug resistance via AcrAB-TolC regulation, not its implication in oxidative stress, acidic pH, or antimicrobial peptide response."
+}

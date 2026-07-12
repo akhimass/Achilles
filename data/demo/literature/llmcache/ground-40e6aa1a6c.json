@@ -1,0 +1,7 @@
+{
+  "supported": true,
+  "provenance_db": "CARD",
+  "provenance_acc": "ARO:3000823",
+  "adjusted_confidence": 0.85,
+  "reason": "CARD describes RamA as a positive regulator of AcrAB, supporting the resistance link to acrA."
+}

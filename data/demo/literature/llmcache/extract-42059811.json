@@ -1,0 +1,28 @@
+{
+  "claims": [
+    {
+      "subject": "type II topoisomerases",
+      "relation": "is_target_of",
+      "object": "gepotidacin",
+      "object_kind": "drug",
+      "evidence_span": "Gepotidacin selectively inhibits type II topoisomerases involved in bacterial DNA replication",
+      "confidence": 0.95
+    },
+    {
+      "subject": "gyrA/gyrB target site mutations",
+      "relation": "confers_resistance",
+      "object": "gepotidacin",
+      "object_kind": "drug",
+      "evidence_span": "gepotidacin target site mutations in gyrA/B were only found in Enterococcus faecalis",
+      "confidence": 0.85
+    },
+    {
+      "subject": "efflux pump repressor inactivation or activator dysregulation mutations",
+      "relation": "confers_resistance",
+      "object": "gepotidacin",
+      "object_kind": "drug",
+      "evidence_span": "identified as possible mechanisms of reduced susceptibility in the Gram-negative isolates",
+      "confidence": 0.6
+    }
+  ]
+}

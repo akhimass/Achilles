@@ -1,0 +1,44 @@
+{
+  "claims": [
+    {
+      "subject": "AcrAB-TolC",
+      "relation": "confers_resistance",
+      "object": "antibiotics",
+      "object_kind": "drug",
+      "evidence_span": "AcrAB-TolC is the main resistance-nodulation-division efflux pump",
+      "confidence": 0.7
+    },
+    {
+      "subject": "MarA",
+      "relation": "implicates",
+      "object": "acrAB",
+      "object_kind": "gene",
+      "evidence_span": "MarA is an AraC/XylS family global regulator that regulates more than 40 genes... including acrAB",
+      "confidence": 0.9
+    },
+    {
+      "subject": "N-terminal helix of MarA",
+      "relation": "is_target_of",
+      "object": "inhibitors",
+      "object_kind": "mechanism",
+      "evidence_span": "N-terminal helix of the AraC/XylS family monomeric regulators as a promising target",
+      "confidence": 0.85
+    },
+    {
+      "subject": "N-terminal helix immobilization of MarA",
+      "relation": "sensitizes_to",
+      "object": "antibiotics",
+      "object_kind": "drug",
+      "evidence_span": "inhibition of efflux by targeting their regulators is a promising strategy to re-sensitize",
+      "confidence": 0.5
+    },
+    {
+      "subject": "N-terminal helix of MarA",
+      "relation": "implicates",
+      "object": "DNA binding",
+      "object_kind": "mechanism",
+      "evidence_span": "immobilization of the N-terminal helix of MarA prevents binding to DNA",
+      "confidence": 0.85
+    }
+  ]
+}

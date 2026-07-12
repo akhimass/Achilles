@@ -1,0 +1,108 @@
+{
+  "claims": [
+    {
+      "subject": "folP",
+      "relation": "confers_resistance",
+      "object": "potentiated sulphonamide",
+      "object_kind": "drug",
+      "evidence_span": "Mutations were identified in key folate pathway genes (folP, folA)",
+      "confidence": 0.7
+    },
+    {
+      "subject": "folA",
+      "relation": "confers_resistance",
+      "object": "potentiated sulphonamide",
+      "object_kind": "drug",
+      "evidence_span": "Mutations were identified in key folate pathway genes (folP, folA)",
+      "confidence": 0.7
+    },
+    {
+      "subject": "emrR",
+      "relation": "implicates",
+      "object": "efflux pump regulation",
+      "object_kind": "mechanism",
+      "evidence_span": "efflux pump regulator genes (emrR, marR, acrR, mdtM)",
+      "confidence": 0.6
+    },
+    {
+      "subject": "marR",
+      "relation": "implicates",
+      "object": "efflux pump regulation",
+      "object_kind": "mechanism",
+      "evidence_span": "efflux pump regulator genes (emrR, marR, acrR, mdtM)",
+      "confidence": 0.6
+    },
+    {
+      "subject": "acrR",
+      "relation": "implicates",
+      "object": "efflux pump regulation",
+      "object_kind": "mechanism",
+      "evidence_span": "efflux pump regulator genes (emrR, marR, acrR, mdtM)",
+      "confidence": 0.6
+    },
+    {
+      "subject": "mdtM",
+      "relation": "implicates",
+      "object": "efflux pump regulation",
+      "object_kind": "mechanism",
+      "evidence_span": "efflux pump regulator genes (emrR, marR, acrR, mdtM)",
+      "confidence": 0.6
+    },
+    {
+      "subject": "acrAB-tolC",
+      "relation": "confers_resistance",
+      "object": "multidrug efflux",
+      "object_kind": "mechanism",
+      "evidence_span": "activation of multiple multidrug efflux systems, including acrAB-tolC",
+      "confidence": 0.65
+    },
+    {
+      "subject": "emrAB-tolC",
+      "relation": "confers_resistance",
+      "object": "multidrug efflux",
+      "object_kind": "mechanism",
+      "evidence_span": "emrAB-tolC, and mdtEF-tolC",
+      "confidence": 0.65
+    },
+    {
+      "subject": "mdtEF-tolC",
+      "relation": "confers_resistance",
+      "object": "multidrug efflux",
+      "object_kind": "mechanism",
+      "evidence_span": "emrAB-tolC, and mdtEF-tolC",
+      "confidence": 0.65
+    },
+    {
+      "subject": "recN",
+      "relation": "implicates",
+      "object": "SOS response",
+      "object_kind": "mechanism",
+      "evidence_span": "Mutations were also detected in genes associated with SOS response regulation (recN, recQ, uvrB)",
+      "confidence": 0.55
+    },
+    {
+      "subject": "recQ",
+      "relation": "implicates",
+      "object": "SOS response",
+      "object_kind": "mechanism",
+      "evidence_span": "Mutations were also detected in genes associated with SOS response regulation (recN, recQ, uvrB)",
+      "confidence": 0.55
+    },
+    {
+      "subject": "uvrB",
+      "relation": "implicates",
+      "object": "SOS response",
+      "object_kind": "mechanism",
+      "evidence_span": "Mutations were also detected in genes associated with SOS response regulation (recN, recQ, uvrB)",
+      "confidence": 0.55
+    },
+    {
+      "subject": "potentiated sulphonamide adaptation",
+      "relation": "confers_resistance",
+      "object": "multiple antibiotics",
+      "object_kind": "drug",
+      "evidence_span": "MIC values significantly increased for most tested antibiotics",
+      "confidence": 0.6
+    }
+  ]
+}

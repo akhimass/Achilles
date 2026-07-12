@@ -1,0 +1,28 @@
+{
+  "claims": [
+    {
+      "subject": "S. Anatum SPBM3",
+      "relation": "confers_resistance",
+      "object": "streptomycin",
+      "object_kind": "drug",
+      "evidence_span": "intermediate resistance to streptomycin, ciprofloxacin, and colistin",
+      "confidence": 0.6
+    },
+    {
+      "subject": "S. Anatum SPBM3",
+      "relation": "confers_resistance",
+      "object": "ciprofloxacin",
+      "object_kind": "drug",
+      "evidence_span": "intermediate resistance to streptomycin, ciprofloxacin, and colistin",
+      "confidence": 0.6
+    },
+    {
+      "subject": "S. Anatum SPBM3",
+      "relation": "confers_resistance",
+      "object": "colistin",
+      "object_kind": "drug",
+      "evidence_span": "intermediate resistance to streptomycin, ciprofloxacin, and colistin",
+      "confidence": 0.6
+    }
+  ]
+}

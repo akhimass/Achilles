@@ -1,0 +1,36 @@
+{
+  "claims": [
+    {
+      "subject": "MarA",
+      "relation": "implicates",
+      "object": "flhDC",
+      "object_kind": "gene",
+      "evidence_span": "repression via these transcription factors occurred through direct interactions with the flhDC promoter",
+      "confidence": 0.8
+    },
+    {
+      "subject": "Rob",
+      "relation": "implicates",
+      "object": "flhDC",
+      "object_kind": "gene",
+      "evidence_span": "direct interactions with the flhDC promoter, particularly for MarA and Rob",
+      "confidence": 0.8
+    },
+    {
+      "subject": "SoxS",
+      "relation": "implicates",
+      "object": "flhDC translation",
+      "object_kind": "mechanism",
+      "evidence_span": "SoxS repressed flagellar gene expression via a posttranscriptional pathway, reducing flhDC translation",
+      "confidence": 0.85
+    },
+    {
+      "subject": "RamA",
+      "relation": "implicates",
+      "object": "flagellar gene expression",
+      "object_kind": "mechanism",
+      "evidence_span": "Each of these regulators was found to inhibit flagellar gene expression, production of flagella, and motility",
+      "confidence": 0.7
+    }
+  ]
+}

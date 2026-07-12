@@ -1,0 +1,28 @@
+{
+  "claims": [
+    {
+      "subject": "ShvR",
+      "relation": "is_target_of",
+      "object": "PQS",
+      "object_kind": "mechanism",
+      "evidence_span": "attenuates B. cenocepacia virulence by targeting the LysR-type regulator ShvR",
+      "confidence": 0.9
+    },
+    {
+      "subject": "ShvR",
+      "relation": "implicates",
+      "object": "BDSF",
+      "object_kind": "mechanism",
+      "evidence_span": "ShvR regulates the production of the QS signals cis-2-dodecenoic acid (BDSF)",
+      "confidence": 0.85
+    },
+    {
+      "subject": "ShvR",
+      "relation": "implicates",
+      "object": "AHL",
+      "object_kind": "mechanism",
+      "evidence_span": "and N-acyl homoserine lactone (AHL) by directly binding to the promoters",
+      "confidence": 0.85
+    }
+  ]
+}

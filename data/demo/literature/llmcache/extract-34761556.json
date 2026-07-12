@@ -1,0 +1,36 @@
+{
+  "claims": [
+    {
+      "subject": "RamA",
+      "relation": "implicates",
+      "object": "multidrug resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "RamA is linked to multidrug resistance of Klebsiella pneumoniae",
+      "confidence": 0.9
+    },
+    {
+      "subject": "RamA",
+      "relation": "confers_resistance",
+      "object": "acrA",
+      "object_kind": "gene",
+      "evidence_span": "controlling genes that encode efflux pumps (acrA)",
+      "confidence": 0.7
+    },
+    {
+      "subject": "RamA",
+      "relation": "confers_resistance",
+      "object": "micF",
+      "object_kind": "gene",
+      "evidence_span": "porin-regulating antisense RNA (micF)",
+      "confidence": 0.7
+    },
+    {
+      "subject": "RamA",
+      "relation": "implicates",
+      "object": "antibiotic resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "activates transcription that contributes to antibiotic resistance",
+      "confidence": 0.85
+    }
+  ]
+}

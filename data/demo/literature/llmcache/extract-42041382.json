@@ -1,0 +1,52 @@
+{
+  "claims": [
+    {
+      "subject": "5-enolpyruvylshikimate-3-phosphate synthase",
+      "relation": "is_target_of",
+      "object": "glyphosate",
+      "object_kind": "drug",
+      "evidence_span": "glyphosate is designed to inhibit plant 5-enolpyruvylshikimate-3-phosphate synthase",
+      "confidence": 0.9
+    },
+    {
+      "subject": "glyphosate",
+      "relation": "implicates",
+      "object": "multidrug efflux pumps",
+      "object_kind": "mechanism",
+      "evidence_span": "activated multidrug efflux pumps",
+      "confidence": 0.7
+    },
+    {
+      "subject": "glyphosate",
+      "relation": "implicates",
+      "object": "horizontal gene transfer",
+      "object_kind": "mechanism",
+      "evidence_span": "enhances mutation rates and horizontal gene transfer processes associated with the emergence of resistance",
+      "confidence": 0.75
+    },
+    {
+      "subject": "glyphosate",
+      "relation": "implicates",
+      "object": "oxidative stress",
+      "object_kind": "mechanism",
+      "evidence_span": "sublethal glyphosate exposure induced oxidative stress, altered membrane permeability",
+      "confidence": 0.7
+    },
+    {
+      "subject": "glyphosate",
+      "relation": "confers_resistance",
+      "object": "antibiotics",
+      "object_kind": "drug",
+      "evidence_span": "promoted tolerance phenotypes that could modify antibiotic susceptibility",
+      "confidence": 0.6
+    },
+    {
+      "subject": "aminomethylphosphonic acid (AMPA)",
+      "relation": "implicates",
+      "object": "antibiotic resistance dissemination",
+      "object_kind": "mechanism",
+      "evidence_span": "AMPA, and commercial mixtures influence resistance-associated phenotypes and the dissemination",
+      "confidence": 0.55
+    }
+  ]
+}

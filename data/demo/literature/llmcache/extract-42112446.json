@@ -1,0 +1,44 @@
+{
+  "claims": [
+    {
+      "subject": "AcrAB-TolC",
+      "relation": "confers_resistance",
+      "object": "antibiotics",
+      "object_kind": "drug",
+      "evidence_span": "RND efflux pumps, such as AcrAB-TolC, play a central role in...antibiotic resistance",
+      "confidence": 0.9
+    },
+    {
+      "subject": "RND efflux pumps",
+      "relation": "is_target_of",
+      "object": "allosteric efflux pump inhibitors",
+      "object_kind": "mechanism",
+      "evidence_span": "allosteric sites within RND pumps...enabling the development of allosteric efflux pump inhibitors",
+      "confidence": 0.85
+    },
+    {
+      "subject": "BDM-series compounds",
+      "relation": "reverts_with",
+      "object": "efflux pump activity",
+      "object_kind": "mechanism",
+      "evidence_span": "Pyridylpiperazine-based inhibitors, including BDM-series compounds, have demonstrated potent efflux inhibition, antibiotic potentiation",
+      "confidence": 0.8
+    },
+    {
+      "subject": "BDM-series compounds",
+      "relation": "sensitizes_to",
+      "object": "antibiotics",
+      "object_kind": "drug",
+      "evidence_span": "have demonstrated potent efflux inhibition, antibiotic potentiation, and in-vivo efficacy",
+      "confidence": 0.75
+    },
+    {
+      "subject": "membrane potential",
+      "relation": "implicates",
+      "object": "drug resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "the role of bacterial membrane potential in modulating drug resistance",
+      "confidence": 0.7
+    }
+  ]
+}

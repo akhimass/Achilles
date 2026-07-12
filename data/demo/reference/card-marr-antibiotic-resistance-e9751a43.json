@@ -1,0 +1,32 @@
+{
+  "subject": "MarR",
+  "object": "antibiotic resistance",
+  "facts": [
+    {
+      "acc": "ARO:3003378",
+      "label": "Escherichia coli AcrAB-TolC with MarR mutations conferring resistance to ciprofloxacin and tetracycline",
+      "desc": "MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB."
+    },
+    {
+      "acc": "ARO:3000718",
+      "label": "marR",
+      "desc": "MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB."
+    },
+    {
+      "acc": "ARO:3004055",
+      "label": "Escherichia coli CpxR",
+      "desc": "The Escherichia coli CpxR/CpxA system responds to general periplasmic stress and has been used as a model two-component system for transcription regulation in bacteria. CpxR/CpxA system facilitates Salmonella and E. coli resistance to cationic antimicrobial peptides.The CpxR/CpxA system can activate transcription of marRAB operon, thus facilitating multidrug-resistant regulator to enhance expression of TolC-dependent tripartite multidrug transporters."
+    },
+    {
+      "acc": "ARO:3009135",
+      "label": "Antibiotic Resistance Platform (ARP)",
+      "desc": "The Antibiotic Resistance Platform (ARP) is a cell-based array of mechanistically distinct individual resistance elements in an identical genetic background. The ARP consists of resistance elements to 18 classes of antibiotics. There are over 100 antibiotic resistance genes currently in the ARP. https://www.thewrightlab.com/antibiotic-resistance-platform."
+    },
+    {
+      "acc": "ARO:3000213",
+      "label": "restructuring of bacterial cell wall conferring antibiotic resistance",
+      "desc": "Peptidoglycan precursors ending in D-Ala-D-Lac or D-Ala-D-Ser instead of D-Ala-D-Ala conferring high level glycopeptide resistance."
+    }
+  ],
+  "block": "CARD/ARO ARO:3003378 \u2014 Escherichia coli AcrAB-TolC with MarR mutations conferring resistance to ciprofloxacin and tetracycline: MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB.\nCARD/ARO ARO:3000718 \u2014 marR: MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB.\nCARD/ARO ARO:3004055 \u2014 Escherichia coli CpxR: The Escherichia coli CpxR/CpxA system responds to general periplasmic stress and has been used as a model two-component system for transcription regulation in bacteria. CpxR/CpxA system facilitates Salmonella and E. coli resistance to cationic antimicrobial peptides.The CpxR/CpxA system can activate transcription of marRAB operon, thus facilitating multidrug-resistant regulator to enhance expression of TolC-dependent tripartite multidrug transporters.\nCARD/ARO ARO:3009135 \u2014 Antibiotic Resistance Platform (ARP): The Antibiotic Resistance Platform (ARP) is a cell-based array of mechanistically distinct individual resistance elements in an identical genetic background. The ARP consists of resistance elements to 18 classes of antibiotics. There are over 100 antibiotic resistance genes currently in the ARP. https://www.thewrightlab.com/antibiotic-resistance-platform.\nCARD/ARO ARO:3000213 \u2014 restructuring of bacterial cell wall conferring antibiotic resistance: Peptidoglycan precursors ending in D-Ala-D-Lac or D-Ala-D-Ser instead of D-Ala-D-Ala conferring high level glycopeptide resistance."
+}

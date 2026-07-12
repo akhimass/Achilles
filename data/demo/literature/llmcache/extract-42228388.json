@@ -1,0 +1,44 @@
+{
+  "claims": [
+    {
+      "subject": "ceoB",
+      "relation": "confers_resistance",
+      "object": "multiple antimicrobials",
+      "object_kind": "drug",
+      "evidence_span": "ceoB (efflux pump) and OXA-155 (\u03b2-lactamase) genes, conferring resistance to multiple antimicrobials",
+      "confidence": 0.9
+    },
+    {
+      "subject": "OXA-155",
+      "relation": "confers_resistance",
+      "object": "multiple antimicrobials",
+      "object_kind": "drug",
+      "evidence_span": "ceoB (efflux pump) and OXA-155 (\u03b2-lactamase) genes, conferring resistance to multiple antimicrobials",
+      "confidence": 0.9
+    },
+    {
+      "subject": "ceoB",
+      "relation": "implicates",
+      "object": "efflux pump",
+      "object_kind": "mechanism",
+      "evidence_span": "ceoB (efflux pump)",
+      "confidence": 0.85
+    },
+    {
+      "subject": "OXA-155",
+      "relation": "implicates",
+      "object": "\u03b2-lactamase",
+      "object_kind": "mechanism",
+      "evidence_span": "OXA-155 (\u03b2-lactamase) genes",
+      "confidence": 0.85
+    },
+    {
+      "subject": "P. sputorum lineage",
+      "relation": "sensitizes_to",
+      "object": "imipenem",
+      "object_kind": "drug",
+      "evidence_span": "remaining susceptible to imipenem",
+      "confidence": 0.85
+    }
+  ]
+}

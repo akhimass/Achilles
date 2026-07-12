@@ -1,0 +1,32 @@
+{
+  "subject": "efflux pump",
+  "object": "antibiotics",
+  "facts": [
+    {
+      "acc": "ARO:3007321",
+      "label": "inhibitors of tetK efflux pump",
+      "desc": "Compounds which inhibit the removal of antibiotics by the tetK efflux pump."
+    },
+    {
+      "acc": "ARO:3007323",
+      "label": "inhibitors of MdeA efflux pump",
+      "desc": "Compounds which inhibit the removal of antibiotics by the MdeA efflux pump."
+    },
+    {
+      "acc": "ARO:3007325",
+      "label": "inhibitors of NorA efflux pump",
+      "desc": "Compounds which inhibit the removal of antibiotics by the NorA efflux pump."
+    },
+    {
+      "acc": "ARO:3007326",
+      "label": "inhibitors of CmeABC efflux pump",
+      "desc": "Compounds which inhibit the removal of antibiotics by the CmeABC efflux pump."
+    },
+    {
+      "acc": "ARO:3005005",
+      "label": "antibiotic-resistant emb arabinosyltransferase",
+      "desc": "Known antibiotic-resistant variants of emb arabinosyltransferases, primarily in Mycobacterium and conferring resistance to ethambutol through point mutation."
+    }
+  ],
+  "block": "CARD/ARO ARO:3007321 \u2014 inhibitors of tetK efflux pump: Compounds which inhibit the removal of antibiotics by the tetK efflux pump.\nCARD/ARO ARO:3007323 \u2014 inhibitors of MdeA efflux pump: Compounds which inhibit the removal of antibiotics by the MdeA efflux pump.\nCARD/ARO ARO:3007325 \u2014 inhibitors of NorA efflux pump: Compounds which inhibit the removal of antibiotics by the NorA efflux pump.\nCARD/ARO ARO:3007326 \u2014 inhibitors of CmeABC efflux pump: Compounds which inhibit the removal of antibiotics by the CmeABC efflux pump.\nCARD/ARO ARO:3005005 \u2014 antibiotic-resistant emb arabinosyltransferase: Known antibiotic-resistant variants of emb arabinosyltransferases, primarily in Mycobacterium and conferring resistance to ethambutol through point mutation."
+}

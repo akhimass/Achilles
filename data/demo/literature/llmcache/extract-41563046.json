@@ -1,0 +1,28 @@
+{
+  "claims": [
+    {
+      "subject": "class A beta-lactamase",
+      "relation": "confers_resistance",
+      "object": "cephalosporins",
+      "object_kind": "drug",
+      "evidence_span": "Transcription of one class A beta-lactamase... was significantly induced by cephalosporins",
+      "confidence": 0.85
+    },
+    {
+      "subject": "class A beta-lactamase",
+      "relation": "implicates",
+      "object": "lysR regulator",
+      "object_kind": "gene",
+      "evidence_span": "controlled by an lysR regulator, was significantly induced by cephalosporins",
+      "confidence": 0.75
+    },
+    {
+      "subject": "class C beta-lactamase",
+      "relation": "confers_resistance",
+      "object": "beta-lactams",
+      "object_kind": "drug",
+      "evidence_span": "resistance to many beta-lactams was detected",
+      "confidence": 0.5
+    }
+  ]
+}

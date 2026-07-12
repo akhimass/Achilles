@@ -1,0 +1,60 @@
+{
+  "claims": [
+    {
+      "subject": "Escherichia coli isolates",
+      "relation": "confers_resistance",
+      "object": "penicillin G",
+      "object_kind": "drug",
+      "evidence_span": "100% resistance to penicillin G and clindamycin",
+      "confidence": 0.9
+    },
+    {
+      "subject": "Escherichia coli isolates",
+      "relation": "confers_resistance",
+      "object": "clindamycin",
+      "object_kind": "drug",
+      "evidence_span": "100% resistance to penicillin G and clindamycin",
+      "confidence": 0.9
+    },
+    {
+      "subject": "Escherichia coli isolates",
+      "relation": "confers_resistance",
+      "object": "sulfafurazole",
+      "object_kind": "drug",
+      "evidence_span": "87.5% to sulfafurazole",
+      "confidence": 0.9
+    },
+    {
+      "subject": "Escherichia coli isolates",
+      "relation": "confers_resistance",
+      "object": "erythromycin",
+      "object_kind": "drug",
+      "evidence_span": "75.0% to erythromycin",
+      "confidence": 0.9
+    },
+    {
+      "subject": "\u03b2-lactamases",
+      "relation": "confers_resistance",
+      "object": "\u03b2-lactam antibiotics",
+      "object_kind": "mechanism",
+      "evidence_span": "consistent with its phenotype (including \u03b2-lactamases",
+      "confidence": 0.6
+    },
+    {
+      "subject": "macrolide-lincosamide resistance determinants",
+      "relation": "confers_resistance",
+      "object": "macrolide-lincosamide antibiotics",
+      "object_kind": "mechanism",
+      "evidence_span": "macrolide-lincosamide resistance determinants, and tetracycline efflux pumps",
+      "confidence": 0.6
+    },
+    {
+      "subject": "tetracycline efflux pumps",
+      "relation": "confers_resistance",
+      "object": "tetracycline",
+      "object_kind": "mechanism",
+      "evidence_span": "and tetracycline efflux pumps",
+      "confidence": 0.7
+    }
+  ]
+}

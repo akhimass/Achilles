@@ -1,0 +1,7 @@
+{
+  "supported": false,
+  "provenance_db": null,
+  "provenance_acc": null,
+  "adjusted_confidence": 0.2,
+  "reason": "Reference facts describe efflux pumps conferring antibiotic resistance and triclosan as a biocide, but none link efflux pumps to biocide resistance."
+}

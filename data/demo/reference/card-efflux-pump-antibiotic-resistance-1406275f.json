@@ -1,0 +1,32 @@
+{
+  "subject": "efflux pump",
+  "object": "antibiotic resistance",
+  "facts": [
+    {
+      "acc": "ARO:3007321",
+      "label": "inhibitors of tetK efflux pump",
+      "desc": "Compounds which inhibit the removal of antibiotics by the tetK efflux pump."
+    },
+    {
+      "acc": "ARO:3007323",
+      "label": "inhibitors of MdeA efflux pump",
+      "desc": "Compounds which inhibit the removal of antibiotics by the MdeA efflux pump."
+    },
+    {
+      "acc": "ARO:3007325",
+      "label": "inhibitors of NorA efflux pump",
+      "desc": "Compounds which inhibit the removal of antibiotics by the NorA efflux pump."
+    },
+    {
+      "acc": "ARO:3007326",
+      "label": "inhibitors of CmeABC efflux pump",
+      "desc": "Compounds which inhibit the removal of antibiotics by the CmeABC efflux pump."
+    },
+    {
+      "acc": "ARO:3009135",
+      "label": "Antibiotic Resistance Platform (ARP)",
+      "desc": "The Antibiotic Resistance Platform (ARP) is a cell-based array of mechanistically distinct individual resistance elements in an identical genetic background. The ARP consists of resistance elements to 18 classes of antibiotics. There are over 100 antibiotic resistance genes currently in the ARP. https://www.thewrightlab.com/antibiotic-resistance-platform."
+    }
+  ],
+  "block": "CARD/ARO ARO:3007321 \u2014 inhibitors of tetK efflux pump: Compounds which inhibit the removal of antibiotics by the tetK efflux pump.\nCARD/ARO ARO:3007323 \u2014 inhibitors of MdeA efflux pump: Compounds which inhibit the removal of antibiotics by the MdeA efflux pump.\nCARD/ARO ARO:3007325 \u2014 inhibitors of NorA efflux pump: Compounds which inhibit the removal of antibiotics by the NorA efflux pump.\nCARD/ARO ARO:3007326 \u2014 inhibitors of CmeABC efflux pump: Compounds which inhibit the removal of antibiotics by the CmeABC efflux pump.\nCARD/ARO ARO:3009135 \u2014 Antibiotic Resistance Platform (ARP): The Antibiotic Resistance Platform (ARP) is a cell-based array of mechanistically distinct individual resistance elements in an identical genetic background. The ARP consists of resistance elements to 18 classes of antibiotics. There are over 100 antibiotic resistance genes currently in the ARP. https://www.thewrightlab.com/antibiotic-resistance-platform."
+}

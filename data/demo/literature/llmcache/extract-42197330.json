@@ -1,0 +1,28 @@
+{
+  "claims": [
+    {
+      "subject": "CzcRS",
+      "relation": "confers_resistance",
+      "object": "zinc",
+      "object_kind": "mechanism",
+      "evidence_span": "CzcRS two-component system is pivotal for Zn resistance",
+      "confidence": 0.9
+    },
+    {
+      "subject": "CzcR",
+      "relation": "implicates",
+      "object": "CzcCBA efflux pump",
+      "object_kind": "mechanism",
+      "evidence_span": "primarily by activating the CzcCBA efflux pump",
+      "confidence": 0.85
+    },
+    {
+      "subject": "CzcR",
+      "relation": "implicates",
+      "object": "antibiotic resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "many of which are linked to virulence, antibiotic resistance",
+      "confidence": 0.6
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "claims": [
+    {
+      "subject": "AcrAB-TolC",
+      "relation": "confers_resistance",
+      "object": "fluoroquinolones",
+      "object_kind": "drug",
+      "evidence_span": "Overexpression of AcrAB-TolC can occur after exposure to fluoroquinolones, leading to multidrug resistance",
+      "confidence": 0.9
+    },
+    {
+      "subject": "RamA",
+      "relation": "implicates",
+      "object": "AcrAB-TolC",
+      "object_kind": "mechanism",
+      "evidence_span": "expression of AcrAB-TolC in Salmonella is primarily regulated by the transcriptional activator RamA",
+      "confidence": 0.9
+    },
+    {
+      "subject": "ramR::aph (RamA overproduction)",
+      "relation": "confers_resistance",
+      "object": "ciprofloxacin",
+      "object_kind": "drug",
+      "evidence_span": "overproduction of RamA...resulted in a significantly higher mutation frequency and rate",
+      "confidence": 0.7
+    },
+    {
+      "subject": "gyrA mutants",
+      "relation": "confers_resistance",
+      "object": "quinolones",
+      "object_kind": "drug",
+      "evidence_span": "selecting gyrA mutants resistant to quinolones",
+      "confidence": 0.9
+    },
+    {
+      "subject": "soxR mutations",
+      "relation": "implicates",
+      "object": "AcrAB-TolC",
+      "object_kind": "mechanism",
+      "evidence_span": "soxR mutants can be selected after exposure to ciprofloxacin",
+      "confidence": 0.7
+    },
+    {
+      "subject": "soxR mutations",
+      "relation": "confers_resistance",
+      "object": "multidrug resistance (MDR)",
+      "object_kind": "mechanism",
+      "evidence_span": "produced multidrug-resistant (MDR) mutants, associated with mutations in soxR",
+      "confidence": 0.8
+    }
+  ]
+}

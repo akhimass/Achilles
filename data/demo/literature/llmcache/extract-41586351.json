@@ -1,0 +1,28 @@
+{
+  "claims": [
+    {
+      "subject": "Raoultella planticola",
+      "relation": "confers_resistance",
+      "object": "carbapenem",
+      "object_kind": "drug",
+      "evidence_span": "Carbapenem-resistant Raoultella planticola (CRRP)",
+      "confidence": 0.6
+    },
+    {
+      "subject": "mutations in genes linked to surface polysaccharide biosynthesis",
+      "relation": "confers_resistance",
+      "object": "bacteriophage infection",
+      "object_kind": "mechanism",
+      "evidence_span": "resistant isolates carried mutations in genes linked to surface polysaccharide biosynthesis",
+      "confidence": 0.8
+    },
+    {
+      "subject": "LysR-family transcriptional regulation genes",
+      "relation": "confers_resistance",
+      "object": "bacteriophage infection",
+      "object_kind": "mechanism",
+      "evidence_span": "LysR-family transcriptional regulation, conferring resistance at a measurable cost",
+      "confidence": 0.8
+    }
+  ]
+}

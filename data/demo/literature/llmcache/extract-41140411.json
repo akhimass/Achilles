@@ -1,0 +1,52 @@
+{
+  "claims": [
+    {
+      "subject": "dinB",
+      "relation": "implicates",
+      "object": "antibiotic resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "elevated expression of the error-prone DNA polymerase IV gene (dinB)",
+      "confidence": 0.8
+    },
+    {
+      "subject": "tfaR",
+      "relation": "implicates",
+      "object": "high mutant frequency",
+      "object_kind": "mechanism",
+      "evidence_span": "mutations in host genes such as tfaR and marR, which were associated with high mutant frequency",
+      "confidence": 0.7
+    },
+    {
+      "subject": "marR",
+      "relation": "implicates",
+      "object": "high mutant frequency",
+      "object_kind": "mechanism",
+      "evidence_span": "mutations in host genes such as tfaR and marR, which were associated with high mutant frequency",
+      "confidence": 0.7
+    },
+    {
+      "subject": "phage-derived mutator strains",
+      "relation": "confers_resistance",
+      "object": "reactive oxygen species",
+      "object_kind": "mechanism",
+      "evidence_span": "higher frequency of resistance to reactive oxygen species and acid stresses",
+      "confidence": 0.85
+    },
+    {
+      "subject": "phage-derived mutator strains",
+      "relation": "confers_resistance",
+      "object": "acid stress",
+      "object_kind": "mechanism",
+      "evidence_span": "higher frequency of resistance to reactive oxygen species and acid stresses",
+      "confidence": 0.85
+    },
+    {
+      "subject": "phage-derived mutator strains",
+      "relation": "sensitizes_to",
+      "object": "phage T4",
+      "object_kind": "mechanism",
+      "evidence_span": "lower frequency of resistance to phage T4",
+      "confidence": 0.85
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "supported": true,
+  "provenance_db": "CARD",
+  "provenance_acc": "ARO:3000823",
+  "adjusted_confidence": 0.9,
+  "reason": "CARD entry confirms RamA decreases OmpF (porin) expression and increases AcrAB (efflux) expression."
+}

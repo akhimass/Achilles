@@ -1,0 +1,32 @@
+{
+  "subject": "response regulator",
+  "object": "colistin resistance",
+  "facts": [
+    {
+      "acc": "ARO:3003068",
+      "label": "smeRS",
+      "desc": "smeRS is a two component regulatory system for smeABC where smeR is a response regulator, while smeS is a sensor kinase."
+    },
+    {
+      "acc": "ARO:3000750",
+      "label": "protein of two-component regulatory system modulating antibiotic efflux",
+      "desc": "A protein, either a histidine kinase or a response regulator, that is part of a two-component regulatory system that directly or indirectly change rates of antibiotic efflux."
+    },
+    {
+      "acc": "ARO:3000531",
+      "label": "baeSR",
+      "desc": "BaeSR is a two component regulatory system for efflux proteins in Gram-negative bacteria. BaeR is a response regulator, while BaeS is a sensor kinase."
+    },
+    {
+      "acc": "ARO:3000071",
+      "label": "vanS",
+      "desc": "VanS is similar to histidine protein kinases like EnvZ and acts as a response regulator by activating VanR. VanS is required for high level transcription of other van glycopeptide resistance genes."
+    },
+    {
+      "acc": "ARO:3004112",
+      "label": "phosphoethanolamine transferase conferring colistin resistance",
+      "desc": "This group of enzymes catalyzes the addition of a phosphoethanolamine group to another molecule. The addition of this moiety to lipid A in bacterial species is often associated with polymyxin (otherwise known as colistin) resistance."
+    }
+  ],
+  "block": "CARD/ARO ARO:3003068 \u2014 smeRS: smeRS is a two component regulatory system for smeABC where smeR is a response regulator, while smeS is a sensor kinase.\nCARD/ARO ARO:3000750 \u2014 protein of two-component regulatory system modulating antibiotic efflux: A protein, either a histidine kinase or a response regulator, that is part of a two-component regulatory system that directly or indirectly change rates of antibiotic efflux.\nCARD/ARO ARO:3000531 \u2014 baeSR: BaeSR is a two component regulatory system for efflux proteins in Gram-negative bacteria. BaeR is a response regulator, while BaeS is a sensor kinase.\nCARD/ARO ARO:3000071 \u2014 vanS: VanS is similar to histidine protein kinases like EnvZ and acts as a response regulator by activating VanR. VanS is required for high level transcription of other van glycopeptide resistance genes.\nCARD/ARO ARO:3004112 \u2014 phosphoethanolamine transferase conferring colistin resistance: This group of enzymes catalyzes the addition of a phosphoethanolamine group to another molecule. The addition of this moiety to lipid A in bacterial species is often associated with polymyxin (otherwise known as colistin) resistance."
+}

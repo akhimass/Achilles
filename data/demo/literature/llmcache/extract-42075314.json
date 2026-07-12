@@ -1,0 +1,52 @@
+{
+  "claims": [
+    {
+      "subject": "AcsR",
+      "relation": "confers_resistance",
+      "object": "antibiotics",
+      "object_kind": "drug",
+      "evidence_span": "increased sensitivity to antibiotics, heavy metals, and oxidants",
+      "confidence": 0.7
+    },
+    {
+      "subject": "\u0394acsR mutant",
+      "relation": "sensitizes_to",
+      "object": "antibiotics",
+      "object_kind": "drug",
+      "evidence_span": "increased sensitivity to antibiotics, heavy metals, and oxidants",
+      "confidence": 0.9
+    },
+    {
+      "subject": "\u0394acsR mutant",
+      "relation": "sensitizes_to",
+      "object": "heavy metals",
+      "object_kind": "drug",
+      "evidence_span": "increased sensitivity to antibiotics, heavy metals, and oxidants",
+      "confidence": 0.9
+    },
+    {
+      "subject": "\u0394acsR mutant",
+      "relation": "sensitizes_to",
+      "object": "oxidants",
+      "object_kind": "drug",
+      "evidence_span": "increased sensitivity to antibiotics, heavy metals, and oxidants",
+      "confidence": 0.9
+    },
+    {
+      "subject": "\u0394acsR mutant",
+      "relation": "confers_resistance",
+      "object": "aromatic compounds",
+      "object_kind": "drug",
+      "evidence_span": "enhanced resistance to multiple aromatic compounds",
+      "confidence": 0.9
+    },
+    {
+      "subject": "ncgl2351",
+      "relation": "implicates",
+      "object": "heavy metal resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "heavy metal (nickel) transport system permease gene ncgl2351",
+      "confidence": 0.5
+    }
+  ]
+}

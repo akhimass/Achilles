@@ -1,0 +1,68 @@
+{
+  "claims": [
+    {
+      "subject": "AcrAB-TolC",
+      "relation": "confers_resistance",
+      "object": "tigecycline",
+      "object_kind": "drug",
+      "evidence_span": "efflux pump overexpression and regulatory network adaptation",
+      "confidence": 0.7
+    },
+    {
+      "subject": "tolC",
+      "relation": "implicates",
+      "object": "tigecycline resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "Tigecycline exposure markedly increased tolC and acrA",
+      "confidence": 0.8
+    },
+    {
+      "subject": "acrA",
+      "relation": "implicates",
+      "object": "tigecycline resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "Tigecycline exposure markedly increased tolC and acrA",
+      "confidence": 0.8
+    },
+    {
+      "subject": "acrB",
+      "relation": "implicates",
+      "object": "tigecycline resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "acrB increased only modestly",
+      "confidence": 0.5
+    },
+    {
+      "subject": "marA",
+      "relation": "implicates",
+      "object": "tigecycline resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "regulators marA and ramA",
+      "confidence": 0.75
+    },
+    {
+      "subject": "ramA",
+      "relation": "implicates",
+      "object": "tigecycline resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "regulators marA and ramA",
+      "confidence": 0.75
+    },
+    {
+      "subject": "marA",
+      "relation": "implicates",
+      "object": "AcrAB-TolC",
+      "object_kind": "mechanism",
+      "evidence_span": "stress-responsive regulators (marA, ramA) are strongly induced by sub-inhibitory tigecycline",
+      "confidence": 0.7
+    },
+    {
+      "subject": "marB",
+      "relation": "implicates",
+      "object": "tigecycline response",
+      "object_kind": "mechanism",
+      "evidence_span": "TGC-S isolates exhibited significant induction of marA, marB",
+      "confidence": 0.5
+    }
+  ]
+}

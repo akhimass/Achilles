@@ -1,0 +1,28 @@
+{
+  "claims": [
+    {
+      "subject": "DNA methylation",
+      "relation": "implicates",
+      "object": "efflux pump expression",
+      "object_kind": "mechanism",
+      "evidence_span": "regulating resistance-related processes, such as efflux pump expression",
+      "confidence": 0.7
+    },
+    {
+      "subject": "DNA methylation",
+      "relation": "implicates",
+      "object": "\u03b2-lactamase activity",
+      "object_kind": "mechanism",
+      "evidence_span": "\u03b2-lactamase activity, and stress responses",
+      "confidence": 0.7
+    },
+    {
+      "subject": "CRISPR-dCas9 fused to DNA methyltransferases",
+      "relation": "reverts_with",
+      "object": "resistance genes regulated by methylation",
+      "object_kind": "gene",
+      "evidence_span": "targeted, reversible suppression of resistance genes regulated by methylation",
+      "confidence": 0.75
+    }
+  ]
+}

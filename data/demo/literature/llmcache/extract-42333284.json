@@ -1,0 +1,20 @@
+{
+  "claims": [
+    {
+      "subject": "liposomal nanobiotics (tetracycline, chloramphenicol, nalidixic acid)",
+      "relation": "reverts_with",
+      "object": "multi-drug resistance in Enterobacteriaceae",
+      "object_kind": "mechanism",
+      "evidence_span": "impact of nanobiotic formulations on efflux pump gene expressions and suggests a role in mitigating the resistance mechanism",
+      "confidence": 0.6
+    },
+    {
+      "subject": "efflux-pump associated genes",
+      "relation": "implicates",
+      "object": "antibiotic resistance mechanism",
+      "object_kind": "mechanism",
+      "evidence_span": "analysis of the efflux-pump associated genes showed impact of nanobiotic formulations on efflux pump gene expressions",
+      "confidence": 0.5
+    }
+  ]
+}

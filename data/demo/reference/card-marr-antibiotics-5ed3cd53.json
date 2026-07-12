@@ -1,0 +1,32 @@
+{
+  "subject": "MarR",
+  "object": "antibiotics",
+  "facts": [
+    {
+      "acc": "ARO:3003378",
+      "label": "Escherichia coli AcrAB-TolC with MarR mutations conferring resistance to ciprofloxacin and tetracycline",
+      "desc": "MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB."
+    },
+    {
+      "acc": "ARO:3000718",
+      "label": "marR",
+      "desc": "MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB."
+    },
+    {
+      "acc": "ARO:3004055",
+      "label": "Escherichia coli CpxR",
+      "desc": "The Escherichia coli CpxR/CpxA system responds to general periplasmic stress and has been used as a model two-component system for transcription regulation in bacteria. CpxR/CpxA system facilitates Salmonella and E. coli resistance to cationic antimicrobial peptides.The CpxR/CpxA system can activate transcription of marRAB operon, thus facilitating multidrug-resistant regulator to enhance expression of TolC-dependent tripartite multidrug transporters."
+    },
+    {
+      "acc": "ARO:3005005",
+      "label": "antibiotic-resistant emb arabinosyltransferase",
+      "desc": "Known antibiotic-resistant variants of emb arabinosyltransferases, primarily in Mycobacterium and conferring resistance to ethambutol through point mutation."
+    },
+    {
+      "acc": "ARO:3003419",
+      "label": "antibiotic-resistant rpsL",
+      "desc": "Ribosomal protein S12 stabilizes the highly conserved pseudoknot structure formed by 16S rRNA. Amino acid substitutions in RpsL affect the higher-order structure of 16S rRNA and confer antibiotic resistance."
+    }
+  ],
+  "block": "CARD/ARO ARO:3003378 \u2014 Escherichia coli AcrAB-TolC with MarR mutations conferring resistance to ciprofloxacin and tetracycline: MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB.\nCARD/ARO ARO:3000718 \u2014 marR: MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB.\nCARD/ARO ARO:3004055 \u2014 Escherichia coli CpxR: The Escherichia coli CpxR/CpxA system responds to general periplasmic stress and has been used as a model two-component system for transcription regulation in bacteria. CpxR/CpxA system facilitates Salmonella and E. coli resistance to cationic antimicrobial peptides.The CpxR/CpxA system can activate transcription of marRAB operon, thus facilitating multidrug-resistant regulator to enhance expression of TolC-dependent tripartite multidrug transporters.\nCARD/ARO ARO:3005005 \u2014 antibiotic-resistant emb arabinosyltransferase: Known antibiotic-resistant variants of emb arabinosyltransferases, primarily in Mycobacterium and conferring resistance to ethambutol through point mutation.\nCARD/ARO ARO:3003419 \u2014 antibiotic-resistant rpsL: Ribosomal protein S12 stabilizes the highly conserved pseudoknot structure formed by 16S rRNA. Amino acid substitutions in RpsL affect the higher-order structure of 16S rRNA and confer antibiotic resistance."
+}

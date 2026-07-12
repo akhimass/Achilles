@@ -1,0 +1,11 @@
+{
+  "subject": "efflux pump",
+  "organism": "Burkholderia multivorans",
+  "record": {
+    "acc": "A0A0H3KEK0",
+    "name": "Multidrug resistance efflux pump",
+    "function": null,
+    "organism": "Burkholderia multivorans (strain ATCC 17616 / 249)"
+  },
+  "block": "UniProt A0A0H3KEK0 \u2014 Multidrug resistance efflux pump [Burkholderia multivorans (strain ATCC 17616 / 249)]"
+}

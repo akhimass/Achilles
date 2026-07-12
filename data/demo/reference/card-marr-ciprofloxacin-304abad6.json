@@ -1,0 +1,32 @@
+{
+  "subject": "MarR",
+  "object": "ciprofloxacin",
+  "facts": [
+    {
+      "acc": "ARO:3003378",
+      "label": "Escherichia coli AcrAB-TolC with MarR mutations conferring resistance to ciprofloxacin and tetracycline",
+      "desc": "MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB."
+    },
+    {
+      "acc": "ARO:3000718",
+      "label": "marR",
+      "desc": "MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB."
+    },
+    {
+      "acc": "ARO:3004055",
+      "label": "Escherichia coli CpxR",
+      "desc": "The Escherichia coli CpxR/CpxA system responds to general periplasmic stress and has been used as a model two-component system for transcription regulation in bacteria. CpxR/CpxA system facilitates Salmonella and E. coli resistance to cationic antimicrobial peptides.The CpxR/CpxA system can activate transcription of marRAB operon, thus facilitating multidrug-resistant regulator to enhance expression of TolC-dependent tripartite multidrug transporters."
+    },
+    {
+      "acc": "ARO:0000036",
+      "label": "ciprofloxacin",
+      "desc": "Ciprofloxacin is a bacteriocidal fluoroquinolone. It blocks bacterial DNA replication by binding to the toposiomerase II or IV-DNA complex (or cleavable complex), thereby causing double-stranded breaks in the bacterial chromosome."
+    },
+    {
+      "acc": "ARO:3004467",
+      "label": "ciprofloxacin phosphotransferase",
+      "desc": "A class of phosphotransferase enzymes shown to confer resistance to ciprofloxacin by antibiotic inactivation through phosphorylation. The sole example, CrpP, was thought to confer resistance to ciprofloxacin by antibiotic inactivation through phosphorylation, however in the paper by Zubyk & Wright (2021) this was discovered to not be the case. There are no known experimentally validated examples of enzymes with this function."
+    }
+  ],
+  "block": "CARD/ARO ARO:3003378 \u2014 Escherichia coli AcrAB-TolC with MarR mutations conferring resistance to ciprofloxacin and tetracycline: MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB.\nCARD/ARO ARO:3000718 \u2014 marR: MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB.\nCARD/ARO ARO:3004055 \u2014 Escherichia coli CpxR: The Escherichia coli CpxR/CpxA system responds to general periplasmic stress and has been used as a model two-component system for transcription regulation in bacteria. CpxR/CpxA system facilitates Salmonella and E. coli resistance to cationic antimicrobial peptides.The CpxR/CpxA system can activate transcription of marRAB operon, thus facilitating multidrug-resistant regulator to enhance expression of TolC-dependent tripartite multidrug transporters.\nCARD/ARO ARO:0000036 \u2014 ciprofloxacin: Ciprofloxacin is a bacteriocidal fluoroquinolone. It blocks bacterial DNA replication by binding to the toposiomerase II or IV-DNA complex (or cleavable complex), thereby causing double-stranded breaks in the bacterial chromosome.\nCARD/ARO ARO:3004467 \u2014 ciprofloxacin phosphotransferase: A class of phosphotransferase enzymes shown to confer resistance to ciprofloxacin by antibiotic inactivation through phosphorylation. The sole example, CrpP, was thought to confer resistance to ciprofloxacin by antibiotic inactivation through phosphorylation, however in the paper by Zubyk & Wright (2021) this was discovered to not be the case. There are no known experimentally validated examples of enzymes with this function."
+}

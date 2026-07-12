@@ -1,0 +1,7 @@
+{
+  "supported": false,
+  "provenance_db": null,
+  "provenance_acc": null,
+  "adjusted_confidence": 0.05,
+  "reason": "Reference facts show MarR relates to ciprofloxacin/tetracycline resistance via marA/AcrAB, not vancomycin."
+}

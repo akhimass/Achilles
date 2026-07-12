@@ -1,0 +1,7 @@
+{
+  "supported": true,
+  "provenance_db": "CARD",
+  "provenance_acc": "ARO:3000718",
+  "adjusted_confidence": 0.8,
+  "reason": "MarR represses marRAB/AcrAB efflux, so intact MarR maintains antibiotic susceptibility, i.e., sensitizes to antibiotics."
+}

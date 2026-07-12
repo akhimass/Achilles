@@ -1,0 +1,11 @@
+{
+  "subject": "LysR",
+  "organism": "Burkholderia multivorans",
+  "record": {
+    "acc": "Q84BW1",
+    "name": "Positive regulator for lys",
+    "function": null,
+    "organism": "Burkholderia multivorans"
+  },
+  "block": "UniProt Q84BW1 \u2014 Positive regulator for lys [Burkholderia multivorans]"
+}

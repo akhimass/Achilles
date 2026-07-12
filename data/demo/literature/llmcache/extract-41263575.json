@@ -1,0 +1,20 @@
+{
+  "claims": [
+    {
+      "subject": "HAE-1 RND efflux pumps",
+      "relation": "confers_resistance",
+      "object": "antibiotics",
+      "object_kind": "drug",
+      "evidence_span": "critical role in exporting structurally diverse antibiotics",
+      "confidence": 0.7
+    },
+    {
+      "subject": "HAE-1 RND efflux pumps",
+      "relation": "implicates",
+      "object": "virulence",
+      "object_kind": "mechanism",
+      "evidence_span": "role of HAE-1 RND efflux pumps as virulence determinants",
+      "confidence": 0.8
+    }
+  ]
+}

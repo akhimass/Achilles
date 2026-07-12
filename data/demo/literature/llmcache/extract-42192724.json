@@ -1,0 +1,84 @@
+{
+  "claims": [
+    {
+      "subject": "emrA",
+      "relation": "confers_resistance",
+      "object": "efflux pump-mediated antibiotic resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "efflux pumps (emrA, drrA, tetA, bcr, fsr)",
+      "confidence": 0.7
+    },
+    {
+      "subject": "drrA",
+      "relation": "confers_resistance",
+      "object": "efflux pump-mediated antibiotic resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "efflux pumps (emrA, drrA, tetA, bcr, fsr)",
+      "confidence": 0.7
+    },
+    {
+      "subject": "tetA",
+      "relation": "confers_resistance",
+      "object": "efflux pump-mediated antibiotic resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "efflux pumps (emrA, drrA, tetA, bcr, fsr)",
+      "confidence": 0.7
+    },
+    {
+      "subject": "bcr",
+      "relation": "confers_resistance",
+      "object": "efflux pump-mediated antibiotic resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "efflux pumps (emrA, drrA, tetA, bcr, fsr)",
+      "confidence": 0.7
+    },
+    {
+      "subject": "fsr",
+      "relation": "confers_resistance",
+      "object": "efflux pump-mediated antibiotic resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "efflux pumps (emrA, drrA, tetA, bcr, fsr)",
+      "confidence": 0.7
+    },
+    {
+      "subject": "lnrL",
+      "relation": "confers_resistance",
+      "object": "target modification",
+      "object_kind": "mechanism",
+      "evidence_span": "target modification (lnrL)",
+      "confidence": 0.7
+    },
+    {
+      "subject": "arnA",
+      "relation": "confers_resistance",
+      "object": "lipid A modification",
+      "object_kind": "mechanism",
+      "evidence_span": "lipid A modification (arnA) genes",
+      "confidence": 0.7
+    },
+    {
+      "subject": "intI1",
+      "relation": "implicates",
+      "object": "mobile genetic element-mediated resistance spread",
+      "object_kind": "mechanism",
+      "evidence_span": "Class 1 integron integrase (intI1/rpoB 0.64-1.59) was detected in all 12 samples",
+      "confidence": 0.6
+    },
+    {
+      "subject": "emrA-emrB and bcr",
+      "relation": "implicates",
+      "object": "prophage IntA integrase-mediated horizontal transfer",
+      "object_kind": "mechanism",
+      "evidence_span": "emrA-emrB and bcr (NODE_16)...associated with distinct prophage IntA integrase copies",
+      "confidence": 0.75
+    },
+    {
+      "subject": "arnA and lnrL",
+      "relation": "implicates",
+      "object": "prophage IntA integrase-mediated horizontal transfer",
+      "object_kind": "mechanism",
+      "evidence_span": "arnA and lnrL (NODE_6) were each independently associated with distinct prophage IntA integrase copies",
+      "confidence": 0.75
+    }
+  ]
+}

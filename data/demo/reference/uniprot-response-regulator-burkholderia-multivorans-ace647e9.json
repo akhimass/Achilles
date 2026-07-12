@@ -1,0 +1,11 @@
+{
+  "subject": "response regulator",
+  "organism": "Burkholderia multivorans",
+  "record": {
+    "acc": "A0A0H3KHN7",
+    "name": "Response regulator",
+    "function": null,
+    "organism": "Burkholderia multivorans (strain ATCC 17616 / 249)"
+  },
+  "block": "UniProt A0A0H3KHN7 \u2014 Response regulator [Burkholderia multivorans (strain ATCC 17616 / 249)]"
+}

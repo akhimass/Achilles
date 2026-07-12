@@ -1,0 +1,32 @@
+{
+  "subject": "efflux pump",
+  "object": "multidrug resistance",
+  "facts": [
+    {
+      "acc": "ARO:3007321",
+      "label": "inhibitors of tetK efflux pump",
+      "desc": "Compounds which inhibit the removal of antibiotics by the tetK efflux pump."
+    },
+    {
+      "acc": "ARO:3007323",
+      "label": "inhibitors of MdeA efflux pump",
+      "desc": "Compounds which inhibit the removal of antibiotics by the MdeA efflux pump."
+    },
+    {
+      "acc": "ARO:3007325",
+      "label": "inhibitors of NorA efflux pump",
+      "desc": "Compounds which inhibit the removal of antibiotics by the NorA efflux pump."
+    },
+    {
+      "acc": "ARO:3007326",
+      "label": "inhibitors of CmeABC efflux pump",
+      "desc": "Compounds which inhibit the removal of antibiotics by the CmeABC efflux pump."
+    },
+    {
+      "acc": "ARO:0010003",
+      "label": "small multidrug resistance (SMR) antibiotic efflux pump",
+      "desc": "Directed pumping of antibiotic out of a cell to confer resistance. Small multidrug resistance (SMR) proteins are a relatively small family of transporters, restricted to prokaryotic cells. They are also the smallest multidrug transporters, with only four transmembrane alpha-helices and no significant extramembrane domain."
+    }
+  ],
+  "block": "CARD/ARO ARO:3007321 \u2014 inhibitors of tetK efflux pump: Compounds which inhibit the removal of antibiotics by the tetK efflux pump.\nCARD/ARO ARO:3007323 \u2014 inhibitors of MdeA efflux pump: Compounds which inhibit the removal of antibiotics by the MdeA efflux pump.\nCARD/ARO ARO:3007325 \u2014 inhibitors of NorA efflux pump: Compounds which inhibit the removal of antibiotics by the NorA efflux pump.\nCARD/ARO ARO:3007326 \u2014 inhibitors of CmeABC efflux pump: Compounds which inhibit the removal of antibiotics by the CmeABC efflux pump.\nCARD/ARO ARO:0010003 \u2014 small multidrug resistance (SMR) antibiotic efflux pump: Directed pumping of antibiotic out of a cell to confer resistance. Small multidrug resistance (SMR) proteins are a relatively small family of transporters, restricted to prokaryotic cells. They are also the smallest multidrug transporters, with only four transmembrane alpha-helices and no significant extramembrane domain."
+}

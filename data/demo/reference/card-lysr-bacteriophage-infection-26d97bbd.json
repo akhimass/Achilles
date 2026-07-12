@@ -1,0 +1,27 @@
+{
+  "subject": "LysR",
+  "object": "bacteriophage infection",
+  "facts": [
+    {
+      "acc": "ARO:3000814",
+      "label": "MexT",
+      "desc": "MexT is a LysR-type transcriptional activator that positively regulates the expression of MexEF-OprN, OprD, and MexS."
+    },
+    {
+      "acc": "ARO:3007797",
+      "label": "ampR transcriptional regulator with mutation conferring resistance to monobactam antibiotics",
+      "desc": "ampR is a LysR-type transcriptional regulator for beta-lactamase-encoding gene expression. Mutations in ampR of certain organisms have been shown to confer resistance to antibiotics due to beta-lactamase overexpression."
+    },
+    {
+      "acc": "ARO:3003665",
+      "label": "NmcR",
+      "desc": "NmcR is a homolog of the LysR regulator found in Enterobacter cloacae that contribute to the regulation of NmcA beta-lactamase."
+    },
+    {
+      "acc": "ARO:3003843",
+      "label": "leuO",
+      "desc": "leuO, a LysR family transcription factor, exists in a wide variety of bacteria of the family Enterobacteriaceae and is involved in the regulation of as yet unidentified genes affecting the stress response and pathogenesis expression. LeuO is also an activator of the MdtNOP efflux pump."
+    }
+  ],
+  "block": "CARD/ARO ARO:3000814 \u2014 MexT: MexT is a LysR-type transcriptional activator that positively regulates the expression of MexEF-OprN, OprD, and MexS.\nCARD/ARO ARO:3007797 \u2014 ampR transcriptional regulator with mutation conferring resistance to monobactam antibiotics: ampR is a LysR-type transcriptional regulator for beta-lactamase-encoding gene expression. Mutations in ampR of certain organisms have been shown to confer resistance to antibiotics due to beta-lactamase overexpression.\nCARD/ARO ARO:3003665 \u2014 NmcR: NmcR is a homolog of the LysR regulator found in Enterobacter cloacae that contribute to the regulation of NmcA beta-lactamase.\nCARD/ARO ARO:3003843 \u2014 leuO: leuO, a LysR family transcription factor, exists in a wide variety of bacteria of the family Enterobacteriaceae and is involved in the regulation of as yet unidentified genes affecting the stress response and pathogenesis expression. LeuO is also an activator of the MdtNOP efflux pump."
+}

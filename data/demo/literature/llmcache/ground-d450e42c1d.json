@@ -1,0 +1,7 @@
+{
+  "supported": true,
+  "provenance_db": "CARD",
+  "provenance_acc": "ARO:3007321",
+  "adjusted_confidence": 0.55,
+  "reason": "CARD describes the tetK efflux pump as removing tetracycline-class antibiotics, supporting a generic efflux-pump-mediated tetracycline resistance link."
+}

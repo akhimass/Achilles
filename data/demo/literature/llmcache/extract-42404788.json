@@ -1,0 +1,36 @@
+{
+  "claims": [
+    {
+      "subject": "multidrug efflux pumps",
+      "relation": "confers_resistance",
+      "object": "antimicrobial agents",
+      "object_kind": "drug",
+      "evidence_span": "efficient multidrug efflux pumps",
+      "confidence": 0.6
+    },
+    {
+      "subject": "tripartite pumps",
+      "relation": "implicates",
+      "object": "intrinsic and acquired resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "central to both intrinsic and acquired resistance",
+      "confidence": 0.7
+    },
+    {
+      "subject": "PAP overexpression",
+      "relation": "implicates",
+      "object": "antimicrobial resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "clinical epidemiology of PAP overexpression",
+      "confidence": 0.5
+    },
+    {
+      "subject": "PAPs",
+      "relation": "is_target_of",
+      "object": "novel inhibitors",
+      "object_kind": "drug",
+      "evidence_span": "targeting PAPs with novel inhibitors",
+      "confidence": 0.75
+    }
+  ]
+}

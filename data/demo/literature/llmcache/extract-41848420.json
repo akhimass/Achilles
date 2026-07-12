@@ -1,0 +1,36 @@
+{
+  "claims": [
+    {
+      "subject": "AcrAB",
+      "relation": "confers_resistance",
+      "object": "Cpd-6",
+      "object_kind": "drug",
+      "evidence_span": "Cpd-6 resistance in K. pneumonia is mainly mediated by AcrAB efflux pump activity",
+      "confidence": 0.9
+    },
+    {
+      "subject": "KpProRS",
+      "relation": "is_target_of",
+      "object": "halofuginone",
+      "object_kind": "drug",
+      "evidence_span": "only halofuginone (HF) strongly modulated KpProRS activity",
+      "confidence": 0.9
+    },
+    {
+      "subject": "KpProRS",
+      "relation": "is_target_of",
+      "object": "Cpd-6",
+      "object_kind": "drug",
+      "evidence_span": "Cpd-6) was developed and exhibited superior inhibitory activity against KpProRS",
+      "confidence": 0.9
+    },
+    {
+      "subject": "efflux pump inhibitors",
+      "relation": "reverts_with",
+      "object": "Cpd-6 resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "which could be counteracted by efflux pump inhibitors",
+      "confidence": 0.85
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "claims": [
+    {
+      "subject": "HTH family regulators (AraC/XylS family) and two-component systems (TCS)",
+      "relation": "implicates",
+      "object": "decreased porin expression and increased efflux transporter expression",
+      "object_kind": "mechanism",
+      "evidence_span": "manage a decrease of porin expression associated with an increase of efflux transporters expression",
+      "confidence": 0.6
+    }
+  ]
+}

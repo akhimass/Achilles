@@ -1,0 +1,36 @@
+{
+  "claims": [
+    {
+      "subject": "AcrAB efflux pump",
+      "relation": "confers_resistance",
+      "object": "tigecycline",
+      "object_kind": "drug",
+      "evidence_span": "activated MarA-induced overexpression of AcrAB efflux pump plays an important role in the emergence of tigecycline resistance",
+      "confidence": 0.9
+    },
+    {
+      "subject": "acrB",
+      "relation": "confers_resistance",
+      "object": "tigecycline",
+      "object_kind": "drug",
+      "evidence_span": "expression levels of acrB (P < .001) ... were significantly higher in the tigecycline-resistant group",
+      "confidence": 0.8
+    },
+    {
+      "subject": "marA",
+      "relation": "implicates",
+      "object": "acrB",
+      "object_kind": "gene",
+      "evidence_span": "Increased expression of acrB was associated with marA expression",
+      "confidence": 0.75
+    },
+    {
+      "subject": "marA",
+      "relation": "confers_resistance",
+      "object": "tigecycline",
+      "object_kind": "drug",
+      "evidence_span": "activated MarA-induced overexpression of AcrAB efflux pump plays an important role in the emergence of tigecycline resistance",
+      "confidence": 0.8
+    }
+  ]
+}

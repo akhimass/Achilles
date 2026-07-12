@@ -1,0 +1,7 @@
+{
+  "supported": true,
+  "provenance_db": "CARD",
+  "provenance_acc": "ARO:3000718",
+  "adjusted_confidence": 0.85,
+  "reason": "MarR is a repressor regulating marRAB/AcrAB-TolC, mediating multidrug resistance including ciprofloxacin and tetracycline."
+}

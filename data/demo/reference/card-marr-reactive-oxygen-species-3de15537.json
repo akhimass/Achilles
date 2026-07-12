@@ -1,0 +1,32 @@
+{
+  "subject": "MarR",
+  "object": "reactive oxygen species",
+  "facts": [
+    {
+      "acc": "ARO:3003378",
+      "label": "Escherichia coli AcrAB-TolC with MarR mutations conferring resistance to ciprofloxacin and tetracycline",
+      "desc": "MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB."
+    },
+    {
+      "acc": "ARO:3000718",
+      "label": "marR",
+      "desc": "MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB."
+    },
+    {
+      "acc": "ARO:3004055",
+      "label": "Escherichia coli CpxR",
+      "desc": "The Escherichia coli CpxR/CpxA system responds to general periplasmic stress and has been used as a model two-component system for transcription regulation in bacteria. CpxR/CpxA system facilitates Salmonella and E. coli resistance to cationic antimicrobial peptides.The CpxR/CpxA system can activate transcription of marRAB operon, thus facilitating multidrug-resistant regulator to enhance expression of TolC-dependent tripartite multidrug transporters."
+    },
+    {
+      "acc": "ARO:3007314",
+      "label": "pentamidine",
+      "desc": "Pentamidine is an antiparasitic compound used to treat a variety of infections such as African trypanosomiasis and leishamaniasis. It has also been shown to increase Gram-negative membrane permeability and enhance the entry of certain antibiotics. Pentamidine combined with linezolid had significant synergistic antibacterial effects against carbapenem-resistant Enterobacteriaceae pentamidine. The antimicrobial disrupts the outer membranes, dissipates the membrane potentials, and devitalizes the efflux pumps of CRE, thereby facilitating the intracellular accumulation of linezolid and reactive oxygen species (ROS), which ultimately kills the bacteria."
+    },
+    {
+      "acc": "ARO:3007538",
+      "label": "chenodeoxycholic acid",
+      "desc": "A cholic acid derivative of the traditional Chinese medicine (TCM) Tanreqing (TRQ), synergizes with amikacin against Staphylococcus aureus in vitro, and this synergistic killing was effective against diverse methicillin-resistant S. aureus (MRSA) variants. Mechanistically, chenodeoxycholic acid increases the uptake of aminoglycosides in a proton motive force-dependent manner by dissipating the chemical potential and potentiates reactive oxygen species (ROS) generation by inhibiting superoxide dismutase activity."
+    }
+  ],
+  "block": "CARD/ARO ARO:3003378 \u2014 Escherichia coli AcrAB-TolC with MarR mutations conferring resistance to ciprofloxacin and tetracycline: MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB.\nCARD/ARO ARO:3000718 \u2014 marR: MarR is a repressor of the mar operon marRAB, thus regulating the expression of marA, the activator of multidrug efflux pump AcrAB.\nCARD/ARO ARO:3004055 \u2014 Escherichia coli CpxR: The Escherichia coli CpxR/CpxA system responds to general periplasmic stress and has been used as a model two-component system for transcription regulation in bacteria. CpxR/CpxA system facilitates Salmonella and E. coli resistance to cationic antimicrobial peptides.The CpxR/CpxA system can activate transcription of marRAB operon, thus facilitating multidrug-resistant regulator to enhance expression of TolC-dependent tripartite multidrug transporters.\nCARD/ARO ARO:3007314 \u2014 pentamidine: Pentamidine is an antiparasitic compound used to treat a variety of infections such as African trypanosomiasis and leishamaniasis. It has also been shown to increase Gram-negative membrane permeability and enhance the entry of certain antibiotics. Pentamidine combined with linezolid had significant synergistic antibacterial effects against carbapenem-resistant Enterobacteriaceae pentamidine. The antimicrobial disrupts the outer membranes, dissipates the membrane potentials, and devitalizes the efflux pumps of CRE, thereby facilitating the intracellular accumulation of linezolid and reactive oxygen species (ROS), which ultimately kills the bacteria.\nCARD/ARO ARO:3007538 \u2014 chenodeoxycholic acid: A cholic acid derivative of the traditional Chinese medicine (TCM) Tanreqing (TRQ), synergizes with amikacin against Staphylococcus aureus in vitro, and this synergistic killing was effective against diverse methicillin-resistant S. aureus (MRSA) variants. Mechanistically, chenodeoxycholic acid increases the uptake of aminoglycosides in a proton motive force-dependent manner by dissipating the chemical potential and potentiates reactive oxygen species (ROS) generation by inhibiting superoxide dismutase activity."
+}

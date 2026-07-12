@@ -1,0 +1,7 @@
+{
+  "supported": false,
+  "provenance_db": null,
+  "provenance_acc": null,
+  "adjusted_confidence": 0.1,
+  "reason": "Reference facts describe RamA as a transcriptional regulator of AcrAB but do not mention DNA binding activity for RamA specifically."
+}

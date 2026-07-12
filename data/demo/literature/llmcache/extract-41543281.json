@@ -1,0 +1,60 @@
+{
+  "claims": [
+    {
+      "subject": "MexEF-OprN",
+      "relation": "confers_resistance",
+      "object": "fluoroquinolones",
+      "object_kind": "drug",
+      "evidence_span": "overproduced in clinical isolates, confers resistance to fluoroquinolones",
+      "confidence": 0.9
+    },
+    {
+      "subject": "MexEF-OprN",
+      "relation": "confers_resistance",
+      "object": "trimethoprim",
+      "object_kind": "drug",
+      "evidence_span": "confers resistance to fluoroquinolones, trimethoprim, and chloramphenicol",
+      "confidence": 0.9
+    },
+    {
+      "subject": "MexEF-OprN",
+      "relation": "confers_resistance",
+      "object": "chloramphenicol",
+      "object_kind": "drug",
+      "evidence_span": "confers resistance to fluoroquinolones, trimethoprim, and chloramphenicol",
+      "confidence": 0.9
+    },
+    {
+      "subject": "MexF P136 substitution",
+      "relation": "confers_resistance",
+      "object": "fluoroquinolones",
+      "object_kind": "drug",
+      "evidence_span": "substitutions at P136 enhanced efflux of most tested antibiotics, among which are 21 fluoroquinolones",
+      "confidence": 0.85
+    },
+    {
+      "subject": "MexF D132 mutation",
+      "relation": "implicates",
+      "object": "substrate specificity",
+      "object_kind": "mechanism",
+      "evidence_span": "Mutations at four selected positions D132, P136, G626, and S729 altered resistance profiles and substrate specificity",
+      "confidence": 0.7
+    },
+    {
+      "subject": "MexF S729 mutation",
+      "relation": "implicates",
+      "object": "MexF efflux activity",
+      "object_kind": "mechanism",
+      "evidence_span": "Substitutions in S729...either enhanced or severely impaired MexF activity",
+      "confidence": 0.75
+    },
+    {
+      "subject": "MexF",
+      "relation": "is_target_of",
+      "object": "trimethoprim",
+      "object_kind": "drug",
+      "evidence_span": "MexF is optimized to trimethoprim-like compounds",
+      "confidence": 0.8
+    }
+  ]
+}

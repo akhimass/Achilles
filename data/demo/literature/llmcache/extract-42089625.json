@@ -1,0 +1,60 @@
+{
+  "claims": [
+    {
+      "subject": "RmaH",
+      "relation": "confers_resistance",
+      "object": "nisin",
+      "object_kind": "drug",
+      "evidence_span": "enhancing tolerance to the bacteriocin nisin and the antibiotic vancomycin",
+      "confidence": 0.9
+    },
+    {
+      "subject": "RmaH",
+      "relation": "confers_resistance",
+      "object": "vancomycin",
+      "object_kind": "drug",
+      "evidence_span": "enhancing tolerance to the bacteriocin nisin and the antibiotic vancomycin",
+      "confidence": 0.9
+    },
+    {
+      "subject": "RmaH",
+      "relation": "implicates",
+      "object": "cell wall and membrane lipid biosynthesis",
+      "object_kind": "mechanism",
+      "evidence_span": "directly activated genes for cell wall and membrane lipid biosynthesis, leading to a thicker cell wall",
+      "confidence": 0.85
+    },
+    {
+      "subject": "RmaH",
+      "relation": "sensitizes_to",
+      "object": "acid stress",
+      "object_kind": "mechanism",
+      "evidence_span": "repressed the arginine deiminase pathway, attenuating acid tolerance",
+      "confidence": 0.85
+    },
+    {
+      "subject": "arginine deiminase pathway",
+      "relation": "implicates",
+      "object": "acid tolerance",
+      "object_kind": "mechanism",
+      "evidence_span": "repressed the arginine deiminase pathway, attenuating acid tolerance",
+      "confidence": 0.8
+    },
+    {
+      "subject": "R79",
+      "relation": "implicates",
+      "object": "DNA binding",
+      "object_kind": "mechanism",
+      "evidence_span": "essential role of arginine residues R79 and R87 in DNA binding",
+      "confidence": 0.8
+    },
+    {
+      "subject": "R87",
+      "relation": "implicates",
+      "object": "DNA binding",
+      "object_kind": "mechanism",
+      "evidence_span": "essential role of arginine residues R79 and R87 in DNA binding",
+      "confidence": 0.8
+    }
+  ]
+}

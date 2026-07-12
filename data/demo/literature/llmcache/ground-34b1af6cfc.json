@@ -1,0 +1,7 @@
+{
+  "supported": true,
+  "provenance_db": "CARD",
+  "provenance_acc": "ARO:3007321",
+  "adjusted_confidence": 0.7,
+  "reason": "CARD entries describe efflux pumps (e.g., tetK, MdeA, NorA, CmeABC) removing antibiotics, indicating resistance conferral."
+}

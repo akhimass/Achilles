@@ -1,0 +1,166 @@
+// Mirror of backend/app/models/domain.py. Keep in sync — when the Pydantic models
+// gain a field, add it here too. These shapes are the contract the UI renders.
+
+export type VariantKind = "snp" | "indel";
+export type VariantEffect =
+  | "synonymous"
+  | "nonsynonymous"
+  | "frameshift"
+  | "intergenic";
+export type NodeType =
+  | "strain"
+  | "variant"
+  | "gene"
+  | "target"
+  | "drug"
+  | "mechanism";
+export type Relation =
+  | "confers_resistance"
+  | "sensitizes_to"
+  | "is_target_of"
+  | "implicates"
+  | "reverts_with";
+
+export interface Strain {
+  id: string;
+  external_id: string;
+  source: string;
+  organism: string;
+  label?: string | null;
+  parent_id?: string | null;
+  metadata: Record<string, unknown>;
+}
+
+export interface Variant {
+  id: string;
+  strain_id: string;
+  kind: VariantKind;
+  ref_position: number;
+  ref_allele?: string | null;
+  alt_allele?: string | null;
+  gene_id?: string | null;
+  effect?: VariantEffect | null;
+  allele_freq?: number | null;
+  is_flipper: boolean;
+  metadata: Record<string, unknown>;
+}
+
+export interface Target {
+  id: string;
+  gene_id: string;
+  mechanism?: string | null;
+  tractability: Record<string, unknown>;
+  pdb_ids: string[];
+  rank_score?: number | null;
+  metadata: Record<string, unknown>;
+}
+
+// The core object. Provenance is never fully null (enforced server-side).
+export interface EvidenceEdge {
+  id: string;
+  source_type: NodeType;
+  source_id: string;
+  relation: Relation;
+  target_type: NodeType;
+  target_id?: string | null;
+  target_literal?: string | null;
+  provenance_pmid?: string | null;
+  provenance_db?: string | null;
+  provenance_acc?: string | null;
+  confidence: number; // 0–1, render as a gradient, not a binary
+  grounded: boolean;
+}
+
+export interface CollateralPair {
+  organism: string;
+  drug_a: string;
+  drug_b: string;
+  reciprocal: boolean;
+  strength?: number | null;
+  n_lineages?: number | null;
+}
+
+// Graph view payloads
+export interface LineageNode {
+  id: string;
+  label: string;
+  parent_id?: string | null;
+  flipper_count: number;
+  // Optional enrichment for the hover card (additive — safe to ignore).
+  st?: string | number | null;
+  year?: string | number | null;
+  country?: string | null;
+  lineage?: string | null; // BurkData: experimental lineage membership, e.g. "L1, L2"
+  founder?: boolean | null;
+}
+export interface LineageGraph {
+  nodes: LineageNode[];
+  edges: { source: string; target: string }[];
+}
+
+// A flipper gene carried by a strain (from /api/graph/strain).
+export interface StrainGene {
+  locus_tag: string;
+  gene_symbol?: string | null;
+  product?: string | null;
+  chrom?: string | null;
+  indel_delta?: number | null;
+  flipper_support?: number | null;
+  is_flipper: boolean;
+  effect?: string | null;
+  wp?: string | null;
+}
+export interface StrainDetail {
+  strain: {
+    id: string;
+    external_id: string;
+    label: string;
+    source: string;
+    metadata: Record<string, unknown>;
+  } | null;
+  genes: StrainGene[];
+}
+
+// Evidence subgraph for a gene (from /api/graph/evidence). Mirrors graph_shaping.shape_evidence.
+export interface EvidenceProvenance {
+  pmid?: string | null;
+  pubmed_url?: string | null;
+  db?: string | null; // 'CARD' | 'UniProt' | ...
+  acc?: string | null; // 'ARO:3003378' | UniProt accession
+  ref_url?: string | null;
+  paper_title?: string | null;
+  paper_year?: number | null;
+}
+export interface EvidenceEdgeView {
+  id?: string | null;
+  relation: Relation;
+  target?: string | null;
+  target_type?: NodeType | null;
+  confidence: number; // 0–1, render as a gradient
+  grounded: boolean;
+  subject?: string | null;
+  evidence_span?: string | null;
+  provenance: EvidenceProvenance;
+}
+export interface EvidenceSubgraph {
+  gene: { id?: string | null; locus_tag: string; symbol?: string | null; product?: string | null };
+  edges: EvidenceEdgeView[];
+  counts: { total: number; grounded: number };
+}
+
+// Predicted / experimental 3D structure for a gene (from /api/structure).
+export interface StructureResult {
+  locus_tag: string;
+  wp?: string | null;
+  name?: string | null;
+  product?: string | null;
+  source: "alphafold" | "alphafold_pending" | "rcsb" | "unavailable";
+  pdb: string | null;
+  plddt?: number | null;
+  residue_count?: number | null;
+  pdb_id?: string | null;
+  ptm?: number | null;
+  avg_plddt?: number | null;
+  status: string;
+  note?: string | null;
+}

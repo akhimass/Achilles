@@ -1,0 +1,20 @@
+{
+  "claims": [
+    {
+      "subject": "ramAp",
+      "relation": "implicates",
+      "object": "multidrug resistance (MDR) plasmids",
+      "object_kind": "mechanism",
+      "evidence_span": "commonly found on multidrug resistance (MDR) plasmids in Salmonella",
+      "confidence": 0.6
+    },
+    {
+      "subject": "RamAp",
+      "relation": "implicates",
+      "object": "acrAB",
+      "object_kind": "gene",
+      "evidence_span": "efflux pump gene acrAB as a known positive control",
+      "confidence": 0.5
+    }
+  ]
+}

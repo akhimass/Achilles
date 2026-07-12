@@ -1,0 +1,52 @@
+{
+  "claims": [
+    {
+      "subject": "ActJK",
+      "relation": "confers_resistance",
+      "object": "copper",
+      "object_kind": "mechanism",
+      "evidence_span": "involvement in responses to copper and zinc stress",
+      "confidence": 0.8
+    },
+    {
+      "subject": "ActJK",
+      "relation": "confers_resistance",
+      "object": "zinc",
+      "object_kind": "mechanism",
+      "evidence_span": "involvement in responses to copper and zinc stress",
+      "confidence": 0.8
+    },
+    {
+      "subject": "actJ",
+      "relation": "confers_resistance",
+      "object": "copper and zinc stress",
+      "object_kind": "mechanism",
+      "evidence_span": "\u0394actJ mutant displayed reduced tolerance to metal stress",
+      "confidence": 0.85
+    },
+    {
+      "subject": "actJ",
+      "relation": "implicates",
+      "object": "antibiotic susceptibility",
+      "object_kind": "mechanism",
+      "evidence_span": "altered antibiotic susceptibility profiles",
+      "confidence": 0.7
+    },
+    {
+      "subject": "ActJK",
+      "relation": "implicates",
+      "object": "multidrug efflux systems",
+      "object_kind": "mechanism",
+      "evidence_span": "interplay between metal resistance and multidrug efflux systems",
+      "confidence": 0.75
+    },
+    {
+      "subject": "degP1",
+      "relation": "is_target_of",
+      "object": "ActJK",
+      "object_kind": "gene",
+      "evidence_span": "ActJK's operon activation through degP1's upstream promoter region induction",
+      "confidence": 0.7
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "claims": [
+    {
+      "subject": "ramA",
+      "relation": "confers_resistance",
+      "object": "tigecycline",
+      "object_kind": "drug",
+      "evidence_span": "increased transcription of ramA is associated with tigecycline resistance",
+      "confidence": 0.9
+    },
+    {
+      "subject": "rarA",
+      "relation": "confers_resistance",
+      "object": "multidrug resistance phenotype",
+      "object_kind": "mechanism",
+      "evidence_span": "overexpression of rarA results in a multidrug resistance phenotype",
+      "confidence": 0.9
+    },
+    {
+      "subject": "rarA",
+      "relation": "implicates",
+      "object": "AcrAB efflux pump",
+      "object_kind": "mechanism",
+      "evidence_span": "requires a functional AcrAB efflux pump",
+      "confidence": 0.85
+    },
+    {
+      "subject": "rarA",
+      "relation": "implicates",
+      "object": "oqxAB efflux pump",
+      "object_kind": "mechanism",
+      "evidence_span": "rarA overexpression upregulates the oqxAB efflux pump",
+      "confidence": 0.8
+    },
+    {
+      "subject": "oqxR",
+      "relation": "implicates",
+      "object": "oqxAB efflux pump",
+      "object_kind": "mechanism",
+      "evidence_span": "oqxR ... is able to downregulate the expression of the oqxAB efflux pump",
+      "confidence": 0.8
+    },
+    {
+      "subject": "oqxR",
+      "relation": "sensitizes_to",
+      "object": "olaquindox",
+      "object_kind": "drug",
+      "evidence_span": "OqxR complementation resulted in reductions to olaquindox MICs",
+      "confidence": 0.85
+    }
+  ]
+}

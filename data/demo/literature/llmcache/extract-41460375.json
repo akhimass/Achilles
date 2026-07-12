@@ -1,0 +1,28 @@
+{
+  "claims": [
+    {
+      "subject": "lipid A modification genes",
+      "relation": "confers_resistance",
+      "object": "polymyxin B",
+      "object_kind": "drug",
+      "evidence_span": "lipid A modification, which in turn contributes to bacterial resistance to polymyxin B",
+      "confidence": 0.9
+    },
+    {
+      "subject": "PhoPQ",
+      "relation": "implicates",
+      "object": "lipid A modification",
+      "object_kind": "mechanism",
+      "evidence_span": "regulation of many downstream genes, including those responsible for lipid A modification",
+      "confidence": 0.85
+    },
+    {
+      "subject": "PhoPQ",
+      "relation": "is_target_of",
+      "object": "pharmacological strategies",
+      "object_kind": "mechanism",
+      "evidence_span": "a promising therapeutic target for the development of new pharmacological strategies",
+      "confidence": 0.8
+    }
+  ]
+}

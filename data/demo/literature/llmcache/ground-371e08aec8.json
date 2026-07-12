@@ -1,0 +1,7 @@
+{
+  "supported": true,
+  "provenance_db": "CARD",
+  "provenance_acc": "ARO:3003378",
+  "adjusted_confidence": 0.7,
+  "reason": "MarR mutations are documented in CARD to confer resistance to ciprofloxacin and tetracycline via AcrAB-TolC regulation."
+}

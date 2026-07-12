@@ -1,0 +1,7 @@
+{
+  "supported": true,
+  "provenance_db": "CARD",
+  "provenance_acc": "ARO:3000823",
+  "adjusted_confidence": 0.95,
+  "reason": "CARD states RamA positively regulates AcrAB, directly implicating AcrB."
+}

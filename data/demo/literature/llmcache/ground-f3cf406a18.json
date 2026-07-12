@@ -1,0 +1,7 @@
+{
+  "supported": false,
+  "provenance_db": null,
+  "provenance_acc": null,
+  "adjusted_confidence": 0.2,
+  "reason": "MarR is described as a repressor regulating marRAB/multidrug efflux, not a direct resistance factor to aromatic compounds specifically."
+}

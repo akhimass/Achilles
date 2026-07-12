@@ -1,0 +1,68 @@
+{
+  "claims": [
+    {
+      "subject": "CmeB T136A",
+      "relation": "confers_resistance",
+      "object": "florfenicol",
+      "object_kind": "drug",
+      "evidence_span": "both the T136A and M292I mutations in CmeB are required for the resistance phenotype",
+      "confidence": 0.9
+    },
+    {
+      "subject": "CmeB M292I",
+      "relation": "confers_resistance",
+      "object": "florfenicol",
+      "object_kind": "drug",
+      "evidence_span": "both the T136A and M292I mutations in CmeB are required for the resistance phenotype",
+      "confidence": 0.9
+    },
+    {
+      "subject": "CmeB T136A",
+      "relation": "confers_resistance",
+      "object": "ciprofloxacin",
+      "object_kind": "drug",
+      "evidence_span": "The mutations elevated Campylobacter resistance to florfenicol, ciprofloxacin",
+      "confidence": 0.85
+    },
+    {
+      "subject": "CmeB M292I",
+      "relation": "confers_resistance",
+      "object": "ciprofloxacin",
+      "object_kind": "drug",
+      "evidence_span": "The mutations elevated Campylobacter resistance to florfenicol, ciprofloxacin",
+      "confidence": 0.85
+    },
+    {
+      "subject": "CmeB T136A",
+      "relation": "confers_resistance",
+      "object": "other classes of antimicrobial agents",
+      "object_kind": "drug",
+      "evidence_span": "and other classes of antimicrobial agents",
+      "confidence": 0.6
+    },
+    {
+      "subject": "CmeB M292I",
+      "relation": "confers_resistance",
+      "object": "other classes of antimicrobial agents",
+      "object_kind": "drug",
+      "evidence_span": "and other classes of antimicrobial agents",
+      "confidence": 0.6
+    },
+    {
+      "subject": "CmeB",
+      "relation": "implicates",
+      "object": "multidrug resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "identified a new mechanism underlying CmeB-mediated multidrug resistance",
+      "confidence": 0.85
+    },
+    {
+      "subject": "T136A and M292I substitutions",
+      "relation": "implicates",
+      "object": "drug-binding pocket of CmeB",
+      "object_kind": "mechanism",
+      "evidence_span": "enhanced hydrophobic interactions, stabilized CmeB-antibiotic binding, and lessened steric hindrance",
+      "confidence": 0.8
+    }
+  ]
+}

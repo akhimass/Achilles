@@ -1,0 +1,76 @@
+{
+  "claims": [
+    {
+      "subject": "SdeXY",
+      "relation": "is_target_of",
+      "object": "oxyresveratrol",
+      "object_kind": "drug",
+      "evidence_span": "oxyresveratrol showing the strongest effect targeting SdeXY",
+      "confidence": 0.9
+    },
+    {
+      "subject": "oxyresveratrol",
+      "relation": "sensitizes_to",
+      "object": "seven antibiotics",
+      "object_kind": "drug",
+      "evidence_span": "sensitizing YD25 to seven antibiotics",
+      "confidence": 0.8
+    },
+    {
+      "subject": "SdeXY-mediated resistance",
+      "relation": "reverts_with",
+      "object": "oxyresveratrol",
+      "object_kind": "drug",
+      "evidence_span": "effectively reverses bacterial resistance",
+      "confidence": 0.85
+    },
+    {
+      "subject": "AcrR",
+      "relation": "implicates",
+      "object": "SdeXY",
+      "object_kind": "gene",
+      "evidence_span": "regulated negatively by AcrR",
+      "confidence": 0.8
+    },
+    {
+      "subject": "BaeSR",
+      "relation": "implicates",
+      "object": "SdeCDE",
+      "object_kind": "gene",
+      "evidence_span": "regulated positively by BaeSR",
+      "confidence": 0.8
+    },
+    {
+      "subject": "RamA",
+      "relation": "implicates",
+      "object": "SdeXY and SdeCDE",
+      "object_kind": "gene",
+      "evidence_span": "deletion of these genes downregulated SdeXY and SdeCDE",
+      "confidence": 0.7
+    },
+    {
+      "subject": "SoxS",
+      "relation": "implicates",
+      "object": "SdeXY and SdeCDE",
+      "object_kind": "gene",
+      "evidence_span": "deletion of these genes downregulated SdeXY and SdeCDE",
+      "confidence": 0.7
+    },
+    {
+      "subject": "Rob",
+      "relation": "implicates",
+      "object": "SdeXY and SdeCDE",
+      "object_kind": "gene",
+      "evidence_span": "deletion of these genes downregulated SdeXY and SdeCDE",
+      "confidence": 0.7
+    },
+    {
+      "subject": "Roblike",
+      "relation": "implicates",
+      "object": "SdeXY and SdeCDE",
+      "object_kind": "gene",
+      "evidence_span": "deletion of these genes downregulated SdeXY and SdeCDE",
+      "confidence": 0.7
+    }
+  ]
+}

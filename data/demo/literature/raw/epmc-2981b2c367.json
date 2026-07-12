@@ -1,0 +1,1682 @@
+[
+  {
+    "id": "42192724",
+    "source": "MED",
+    "pmid": "42192724",
+    "pmcid": "PMC13203838",
+    "fullTextIdList": {
+      "fullTextId": [
+        "PMC13203838"
+      ]
+    },
+    "doi": "10.3390/antibiotics15050502",
+    "title": "West Siberian Soil Resistome: Mobile Antibiotic Resistance in Agricultural Microbiomes.",
+    "authorString": "Skotareva AE, Sokolova EA, Voronina EN.",
+    "authorList": {
+      "author": [
+        {
+          "fullName": "Skotareva AE",
+          "firstName": "Anna Evgenevna",
+          "lastName": "Skotareva",
+          "initials": "AE",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Institute of Chemical Biology and Fundamental Medicine, Siberian Branch of the Russian Academy of Sciences, 630090 Novosibirsk, Russia."
+              },
+              {
+                "affiliation": "Department of Molecular Biology and Biotechnology, Faculty of Natural Sciences, Novosibirsk State University, 630090 Novosibirsk, Russia."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Sokolova EA",
+          "firstName": "Ekaterina Alexeevna",
+          "lastName": "Sokolova",
+          "initials": "EA",
+          "authorId": {
+            "type": "ORCID",
+            "value": "0000-0002-4852-5661"
+          },
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Institute of Chemical Biology and Fundamental Medicine, Siberian Branch of the Russian Academy of Sciences, 630090 Novosibirsk, Russia."
+              },
+              {
+                "affiliation": "Department of Molecular Biology and Biotechnology, Faculty of Natural Sciences, Novosibirsk State University, 630090 Novosibirsk, Russia."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Voronina EN",
+          "firstName": "Elena Nikolaevna",
+          "lastName": "Voronina",
+          "initials": "EN",
+          "authorId": {
+            "type": "ORCID",
+            "value": "0000-0002-3405-6980"
+          },
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Institute of Chemical Biology and Fundamental Medicine, Siberian Branch of the Russian Academy of Sciences, 630090 Novosibirsk, Russia."
+              },
+              {
+                "affiliation": "Department of Molecular Biology and Biotechnology, Faculty of Natural Sciences, Novosibirsk State University, 630090 Novosibirsk, Russia."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "authorIdList": {
+      "authorId": [
+        {
+          "type": "ORCID",
+          "value": "0000-0002-3405-6980"
+        },
+        {
+          "type": "ORCID",
+          "value": "0000-0002-4852-5661"
+        }
+      ]
+    },
+    "journalInfo": {
+      "issue": "5",
+      "volume": "15",
+      "journalIssueId": 4201799,
+      "dateOfPublication": "2026 May",
+      "monthOfPublication": 5,
+      "yearOfPublication": 2026,
+      "printPublicationDate": "2026-05-01",
+      "journal": {
+        "title": "Antibiotics (Basel, Switzerland)",
+        "medlineAbbreviation": "Antibiotics (Basel)",
+        "issn": "2079-6382",
+        "nlmid": "101637404",
+        "isoabbreviation": "Antibiotics (Basel)",
+        "essn": "2079-6382"
+      }
+    },
+    "pubYear": "2026",
+    "pageInfo": "502",
+    "abstractText": "<b>Background/Objectives:</b> Soil microbiomes in agroecosystems are natural reservoirs of antibiotic resistance genes (ARGs) and mobile genetic elements (MGEs), creating conditions for horizontal gene transfer (HGT) to clinically relevant bacteria. Southern West Siberia-a globally significant grain-producing region-lacks metagenomic characterization of its soil resistome. This study aimed to establish the first baseline profile of resistome and mobilome composition for West Siberian agricultural soils. <b>Methods:</b> Twelve composite soil samples were collected from agroecosystems under seven crop types across diverse soil types in southern West Siberia (September 2022). Shotgun metagenomics was performed on an Illumina NovaSeq 6000 platform. Taxonomic profiling used Kraken2/Bracken; ARG annotation used Prokka/DeepARG (identity \u2265 70%, probability score \u2265 0.8); while MGE characterization used Platon, HMMER v3.3.2, and Prokka-based integrase annotation. Resistome load was normalized to the single-copy housekeeping gene <i>rpoB</i>; ARG-MGE associations were defined as co-localization within 10 kb on the same contig. <b>Results:</b> Microbial communities were dominated by <i>Pseudomonadota</i> and <i>Bacillota</i>, with a stable core of <i>Streptomycetaceae</i>, <i>Nitrobacteraceae</i>, and <i>Sphingomonadaceae</i>. Normalized resistome load (N/<i>rpoB</i> 2.30-5.37) indicated moderate anthropogenic pressure. Dominant ARGs included efflux pumps (<i>emrA</i>, <i>drrA</i>, <i>tetA</i>, <i>bcr</i>, <i>fsr</i>), target modification (<i>lnrL</i>), and lipid A modification (<i>arnA</i>) genes. Class 1 integron integrase (<i>intI1</i>/<i>rpoB</i> 0.64-1.59) was detected in all 12 samples, exceeding unity in 9 of 12. ARG-MGE co-localizations were found in 11 of 12 samples. In sample Mg_155, genes <i>emrA-emrB</i> and <i>bcr</i> (NODE_16) and <i>arnA</i> and <i>lnrL</i> (NODE_6) were each independently associated with distinct prophage <i>IntA</i> integrase copies within <i>Pseudomonas</i> contigs, documenting multiple parallel horizontal transfer events encompassing resistance to five antibiotic classes. <b>Conclusions:</b> This work establishes the first metagenomic baseline of resistome and mobilome for West Siberian agroecosystems. The obtained data indicate moderate anthropogenic pressure on soil microbiomes, consistent with temperate agricultural systems with limited organic fertilizer input. The detected ARG-MGE co-localizations and evidence of prophage-mediated transfer of resistance determinants beyond their natural hosts suggest that mobilization potential in the region warrants consideration in future AMR monitoring programs.",
+    "affiliation": "Institute of Chemical Biology and Fundamental Medicine, Siberian Branch of the Russian Academy of Sciences, 630090 Novosibirsk, Russia.",
+    "publicationStatus": "epublish",
+    "language": "eng",
+    "pubModel": "Electronic",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "grantsList": {
+      "grant": [
+        {
+          "grantId": "125012300671-8",
+          "agency": "Russian state-funded project",
+          "orderIn": 0
+        }
+      ]
+    },
+    "keywordList": {
+      "keyword": [
+        "Horizontal gene transfer",
+        "Antibiotic Resistance",
+        "agroecosystems",
+        "Integrons",
+        "Mobile genetic elements",
+        "Metagenomics",
+        "West Siberia",
+        "Soil Microbiome"
+      ]
+    },
+    "fullTextUrlList": {
+      "fullTextUrl": [
+        {
+          "availability": "Subscription required",
+          "availabilityCode": "S",
+          "documentStyle": "doi",
+          "site": "DOI",
+          "url": "https://doi.org/10.3390/antibiotics15050502"
+        },
+        {
+          "availability": "Open access",
+          "availabilityCode": "OA",
+          "documentStyle": "html",
+          "site": "Europe_PMC",
+          "url": "https://europepmc.org/articles/PMC13203838"
+        },
+        {
+          "availability": "Open access",
+          "availabilityCode": "OA",
+          "documentStyle": "pdf",
+          "site": "Europe_PMC",
+          "url": "https://europepmc.org/articles/PMC13203838?pdf=render"
+        }
+      ]
+    },
+    "isOpenAccess": "Y",
+    "inEPMC": "Y",
+    "inPMC": "Y",
+    "hasPDF": "Y",
+    "hasBook": "N",
+    "hasSuppl": "Y",
+    "citedByCount": 0,
+    "hasData": "Y",
+    "hasReferences": "N",
+    "hasTextMinedTerms": "Y",
+    "hasDbCrossReferences": "N",
+    "hasLabsLinks": "N",
+    "license": "cc by",
+    "hasEvaluations": "N",
+    "authMan": "N",
+    "epmcAuthMan": "N",
+    "nihAuthMan": "N",
+    "hasTMAccessionNumbers": "N",
+    "dateOfCompletion": "2026-05-27",
+    "dateOfCreation": "2026-05-27",
+    "firstIndexDate": "2026-05-28",
+    "fullTextReceivedDate": "2026-05-27",
+    "dateOfRevision": "2026-05-29",
+    "electronicPublicationDate": "2026-05-17",
+    "firstPublicationDate": "2026-05-17"
+  },
+  {
+    "id": "41773311",
+    "source": "MED",
+    "pmid": "41773311",
+    "pmcid": "PMC13148393",
+    "fullTextIdList": {
+      "fullTextId": [
+        "PMC13148393"
+      ]
+    },
+    "doi": "10.1093/g3journal/jkag046",
+    "title": "Mutational basis of ceftazidime-borrelidin A collateral sensitivity in Escherichia coli.",
+    "authorString": "Phillips LL, Carrasco A, Weiss J, Liu DY, Linington RG, Wong A.",
+    "authorList": {
+      "author": [
+        {
+          "fullName": "Phillips LL",
+          "firstName": "Laura L",
+          "lastName": "Phillips",
+          "initials": "LL",
+          "authorId": {
+            "type": "ORCID",
+            "value": "0009-0004-2205-9828"
+          },
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Biology, Carleton University, 1125 Colonel By Dr., Ottawa, ON K1S 5B6, Canada."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Carrasco A",
+          "firstName": "Arianna",
+          "lastName": "Carrasco",
+          "initials": "A",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Institute for Advancing Health Through Agriculture, Texas A&M AgriLife, 1500 Research Parkway, College Station, TX 77845, United States."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Weiss J",
+          "firstName": "Jonathan",
+          "lastName": "Weiss",
+          "initials": "J",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Institute for Advancing Health Through Agriculture, Texas A&M AgriLife, 1500 Research Parkway, College Station, TX 77845, United States."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Liu DY",
+          "firstName": "Dennis Y",
+          "lastName": "Liu",
+          "initials": "DY",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Chemistry, Simon Fraser University, 8888 University Dr., Burnaby, BC V5A 1S6, Canada."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Linington RG",
+          "firstName": "Roger G",
+          "lastName": "Linington",
+          "initials": "RG",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Chemistry, Simon Fraser University, 8888 University Dr., Burnaby, BC V5A 1S6, Canada."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Wong A",
+          "firstName": "Alex",
+          "lastName": "Wong",
+          "initials": "A",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Biology, Carleton University, 1125 Colonel By Dr., Ottawa, ON K1S 5B6, Canada."
+              },
+              {
+                "affiliation": "Institute for Advancing Health Through Agriculture, Texas A&M AgriLife, 1500 Research Parkway, College Station, TX 77845, United States."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "authorIdList": {
+      "authorId": [
+        {
+          "type": "ORCID",
+          "value": "0009-0004-2205-9828"
+        }
+      ]
+    },
+    "dataLinksTagsList": {
+      "dataLinkstag": [
+        "altmetrics"
+      ]
+    },
+    "journalInfo": {
+      "issue": "5",
+      "volume": "16",
+      "journalIssueId": 4190732,
+      "dateOfPublication": "2026 May",
+      "monthOfPublication": 5,
+      "yearOfPublication": 2026,
+      "printPublicationDate": "2026-05-01",
+      "journal": {
+        "title": "G3 (Bethesda, Md.)",
+        "medlineAbbreviation": "G3 (Bethesda)",
+        "issn": "2160-1836",
+        "nlmid": "101566598",
+        "isoabbreviation": "G3 (Bethesda)",
+        "essn": "2160-1836"
+      }
+    },
+    "pubYear": "2026",
+    "pageInfo": "jkag046",
+    "abstractText": "The rapid emergence of antimicrobial resistance in bacterial pathogens threatens the efficacy of nearly all available antibiotics. One evolution-informed strategy to limit the emergence of resistance is the exploitation of collateral sensitivity, whereby resistance to one compound results in increased sensitivity to another. Here, we investigate the collateral sensitivity relationship between the cephalosporin antibiotic ceftazidime and the natural product borrelidin A in Escherichia coli. Previously, we found that borrelidin A prevented the evolution of clinical ceftazidime resistance during laboratory selection. In this study, we further characterized the genomic and phenotypic consequences of evolution under collateral sensitivity in these evolved populations. Co-dosing with 128\u2005\u00b5M borrelidin A significantly reduced the evolution of ceftazidime resistance, while preserving fitness in the absence of drug. Overall co-dosed strains had reduced resistance and cross-resistance to all tested antibiotics. Whole-genome sequencing revealed that co-dosing suppressed the accumulation of single nucleotide polymorphism and insertion/deletion mutations in known resistance-associated genes yet resulted in an increased number of mobile-element insertion mutations. In one case, we find a possible novel borrelidin A resistance mutation. Our results suggest that ceftazidime-borrelidin A co-dosing limits both resistance and cross-resistance through selection against costly resistance mutations. While borrelidin A itself is cytotoxic, our findings highlight the promise of targeting bacteria-specific vulnerabilities to curb the emergence of multidrug resistance. These findings contribute to the growing body of evidence supporting collateral sensitivity-informed approaches as practical strategies to mitigate antimicrobial resistance in bacterial populations.",
+    "affiliation": "Department of Biology, Carleton University, 1125 Colonel By Dr., Ottawa, ON K1S 5B6, Canada.",
+    "publicationStatus": "ppublish",
+    "language": "eng",
+    "pubModel": "Print",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "grantsList": {
+      "grant": [
+        {
+          "grantId": "580058-2023",
+          "agency": "NSERC CGS D",
+          "orderIn": 0
+        },
+        {
+          "agency": "Texas A&M AgriLife",
+          "orderIn": 0
+        },
+        {
+          "grantId": "RGPIN-2024-05359",
+          "agency": "National Sciences and Engineering Research Council of Canada",
+          "orderIn": 0
+        }
+      ]
+    },
+    "meshHeadingList": {
+      "meshHeading": [
+        {
+          "majorTopic_YN": "Y",
+          "descriptorName": "Escherichia coli",
+          "meshQualifierList": {
+            "meshQualifier": [
+              {
+                "abbreviation": "DE",
+                "qualifierName": "drug effects",
+                "majorTopic_YN": "N"
+              },
+              {
+                "abbreviation": "GE",
+                "qualifierName": "genetics",
+                "majorTopic_YN": "N"
+              }
+            ]
+          }
+        },
+        {
+          "majorTopic_YN": "N",
+          "descriptorName": "Fatty Alcohols"
+        },
+        {
+          "majorTopic_YN": "Y",
+          "descriptorName": "Ceftazidime",
+          "meshQualifierList": {
+            "meshQualifier": [
+              {
+                "abbreviation": "PD",
+                "qualifierName": "pharmacology",
+                "majorTopic_YN": "N"
+              }
+            ]
+          }
+        },
+        {
+          "majorTopic_YN": "Y",
+          "descriptorName": "Anti-Bacterial Agents",
+          "meshQualifierList": {
+            "meshQualifier": [
+              {
+                "abbreviation": "PD",
+                "qualifierName": "pharmacology",
+                "majorTopic_YN": "N"
+              }
+            ]
+          }
+        },
+        {
+          "majorTopic_YN": "N",
+          "descriptorName": "Microbial Sensitivity Tests"
+        },
+        {
+          "majorTopic_YN": "N",
+          "descriptorName": "Drug Resistance, Bacterial",
+          "meshQualifierList": {
+            "meshQualifier": [
+              {
+                "abbreviation": "GE",
+                "qualifierName": "genetics",
+                "majorTopic_YN": "N"
+              }
+            ]
+          }
+        },
+        {
+          "majorTopic_YN": "Y",
+          "descriptorName": "Mutation"
+        },
+        {
+          "majorTopic_YN": "N",
+          "descriptorName": "Polymorphism, Single Nucleotide"
+        },
+        {
+          "majorTopic_YN": "Y",
+          "descriptorName": "Drug Collateral Sensitivity",
+          "meshQualifierList": {
+            "meshQualifier": [
+              {
+                "abbreviation": "GE",
+                "qualifierName": "genetics",
+                "majorTopic_YN": "N"
+              }
+            ]
+          }
+        },
+        {
+          "majorTopic_YN": "N",
+          "descriptorName": "Third Generation Cephalosporins"
+        }
+      ]
+    },
+    "keywordList": {
+      "keyword": [
+        "Ceftazidime",
+        "Antibiotic Resistance",
+        "Escherichia Coli",
+        "Borrelidin",
+        "Collateral Sensitivity"
+      ]
+    },
+    "chemicalList": {
+      "chemical": [
+        {
+          "name": "borrelidin",
+          "registryNumber": "7184-60-3"
+        },
+        {
+          "name": "Anti-Bacterial Agents",
+          "registryNumber": "0"
+        },
+        {
+          "name": "Fatty Alcohols",
+          "registryNumber": "0"
+        },
+        {
+          "name": "Ceftazidime",
+          "registryNumber": "9M416Z9QNR"
+        },
+        {
+          "name": "Third Generation Cephalosporins",
+          "registryNumber": "0"
+        }
+      ]
+    },
+    "subsetList": {
+      "subset": [
+        {
+          "code": "IM",
+          "name": "Index Medicus"
+        }
+      ]
+    },
+    "fullTextUrlList": {
+      "fullTextUrl": [
+        {
+          "availability": "Subscription required",
+          "availabilityCode": "S",
+          "documentStyle": "doi",
+          "site": "DOI",
+          "url": "https://doi.org/10.1093/g3journal/jkag046"
+        },
+        {
+          "availability": "Open access",
+          "availabilityCode": "OA",
+          "documentStyle": "html",
+          "site": "Europe_PMC",
+          "url": "https://europepmc.org/articles/PMC13148393"
+        },
+        {
+          "availability": "Open access",
+          "availabilityCode": "OA",
+          "documentStyle": "pdf",
+          "site": "Europe_PMC",
+          "url": "https://europepmc.org/articles/PMC13148393?pdf=render"
+        }
+      ]
+    },
+    "isOpenAccess": "Y",
+    "inEPMC": "Y",
+    "inPMC": "Y",
+    "hasPDF": "Y",
+    "hasBook": "N",
+    "hasSuppl": "Y",
+    "citedByCount": 0,
+    "hasData": "Y",
+    "hasReferences": "N",
+    "hasTextMinedTerms": "Y",
+    "hasDbCrossReferences": "N",
+    "hasLabsLinks": "Y",
+    "license": "cc by",
+    "hasEvaluations": "N",
+    "authMan": "N",
+    "epmcAuthMan": "N",
+    "nihAuthMan": "N",
+    "hasTMAccessionNumbers": "N",
+    "dateOfCompletion": "2026-06-12",
+    "dateOfCreation": "2026-03-03",
+    "firstIndexDate": "2026-03-03",
+    "fullTextReceivedDate": "2026-05-20",
+    "dateOfRevision": "2026-06-12",
+    "firstPublicationDate": "2026-05-01"
+  },
+  {
+    "id": "41227682",
+    "source": "MED",
+    "pmid": "41227682",
+    "pmcid": "PMC12607527",
+    "fullTextIdList": {
+      "fullTextId": [
+        "PMC12607527"
+      ]
+    },
+    "doi": "10.3390/foods14213710",
+    "title": "Detection, Genomic Characterization, and Antibiotic Susceptibility of &lt;i&gt;Salmonella&lt;/i&gt; Anatum SPBM3 Isolated from Plant-Based Meat.",
+    "authorString": "Phayakka P, Vongkamjan K, Khrongsee P, Subramaniam K, Mordmueng A, Pelyuntha W.",
+    "authorList": {
+      "author": [
+        {
+          "fullName": "Phayakka P",
+          "firstName": "Phatchara",
+          "lastName": "Phayakka",
+          "initials": "P",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "School of Education, Walailak University, Nakhon Si Thammarat 80160, Thailand."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Vongkamjan K",
+          "firstName": "Kitiya",
+          "lastName": "Vongkamjan",
+          "initials": "K",
+          "authorId": {
+            "type": "ORCID",
+            "value": "0000-0002-9379-553X"
+          },
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Biotechnology, Faculty of Agro-Industry, Kasetsart University, Bangkok 10900, Thailand."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Khrongsee P",
+          "firstName": "Pacharapong",
+          "lastName": "Khrongsee",
+          "initials": "P",
+          "authorId": {
+            "type": "ORCID",
+            "value": "0009-0001-7368-4234"
+          },
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Infectious Diseases and Immunology, College of Veterinary Medicine, University of Florida, Gainesville, FL 32610, USA."
+              },
+              {
+                "affiliation": "Emerging Pathogens Institute, University of Florida, Gainesville, FL 32610, USA."
+              },
+              {
+                "affiliation": "Faculty of Veterinary Science, Prince of Songkla University, Songkhla 90110, Thailand."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Subramaniam K",
+          "firstName": "Kuttichantran",
+          "lastName": "Subramaniam",
+          "initials": "K",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Infectious Diseases and Immunology, College of Veterinary Medicine, University of Florida, Gainesville, FL 32610, USA."
+              },
+              {
+                "affiliation": "Emerging Pathogens Institute, University of Florida, Gainesville, FL 32610, USA."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Mordmueng A",
+          "firstName": "Auemphon",
+          "lastName": "Mordmueng",
+          "initials": "A",
+          "authorId": {
+            "type": "ORCID",
+            "value": "0000-0002-3979-9599"
+          },
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "School of Medicine, Walailak University, Nakhon Si Thammarat 80160, Thailand."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Pelyuntha W",
+          "firstName": "Wattana",
+          "lastName": "Pelyuntha",
+          "initials": "W",
+          "authorId": {
+            "type": "ORCID",
+            "value": "0000-0002-3357-9325"
+          },
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Futuristic Science Research Center, School of Science, Walailak University, Nakhon Si Thammarat 80160, Thailand."
+              },
+              {
+                "affiliation": "Research Center for Theoretical Simulation and Applied Research in Bioscience and Sensing, Walailak University, Nakhon Si Thammarat 80160, Thailand."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "authorIdList": {
+      "authorId": [
+        {
+          "type": "ORCID",
+          "value": "0000-0002-3357-9325"
+        },
+        {
+          "type": "ORCID",
+          "value": "0000-0002-3979-9599"
+        },
+        {
+          "type": "ORCID",
+          "value": "0000-0002-9379-553X"
+        },
+        {
+          "type": "ORCID",
+          "value": "0009-0001-7368-4234"
+        }
+      ]
+    },
+    "dataLinksTagsList": {
+      "dataLinkstag": [
+        "supporting_data"
+      ]
+    },
+    "journalInfo": {
+      "issue": "21",
+      "volume": "14",
+      "journalIssueId": 4038327,
+      "dateOfPublication": "2025 Oct",
+      "monthOfPublication": 10,
+      "yearOfPublication": 2025,
+      "printPublicationDate": "2025-10-01",
+      "journal": {
+        "title": "Foods (Basel, Switzerland)",
+        "medlineAbbreviation": "Foods",
+        "issn": "2304-8158",
+        "nlmid": "101670569",
+        "isoabbreviation": "Foods",
+        "essn": "2304-8158"
+      }
+    },
+    "pubYear": "2025",
+    "pageInfo": "3710",
+    "abstractText": "Plant-based meat (PBM) products have rapidly grown in popularity due to increasing consumer demand for sustainable, ethical, and health-oriented food alternatives. However, these novel products may pose microbiological risks similar to traditional meats, including contamination by <i>Salmonella</i> spp. In this study, PBM samples (<i>n</i> = 63), including raw products (ground pork, mushroom, and burger) and cooked products (chicken tender, chicken breast, nugget, and beef), were collected from local retail markets in Bangkok, Thailand. The prevalence of <i>Salmonella</i> spp. was assessed by calculating the proportion of confirmed positive samples relative to the total number of PBM products tested. Additionally, the genomic characteristics and antibiotic susceptibility of <i>Salmonella</i> isolated from PBM were also investigated. From the result, <i>Salmonella enterica</i> was detected in 2.44% (1/41) of raw PBM samples, whereas no contamination was observed in cooked PBM products (0/22). Serovar identification revealed the isolate to be <i>S.</i> Anatum. Whole genome sequencing (WGS) analysis revealed the genome of <i>S.</i> Anatum SPBM3 consisted of 4,726,256 base pairs with 52.15% GC content, encoding 4717 coding sequences (CDS). Pangenomic analyses placed <i>S.</i> Anatum SPBM3 within a distinct sub-cluster closely related to pathogenic <i>Salmonella</i> strains previously reported, confirming its identity as part of the <i>S. enterica</i> lineage. The genome harbored 67 antimicrobial resistance genes, 5 prophage elements, and 305 key virulence determinants. Phenotypically, the isolate exhibited susceptibility to most tested antibiotics but showed intermediate resistance to streptomycin, ciprofloxacin, and colistin. Our findings highlight the potential microbial risks associated with PBM products and emphasize the importance of genomic surveillance to ensure food safety and public health protection as dietary preferences evolve toward non-traditional food matrices.",
+    "affiliation": "School of Education, Walailak University, Nakhon Si Thammarat 80160, Thailand.",
+    "publicationStatus": "epublish",
+    "language": "eng",
+    "pubModel": "Electronic",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "grantsList": {
+      "grant": [
+        {
+          "grantId": "WU67272",
+          "agency": "Walailak University",
+          "orderIn": 0
+        }
+      ]
+    },
+    "keywordList": {
+      "keyword": [
+        "Genome analysis",
+        "Salmonella",
+        "Antibiotic Resistance",
+        "Mlst",
+        "Plant-based Meat"
+      ]
+    },
+    "fullTextUrlList": {
+      "fullTextUrl": [
+        {
+          "availability": "Subscription required",
+          "availabilityCode": "S",
+          "documentStyle": "doi",
+          "site": "DOI",
+          "url": "https://doi.org/10.3390/foods14213710"
+        },
+        {
+          "availability": "Open access",
+          "availabilityCode": "OA",
+          "documentStyle": "html",
+          "site": "Europe_PMC",
+          "url": "https://europepmc.org/articles/PMC12607527"
+        },
+        {
+          "availability": "Open access",
+          "availabilityCode": "OA",
+          "documentStyle": "pdf",
+          "site": "Europe_PMC",
+          "url": "https://europepmc.org/articles/PMC12607527?pdf=render"
+        }
+      ]
+    },
+    "isOpenAccess": "Y",
+    "inEPMC": "Y",
+    "inPMC": "Y",
+    "hasPDF": "Y",
+    "hasBook": "N",
+    "hasSuppl": "Y",
+    "citedByCount": 1,
+    "hasData": "Y",
+    "hasReferences": "Y",
+    "hasTextMinedTerms": "Y",
+    "hasDbCrossReferences": "N",
+    "hasLabsLinks": "Y",
+    "license": "cc by",
+    "hasEvaluations": "N",
+    "authMan": "N",
+    "epmcAuthMan": "N",
+    "nihAuthMan": "N",
+    "hasTMAccessionNumbers": "Y",
+    "tmAccessionTypeList": {
+      "accessionType": [
+        "gen"
+      ]
+    },
+    "dateOfCompletion": "2025-11-13",
+    "dateOfCreation": "2025-11-13",
+    "firstIndexDate": "2025-11-14",
+    "fullTextReceivedDate": "2025-11-15",
+    "dateOfRevision": "2025-11-15",
+    "electronicPublicationDate": "2025-10-30",
+    "firstPublicationDate": "2025-10-30"
+  },
+  {
+    "id": "41586351",
+    "source": "MED",
+    "pmid": "41586351",
+    "pmcid": "PMC12827599",
+    "fullTextIdList": {
+      "fullTextId": [
+        "PMC12827599"
+      ]
+    },
+    "doi": "10.3389/fmicb.2025.1726803",
+    "title": "Two virulent bacteriophages targeting carbapenem-resistant &lt;i&gt;Raoultella planticola&lt;/i&gt;.",
+    "authorString": "Hoang CV, Fan J, Bhasin L, Del Mundo A, Law V, Nguyen D, Ganiger S, Mansour A, McElheny CL, Doi Y, Olawole OI.",
+    "authorList": {
+      "author": [
+        {
+          "fullName": "Hoang CV",
+          "firstName": "Cuong V",
+          "lastName": "Hoang",
+          "initials": "CV",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Microbiology & Plant Pathology, University of California, Riverside, Riverside, CA, United States."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Fan J",
+          "firstName": "Jonathan",
+          "lastName": "Fan",
+          "initials": "J",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Microbiology & Plant Pathology, University of California, Riverside, Riverside, CA, United States."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Bhasin L",
+          "firstName": "Lauren",
+          "lastName": "Bhasin",
+          "initials": "L",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Microbiology & Plant Pathology, University of California, Riverside, Riverside, CA, United States."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Del Mundo A",
+          "firstName": "Anthony",
+          "lastName": "Del Mundo",
+          "initials": "A",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Microbiology & Plant Pathology, University of California, Riverside, Riverside, CA, United States."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Law V",
+          "firstName": "Vanessa",
+          "lastName": "Law",
+          "initials": "V",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Microbiology & Plant Pathology, University of California, Riverside, Riverside, CA, United States."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Nguyen D",
+          "firstName": "Dominic",
+          "lastName": "Nguyen",
+          "initials": "D",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Microbiology & Plant Pathology, University of California, Riverside, Riverside, CA, United States."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Ganiger S",
+          "firstName": "Suraj",
+          "lastName": "Ganiger",
+          "initials": "S",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Microbiology & Plant Pathology, University of California, Riverside, Riverside, CA, United States."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Mansour A",
+          "firstName": "Ashley",
+          "lastName": "Mansour",
+          "initials": "A",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Microbiology & Plant Pathology, University of California, Riverside, Riverside, CA, United States."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "McElheny CL",
+          "firstName": "Christi L",
+          "lastName": "McElheny",
+          "initials": "CL",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Division of Infectious Diseases, University of Pittsburgh School of Medicine, Pittsburgh, PA, United States."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Doi Y",
+          "firstName": "Yohei",
+          "lastName": "Doi",
+          "initials": "Y",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Division of Infectious Diseases, University of Pittsburgh School of Medicine, Pittsburgh, PA, United States."
+              },
+              {
+                "affiliation": "Department of Microbiology, Fujita Health University School of Medicine, Toyoake, Aichi, Japan."
+              },
+              {
+                "affiliation": "Department of Infectious Diseases, Fujita Health University School of Medicine, Toyoake, Aichi, Japan."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Olawole OI",
+          "firstName": "Olakunle I",
+          "lastName": "Olawole",
+          "initials": "OI",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Microbiology & Plant Pathology, University of California, Riverside, Riverside, CA, United States."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "dataLinksTagsList": {
+      "dataLinkstag": [
+        "altmetrics",
+        "supporting_data"
+      ]
+    },
+    "journalInfo": {
+      "volume": "16",
+      "journalIssueId": 3895030,
+      "dateOfPublication": "2025 ",
+      "monthOfPublication": 0,
+      "yearOfPublication": 2025,
+      "printPublicationDate": "2025-01-01",
+      "journal": {
+        "title": "Frontiers in microbiology",
+        "medlineAbbreviation": "Front Microbiol",
+        "issn": "1664-302X",
+        "nlmid": "101548977",
+        "isoabbreviation": "Front Microbiol",
+        "essn": "1664-302X"
+      }
+    },
+    "pubYear": "2025",
+    "pageInfo": "1726803",
+    "abstractText": "Carbapenem-resistant <i>Raoultella planticola</i> (CRRP) is an emerging nosocomial pathogen with limited therapeutic options. Here, we describe the comparative characterization of two novel virulent bacteriophages, Macy and Sally, both isolated from the same soil microenvironment. Macy exhibits exceptional lytic potency, with a burst size of 8,375 PFU per infected cell, narrow host specificity, and pronounced biofilm-disrupting activity likely mediated by a putative depolymerase. In contrast, Sally displays a broader host range, infecting both <i>R. planticola</i> and <i>R. ornithinolytica</i> (including a clinical CRRP isolate), while maintaining moderate lytic activity, notable acid tolerance, and substantial biofilm reduction. SNP analysis revealed that resistant isolates carried mutations in genes linked to surface polysaccharide biosynthesis and LysR-family transcriptional regulation, conferring resistance at a measurable cost to bacterial growth fitness. Genomic and phylogenomic analyses further revealed distinct evolutionary trajectories: Macy is a large (147.8 kb) member of Straboviridae Straboviridae with a mosaic genome related to <i>Raoultella</i> phages, whereas Sally is a compact (48.5 kb) Casjensviridae phage that is siphovirus more closely aligned with <i>Klebsiella</i> and <i>Enterobacter</i> phages. Pangenomic comparisons highlighted Macy's strain-specific gene expansions versus Sally's cross-genus homology, emphasizing divergent adaptation strategies. Together, these findings illustrate the complementary therapeutic potential of Macy and Sally and establish a genomic and phenotypic foundation for developing effective phage cocktails against multidrug-resistant Raoultella infections.",
+    "affiliation": "Department of Microbiology & Plant Pathology, University of California, Riverside, Riverside, CA, United States.",
+    "publicationStatus": "epublish",
+    "language": "eng",
+    "pubModel": "Electronic-eCollection",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "keywordList": {
+      "keyword": [
+        "Host range",
+        "Multidrug-resistant Pathogens",
+        "Bacteriophage Therapy",
+        "Clinical Strains",
+        "Carbapenem-resistant Raoultella Planticola"
+      ]
+    },
+    "fullTextUrlList": {
+      "fullTextUrl": [
+        {
+          "availability": "Subscription required",
+          "availabilityCode": "S",
+          "documentStyle": "doi",
+          "site": "DOI",
+          "url": "https://doi.org/10.3389/fmicb.2025.1726803"
+        },
+        {
+          "availability": "Open access",
+          "availabilityCode": "OA",
+          "documentStyle": "html",
+          "site": "Europe_PMC",
+          "url": "https://europepmc.org/articles/PMC12827599"
+        },
+        {
+          "availability": "Open access",
+          "availabilityCode": "OA",
+          "documentStyle": "pdf",
+          "site": "Europe_PMC",
+          "url": "https://europepmc.org/articles/PMC12827599?pdf=render"
+        }
+      ]
+    },
+    "isOpenAccess": "Y",
+    "inEPMC": "Y",
+    "inPMC": "Y",
+    "hasPDF": "Y",
+    "hasBook": "N",
+    "hasSuppl": "Y",
+    "citedByCount": 0,
+    "hasData": "Y",
+    "hasReferences": "Y",
+    "hasTextMinedTerms": "Y",
+    "hasDbCrossReferences": "N",
+    "hasLabsLinks": "Y",
+    "license": "cc by",
+    "hasEvaluations": "N",
+    "authMan": "N",
+    "epmcAuthMan": "N",
+    "nihAuthMan": "N",
+    "hasTMAccessionNumbers": "Y",
+    "tmAccessionTypeList": {
+      "accessionType": [
+        "gen",
+        "refseq"
+      ]
+    },
+    "dateOfCompletion": "2026-01-26",
+    "dateOfCreation": "2026-01-26",
+    "firstIndexDate": "2026-01-26",
+    "fullTextReceivedDate": "2026-01-26",
+    "dateOfRevision": "2026-01-28",
+    "electronicPublicationDate": "2026-01-09",
+    "firstPublicationDate": "2026-01-09"
+  },
+  {
+    "id": "41249733",
+    "source": "MED",
+    "pmid": "41249733",
+    "pmcid": "PMC12628408",
+    "fullTextIdList": {
+      "fullTextId": [
+        "PMC12628408"
+      ]
+    },
+    "doi": "10.1007/s10238-025-01950-2",
+    "title": "Disinfectant-induced bacterial resistance and antibiotic cross-resistance-mechanisms and clinical relevance.",
+    "authorString": "Walczak \u0141J, Kwiatkowska M, Twarowski B, Kubacka M, Paluch J, Herbet M.",
+    "authorList": {
+      "author": [
+        {
+          "fullName": "Walczak \u0141J",
+          "firstName": "\u0141ucja Justyna",
+          "lastName": "Walczak",
+          "initials": "\u0141J",
+          "authorId": {
+            "type": "ORCID",
+            "value": "0000-0002-7403-919X"
+          },
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Chair and Department of Toxicology, Faculty of Pharmacy, Medical University of Lublin, 8 Chod\u017aki Street, 20-093, Lublin, Poland. lucja.walczak@umlub.edu.pl."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Kwiatkowska M",
+          "firstName": "Magdalena",
+          "lastName": "Kwiatkowska",
+          "initials": "M",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Dental Techniques With The Lab of Modern Techniques, Faculty of Medical Dentistry, Doctoral School of the Medical University of Lublin, Medical University of Lublin, 6 Chod\u017aki Street, 20-093, Lublin, Poland. magdalenakwiatkowska225@gmail.com."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Twarowski B",
+          "firstName": "Bartosz",
+          "lastName": "Twarowski",
+          "initials": "B",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Chair and Department of Toxicology, Faculty of Pharmacy, Medical University of Lublin, 8 Chod\u017aki Street, 20-093, Lublin, Poland."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Kubacka M",
+          "firstName": "Maria",
+          "lastName": "Kubacka",
+          "initials": "M",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Chair and Department of Toxicology, Faculty of Pharmacy, Medical University of Lublin, 8 Chod\u017aki Street, 20-093, Lublin, Poland."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Paluch J",
+          "firstName": "Julia",
+          "lastName": "Paluch",
+          "initials": "J",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Chair and Department of Toxicology, Faculty of Pharmacy, Medical University of Lublin, 8 Chod\u017aki Street, 20-093, Lublin, Poland."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Herbet M",
+          "firstName": "Mariola",
+          "lastName": "Herbet",
+          "initials": "M",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Chair and Department of Toxicology, Faculty of Pharmacy, Medical University of Lublin, 8 Chod\u017aki Street, 20-093, Lublin, Poland."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "authorIdList": {
+      "authorId": [
+        {
+          "type": "ORCID",
+          "value": "0000-0002-7403-919X"
+        }
+      ]
+    },
+    "journalInfo": {
+      "issue": "1",
+      "volume": "26",
+      "journalIssueId": 4050564,
+      "dateOfPublication": "2025 Nov",
+      "monthOfPublication": 11,
+      "yearOfPublication": 2025,
+      "printPublicationDate": "2025-11-01",
+      "journal": {
+        "title": "Clinical and experimental medicine",
+        "medlineAbbreviation": "Clin Exp Med",
+        "issn": "1591-8890",
+        "nlmid": "100973405",
+        "isoabbreviation": "Clin Exp Med",
+        "essn": "1591-9528"
+      }
+    },
+    "pubYear": "2025",
+    "pageInfo": "26",
+    "abstractText": "The rise of antibiotic-resistant bacteria has become an alarming global health challenge. Disinfectants, such as alcohols, aldehydes, chlorine compounds, phenols, quaternary ammonium compounds (QACs), peroxides, and chlorhexidine, are widely used in healthcare settings as a critical line of defense against infection. Nevertheless, their overuse or misuse, especially at subinhibitory concentrations, can promote the emergence of bacterial resistance, potentially leading to cross-resistance to antibiotics. Several mechanisms, including efflux pump activation, alterations in membrane permeability, and biofilm formation, drive this process. A possible concern, although currently supported by limited and sometimes conflicting evidence-is that biocide-induced resistance might contribute indirectly to adverse clinical outcomes, such as treatment challenges, prolonged hospital stays, and increased healthcare costs. This review examines the molecular mechanisms of disinfectant-induced resistance, the epidemiological impact of multidrug-resistant (MDR) pathogens, and contemporary infection control strategies. Furthermore, the review evaluates the benefits and risks associated with disinfectant use, underscoring the necessity for optimized, evidence-based disinfection protocols to minimize the development of resistance while ensuring effective infection prevention.",
+    "affiliation": "Chair and Department of Toxicology, Faculty of Pharmacy, Medical University of Lublin, 8 Chod\u017aki Street, 20-093, Lublin, Poland. lucja.walczak@umlub.edu.pl.",
+    "publicationStatus": "epublish",
+    "language": "eng",
+    "pubModel": "Electronic",
+    "pubTypeList": {
+      "pubType": [
+        "review-article",
+        "Review",
+        "Journal Article"
+      ]
+    },
+    "meshHeadingList": {
+      "meshHeading": [
+        {
+          "majorTopic_YN": "N",
+          "descriptorName": "Humans"
+        },
+        {
+          "majorTopic_YN": "Y",
+          "descriptorName": "Bacteria",
+          "meshQualifierList": {
+            "meshQualifier": [
+              {
+                "abbreviation": "DE",
+                "qualifierName": "drug effects",
+                "majorTopic_YN": "N"
+              }
+            ]
+          }
+        },
+        {
+          "majorTopic_YN": "N",
+          "descriptorName": "Biofilms",
+          "meshQualifierList": {
+            "meshQualifier": [
+              {
+                "abbreviation": "DE",
+                "qualifierName": "drug effects",
+                "majorTopic_YN": "N"
+              }
+            ]
+          }
+        },
+        {
+          "majorTopic_YN": "Y",
+          "descriptorName": "Bacterial Infections",
+          "meshQualifierList": {
+            "meshQualifier": [
+              {
+                "abbreviation": "DT",
+                "qualifierName": "drug therapy",
+                "majorTopic_YN": "N"
+              },
+              {
+                "abbreviation": "MI",
+                "qualifierName": "microbiology",
+                "majorTopic_YN": "N"
+              }
+            ]
+          }
+        },
+        {
+          "majorTopic_YN": "Y",
+          "descriptorName": "Anti-Bacterial Agents",
+          "meshQualifierList": {
+            "meshQualifier": [
+              {
+                "abbreviation": "PD",
+                "qualifierName": "pharmacology",
+                "majorTopic_YN": "N"
+              },
+              {
+                "abbreviation": "TU",
+                "qualifierName": "therapeutic use",
+                "majorTopic_YN": "N"
+              }
+            ]
+          }
+        },
+        {
+          "majorTopic_YN": "Y",
+          "descriptorName": "Disinfectants",
+          "meshQualifierList": {
+            "meshQualifier": [
+              {
+                "abbreviation": "AE",
+                "qualifierName": "adverse effects",
+                "majorTopic_YN": "N"
+              },
+              {
+                "abbreviation": "PD",
+                "qualifierName": "pharmacology",
+                "majorTopic_YN": "N"
+              }
+            ]
+          }
+        },
+        {
+          "majorTopic_YN": "Y",
+          "descriptorName": "Drug Resistance, Bacterial",
+          "meshQualifierList": {
+            "meshQualifier": [
+              {
+                "abbreviation": "DE",
+                "qualifierName": "drug effects",
+                "majorTopic_YN": "N"
+              }
+            ]
+          }
+        },
+        {
+          "majorTopic_YN": "Y",
+          "descriptorName": "Drug Resistance, Multiple, Bacterial",
+          "meshQualifierList": {
+            "meshQualifier": [
+              {
+                "abbreviation": "DE",
+                "qualifierName": "drug effects",
+                "majorTopic_YN": "N"
+              }
+            ]
+          }
+        },
+        {
+          "majorTopic_YN": "N",
+          "descriptorName": "Clinical Relevance"
+        }
+      ]
+    },
+    "keywordList": {
+      "keyword": [
+        "Disinfection",
+        "Antibiotic Resistance",
+        "Biocides",
+        "Superbacteria"
+      ]
+    },
+    "chemicalList": {
+      "chemical": [
+        {
+          "name": "Anti-Bacterial Agents",
+          "registryNumber": "0"
+        },
+        {
+          "name": "Disinfectants",
+          "registryNumber": "0"
+        }
+      ]
+    },
+    "subsetList": {
+      "subset": [
+        {
+          "code": "IM",
+          "name": "Index Medicus"
+        }
+      ]
+    },
+    "fullTextUrlList": {
+      "fullTextUrl": [
+        {
+          "availability": "Subscription required",
+          "availabilityCode": "S",
+          "documentStyle": "doi",
+          "site": "DOI",
+          "url": "https://doi.org/10.1007/s10238-025-01950-2"
+        },
+        {
+          "availability": "Open access",
+          "availabilityCode": "OA",
+          "documentStyle": "html",
+          "site": "Europe_PMC",
+          "url": "https://europepmc.org/articles/PMC12628408"
+        },
+        {
+          "availability": "Open access",
+          "availabilityCode": "OA",
+          "documentStyle": "pdf",
+          "site": "Europe_PMC",
+          "url": "https://europepmc.org/articles/PMC12628408?pdf=render"
+        }
+      ]
+    },
+    "isOpenAccess": "Y",
+    "inEPMC": "Y",
+    "inPMC": "Y",
+    "hasPDF": "Y",
+    "hasBook": "N",
+    "hasSuppl": "N",
+    "citedByCount": 8,
+    "hasData": "N",
+    "hasReferences": "Y",
+    "hasTextMinedTerms": "Y",
+    "hasDbCrossReferences": "N",
+    "hasLabsLinks": "N",
+    "license": "cc by-nc-nd",
+    "hasEvaluations": "N",
+    "authMan": "N",
+    "epmcAuthMan": "N",
+    "nihAuthMan": "N",
+    "hasTMAccessionNumbers": "N",
+    "dateOfCompletion": "2025-11-18",
+    "dateOfCreation": "2025-11-17",
+    "firstIndexDate": "2025-11-18",
+    "fullTextReceivedDate": "2025-11-24",
+    "dateOfRevision": "2025-11-21",
+    "electronicPublicationDate": "2025-11-18",
+    "firstPublicationDate": "2025-11-18"
+  },
+  {
+    "id": "41968103",
+    "source": "MED",
+    "pmid": "41968103",
+    "pmcid": "PMC13201069",
+    "fullTextIdList": {
+      "fullTextId": [
+        "PMC13201069"
+      ]
+    },
+    "doi": "10.1093/femsre/fuag017",
+    "title": "Epigenetic regulation and antimicrobial resistance: functional roles of DNA methylation.",
+    "authorString": "Daaboul R, El Hayek E, Sarraf F, Yazbek C, Yazbek C, Al Khoury C, Tokajian S.",
+    "authorList": {
+      "author": [
+        {
+          "fullName": "Daaboul R",
+          "firstName": "Rafca",
+          "lastName": "Daaboul",
+          "initials": "R",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Biological Sciences, School of Arts and Sciences, Lebanese American University, Byblos, P.O. Box 36, Lebanon."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "El Hayek E",
+          "firstName": "Elie",
+          "lastName": "El Hayek",
+          "initials": "E",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Biological Sciences, School of Arts and Sciences, Lebanese American University, Byblos, P.O. Box 36, Lebanon."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Sarraf F",
+          "firstName": "Fares",
+          "lastName": "Sarraf",
+          "initials": "F",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Biological Sciences, School of Arts and Sciences, Lebanese American University, Byblos, P.O. Box 36, Lebanon."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Yazbek C",
+          "firstName": "Charbel",
+          "lastName": "Yazbek",
+          "initials": "C",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Biological Sciences, School of Arts and Sciences, Lebanese American University, Byblos, P.O. Box 36, Lebanon."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Yazbek C",
+          "firstName": "Christ",
+          "lastName": "Yazbek",
+          "initials": "C",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Biological Sciences, School of Arts and Sciences, Lebanese American University, Byblos, P.O. Box 36, Lebanon."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Al Khoury C",
+          "firstName": "Charbel",
+          "lastName": "Al Khoury",
+          "initials": "C",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Biological Sciences, School of Arts and Sciences, Lebanese American University, Byblos, P.O. Box 36, Lebanon."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Tokajian S",
+          "firstName": "Sima",
+          "lastName": "Tokajian",
+          "initials": "S",
+          "authorId": {
+            "type": "ORCID",
+            "value": "0000-0002-3653-8940"
+          },
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Biological Sciences, School of Arts and Sciences, Lebanese American University, Byblos, P.O. Box 36, Lebanon."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "authorIdList": {
+      "authorId": [
+        {
+          "type": "ORCID",
+          "value": "0000-0002-3653-8940"
+        }
+      ]
+    },
+    "dataLinksTagsList": {
+      "dataLinkstag": [
+        "altmetrics"
+      ]
+    },
+    "journalInfo": {
+      "volume": "50",
+      "journalIssueId": 4082166,
+      "dateOfPublication": "2026 Jan",
+      "monthOfPublication": 1,
+      "yearOfPublication": 2026,
+      "printPublicationDate": "2026-01-01",
+      "journal": {
+        "title": "FEMS microbiology reviews",
+        "medlineAbbreviation": "FEMS Microbiol Rev",
+        "issn": "0168-6445",
+        "nlmid": "8902526",
+        "isoabbreviation": "FEMS Microbiol Rev",
+        "essn": "1574-6976"
+      }
+    },
+    "pubYear": "2026",
+    "pageInfo": "fuag017",
+    "abstractText": "The global rise of antimicrobial resistance (AMR) demands urgent attention. While genetic drivers are well studied, epigenetic mechanisms, particularly DNA methylation, are emerging as key contributors to bacterial adaptation under antibiotic pressure. This review examines the roles of N6-methyladenine (m6A), N4-methylcytosine (m4C), and 5-methylcytosine (m5C), each catalysed by distinct DNA methyltransferases (MTases), in regulating resistance-related processes, such as efflux pump expression, \u03b2-lactamase activity, and stress responses. Advances in long-read sequencing technologies, including SMRT and ONT, now enable single-base resolution detection of methylation and support strain-specific methylome mapping. These efforts reveal methylation patterns that are dynamic, strain-dependent, and environmentally responsive, complicating resistance profiling. Emerging applications for tackling methylation-linked AMR include methylation-aware diagnostics and CRISPR-based epigenetic editing. Tools like CRISPR-dCas9 fused to DNA methyltransferases enable targeted, reversible suppression of resistance genes regulated by methylation. Current findings position DNA methylation as both a regulator of AMR and a promising target for next-generation diagnostics and therapeutics. However, challenges remain, including the lack of validated biomarkers, inconsistent protocols, and difficulty interpreting mixed-species data. Integrating methylation profiles with transcriptomic and phenotypic data will be essential to fully understand and target resistance mechanisms.",
+    "affiliation": "Department of Biological Sciences, School of Arts and Sciences, Lebanese American University, Byblos, P.O. Box 36, Lebanon.",
+    "publicationStatus": "ppublish",
+    "language": "eng",
+    "pubModel": "Print",
+    "pubTypeList": {
+      "pubType": [
+        "review-article",
+        "Review",
+        "Journal Article"
+      ]
+    },
+    "meshHeadingList": {
+      "meshHeading": [
+        {
+          "majorTopic_YN": "Y",
+          "descriptorName": "Bacteria",
+          "meshQualifierList": {
+            "meshQualifier": [
+              {
+                "abbreviation": "DE",
+                "qualifierName": "drug effects",
+                "majorTopic_YN": "N"
+              },
+              {
+                "abbreviation": "GE",
+                "qualifierName": "genetics",
+                "majorTopic_YN": "N"
+              }
+            ]
+          }
+        },
+        {
+          "majorTopic_YN": "Y",
+          "descriptorName": "Anti-Bacterial Agents",
+          "meshQualifierList": {
+            "meshQualifier": [
+              {
+                "abbreviation": "PD",
+                "qualifierName": "pharmacology",
+                "majorTopic_YN": "N"
+              }
+            ]
+          }
+        },
+        {
+          "majorTopic_YN": "Y",
+          "descriptorName": "Drug Resistance, Bacterial",
+          "meshQualifierList": {
+            "meshQualifier": [
+              {
+                "abbreviation": "GE",
+                "qualifierName": "genetics",
+                "majorTopic_YN": "N"
+              }
+            ]
+          }
+        },
+        {
+          "majorTopic_YN": "Y",
+          "descriptorName": "DNA Methylation"
+        },
+        {
+          "majorTopic_YN": "Y",
+          "descriptorName": "Epigenesis, Genetic"
+        },
+        {
+          "majorTopic_YN": "N",
+          "descriptorName": "Gene Expression Regulation, Bacterial"
+        }
+      ]
+    },
+    "keywordList": {
+      "keyword": [
+        "DNA methylation",
+        "Methyltransferase",
+        "Antimicrobial resistance",
+        "Next-generation Sequencing",
+        "Multiomics",
+        "Methylation-based Diagnostics"
+      ]
+    },
+    "chemicalList": {
+      "chemical": [
+        {
+          "name": "Anti-Bacterial Agents",
+          "registryNumber": "0"
+        }
+      ]
+    },
+    "subsetList": {
+      "subset": [
+        {
+          "code": "IM",
+          "name": "Index Medicus"
+        }
+      ]
+    },
+    "fullTextUrlList": {
+      "fullTextUrl": [
+        {
+          "availability": "Subscription required",
+          "availabilityCode": "S",
+          "documentStyle": "doi",
+          "site": "DOI",
+          "url": "https://doi.org/10.1093/femsre/fuag017"
+        },
+        {
+          "availability": "Open access",
+          "availabilityCode": "OA",
+          "documentStyle": "html",
+          "site": "Europe_PMC",
+          "url": "https://europepmc.org/articles/PMC13201069"
+        },
+        {
+          "availability": "Open access",
+          "availabilityCode": "OA",
+          "documentStyle": "pdf",
+          "site": "Europe_PMC",
+          "url": "https://europepmc.org/articles/PMC13201069?pdf=render"
+        }
+      ]
+    },
+    "isOpenAccess": "Y",
+    "inEPMC": "Y",
+    "inPMC": "Y",
+    "hasPDF": "Y",
+    "hasBook": "N",
+    "hasSuppl": "N",
+    "citedByCount": 0,
+    "hasData": "N",
+    "hasReferences": "Y",
+    "hasTextMinedTerms": "Y",
+    "hasDbCrossReferences": "N",
+    "hasLabsLinks": "Y",
+    "license": "cc by",
+    "hasEvaluations": "N",
+    "authMan": "N",
+    "epmcAuthMan": "N",
+    "nihAuthMan": "N",
+    "hasTMAccessionNumbers": "N",
+    "dateOfCompletion": "2026-05-25",
+    "dateOfCreation": "2026-04-12",
+    "firstIndexDate": "2026-04-13",
+    "fullTextReceivedDate": "2026-05-27",
+    "dateOfRevision": "2026-06-21",
+    "firstPublicationDate": "2026-01-01"
+  }
+]

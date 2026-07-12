@@ -1,0 +1,7 @@
+{
+  "supported": false,
+  "provenance_db": null,
+  "provenance_acc": null,
+  "adjusted_confidence": 0.15,
+  "reason": "Reference facts show MarR regulates efflux pump genes conferring resistance to ciprofloxacin/tetracycline, not \u03b2-lactams."
+}

@@ -1,0 +1,60 @@
+{
+  "claims": [
+    {
+      "subject": "blaCSA",
+      "relation": "confers_resistance",
+      "object": "\u03b2-lactam antibiotics",
+      "object_kind": "drug",
+      "evidence_span": "\u03b2-lactam antibiotic resistance genes (ARGs)",
+      "confidence": 0.55
+    },
+    {
+      "subject": "blaCMA",
+      "relation": "confers_resistance",
+      "object": "\u03b2-lactam antibiotics",
+      "object_kind": "drug",
+      "evidence_span": "\u03b2-lactam antibiotic resistance genes (ARGs)",
+      "confidence": 0.55
+    },
+    {
+      "subject": "fos",
+      "relation": "implicates",
+      "object": "multidrug resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "Various resistance genes...fos...were detected",
+      "confidence": 0.35
+    },
+    {
+      "subject": "qacJ",
+      "relation": "implicates",
+      "object": "multidrug resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "Various resistance genes...qacJ...were detected",
+      "confidence": 0.35
+    },
+    {
+      "subject": "marA",
+      "relation": "implicates",
+      "object": "multidrug resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "Various resistance genes...marA...were detected",
+      "confidence": 0.35
+    },
+    {
+      "subject": "AcrAB-TolC",
+      "relation": "implicates",
+      "object": "multidrug resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "Various resistance genes...AcrAB-TolC...were detected",
+      "confidence": 0.35
+    },
+    {
+      "subject": "mcr-9.1",
+      "relation": "implicates",
+      "object": "multidrug resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "Various resistance genes...mcr-9.1...were detected",
+      "confidence": 0.35
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "claims": [
+    {
+      "subject": "acrB",
+      "relation": "confers_resistance",
+      "object": "fluoroquinolones",
+      "object_kind": "drug",
+      "evidence_span": "AcrAB-TolC pump is central to resistance against fluoroquinolones",
+      "confidence": 0.85
+    },
+    {
+      "subject": "acrB",
+      "relation": "confers_resistance",
+      "object": "ciprofloxacin",
+      "object_kind": "drug",
+      "evidence_span": "PA\u03b2N exposure reduced ciprofloxacin MICs by \u2265 fourfold in 80% of high acrB expression isolates",
+      "confidence": 0.75
+    },
+    {
+      "subject": "marA",
+      "relation": "implicates",
+      "object": "acrB",
+      "object_kind": "gene",
+      "evidence_span": "Strong positive correlations were observed between marA/soxS and acrB expression",
+      "confidence": 0.6
+    },
+    {
+      "subject": "soxS",
+      "relation": "implicates",
+      "object": "acrB",
+      "object_kind": "gene",
+      "evidence_span": "Strong positive correlations were observed between marA/soxS and acrB expression",
+      "confidence": 0.6
+    },
+    {
+      "subject": "AcrAB-TolC",
+      "relation": "reverts_with",
+      "object": "PA\u03b2N",
+      "object_kind": "mechanism",
+      "evidence_span": "PA\u03b2N-mediated efflux inhibition is associated with partial susceptibility restoration",
+      "confidence": 0.8
+    },
+    {
+      "subject": "AcrAB-TolC",
+      "relation": "is_target_of",
+      "object": "PA\u03b2N",
+      "object_kind": "drug",
+      "evidence_span": "Phenotypic validation of efflux activity was performed using PA\u03b2N, an AcrAB-TolC inhibitor",
+      "confidence": 0.9
+    }
+  ]
+}

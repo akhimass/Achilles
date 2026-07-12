@@ -1,0 +1,84 @@
+{
+  "claims": [
+    {
+      "subject": "RamA",
+      "relation": "confers_resistance",
+      "object": "tetracycline-class antibiotics",
+      "object_kind": "drug",
+      "evidence_span": "conferring a multidrug resistance phenotype, especially for tetracycline-class antibiotics",
+      "confidence": 0.9
+    },
+    {
+      "subject": "mlaFEDCB",
+      "relation": "confers_resistance",
+      "object": "tetracycline-class antibiotics",
+      "object_kind": "drug",
+      "evidence_span": "mlaEFDCB operon could mildly mediate resistance to the tetracycline family of antibiotics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "RamA",
+      "relation": "implicates",
+      "object": "mlaFEDCB",
+      "object_kind": "gene",
+      "evidence_span": "RamA could bind to the promoter region of mlaEFDCB operon",
+      "confidence": 0.9
+    },
+    {
+      "subject": "mlaE",
+      "relation": "confers_resistance",
+      "object": "tigecycline",
+      "object_kind": "drug",
+      "evidence_span": "MIC of tigecycline decreased fourfold... after mlaE-knockout",
+      "confidence": 0.9
+    },
+    {
+      "subject": "mlaE",
+      "relation": "confers_resistance",
+      "object": "doxycycline",
+      "object_kind": "drug",
+      "evidence_span": "MIC of doxycycline, minocycline, and eravacycline decreased twofold after mlaE-knockout",
+      "confidence": 0.8
+    },
+    {
+      "subject": "mlaE",
+      "relation": "confers_resistance",
+      "object": "minocycline",
+      "object_kind": "drug",
+      "evidence_span": "MIC of doxycycline, minocycline, and eravacycline decreased twofold after mlaE-knockout",
+      "confidence": 0.8
+    },
+    {
+      "subject": "mlaE",
+      "relation": "confers_resistance",
+      "object": "eravacycline",
+      "object_kind": "drug",
+      "evidence_span": "MIC of doxycycline, minocycline, and eravacycline decreased twofold after mlaE-knockout",
+      "confidence": 0.8
+    },
+    {
+      "subject": "ramA",
+      "relation": "confers_resistance",
+      "object": "SDS-EDTA",
+      "object_kind": "drug",
+      "evidence_span": "ramA- and mlaE-knockout strains exhibited greater sensitivity to sodium dodecyl sulfate (SDS)-EDTA",
+      "confidence": 0.85
+    },
+    {
+      "subject": "mlaE",
+      "relation": "confers_resistance",
+      "object": "SDS-EDTA",
+      "object_kind": "drug",
+      "evidence_span": "ramA- and mlaE-knockout strains exhibited greater sensitivity to sodium dodecyl sulfate (SDS)-EDTA",
+      "confidence": 0.85
+    },
+    {
+      "subject": "ramA",
+      "relation": "reverts_with",
+      "object": "SDS-EDTA sensitivity",
+      "object_kind": "mechanism",
+      "evidence_span": "sensitivity was restored by complementation with ramA and mlaE",
+      "confidence": 0.85
+    }
+  ]
+}

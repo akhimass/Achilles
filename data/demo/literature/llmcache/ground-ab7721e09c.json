@@ -1,0 +1,7 @@
+{
+  "supported": false,
+  "provenance_db": null,
+  "provenance_acc": null,
+  "adjusted_confidence": 0.2,
+  "reason": "Claim is too generic; reference facts describe specific efflux pumps/inhibitors, not a general 'efflux pump' entity conferring resistance."
+}

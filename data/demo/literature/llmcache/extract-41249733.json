@@ -1,0 +1,36 @@
+{
+  "claims": [
+    {
+      "subject": "disinfectants",
+      "relation": "confers_resistance",
+      "object": "antibiotics",
+      "object_kind": "drug",
+      "evidence_span": "can promote the emergence of bacterial resistance...cross-resistance to antibiotics",
+      "confidence": 0.7
+    },
+    {
+      "subject": "efflux pump activation",
+      "relation": "implicates",
+      "object": "disinfectant-induced antibiotic cross-resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "efflux pump activation...drive this process",
+      "confidence": 0.6
+    },
+    {
+      "subject": "alterations in membrane permeability",
+      "relation": "implicates",
+      "object": "disinfectant-induced antibiotic cross-resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "alterations in membrane permeability...drive this process",
+      "confidence": 0.6
+    },
+    {
+      "subject": "biofilm formation",
+      "relation": "implicates",
+      "object": "disinfectant-induced antibiotic cross-resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "biofilm formation, drive this process",
+      "confidence": 0.6
+    }
+  ]
+}

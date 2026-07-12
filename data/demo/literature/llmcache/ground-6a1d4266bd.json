@@ -1,0 +1,7 @@
+{
+  "supported": true,
+  "provenance_db": "CARD",
+  "provenance_acc": "ARO:0010003",
+  "adjusted_confidence": 0.85,
+  "reason": "CARD entry describes efflux pumps directly conferring multidrug resistance."
+}

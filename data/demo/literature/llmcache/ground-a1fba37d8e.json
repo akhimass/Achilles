@@ -1,0 +1,7 @@
+{
+  "supported": true,
+  "provenance_db": "CARD",
+  "provenance_acc": "ARO:3000798",
+  "adjusted_confidence": 0.8,
+  "reason": "MexF is part of MexEF-OprN efflux pump associated with multidrug resistance per CARD."
+}

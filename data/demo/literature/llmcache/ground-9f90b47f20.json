@@ -1,0 +1,7 @@
+{
+  "supported": true,
+  "provenance_db": "CARD",
+  "provenance_acc": "ARO:3007321",
+  "adjusted_confidence": 0.8,
+  "reason": "CARD entries describe efflux pumps removing antibiotics, implicating them in resistance."
+}

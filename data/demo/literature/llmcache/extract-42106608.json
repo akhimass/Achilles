@@ -1,0 +1,60 @@
+{
+  "claims": [
+    {
+      "subject": "ompK36",
+      "relation": "confers_resistance",
+      "object": "meropenem-vaborbactam",
+      "object_kind": "drug",
+      "evidence_span": "frameshift mutation in KpMVR1's ompK36 gene, reducing susceptibility to meropenem-vaborbactam",
+      "confidence": 0.85
+    },
+    {
+      "subject": "ompK36",
+      "relation": "confers_resistance",
+      "object": "imipenem-relebactam",
+      "object_kind": "drug",
+      "evidence_span": "reducing susceptibility to meropenem-vaborbactam and imipenem-relebactam",
+      "confidence": 0.85
+    },
+    {
+      "subject": "blaKPC-157",
+      "relation": "implicates",
+      "object": "imipenem",
+      "object_kind": "drug",
+      "evidence_span": "KPC-157 demonstrated decreased hydrolysis of imipenem and ceftazidime",
+      "confidence": 0.5
+    },
+    {
+      "subject": "blaKPC-157",
+      "relation": "implicates",
+      "object": "ceftazidime",
+      "object_kind": "drug",
+      "evidence_span": "decreased hydrolysis of imipenem and ceftazidime when compared with KPC-2",
+      "confidence": 0.5
+    },
+    {
+      "subject": "MarR",
+      "relation": "implicates",
+      "object": "AcrAB-TolC multidrug efflux pump",
+      "object_kind": "mechanism",
+      "evidence_span": "disrupted transcriptional repressor MarR and a destabilising mutation in AcrB",
+      "confidence": 0.6
+    },
+    {
+      "subject": "AcrB",
+      "relation": "implicates",
+      "object": "AcrAB-TolC multidrug efflux pump",
+      "object_kind": "mechanism",
+      "evidence_span": "destabilising mutation in AcrB, a component of the AcrAB-TolC multidrug efflux pump",
+      "confidence": 0.6
+    },
+    {
+      "subject": "fec operon",
+      "relation": "confers_resistance",
+      "object": "cefiderocol",
+      "object_kind": "drug",
+      "evidence_span": "possibly accounting for the cefiderocol resistance observed in this isolate",
+      "confidence": 0.6
+    }
+  ]
+}

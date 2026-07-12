@@ -1,0 +1,36 @@
+{
+  "claims": [
+    {
+      "subject": "efflux pump upregulation",
+      "relation": "confers_resistance",
+      "object": "eravacycline",
+      "object_kind": "drug",
+      "evidence_span": "Key resistance mechanisms in clinical isolates include efflux pump upregulation",
+      "confidence": 0.9
+    },
+    {
+      "subject": "ribosomal mutations",
+      "relation": "confers_resistance",
+      "object": "eravacycline",
+      "object_kind": "drug",
+      "evidence_span": "Key resistance mechanisms in clinical isolates include...ribosomal mutations",
+      "confidence": 0.9
+    },
+    {
+      "subject": "tet(X)",
+      "relation": "confers_resistance",
+      "object": "eravacycline",
+      "object_kind": "drug",
+      "evidence_span": "plasmid-mediated tet(X) genes",
+      "confidence": 0.9
+    },
+    {
+      "subject": "eravacycline structural modifications",
+      "relation": "reverts_with",
+      "object": "tetracycline resistance mechanisms",
+      "object_kind": "mechanism",
+      "evidence_span": "Its unique structural modifications help it overcome common tetracycline resistance mechanisms",
+      "confidence": 0.8
+    }
+  ]
+}

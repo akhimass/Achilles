@@ -1,0 +1,44 @@
+{
+  "claims": [
+    {
+      "subject": "ceftazidime resistance",
+      "relation": "sensitizes_to",
+      "object": "borrelidin A",
+      "object_kind": "drug",
+      "evidence_span": "resistance to one compound results in increased sensitivity to another",
+      "confidence": 0.9
+    },
+    {
+      "subject": "borrelidin A",
+      "relation": "reverts_with",
+      "object": "ceftazidime resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "borrelidin A prevented the evolution of clinical ceftazidime resistance",
+      "confidence": 0.85
+    },
+    {
+      "subject": "ceftazidime-borrelidin A co-dosing",
+      "relation": "reverts_with",
+      "object": "cross-resistance to antibiotics",
+      "object_kind": "mechanism",
+      "evidence_span": "co-dosed strains had reduced resistance and cross-resistance to all tested antibiotics",
+      "confidence": 0.85
+    },
+    {
+      "subject": "mobile-element insertion mutations",
+      "relation": "implicates",
+      "object": "borrelidin A resistance",
+      "object_kind": "mechanism",
+      "evidence_span": "resulted in an increased number of mobile-element insertion mutations",
+      "confidence": 0.6
+    },
+    {
+      "subject": "novel mutation",
+      "relation": "confers_resistance",
+      "object": "borrelidin A",
+      "object_kind": "drug",
+      "evidence_span": "a possible novel borrelidin A resistance mutation",
+      "confidence": 0.6
+    }
+  ]
+}
