@@ -19,6 +19,15 @@ async function get<T>(path: string): Promise<T> {
 
 export const api = {
   health: () => get<{ status: string }>("/health"),
+  // Direct download URL for the citable evidence-graph export (JSON or CSV).
+  exportEvidenceUrl: (
+    locus: string,
+    format: "json" | "csv",
+    organism = "Burkholderia multivorans",
+  ) =>
+    `${BASE}/api/export/evidence?gene=${encodeURIComponent(locus)}&organism=${encodeURIComponent(
+      organism,
+    )}&format=${format}`,
   lineage: (organism: string) =>
     get<LineageGraph>(`/api/graph/lineage?organism=${encodeURIComponent(organism)}`),
   strain: (id: string) => get<StrainDetail>(`/api/graph/strain?id=${encodeURIComponent(id)}`),
