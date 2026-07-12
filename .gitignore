@@ -32,3 +32,6 @@ out/
 
 # git filter-branch leftover (unlink blocked on this mount; rm -rf on host)
 .git-rewrite/
+
+# generated seed bundle (regenerate via make seed-sql)
+achilles_public_seed.sql

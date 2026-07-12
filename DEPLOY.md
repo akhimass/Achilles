@@ -88,3 +88,22 @@ railway variables --service <backend> --set 'DATABASE_URL=postgresql+asyncpg://�
 ```
 
 If `CREATE EXTENSION vector` errors, the Postgres image isn't pgvector — redo step 1.2.
+
+---
+
+## Seeding a managed Postgres (Supabase) without a direct connection
+
+When the app's environment can't open a Postgres wire connection to the managed DB
+(sandbox egress, etc.), seed with a generated SQL bundle instead of live asyncpg:
+
+```bash
+# 1) create the schema (pgvector + tables) and 2) load the PUBLIC graph
+make seed-sql                                   # writes achilles_public_seed.sql (public only)
+psql "$SUPABASE_DATABASE_URL" -f db/schema.sql -f achilles_public_seed.sql
+```
+
+The bundle is deterministic and idempotent (ON CONFLICT upserts), PUBLIC-only (PubMLST
++ committed caches — never BurkData), and loads ~12 genes, 70 strains, 490 variants,
+96 papers, 61 evidence edges, 5 ranked targets. Point the backend at it with
+`DATABASE_URL=postgresql+asyncpg://…` (Supabase → Connect → SQLAlchemy/asyncpg URI;
+append `?prepared_statement_cache_size=0` if using the transaction pooler).

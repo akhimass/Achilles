@@ -18,6 +18,9 @@ seed:          ## load the demo dataset (BurkData if present locally, else publi
 seed-public:   ## load ONLY public data (PubMLST + committed caches) — deploy/repro seed
 	cd backend && python -m app.ingestion.seed --public
 
+seed-sql:      ## export the PUBLIC seed as a SQL bundle (for Supabase/any Postgres)
+	cd backend && python -m app.ingestion.export_seed_sql ../achilles_public_seed.sql
+
 test:
 	cd backend && pytest -q
 
