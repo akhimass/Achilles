@@ -37,7 +37,7 @@ _EDGES_SQL = """
            p.title AS paper_title, p.year AS paper_year
     FROM evidence_edges e
     LEFT JOIN papers p ON p.pmid = e.provenance_pmid
-    WHERE e.source_type = 'gene' AND e.source_id = ANY(:gene_ids)
+    WHERE e.source_type = 'gene' AND CAST(e.source_id AS text) = ANY(:gene_ids)
 """
 
 _STRAIN_FLAGS_SQL = """
@@ -45,7 +45,7 @@ _STRAIN_FLAGS_SQL = """
            BOOL_OR(TRUE)       AS in_strain,
            BOOL_OR(is_flipper) AS strain_flipper
     FROM variants
-    WHERE strain_id = :strain_id AND gene_id = ANY(:gene_ids)
+    WHERE CAST(strain_id AS text) = :strain_id AND CAST(gene_id AS text) = ANY(:gene_ids)
     GROUP BY gene_id
 """
 
