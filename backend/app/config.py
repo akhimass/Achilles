@@ -48,6 +48,11 @@ class Settings(BaseSettings):
     tamarind_base: str = "https://app.tamarind.bio/api/"
     tamarind_poll_max_seconds: int = 900
     tamarind_max_jobs: int = 25
+    # AlphaFold job settings (see Tamarind /submit-job docs). numModels is a string
+    # "1".."5"; "1" keeps the demo fast. project_tag optionally files jobs under a
+    # Tamarind ProjectId.
+    tamarind_num_models: str = "1"
+    tamarind_project_tag: str = ""
 
     @property
     def cors_origins(self) -> list[str]:
