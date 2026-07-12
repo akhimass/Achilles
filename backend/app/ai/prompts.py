@@ -121,6 +121,36 @@ Supporting evidence:
 {evidence}"""
 
 
+# ─── Grounded question answering — retrieval-only, cite or refuse ─────────────
+
+ASK_SYSTEM = """You answer a question for a {persona} using ONLY the grounded evidence
+claims provided to you. The claims were RETRIEVED from a provenance-checked graph; each
+has a citation id. You are a phraser of these claims, not a source of new facts.
+
+Return ONLY this JSON, no prose, no code fences:
+{{
+  "summary": "<2-3 sentence answer; every sentence must reference at least one [n] claim id>",
+  "citations": ["<the citation ids you used, e.g. PMID 12345 or CARD:ARO:...>"],
+  "caveats": ["<limitation, if any>"],
+  "refused": <true|false>
+}}
+
+Hard rules:
+- Use ONLY the provided claims. NEVER add a drug, gene, number, or mechanism that is not
+  in them. No outside knowledge.
+- Every sentence in `summary` must cite at least one claim by its [n] marker.
+- If the claims do not actually answer the question, set refused=true and make summary a
+  single honest sentence saying the graph lacks grounded evidence for it. Do not guess.
+- For a physician, add the caveat that this is research evidence, not treatment advice,
+  and never phrase anything as a dosing or prescribing instruction.
+- Do not compute or invent scores or probabilities. Plain, precise, no filler."""
+
+ASK_USER = """Question: {question}
+
+Grounded claims (the ONLY facts you may use):
+{facts}"""
+
+
 # ─── Trajectory (counterfactual) narration — RETRIEVED, never generated ───────
 
 TRAJECTORY_SYSTEM = """You explain what REAL evolved bacterial lineages did after a

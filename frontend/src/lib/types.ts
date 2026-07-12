@@ -407,6 +407,47 @@ export interface RetrodictionReport {
   false_anticipated: { gene: string; locus: string; target_terms: string[] }[];
 }
 
+// Grounded Q&A (from /api/ask) — answers only from cited graph evidence, or refuses.
+export interface AskProvenance {
+  pmid?: string | null;
+  pubmed_url?: string | null;
+  db?: string | null;
+  acc?: string | null;
+  ref_url?: string | null;
+}
+export interface AskClaim {
+  kind: "paper" | "gene" | "edge";
+  title?: string | null;
+  snippet?: string | null;
+  relation?: string | null;
+  gene_locus?: string | null;
+  confidence?: number | null;
+  grounded: boolean;
+  score?: number | null;
+  provenance: AskProvenance;
+  citation?: string | null;
+}
+export interface AskSynthesis {
+  summary: string;
+  citations: string[];
+  caveats: string[];
+  refused: boolean;
+  source: "llm";
+}
+export type AskPersona = "researcher" | "physician" | "computational";
+export interface AskResponse {
+  question: string;
+  persona: AskPersona;
+  intent: "treatment" | "target" | "provenance" | "mechanism" | "general";
+  grounded: boolean;
+  refused: boolean;
+  claims: AskClaim[];
+  deterministic_summary: string;
+  caveats: string[];
+  answer: AskSynthesis | null;
+  counts: { claims: number; grounded: number; retrieved: number };
+}
+
 // Red-team verdict — a judge-typed claim adjudicated against the grounded graph.
 export interface RedTeamVerdict {
   claim: {

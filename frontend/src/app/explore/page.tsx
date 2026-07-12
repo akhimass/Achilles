@@ -19,6 +19,7 @@ import { ValidationPanel } from "@/components/ValidationPanel";
 import { RetrodictionPanel } from "@/components/RetrodictionPanel";
 import { TrustBar } from "@/components/TrustBar";
 import { HowItWorks } from "@/components/HowItWorks";
+import { AskPanel } from "@/components/AskPanel";
 import { ConsoleNav, PERSONAS, type Persona, type NavSection } from "@/components/ConsoleNav";
 
 const ORGANISM = "Burkholderia multivorans";
@@ -31,6 +32,7 @@ const DEFAULT_GENE: GeneSelection = {
 // serves most; the sidebar filters to a persona's path (and "Everything" shows it all).
 const SECTIONS: NavSection[] = [
   { id: "overview", label: "Overview", group: "Start", personas: ["researcher", "physician", "computational"] },
+  { id: "ask", label: "Ask Achilles", group: "Start", personas: ["researcher", "physician", "computational"] },
   { id: "prove", label: "Prove it", group: "Trust layer", personas: ["computational", "physician"] },
   { id: "lineage", label: "Strains & lineage", group: "Evidence", personas: ["researcher"] },
   { id: "evidence", label: "Search & claims", group: "Evidence", personas: ["researcher", "computational"] },
@@ -41,6 +43,7 @@ const SECTIONS: NavSection[] = [
 
 const CHAPTERS: Record<string, { kicker: string; title: string }> = {
   overview: { kicker: "Start", title: "Active cohort & guarantees" },
+  ask: { kicker: "Ask", title: "Ask the evidence graph" },
   prove: { kicker: "Trust layer", title: "Prove it — recall, refusal, foresight" },
   lineage: { kicker: "Evidence in", title: "Strains & lineage" },
   evidence: { kicker: "Evidence graph", title: "Search & grounded claims" },
@@ -126,6 +129,10 @@ export default function Page() {
           <Chapter id="overview" visible={visible}>
             <Hero overview={overview} status={status} />
             <TrustBar />
+          </Chapter>
+
+          <Chapter id="ask" visible={visible}>
+            <AskPanel persona={persona} />
           </Chapter>
 
           <Chapter id="prove" visible={visible}>

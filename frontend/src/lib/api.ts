@@ -14,6 +14,8 @@ import type {
   RedTeamVerdict,
   RetrodictionReport,
   DockingResponse,
+  AskResponse,
+  AskPersona,
 } from "./types";
 
 const BASE = process.env.NEXT_PUBLIC_API_BASE ?? "http://localhost:8000";
@@ -79,6 +81,10 @@ export const api = {
         (strainId ? `&strain_id=${encodeURIComponent(strainId)}` : ""),
     ),
   search: (q: string) => get<SearchResponse>(`/api/search?q=${encodeURIComponent(q)}`),
+  ask: (q: string, persona: AskPersona) =>
+    get<AskResponse>(
+      `/api/ask?q=${encodeURIComponent(q)}&persona=${persona}&narrate=true`,
+    ),
   validation: () => get<ValidationReport>("/api/validation"),
   docking: () => get<DockingResponse>("/api/docking"),
   retrodiction: (cutoff: number) =>

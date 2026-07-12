@@ -1,0 +1,274 @@
+"use client";
+// Ask Achilles — the grounded question box, built to be the OPPOSITE of a chatbot.
+// It answers ONLY from cited evidence retrieved from the graph: every claim is a numbered
+// card with its provenance and an evidence-strength bar, the optional model synthesis may
+// only phrase those numbered claims, and when nothing is grounded it REFUSES rather than
+// fabricate. Persona (researcher / physician / computational) sets the lens and caveats.
+import { useEffect, useMemo, useState } from "react";
+import { api } from "@/lib/api";
+import { Panel, Badge } from "./ui";
+import type { AskResponse, AskClaim, AskPersona } from "@/lib/types";
+
+const PERSONA_LABEL: Record<AskPersona, string> = {
+  researcher: "Researcher",
+  physician: "Physician",
+  computational: "Computational",
+};
+
+const EXAMPLES: Record<AskPersona, string[]> = {
+  researcher: [
+    "How does MarR drive efflux?",
+    "What confers ciprofloxacin resistance?",
+    "Is AraC/MarA a good target?",
+  ],
+  physician: [
+    "What can follow meropenem resistance?",
+    "Is cycling supported here?",
+    "What re-sensitizes after ceftazidime?",
+  ],
+  computational: [
+    "What's the provenance for MarR → efflux?",
+    "Which claims are reference-corroborated?",
+    "How is tigecycline resistance grounded?",
+  ],
+};
+
+export function AskPanel({ persona: pagePersona }: { persona?: string }) {
+  const seed: AskPersona =
+    pagePersona === "physician" || pagePersona === "computational"
+      ? pagePersona
+      : "researcher";
+  const [persona, setPersona] = useState<AskPersona>(seed);
+  const [q, setQ] = useState("");
+  const [data, setData] = useState<AskResponse | null>(null);
+  const [status, setStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
+
+  // Follow the sidebar persona when it changes to a concrete one.
+  useEffect(() => {
+    if (pagePersona === "physician" || pagePersona === "computational" || pagePersona === "researcher")
+      setPersona(pagePersona);
+  }, [pagePersona]);
+
+  const run = (question: string) => {
+    const text = question.trim();
+    if (!text) return;
+    setQ(text);
+    setStatus("loading");
+    api
+      .ask(text, persona)
+      .then((d) => {
+        setData(d);
+        setStatus("ready");
+      })
+      .catch(() => setStatus("error"));
+  };
+
+  return (
+    <Panel
+      title="Ask Achilles"
+      aside={<span className="font-mono text-[0.68rem] text-faint">cited or it refuses</span>}
+    >
+      <p className="mb-3 text-[0.8rem] leading-relaxed text-muted">
+        Ask in plain language. The answer is built <span className="text-text">only from
+        grounded evidence</span> in the graph — every claim numbered and cited — and the
+        engine <span className="text-text">refuses</span> when nothing supports it. Not a
+        chatbot: no ungrounded text.
+      </p>
+
+      {/* Persona lens */}
+      <div className="mb-2.5 inline-flex rounded-lg border border-line/12 bg-surface2/40 p-0.5">
+        {(Object.keys(PERSONA_LABEL) as AskPersona[]).map((p) => (
+          <button
+            key={p}
+            onClick={() => setPersona(p)}
+            className={
+              "rounded-md px-2.5 py-1 text-[0.72rem] font-medium transition " +
+              (persona === p ? "bg-accent/15 text-accentStrong" : "text-muted hover:text-text")
+            }
+          >
+            {PERSONA_LABEL[p]}
+          </button>
+        ))}
+      </div>
+
+      {/* Query box */}
+      <div className="flex gap-2">
+        <input
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && run(q)}
+          placeholder={`Ask as a ${PERSONA_LABEL[persona].toLowerCase()}…`}
+          className="min-w-0 flex-1 rounded-lg border border-line/15 bg-surface/60 px-3 py-2 text-sm text-text outline-none placeholder:text-faint focus:border-accent/40"
+        />
+        <button
+          onClick={() => run(q)}
+          disabled={status === "loading" || !q.trim()}
+          className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-[rgb(var(--bg))] transition hover:shadow-glow-sm disabled:opacity-40"
+        >
+          {status === "loading" ? "…" : "Ask"}
+        </button>
+      </div>
+
+      {/* Examples */}
+      <div className="mt-2 flex flex-wrap gap-1.5">
+        {EXAMPLES[persona].map((ex) => (
+          <button
+            key={ex}
+            onClick={() => run(ex)}
+            className="rounded-full border border-line/12 bg-surface2/40 px-2.5 py-1 text-[0.68rem] text-muted transition hover:border-accent/30 hover:text-text"
+          >
+            {ex}
+          </button>
+        ))}
+      </div>
+
+      {status === "error" && (
+        <p className="mt-3 text-xs text-muted">Ask service offline — start the API and retry.</p>
+      )}
+      {status === "loading" && <div className="mt-3 skeleton h-24 rounded-xl" />}
+      {status === "ready" && data && <Answer data={data} />}
+    </Panel>
+  );
+}
+
+function Answer({ data }: { data: AskResponse }) {
+  if (data.refused) {
+    return (
+      <div className="mt-3 animate-fade rounded-xl border border-amber/25 bg-amber/[0.06] p-3">
+        <div className="mb-1 flex items-center gap-1.5 text-[0.66rem] font-semibold uppercase tracking-[0.12em] text-amber">
+          Refused — no grounded evidence
+        </div>
+        <p className="text-[0.8rem] leading-relaxed text-muted">{data.deterministic_summary}</p>
+      </div>
+    );
+  }
+  return (
+    <div className="mt-3 animate-fade space-y-3">
+      {/* Grounded answer (LLM synthesis if present, else the deterministic summary) */}
+      <div className="rounded-xl border border-accent/25 bg-accent/[0.05] p-3">
+        <div className="mb-1 flex items-center justify-between gap-2">
+          <span className="text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-accentStrong">
+            {data.answer ? "Answer · synthesized from cited claims" : "Answer · grounded retrieval"}
+          </span>
+          <Badge tone="accent">
+            {data.counts.claims} cited · {data.intent}
+          </Badge>
+        </div>
+        <p className="text-[0.82rem] leading-relaxed text-text">
+          {data.answer ? data.answer.summary : data.deterministic_summary}
+        </p>
+        {data.answer && data.answer.citations.length > 0 && (
+          <div className="mt-2 flex flex-wrap gap-1">
+            {data.answer.citations.map((c) => (
+              <span
+                key={c}
+                className="rounded-md bg-line/8 px-1.5 py-0.5 font-mono text-[0.6rem] text-muted ring-1 ring-inset ring-line/15"
+              >
+                {c}
+              </span>
+            ))}
+          </div>
+        )}
+        {!data.answer && (
+          <p className="mt-1.5 text-[0.66rem] text-faint">
+            Model narration is off (no key set) — showing the retrieved cited evidence
+            directly. The claims below are the answer.
+          </p>
+        )}
+      </div>
+
+      {/* Evidence cards — the real, cited output */}
+      <div>
+        <div className="mb-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-faint">
+          Evidence · {data.counts.claims} grounded claim{data.counts.claims === 1 ? "" : "s"}
+        </div>
+        <div className="space-y-2">
+          {data.claims.map((c, i) => (
+            <ClaimCard key={i} n={i + 1} c={c} />
+          ))}
+        </div>
+      </div>
+
+      {data.caveats.length > 0 && (
+        <div className="rounded-lg border border-amber/25 bg-amber/[0.06] p-2.5">
+          <ul className="space-y-1">
+            {data.caveats.map((cv, i) => (
+              <li key={i} className="flex gap-1.5 text-[0.7rem] leading-relaxed text-muted">
+                <span className="mt-[0.34rem] h-1 w-1 shrink-0 rounded-full bg-amber/60" />
+                {cv}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ClaimCard({ n, c }: { n: number; c: AskClaim }) {
+  const href = c.provenance?.ref_url || c.provenance?.pubmed_url || undefined;
+  const conf = typeof c.confidence === "number" ? Math.max(0, Math.min(1, c.confidence)) : null;
+  return (
+    <div className="rounded-xl border border-line/10 bg-surface2/30 p-3">
+      <div className="flex items-start gap-2.5">
+        <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-md bg-accent/12 font-mono text-[0.62rem] text-accentStrong">
+          {n}
+        </span>
+        <div className="min-w-0 flex-1">
+          <div className="flex items-start justify-between gap-2">
+            <span className="text-[0.82rem] leading-snug text-text">{c.title}</span>
+            <span className="shrink-0 rounded-md bg-line/8 px-1.5 py-0.5 font-mono text-[0.56rem] uppercase text-faint">
+              {c.kind}
+            </span>
+          </div>
+
+          {/* Evidence-strength bar — real, per-claim confidence (edges) */}
+          {conf !== null ? (
+            <div className="mt-1.5 flex items-center gap-2">
+              <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-line/10">
+                <div
+                  className="h-full rounded-full bg-accent"
+                  style={{ width: `${Math.round(conf * 100)}%`, opacity: c.grounded ? 1 : 0.5 }}
+                />
+              </div>
+              <span className="font-mono text-[0.6rem] text-faint">{conf.toFixed(2)}</span>
+            </div>
+          ) : (
+            <div className="mt-1 text-[0.6rem] text-faint">reference annotation</div>
+          )}
+
+          <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
+            {c.relation && (
+              <span className="rounded-md bg-line/6 px-1.5 py-0.5 font-mono text-[0.58rem] text-muted">
+                {c.relation.replace(/_/g, " ")}
+              </span>
+            )}
+            {c.citation &&
+              (href ? (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-md bg-accent/10 px-1.5 py-0.5 font-mono text-[0.58rem] text-accentStrong ring-1 ring-inset ring-accent/25 hover:brightness-110"
+                >
+                  {c.citation}
+                </a>
+              ) : (
+                <span className="rounded-md bg-line/6 px-1.5 py-0.5 font-mono text-[0.58rem] text-muted">
+                  {c.citation}
+                </span>
+              ))}
+            <span
+              className={
+                "rounded-md px-1.5 py-0.5 text-[0.56rem] font-semibold uppercase " +
+                (c.grounded ? "bg-accent/10 text-accentStrong" : "bg-line/8 text-faint")
+              }
+            >
+              {c.grounded ? "grounded" : "abstract"}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
