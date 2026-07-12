@@ -29,3 +29,6 @@ out/
 
 # TS incremental build info (local build artifact)
 *.tsbuildinfo
+
+# git filter-branch leftover (unlink blocked on this mount; rm -rf on host)
+.git-rewrite/

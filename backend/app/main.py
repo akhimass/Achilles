@@ -14,6 +14,7 @@ from app.routers import (
     export,
     graph,
     literature,
+    search,
     structure,
     targets,
     trajectory,
@@ -36,6 +37,7 @@ app.include_router(literature.router)
 app.include_router(treatment.router)
 app.include_router(trajectory.router)
 app.include_router(export.router)
+app.include_router(search.router)
 
 
 @app.get("/health")

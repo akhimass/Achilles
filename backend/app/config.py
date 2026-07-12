@@ -31,6 +31,15 @@ class Settings(BaseSettings):
     model_reason: str = "claude-opus-4-8"
     embedding_dim: int = 1024
 
+    # Embeddings for the pgvector semantic-search path (optional). Provider "none"
+    # keeps search on the deterministic lexical ranker (always works, no key). An
+    # OpenAI-compatible endpoint (base + key + model) populates papers.embedding via
+    # the make_embeddings_snapshot builder; never hard-code a key in a module.
+    embed_provider: str = "none"  # "none" | "openai"
+    embed_base: str = "https://api.openai.com/v1"
+    embed_model: str = "text-embedding-3-small"
+    embed_api_key: str = ""
+
     # External public data sources
     europepmc_base: str = "https://www.ebi.ac.uk/europepmc/webservices/rest"
     card_base: str = "https://card.mcmaster.ca"
