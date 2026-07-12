@@ -70,7 +70,11 @@ export default function Page() {
         <EvidencePanel gene={selectedGene} />
 
         <section className="stagger grid gap-5 md:grid-cols-2">
-          <TargetGraph strainId={selectedId} />
+          <TargetGraph
+            strainId={selectedId}
+            selectedLocus={selectedGene?.locus ?? null}
+            onViewStructure={setSelectedGene}
+          />
           <CyclingView organism={ORGANISM} />
         </section>
 
