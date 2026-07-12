@@ -11,6 +11,7 @@ import { Insights } from "@/components/Insights";
 import { TargetGraph } from "@/components/TargetGraph";
 import { EvidencePanel } from "@/components/EvidencePanel";
 import { CyclingView } from "@/components/CyclingView";
+import { TrajectoryPanel } from "@/components/TrajectoryPanel";
 import { HowItWorks } from "@/components/HowItWorks";
 
 const ORGANISM = "Burkholderia multivorans";
@@ -28,6 +29,17 @@ export default function Page() {
 
   const selectedNode = selectedId ? (byId.get(selectedId) ?? null) : null;
   const maxFlip = overview?.maxFlip ?? 1;
+
+  // Resolve a backing-strain label (external id) from the trajectory beat back to a
+  // lineage node so a judge can click a real backing strain and select it.
+  const selectStrainByLabel = (label: string) => {
+    for (const [id, node] of byId) {
+      if (node.label === label) {
+        setSelectedId(id);
+        return;
+      }
+    }
+  };
 
   return (
     <div className="min-h-screen">
@@ -69,6 +81,8 @@ export default function Page() {
         </section>
 
         <EvidencePanel gene={selectedGene} />
+
+        <TrajectoryPanel strainId={selectedId} onSelectStrainLabel={selectStrainByLabel} />
 
         <section className="grid gap-5 md:grid-cols-2">
           <TargetGraph
