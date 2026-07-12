@@ -335,6 +335,59 @@ export interface ValidationReport {
   };
 }
 
+// Retrodiction — time-split foresight over the grounded graph (from /api/validation/retrodiction).
+export type RetroStatus =
+  | "known_by_cutoff"
+  | "anticipated_drug"
+  | "anticipated_mechanism"
+  | "not_anticipable"
+  | "unconfirmed";
+export interface RetroSignal {
+  relation?: string | null;
+  target?: string | null;
+  year?: number | null;
+  grounded?: boolean;
+  provenance?: {
+    pmid?: string | null;
+    pubmed_url?: string | null;
+    db?: string | null;
+    acc?: string | null;
+    ref_url?: string | null;
+  };
+}
+export interface RetroPositive {
+  gene: string;
+  locus: string;
+  relation: string;
+  target_terms: string[];
+  citation?: string | null;
+  note?: string | null;
+  status: RetroStatus;
+  confirm_year: number | null;
+  confirming_edge: RetroSignal | null;
+  pre_cutoff_signal: RetroSignal[];
+}
+export interface RetrodictionReport {
+  organism: string;
+  cutoff: number;
+  metrics: {
+    cutoff: number;
+    positives: number;
+    known_by_cutoff: number;
+    held_out: number;
+    anticipated: number;
+    anticipated_drug: number;
+    anticipated_mechanism: number;
+    not_anticipable: number;
+    unconfirmed: number;
+    anticipation_rate: number;
+    false_anticipations: number;
+    clean: boolean;
+  };
+  positives: RetroPositive[];
+  false_anticipated: { gene: string; locus: string; target_terms: string[] }[];
+}
+
 // Red-team verdict — a judge-typed claim adjudicated against the grounded graph.
 export interface RedTeamVerdict {
   claim: {

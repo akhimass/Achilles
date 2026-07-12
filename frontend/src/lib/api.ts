@@ -12,6 +12,7 @@ import type {
   UploadResult,
   ValidationReport,
   RedTeamVerdict,
+  RetrodictionReport,
   DockingResponse,
 } from "./types";
 
@@ -77,6 +78,8 @@ export const api = {
   search: (q: string) => get<SearchResponse>(`/api/search?q=${encodeURIComponent(q)}`),
   validation: () => get<ValidationReport>("/api/validation"),
   docking: () => get<DockingResponse>("/api/docking"),
+  retrodiction: (cutoff: number) =>
+    get<RetrodictionReport>(`/api/validation/retrodiction?cutoff=${cutoff}`),
   redteam: (gene: string, target: string) =>
     get<RedTeamVerdict>(
       `/api/validation/redteam?gene=${encodeURIComponent(gene)}&target=${encodeURIComponent(target)}`,

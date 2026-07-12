@@ -99,6 +99,167 @@ def adjudicate(gene: str | None, target: str | None, edges: list[dict], relation
                       "refuses it rather than fabricate support."}
 
 
+# ─── Retrodiction: time-split foresight, not just recall ─────────────────────
+#
+# A search box can only tell you what a paper already says. The stronger claim is
+# FORESIGHT: freeze the evidence at a cutoff year, hide everything published after it,
+# and ask whether the pre-cutoff graph already pointed at a relationship that a LATER
+# paper went on to confirm. This is a held-out test in TIME — harder than cross-lab
+# generalization, and impossible for a retrieval tool to fake.
+#
+# Deterministic and honest: it separates "already grounded before the cutoff" (not a
+# win) from "anticipated" (pre-cutoff signal pointed here) from "not anticipable" (we
+# could NOT have called it — no pre-cutoff signal). Anticipation is graded: drug-level
+# (a pre-cutoff edge named the same drug) is stronger than mechanism-level (the gene was
+# already grounded as a resistance/efflux driver). Negatives are run too: a false claim
+# must never be "anticipated" — foresight without fabrication.
+
+# Relations that mean "this gene drives resistance" — the mechanism-level signal.
+_RESISTANCE_RELATIONS = {"confers_resistance", "implicates", "is_target_of", "sensitizes_to"}
+
+
+def _edge_year(edge: dict) -> int | None:
+    y = edge.get("year")
+    try:
+        return int(y) if y is not None else None
+    except (TypeError, ValueError):
+        return None
+
+
+def _term_hit(control: dict, edge: dict) -> bool:
+    """Does this edge's target text mention any of the control's target terms?"""
+    terms = [t.lower() for t in control.get("target_terms", [])]
+    target = (edge.get("target") or "").lower()
+    return bool(terms) and any(term in target for term in terms)
+
+
+def _control_matches(control: dict, edge: dict) -> bool:
+    """Same locus + relation + a target-term hit (the confirmation match)."""
+    return (
+        edge.get("locus") == control["locus"]
+        and edge.get("relation") == control["relation"]
+        and _term_hit(control, edge)
+    )
+
+
+def _retrodict_one(control: dict, edges: list[dict], cutoff: int) -> dict:
+    """Classify one control under a time cutoff. Pure.
+
+    Statuses:
+      known_by_cutoff       — a grounded confirming edge already exists at/<= cutoff.
+      anticipated_drug      — confirmation is post-cutoff, but a pre-cutoff edge named
+                              the same drug/target (specific foresight).
+      anticipated_mechanism — confirmation is post-cutoff; no drug-specific pre-cutoff
+                              hit, but the gene was already grounded as a resistance/
+                              efflux driver pre-cutoff (mechanism-level foresight).
+      not_anticipable       — confirmation is post-cutoff and there is NO pre-cutoff
+                              signal — an honest miss, not a fabricated call.
+      unconfirmed           — no grounded confirming edge exists at any date.
+    """
+    grounded_conf = [
+        e for e in edges if _control_matches(control, e) and e.get("grounded")
+    ]
+    if not grounded_conf:
+        return {"status": "unconfirmed", "confirm_year": None,
+                "pre_cutoff_signal": [], "confirming_edge": None}
+
+    def _y(e: dict) -> int:
+        return _edge_year(e) if _edge_year(e) is not None else 0
+
+    earliest = min(grounded_conf, key=_y)
+    confirm_year = _edge_year(earliest)
+
+    # Grounded confirmation known at/<= cutoff → not a retrodiction win.
+    if any((_edge_year(e) or 0) <= cutoff for e in grounded_conf):
+        return {"status": "known_by_cutoff", "confirm_year": confirm_year,
+                "pre_cutoff_signal": [], "confirming_edge": earliest}
+
+    # Held out: confirmation is strictly post-cutoff. Look for pre-cutoff signal.
+    locus = control["locus"]
+    drug_sig = [
+        e for e in edges
+        if e.get("locus") == locus
+        and (_edge_year(e) is not None and _edge_year(e) <= cutoff)
+        and _term_hit(control, e)
+    ]
+    mech_sig = [
+        e for e in edges
+        if e.get("locus") == locus
+        and e.get("grounded")
+        and (_edge_year(e) is not None and _edge_year(e) <= cutoff)
+        and e.get("relation") in _RESISTANCE_RELATIONS
+    ]
+    if drug_sig:
+        status, signal = "anticipated_drug", drug_sig
+    elif mech_sig:
+        status, signal = "anticipated_mechanism", mech_sig
+    else:
+        status, signal = "not_anticipable", []
+    return {"status": status, "confirm_year": confirm_year,
+            "pre_cutoff_signal": signal[:4], "confirming_edge": earliest}
+
+
+def retrodict(benchmark: dict, edges: list[dict], cutoff: int) -> dict:
+    """Time-split foresight report over the grounded graph. Pure and deterministic.
+
+    Freezes evidence at ``cutoff`` and measures how many later-confirmed relationships
+    the pre-cutoff graph already pointed at — while proving no FALSE claim is ever
+    "anticipated" (foresight without fabrication).
+    """
+    positives = []
+    for c in benchmark.get("positives", []):
+        r = _retrodict_one(c, edges, cutoff)
+        positives.append({
+            "gene": c.get("gene", c["locus"]), "locus": c["locus"],
+            "relation": c["relation"], "target_terms": c.get("target_terms", []),
+            "citation": c.get("citation"), "note": c.get("note"),
+            **r,
+            "confirming_edge": _slim(r.get("confirming_edge")),
+            "pre_cutoff_signal": [_slim(e) for e in r.get("pre_cutoff_signal", [])],
+        })
+
+    # Precision under time-split: a false control must never be "anticipated".
+    false_anticipated = []
+    for c in benchmark.get("negatives", []):
+        r = _retrodict_one(c, edges, cutoff)
+        if r["status"].startswith("anticipated"):
+            false_anticipated.append({"gene": c.get("gene", c["locus"]),
+                                      "locus": c["locus"], "target_terms": c.get("target_terms", [])})
+
+    held_out = [p for p in positives if p["status"].startswith(("anticipated", "not_anticipable"))]
+    anticipated = [p for p in positives if p["status"].startswith("anticipated")]
+    metrics = {
+        "cutoff": cutoff,
+        "positives": len(positives),
+        "known_by_cutoff": sum(1 for p in positives if p["status"] == "known_by_cutoff"),
+        "held_out": len(held_out),
+        "anticipated": len(anticipated),
+        "anticipated_drug": sum(1 for p in positives if p["status"] == "anticipated_drug"),
+        "anticipated_mechanism": sum(1 for p in positives if p["status"] == "anticipated_mechanism"),
+        "not_anticipable": sum(1 for p in positives if p["status"] == "not_anticipable"),
+        "unconfirmed": sum(1 for p in positives if p["status"] == "unconfirmed"),
+        "anticipation_rate": round(len(anticipated) / len(held_out), 3) if held_out else 0.0,
+        "false_anticipations": len(false_anticipated),  # headline: must be 0
+        "clean": len(false_anticipated) == 0,
+    }
+    return {"organism": benchmark.get("organism", ""), "cutoff": cutoff,
+            "metrics": metrics, "positives": positives,
+            "false_anticipated": false_anticipated}
+
+
+def _slim(edge: dict | None) -> dict | None:
+    """Trim an edge to the fields the UI needs (target, year, provenance)."""
+    if not edge:
+        return None
+    return {
+        "relation": edge.get("relation"),
+        "target": edge.get("target"),
+        "year": _edge_year(edge),
+        "grounded": bool(edge.get("grounded")),
+        "provenance": edge.get("provenance") or {},
+    }
+
+
 def _match(control: dict, edges: list[dict]) -> dict | None:
     """Best edge supporting a control: grounded preferred, then abstract-only.
 

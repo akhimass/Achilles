@@ -16,6 +16,7 @@ import { TrajectoryPanel } from "@/components/TrajectoryPanel";
 import { SearchPanel } from "@/components/SearchPanel";
 import { UploadPanel } from "@/components/UploadPanel";
 import { ValidationPanel } from "@/components/ValidationPanel";
+import { RetrodictionPanel } from "@/components/RetrodictionPanel";
 import { TrustBar } from "@/components/TrustBar";
 import { HowItWorks } from "@/components/HowItWorks";
 
@@ -56,6 +57,8 @@ export default function Page() {
         <TrustBar />
 
         <ValidationPanel />
+
+        <RetrodictionPanel />
 
         <SearchPanel />
 
