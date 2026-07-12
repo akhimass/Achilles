@@ -11,6 +11,7 @@ import { Insights } from "@/components/Insights";
 import { TargetGraph } from "@/components/TargetGraph";
 import { EvidencePanel } from "@/components/EvidencePanel";
 import { CyclingView } from "@/components/CyclingView";
+import { DockingPanel } from "@/components/DockingPanel";
 import { TrajectoryPanel } from "@/components/TrajectoryPanel";
 import { SearchPanel } from "@/components/SearchPanel";
 import { UploadPanel } from "@/components/UploadPanel";
@@ -104,6 +105,8 @@ export default function Page() {
           />
           <CyclingView organism={ORGANISM} />
         </section>
+
+        <DockingPanel />
 
         <HowItWorks />
 

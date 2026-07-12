@@ -11,6 +11,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
 from app.routers import (
+    docking,
     export,
     graph,
     ingest,
@@ -42,6 +43,7 @@ app.include_router(export.router)
 app.include_router(search.router)
 app.include_router(validation.router)
 app.include_router(ingest.router)
+app.include_router(docking.router)
 
 
 @app.get("/health")

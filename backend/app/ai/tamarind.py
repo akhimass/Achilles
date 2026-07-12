@@ -351,6 +351,51 @@ async def download_result(job_name: str, *, result_url: str | None = None) -> st
 # ─── RCSB fallback (experimental structures) ─────────────────────────────────
 
 
+async def upload_file(filename: str, content: bytes) -> bool:
+    """PUT /upload/{filename} — upload a file (e.g. a receptor PDB) to the account."""
+    if not settings.tamarind_api_key:
+        return False
+    try:
+        async with httpx.AsyncClient(timeout=120) as client:
+            r = await client.put(
+                f"{settings.tamarind_base}upload/{filename}", headers=_headers(), content=content
+            )
+        return r.status_code in (200, 201, 204)
+    except httpx.HTTPError as exc:
+        logger.info("tamarind upload error: %s", exc)
+        return False
+
+
+async def download_result_files(job_name: str, *, result_url: str | None = None) -> dict[str, bytes]:
+    """Download all output files of a finished job as {name: bytes} (for ADMET/docking).
+
+    Prefers the job record's ``resultUrl``; falls back to POST /result. Returns {} on
+    failure. Non-zip single-file results are returned under their basename.
+    """
+    if not settings.tamarind_api_key:
+        return {}
+    try:
+        async with httpx.AsyncClient(timeout=180, follow_redirects=True) as client:
+            url = result_url
+            if not url:
+                r = await client.post(
+                    f"{settings.tamarind_base}result", headers=_headers(), json={"jobName": job_name}
+                )
+                if r.status_code != 200:
+                    return {}
+                url = r.text.strip().strip('"')
+            dl = await client.get(url)
+            if dl.status_code != 200:
+                return {}
+            if dl.content[:2] == b"PK":
+                z = zipfile.ZipFile(io.BytesIO(dl.content))
+                return {n: z.read(n) for n in z.namelist() if not n.endswith("/")}
+            return {url.split("/")[-1].split("?")[0]: dl.content}
+    except (httpx.HTTPError, zipfile.BadZipFile) as exc:
+        logger.info("tamarind result-files error: %s", exc)
+        return {}
+
+
 async def get_rcsb_structure(name: str, product: str) -> dict | None:
     key = (name or "").lower().strip()
     pdb_id = RCSB_HINTS.get(key)

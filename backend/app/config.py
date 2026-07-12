@@ -62,6 +62,9 @@ class Settings(BaseSettings):
     # Tamarind ProjectId.
     tamarind_num_models: str = "1"
     tamarind_project_tag: str = ""
+    # Docking tool name (from Tamarind GET /tools). validate-job confirms the schema
+    # at runtime, so an override here is enough if the tool name differs.
+    tamarind_dock_tool: str = "diffdock"
 
     @property
     def cors_origins(self) -> list[str]:

@@ -269,6 +269,29 @@ export interface UploadResult extends LineageGraph {
   summary: UploadSummary;
 }
 
+// Docking / druggability (from /api/docking) — cited inhibitor + Tamarind results.
+export interface DockingLigand {
+  name?: string | null;
+  smiles?: string | null;
+  pubchem_cid?: number | null;
+  pubchem_url?: string | null;
+  role?: string | null;
+  citation?: string | null;
+  note?: string | null;
+}
+export interface DockingTarget {
+  locus: string;
+  ligands: DockingLigand[];
+  admet?: { source_file?: string | null; properties?: Record<string, unknown> } | null;
+  docking?: { pose_available?: boolean; pose_file?: string | null; score?: number | null } | null;
+  status: "ready" | "properties_only" | "docked";
+  runner: string;
+}
+export interface DockingResponse {
+  targets: DockingTarget[];
+  counts: { with_ligand: number; docked: number };
+}
+
 // Self-validation ("prove-it") — the engine checked against public ground truth.
 export interface ValidationItem {
   gene: string;

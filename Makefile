@@ -32,3 +32,6 @@ fmt:
 
 fold-targets:  ## fold every ranked target via Tamarind AlphaFold (needs TAMARIND_API_KEY)
 	cd backend && python -m app.sources.fold_targets
+
+dock-targets:  ## dock cited inhibitors + run ADMET via Tamarind (needs TAMARIND_API_KEY)
+	cd backend && python -m app.sources.dock
