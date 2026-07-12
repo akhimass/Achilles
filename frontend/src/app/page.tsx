@@ -15,6 +15,7 @@ import { TrajectoryPanel } from "@/components/TrajectoryPanel";
 import { SearchPanel } from "@/components/SearchPanel";
 import { UploadPanel } from "@/components/UploadPanel";
 import { ValidationPanel } from "@/components/ValidationPanel";
+import { TrustBar } from "@/components/TrustBar";
 import { HowItWorks } from "@/components/HowItWorks";
 
 const ORGANISM = "Burkholderia multivorans";
@@ -50,6 +51,8 @@ export default function Page() {
 
       <main className="mx-auto max-w-7xl space-y-6 px-6 pb-20 pt-9">
         <Hero overview={overview} status={status} />
+
+        <TrustBar />
 
         <ValidationPanel />
 

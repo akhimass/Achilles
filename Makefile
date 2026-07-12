@@ -29,3 +29,6 @@ test:
 
 fmt:
 	cd backend && ruff check --fix . && black .
+
+fold-targets:  ## fold every ranked target via Tamarind AlphaFold (needs TAMARIND_API_KEY)
+	cd backend && python -m app.sources.fold_targets

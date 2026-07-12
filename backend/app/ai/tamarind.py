@@ -195,6 +195,15 @@ async def fetch_protein_sequence(wp: str) -> str | None:
     return "".join(l.strip() for l in r.text.splitlines() if l and not l.startswith(">"))
 
 
+async def fetch_uniprot_sequence(acc: str) -> str | None:
+    """Fetch a protein AA sequence from UniProt by accession (fallback to NCBI WP)."""
+    async with httpx.AsyncClient(timeout=40) as client:
+        r = await client.get(f"{settings.uniprot_base}/uniprotkb/{acc}.fasta")
+    if r.status_code != 200 or ">" not in r.text:
+        return None
+    return "".join(l.strip() for l in r.text.splitlines() if l and not l.startswith(">"))
+
+
 async def validate_job(job_type: str, job_settings: dict, job_name: str | None = None) -> dict:
     """POST /validate-job — free pre-flight. Returns the parsed body or {} on failure.
 

@@ -115,10 +115,12 @@ function RedTeam() {
   const [target, setTarget] = useState("");
   const [result, setResult] = useState<RedTeamVerdict | null>(null);
   const [busy, setBusy] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const run = (g: string, t: string) => {
     setGene(g);
     setTarget(t);
+    setCopied(false);
     if (!g.trim() || !t.trim()) return;
     setBusy(true);
     api
@@ -126,6 +128,31 @@ function RedTeam() {
       .then((v) => setResult(v))
       .catch(() => setResult(null))
       .finally(() => setBusy(false));
+  };
+
+  // Shareable permalink: ?rt_gene=&rt_target= auto-runs the same claim on load, so a
+  // judge's verdict is a copyable URL.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const p = new URLSearchParams(window.location.search);
+    const g = p.get("rt_gene");
+    const t = p.get("rt_target");
+    if (g && t) run(g, t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const copyLink = () => {
+    if (typeof window === "undefined" || !gene.trim() || !target.trim()) return;
+    const url = `${window.location.origin}${window.location.pathname}?rt_gene=${encodeURIComponent(
+      gene.trim(),
+    )}&rt_target=${encodeURIComponent(target.trim())}`;
+    navigator.clipboard?.writeText(url).then(
+      () => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      },
+      () => {},
+    );
   };
 
   return (
@@ -179,7 +206,18 @@ function RedTeam() {
           </button>
         ))}
       </div>
-      {result && <Verdict v={result} />}
+      {result && (
+        <>
+          <Verdict v={result} />
+          <button
+            type="button"
+            onClick={copyLink}
+            className="mt-1.5 inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 font-mono text-[0.6rem] text-muted ring-1 ring-inset ring-line/15 transition hover:text-text hover:ring-line/30"
+          >
+            {copied ? "link copied ✓" : "copy this verdict as a link"}
+          </button>
+        </>
+      )}
     </div>
   );
 }
