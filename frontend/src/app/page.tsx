@@ -11,6 +11,7 @@ import { Insights } from "@/components/Insights";
 import { TargetGraph } from "@/components/TargetGraph";
 import { EvidencePanel } from "@/components/EvidencePanel";
 import { CyclingView } from "@/components/CyclingView";
+import { HowItWorks } from "@/components/HowItWorks";
 
 const ORGANISM = "Burkholderia multivorans";
 // Default the structure view to the MarR regulator — a real flipper gene with a
@@ -78,6 +79,8 @@ export default function Page() {
           <CyclingView organism={ORGANISM} />
         </section>
 
+        <HowItWorks />
+
         <Footer />
       </main>
     </div>
@@ -85,17 +88,22 @@ export default function Page() {
 }
 
 function Footer() {
-  const sources = ["BurkData", "PubMLST", "NCBI", "Tamarind Bio", "RCSB", "CARD"];
+  // Public sources power the deployed app. BurkData (private experimental evolution)
+  // is used only in the local demo and never reaches the public deployment.
+  const sources = ["PubMLST", "Europe PMC", "CARD", "UniProt", "ChEMBL", "NCBI", "Tamarind Bio", "RCSB"];
   return (
     <footer className="border-t border-line/8 pt-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.7rem] text-faint">
-          <span className="text-muted">Sources:</span>
+          <span className="text-muted">Public sources:</span>
           {sources.map((s) => (
             <span key={s} className="rounded-md bg-line/6 px-1.5 py-0.5 font-mono">
               {s}
             </span>
           ))}
+          <span className="rounded-md border border-line/12 px-1.5 py-0.5 font-mono text-faint">
+            BurkData — local demo only
+          </span>
         </div>
         <div className="text-[0.7rem] text-faint">
           Deterministic core · AlphaFold on top · provenance on every edge ·{" "}
