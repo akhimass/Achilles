@@ -31,6 +31,8 @@ class Settings(BaseSettings):
     # which grounding queries for ARO accessions.
     ols_base: str = "https://www.ebi.ac.uk/ols4/api"
     uniprot_base: str = "https://rest.uniprot.org"
+    # ChEMBL public bioactivity API — target tractability (known inhibitors / drugs).
+    chembl_base: str = "https://www.ebi.ac.uk/chembl/api/data"
     bvbrc_base: str = "https://www.bv-brc.org/api"
     ncbi_eutils_base: str = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
 

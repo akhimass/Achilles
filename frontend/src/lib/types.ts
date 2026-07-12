@@ -148,6 +148,54 @@ export interface EvidenceSubgraph {
   counts: { total: number; grounded: number };
 }
 
+// Ranked candidate targets for a strain (from /api/targets). Mirrors targets_shaping.
+export interface TargetTractability {
+  source?: string; // 'ChEMBL'
+  assessed: boolean;
+  has_target?: boolean;
+  chembl_target_id?: string | null;
+  queried_acc?: string | null;
+  n_bioactivities?: number;
+  n_compounds?: number;
+  max_pchembl?: number | null;
+  bucket?: string | null; // 'novel' | 'precedented' | 'some-chemical-matter' | ...
+  mechanisms?: { molecule_chembl_id?: string; mechanism_of_action?: string; action_type?: string }[];
+  note?: string | null;
+}
+export interface TargetScoreComponents {
+  evidence?: number;
+  flipper?: number;
+  n_edges?: number;
+  grounded_edges?: number;
+  mean_confidence?: number;
+  flipper_support?: number;
+}
+export interface RankedTarget {
+  id?: string | null;
+  gene_id?: string | null;
+  locus_tag?: string | null;
+  name?: string | null;
+  product?: string | null;
+  mechanism?: string | null;
+  rank_score?: number | null; // 0–1, render as a bar
+  score_components: TargetScoreComponents;
+  tractability: TargetTractability;
+  evidence: EvidenceEdgeView[];
+  evidence_counts: { total: number; grounded: number };
+  structure: { locus_tag?: string | null; wp?: string | null; available: boolean };
+  in_strain: boolean;
+  strain_flipper: boolean;
+  rationale: string;
+  rationale_citations: string[];
+  rationale_source: "deterministic" | "llm";
+}
+export interface TargetsResponse {
+  strain: { id: string; label: string } | null;
+  organism: string;
+  targets: RankedTarget[];
+  counts: { targets: number; with_structure: number };
+}
+
 // Predicted / experimental 3D structure for a gene (from /api/structure).
 export interface StructureResult {
   locus_tag: string;

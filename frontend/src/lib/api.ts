@@ -6,6 +6,7 @@ import type {
   CollateralPair,
   StrainDetail,
   StructureResult,
+  TargetsResponse,
 } from "./types";
 
 const BASE = process.env.NEXT_PUBLIC_API_BASE ?? "http://localhost:8000";
@@ -36,6 +37,12 @@ export const api = {
       `/api/graph/evidence?node_type=gene&node_id=${encodeURIComponent(
         locus,
       )}&organism=${encodeURIComponent(organism)}`,
+    ),
+  targets: (strainId: string | null, organism = "Burkholderia multivorans") =>
+    get<TargetsResponse>(
+      strainId
+        ? `/api/targets?strain_id=${encodeURIComponent(strainId)}`
+        : `/api/targets?organism=${encodeURIComponent(organism)}`,
     ),
   cycle: (organism: string) =>
     get<{ cycle: string[]; narrative: string | null; rcs?: CollateralPair[] }>(

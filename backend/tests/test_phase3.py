@@ -15,6 +15,9 @@ from app.ingestion.scoring import (
     rank_targets,
     score_gene,
 )
+from app.ingestion.seed_targets import _target_id, build_target, build_targets
+from app.sources import chembl
+from app.targets_shaping import deterministic_rationale, shape_target, shape_targets
 
 
 def _stats(**kw) -> GeneEvidenceStats:
@@ -114,3 +117,137 @@ def test_score_gene_exposes_rounded_components():
     assert 0.0 <= t.flipper_component <= 1.0
     blended = round(0.7 * t.evidence_component + 0.3 * t.flipper_component, 4)
     assert abs(t.rank_score - blended) <= 0.0002
+
+
+# ─── Target model construction (seed_targets, pure) ──────────────────────────
+
+
+def _row(**kw) -> dict:
+    base = dict(gene_id="00000000-0000-0000-0000-000000000001", locus_tag="A8H40_RS07590",
+                name="MarR", product="MarR family regulator", wp="WP_006410546.1",
+                flipper_support=10, n_edges=11, mean_confidence=0.86, grounded_edges=7)
+    base.update(kw)
+    return base
+
+
+def test_build_target_carries_score_mechanism_and_tractability():
+    t = build_target(_row())
+    # rank_score matches the deterministic scorer exactly (LLM never touches it).
+    expected = score_gene(GeneEvidenceStats(
+        gene_id="x", locus_tag="A8H40_RS07590", n_edges=11, mean_confidence=0.86,
+        grounded_edges=7, flipper_support=10)).rank_score
+    assert t.rank_score == expected
+    assert 0.0 <= t.rank_score <= 1.0
+    assert "MarR" in (t.mechanism or "")  # mapped mechanism, not raw product
+    assert t.tractability.get("source") == "ChEMBL"  # tractability block always attached
+    assert t.metadata["locus_tag"] == "A8H40_RS07590"
+    assert t.metadata["uniprot_acc"] == "A0A0H3KEU2"
+    assert "score_components" in t.metadata
+    assert t.pdb_ids == []  # AlphaFold structures reached via /api/structure by locus
+
+
+def test_build_target_id_is_stable_uuid5():
+    a = build_target(_row())
+    b = build_target(_row())
+    assert a.id == b.id == _target_id(_row()["gene_id"])  # idempotent id
+
+
+def test_build_targets_ranks_marr_first():
+    rows = [
+        _row(gene_id="00000000-0000-0000-0000-000000000002", locus_tag="A8H40_RS00780",
+             name="response regulator", product="response regulator", n_edges=1,
+             mean_confidence=0.5, grounded_edges=0, flipper_support=9),
+        _row(),  # MarR: many grounded edges + strong flipper
+    ]
+    ranked = build_targets(rows)
+    assert ranked[0].metadata["locus_tag"] == "A8H40_RS07590"
+    assert ranked[0].rank_score >= ranked[-1].rank_score
+
+
+# ─── Target view shaping + deterministic cited rationale ─────────────────────
+
+
+def _edge_row(**kw) -> dict:
+    base = dict(source_id="00000000-0000-0000-0000-000000000001", relation="confers_resistance",
+                target_type="drug", target_id=None, target_literal="ciprofloxacin",
+                confidence=0.9, grounded=True, provenance_pmid="222", provenance_db="CARD",
+                provenance_acc="ARO:3003378", metadata={"subject": "MarR"},
+                paper_title="T", paper_year=2021)
+    base.update(kw)
+    return base
+
+
+def _target_row(**kw) -> dict:
+    base = dict(id="00000000-0000-0000-0000-0000000000aa",
+                gene_id="00000000-0000-0000-0000-000000000001",
+                mechanism="Efflux regulation — MarR", rank_score=0.62,
+                tractability={"source": "ChEMBL", "assessed": True, "has_target": False,
+                              "queried_acc": "A0A0H3KEU2", "bucket": "novel"},
+                pdb_ids=[], metadata={"locus_tag": "A8H40_RS07590", "name": "MarR",
+                                      "product": "MarR family regulator", "wp": "WP_006410546.1",
+                                      "score_components": {"flipper_support": 10, "n_edges": 2}},
+                locus_tag="A8H40_RS07590", name="MarR", product="MarR family regulator",
+                wp="WP_006410546.1")
+    base.update(kw)
+    return base
+
+
+def test_deterministic_rationale_cites_real_ids_only():
+    edges = [
+        {"relation": "confers_resistance", "target": "ciprofloxacin", "confidence": 0.9,
+         "grounded": True, "provenance": {"db": "CARD", "acc": "ARO:3003378", "pmid": "222"}},
+        {"relation": "implicates", "target": "efflux pump regulation", "confidence": 0.8,
+         "grounded": True, "provenance": {"db": "CARD", "acc": "ARO:3000718", "pmid": "111"}},
+    ]
+    target = {"locus_tag": "A8H40_RS07590", "name": "MarR", "rank_score": 0.62,
+              "score_components": {"flipper_support": 10},
+              "tractability": {"assessed": True, "has_target": False, "queried_acc": "A0A0H3KEU2"}}
+    text_out, citations = deterministic_rationale(target, edges)
+    assert "MarR" in text_out and "0.62" in text_out
+    assert "CARD:ARO:3003378" in citations  # cites the real grounded accession
+    assert "ChEMBL:A0A0H3KEU2" in citations  # novel-target tractability cited
+    assert "flipper support 10" in text_out  # reversibility surfaced
+    # No fabricated citation ids: every citation traces to an input edge or the acc.
+    allowed = {"CARD:ARO:3003378", "CARD:ARO:3000718", "PMID:222", "PMID:111", "ChEMBL:A0A0H3KEU2"}
+    assert set(citations) <= allowed
+
+
+def test_shape_target_flags_strain_and_structure():
+    v = shape_target(_target_row(), [_edge_row()], {"in_strain": True, "strain_flipper": True})
+    assert v["locus_tag"] == "A8H40_RS07590"
+    assert v["rank_score"] == 0.62
+    assert v["in_strain"] is True and v["strain_flipper"] is True
+    assert v["structure"]["available"] is True and v["structure"]["wp"] == "WP_006410546.1"
+    assert v["evidence_counts"] == {"total": 1, "grounded": 1}
+    assert v["rationale_source"] == "deterministic"
+    assert v["rationale"] and v["rationale_citations"]
+
+
+def test_shape_targets_sorts_by_rank_and_counts_structures():
+    rows = [
+        _target_row(id="a", gene_id="g1", rank_score=0.30, locus_tag="LOW",
+                    metadata={"locus_tag": "LOW", "wp": None}, wp=None),
+        _target_row(id="b", gene_id="g2", rank_score=0.62, locus_tag="HIGH",
+                    metadata={"locus_tag": "HIGH", "wp": "WP_1"}, wp="WP_1"),
+    ]
+    edges = {"g1": [], "g2": [_edge_row(source_id="g2")]}
+    out = shape_targets({"id": "s", "label": "167"}, "Burkholderia multivorans", rows, edges, {})
+    assert [t["locus_tag"] for t in out["targets"]] == ["HIGH", "LOW"]  # rank desc
+    assert out["counts"]["targets"] == 2
+    assert out["counts"]["with_structure"] == 1
+
+
+def test_chembl_summarize_and_bucket_are_honest_without_fabrication():
+    # No target found → 'novel', assessed but has_target False, no invented accession.
+    novel = chembl.summarize({"queried_acc": "X", "chembl_target_id": None})
+    assert novel["assessed"] is True and novel["has_target"] is False
+    assert novel["bucket"] == "novel"
+    # A precedented target (known-drug mechanism) buckets above bare bioactivity.
+    prec = chembl.summarize({
+        "queried_acc": "Y", "chembl_target_id": "CHEMBL999",
+        "n_bioactivities": 120, "n_compounds": 40,
+        "mechanisms": [{"molecule_chembl_id": "CHEMBL25", "mechanism_of_action": "x"}],
+    })
+    assert prec["has_target"] is True and prec["bucket"] == "precedented"
+    # Empty / None record → assessed False, nothing fabricated.
+    assert chembl.summarize(None) == {"source": "ChEMBL", "assessed": False}

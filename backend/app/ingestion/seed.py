@@ -432,10 +432,19 @@ async def main() -> None:
     # Phase 2: literature -> grounded evidence edges (offline, from committed corpus).
     from app.ingestion.seed_literature import seed_literature
 
+    seeded_edges = False
     try:
         await seed_literature()
+        seeded_edges = True
     except FileNotFoundError as exc:
         print(f"seed(literature): skipped — {exc}")
+
+    # Phase 3: promote evidence-supported genes into ranked targets (deterministic
+    # rank_score + ChEMBL tractability from the committed cache). Needs the edges.
+    if seeded_edges:
+        from app.ingestion.seed_targets import seed_targets
+
+        await seed_targets(ORGANISM)
 
 
 if __name__ == "__main__":
