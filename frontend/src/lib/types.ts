@@ -131,6 +131,16 @@ export interface EvidenceProvenance {
   paper_title?: string | null;
   paper_year?: number | null;
 }
+// One step in an edge's provenance chain. `actor` marks the deterministic-vs-LLM seam.
+export interface EvidenceTraceStep {
+  step: string; // 'extracted' | 'grounded' | 'not_grounded' | 'scored'
+  actor: "llm" | "deterministic";
+  label: string;
+  detail?: string | null;
+  source?: string | null;
+  url?: string | null;
+  by?: string | null; // e.g. 'ai/extraction.py@claude-sonnet-5'
+}
 export interface EvidenceEdgeView {
   id?: string | null;
   relation: Relation;
@@ -139,7 +149,12 @@ export interface EvidenceEdgeView {
   confidence: number; // 0–1, render as a gradient
   grounded: boolean;
   subject?: string | null;
+  object_kind?: string | null;
   evidence_span?: string | null;
+  claim?: string | null; // composed subject+relation+object sentence
+  extracted_by?: string | null;
+  grounding_reason?: string | null;
+  trace?: EvidenceTraceStep[]; // ordered provenance chain (Slice 2)
   provenance: EvidenceProvenance;
 }
 export interface EvidenceSubgraph {

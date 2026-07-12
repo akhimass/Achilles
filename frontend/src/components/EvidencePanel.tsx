@@ -8,7 +8,7 @@ import { api } from "@/lib/api";
 import { clsx } from "@/lib/clsx";
 import { Panel, Badge, SectionLabel } from "./ui";
 import type { GeneSelection } from "./StrainDetail";
-import type { EvidenceSubgraph, EvidenceEdgeView, Relation } from "@/lib/types";
+import type { EvidenceSubgraph, EvidenceEdgeView, EvidenceTraceStep, Relation } from "@/lib/types";
 
 const RELATION_LABEL: Record<Relation, string> = {
   confers_resistance: "confers resistance to",
@@ -103,6 +103,8 @@ export function EvidencePanel({ gene }: { gene: GeneSelection }) {
 
 function EdgeRow({ edge }: { edge: EvidenceEdgeView }) {
   const p = edge.provenance;
+  const [open, setOpen] = useState(false);
+  const trace = edge.trace ?? [];
   return (
     <li
       className={clsx(
@@ -152,8 +154,115 @@ function EdgeRow({ edge }: { edge: EvidenceEdgeView }) {
             {p.db} {p.acc}
           </ProvChip>
         )}
+        {trace.length > 0 && (
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            className="ml-auto inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 font-mono text-[0.62rem] text-muted ring-1 ring-inset ring-line/15 transition hover:text-text hover:ring-line/30"
+          >
+            {open ? "hide trace" : "trace provenance"}
+            <Chevron open={open} />
+          </button>
+        )}
       </div>
+
+      {open && trace.length > 0 && <Trace steps={trace} />}
     </li>
+  );
+}
+
+// The full provenance chain for one edge, top to bottom, marking each step's actor —
+// what the model EXTRACTED vs what deterministic rules COMPUTED. This is the direct,
+// visible answer to "a shell over an LLM": every edge is traceable to its source.
+function Trace({ steps }: { steps: EvidenceTraceStep[] }) {
+  return (
+    <div className="animate-fade mt-2 rounded-xl border border-line/12 bg-surface2/40 p-2.5">
+      <div className="mb-2 flex items-center justify-between">
+        <span className="text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-faint">
+          Provenance trace
+        </span>
+        <span className="flex items-center gap-2 text-[0.58rem]">
+          <span className="inline-flex items-center gap-1 text-amber">
+            <Dot cls="bg-amber" /> LLM extracted
+          </span>
+          <span className="inline-flex items-center gap-1 text-accentStrong">
+            <Dot cls="bg-accent" /> computed
+          </span>
+        </span>
+      </div>
+      <ol className="space-y-1.5">
+        {steps.map((s, i) => {
+          const llm = s.actor === "llm";
+          return (
+            <li key={i} className="flex gap-2">
+              <span className="mt-0.5 flex flex-col items-center">
+                <Dot cls={llm ? "bg-amber" : "bg-accent"} />
+                {i < steps.length - 1 && <span className="mt-0.5 h-full w-px bg-line/20" />}
+              </span>
+              <div className="min-w-0 flex-1 pb-1">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-[0.72rem] font-medium text-text">{s.label}</span>
+                  <span
+                    className={clsx(
+                      "rounded px-1 py-px font-mono text-[0.54rem] uppercase tracking-wide ring-1 ring-inset",
+                      llm
+                        ? "bg-amber/10 text-amber ring-amber/25"
+                        : "bg-accent/10 text-accentStrong ring-accent/25",
+                    )}
+                  >
+                    {llm ? "LLM" : "deterministic"}
+                  </span>
+                </div>
+                {s.detail && (
+                  <div className="mt-0.5 text-[0.68rem] leading-snug text-muted">{s.detail}</div>
+                )}
+                {(s.source || s.by) && (
+                  <div className="mt-0.5 flex flex-wrap items-center gap-1.5">
+                    {s.source &&
+                      (s.url ? (
+                        <a
+                          href={s.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-mono text-[0.6rem] text-accentStrong hover:underline"
+                        >
+                          {s.source}
+                        </a>
+                      ) : (
+                        <span className="font-mono text-[0.6rem] text-faint">{s.source}</span>
+                      ))}
+                    {s.by && <span className="font-mono text-[0.58rem] text-faint">{s.by}</span>}
+                  </div>
+                )}
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  );
+}
+
+function Dot({ cls }: { cls: string }) {
+  return <span className={clsx("inline-block h-1.5 w-1.5 shrink-0 rounded-full", cls)} />;
+}
+
+function Chevron({ open }: { open: boolean }) {
+  return (
+    <svg
+      width="8"
+      height="8"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={clsx("transition-transform", open && "rotate-180")}
+    >
+      <path d="m6 9 6 6 6-6" />
+    </svg>
   );
 }
 

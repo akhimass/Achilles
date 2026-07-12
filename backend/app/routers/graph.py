@@ -139,7 +139,7 @@ async def evidence(
                 """
                 SELECT e.id, e.relation, e.target_type, e.target_id, e.target_literal,
                        e.confidence, e.grounded, e.provenance_pmid, e.provenance_db,
-                       e.provenance_acc, e.metadata,
+                       e.provenance_acc, e.extracted_by, e.metadata,
                        p.title AS paper_title, p.year AS paper_year
                 FROM evidence_edges e
                 LEFT JOIN papers p ON p.pmid = e.provenance_pmid
