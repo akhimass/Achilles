@@ -4,55 +4,62 @@
 
 /* ─── Design tokens ──────────────────────────────────────────────────────────
    Colors are RGB channel triplets so Tailwind opacity modifiers work
-   (`text-text/60`, `border-line/12`). Light + dark are two swaps of the same set.
-   Built on the domain palette: teal = collateral sensitivity (the "heel"),
-   coral = resistance. */
+   (`text-text/60`, `border-line/12`). A deep-green / emerald system: teal-emerald
+   = collateral sensitivity (the "heel"), coral = resistance. */
 :root {
   color-scheme: light;
 
-  --bg: 244 246 243;
+  --bg: 242 246 242;
   --surface: 255 255 255;
-  --surface-2: 249 251 249;
-  --surface-3: 242 245 242;
-  --line: 21 32 28;
+  --surface-2: 247 251 248;
+  --surface-3: 239 245 240;
+  --line: 16 34 26;
 
-  --text: 18 28 24;
-  --muted: 78 92 85;
-  --faint: 120 134 127;
+  --text: 14 26 20;
+  --muted: 74 92 82;
+  --faint: 116 134 124;
 
-  --accent: 21 148 108; /* teal — sensitivity / reversal */
-  --accent-strong: 15 122 89;
-  --danger: 210 84 44; /* coral — resistance */
-  --amber: 194 138 40;
+  --accent: 17 150 104; /* emerald — sensitivity / reversal */
+  --accent-strong: 12 120 84;
+  --accent-2: 20 168 150; /* teal companion for gradients */
+  --danger: 208 84 44; /* coral — resistance */
+  --amber: 190 134 38;
 
-  --tree-neutral: 200 208 203;
+  --tree-neutral: 196 206 200;
 
-  --shadow-color: 20 40 32;
-  --grid: 21 32 28;
+  --shadow-color: 18 44 32;
+  --grid: 16 34 26;
+  --aurora-a: 20 168 150;
+  --aurora-b: 24 180 118;
+  --aurora-c: 90 200 150;
 }
 
 .dark {
   color-scheme: dark;
 
-  --bg: 8 13 11;
-  --surface: 16 23 20;
-  --surface-2: 21 30 26;
-  --surface-3: 27 37 32;
-  --line: 214 226 219;
+  --bg: 6 13 10; /* near-black deep green */
+  --surface: 13 23 18;
+  --surface-2: 17 29 23;
+  --surface-3: 24 39 31;
+  --line: 210 230 219;
 
-  --text: 226 234 229;
-  --muted: 150 166 158;
-  --faint: 108 124 116;
+  --text: 226 236 229;
+  --muted: 150 170 159;
+  --faint: 104 124 114;
 
-  --accent: 45 194 141;
-  --accent-strong: 74 214 163;
-  --danger: 232 122 84;
-  --amber: 219 176 92;
+  --accent: 46 200 142; /* vivid emerald */
+  --accent-strong: 82 226 172;
+  --accent-2: 38 208 190; /* spring-teal */
+  --danger: 234 124 86;
+  --amber: 222 180 96;
 
-  --tree-neutral: 74 90 83;
+  --tree-neutral: 70 92 82;
 
   --shadow-color: 0 0 0;
-  --grid: 214 226 219;
+  --grid: 210 230 219;
+  --aurora-a: 20 140 120;
+  --aurora-b: 30 170 110;
+  --aurora-c: 40 120 150;
 }
 
 * {
@@ -68,11 +75,6 @@ body {
   background-color: rgb(var(--bg));
   color: rgb(var(--text));
   font-feature-settings: "cv11", "ss01";
-  /* Two whisper-quiet radial washes give the page depth without noise. */
-  background-image:
-    radial-gradient(60rem 40rem at 12% -8%, rgb(var(--accent) / 0.06), transparent 60%),
-    radial-gradient(50rem 40rem at 105% 0%, rgb(var(--danger) / 0.04), transparent 55%);
-  background-attachment: fixed;
 }
 
 /* Fine dotted grid used behind hero surfaces. */
@@ -81,11 +83,92 @@ body {
   background-size: 22px 22px;
 }
 
-/* ─── Scrollbars ─────────────────────────────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+/* ─── Living aurora backdrop ─────────────────────────────────────────────────
+   Slow-drifting green light behind everything. GPU-friendly (transform only),
+   subtle enough to keep text crisp; frozen for reduced-motion. */
+.aurora {
+  position: fixed;
+  inset: -25vmax;
+  z-index: -10;
+  pointer-events: none;
+  overflow: hidden;
+  contain: strict;
 }
+.aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.5;
+  will-change: transform;
+}
+.dark .aurora-blob {
+  opacity: 0.4;
+}
+.aurora-a {
+  width: 46vmax;
+  height: 46vmax;
+  left: -6vmax;
+  top: -4vmax;
+  background: radial-gradient(circle at center, rgb(var(--aurora-a) / 0.85), transparent 62%);
+  animation: drift-a 26s ease-in-out infinite;
+}
+.aurora-b {
+  width: 40vmax;
+  height: 40vmax;
+  right: -6vmax;
+  top: 2vmax;
+  background: radial-gradient(circle at center, rgb(var(--aurora-b) / 0.8), transparent 62%);
+  animation: drift-b 32s ease-in-out infinite;
+}
+.aurora-c {
+  width: 52vmax;
+  height: 52vmax;
+  left: 20vmax;
+  bottom: -18vmax;
+  background: radial-gradient(circle at center, rgb(var(--aurora-c) / 0.6), transparent 64%);
+  animation: drift-c 38s ease-in-out infinite;
+}
+@keyframes drift-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(7vw, 5vh) scale(1.18); }
+}
+@keyframes drift-b {
+  0%, 100% { transform: translate(0, 0) scale(1.05); }
+  50% { transform: translate(-6vw, 6vh) scale(0.9); }
+}
+@keyframes drift-c {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(4vw, -6vh) scale(1.12); }
+}
+
+/* Glassy card surface + interactive glow. */
+.glass {
+  background: rgb(var(--surface) / 0.72);
+  backdrop-filter: blur(14px) saturate(1.15);
+  -webkit-backdrop-filter: blur(14px) saturate(1.15);
+}
+
+/* Animated green gradient text (for accents/headlines). */
+.text-gradient-green {
+  background-image: linear-gradient(
+    100deg,
+    rgb(var(--accent-strong)),
+    rgb(var(--accent-2)),
+    rgb(var(--accent)),
+    rgb(var(--accent-strong))
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 7s linear infinite;
+}
+@keyframes shine {
+  to { background-position: 220% center; }
+}
+
+/* ─── Scrollbars ─────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-thumb {
   background: rgb(var(--line) / 0.16);
   border-radius: 999px;
@@ -96,80 +179,80 @@ body {
   background: rgb(var(--line) / 0.28);
   background-clip: padding-box;
 }
-::selection {
-  background: rgb(var(--accent) / 0.24);
-}
+::selection { background: rgb(var(--accent) / 0.26); }
 
-/* ─── Motion ─────────────────────────────────────────────────────────────── */
+/* ─── Motion primitives ──────────────────────────────────────────────────── */
 @keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 @keyframes fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 @keyframes shimmer {
-  100% {
-    transform: translateX(100%);
-  }
+  100% { transform: translateX(100%); }
 }
 @keyframes pulse-ring {
-  0% {
-    box-shadow: 0 0 0 0 rgb(var(--accent) / 0.45);
-  }
-  70% {
-    box-shadow: 0 0 0 8px rgb(var(--accent) / 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgb(var(--accent) / 0);
-  }
+  0% { box-shadow: 0 0 0 0 rgb(var(--accent) / 0.5); }
+  70% { box-shadow: 0 0 0 8px rgb(var(--accent) / 0); }
+  100% { box-shadow: 0 0 0 0 rgb(var(--accent) / 0); }
 }
 @keyframes dash {
-  to {
-    stroke-dashoffset: -16;
+  to { stroke-dashoffset: -16; }
+}
+@keyframes flow {
+  to { stroke-dashoffset: -1000; }
+}
+
+.animate-rise { animation: rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-fade { animation: fade 0.6s ease both; }
+.pulse-dot { animation: pulse-ring 2.2s ease-out infinite; }
+
+/* Mount stagger for the hero cluster. */
+.stagger > * { animation: rise 0.55s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.stagger > *:nth-child(1) { animation-delay: 0.02s; }
+.stagger > *:nth-child(2) { animation-delay: 0.09s; }
+.stagger > *:nth-child(3) { animation-delay: 0.16s; }
+.stagger > *:nth-child(4) { animation-delay: 0.23s; }
+.stagger > *:nth-child(5) { animation-delay: 0.3s; }
+
+/* Scroll-reveal — pure CSS (no JS/RAF), so content is NEVER gated on a running
+   animation. Fallback (no scroll-timeline support) leaves everything visible. */
+@keyframes reveal-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+.reveal { opacity: 1; }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal-rise both linear;
+      animation-timeline: view();
+      animation-range: entry 2% cover 26%;
+    }
   }
 }
 
-.animate-rise {
-  animation: rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+/* Hover lift + glow, spring-eased (compositor transform — smooth, cheap). */
+.hover-lift {
+  transition:
+    transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
-.animate-fade {
-  animation: fade 0.6s ease both;
+.hover-lift:hover {
+  transform: translateY(-3px);
 }
-.pulse-dot {
-  animation: pulse-ring 2.2s ease-out infinite;
-}
-
-/* Staggered entrance for grids of cards. */
-.stagger > * {
-  animation: rise 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-.stagger > *:nth-child(1) { animation-delay: 0.02s; }
-.stagger > *:nth-child(2) { animation-delay: 0.07s; }
-.stagger > *:nth-child(3) { animation-delay: 0.12s; }
-.stagger > *:nth-child(4) { animation-delay: 0.17s; }
-.stagger > *:nth-child(5) { animation-delay: 0.22s; }
-.stagger > *:nth-child(6) { animation-delay: 0.27s; }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  .animate-rise,
-  .animate-fade,
-  .stagger > * {
-    animation: none !important;
-    transition: none !important;
+  *, .animate-rise, .animate-fade, .stagger > * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
   }
+  .aurora-blob, .text-gradient-green { animation: none !important; }
+  .hover-lift:hover { transform: none; }
 }
 
 /* Loading shimmer skeleton. */
@@ -183,12 +266,7 @@ body {
   position: absolute;
   inset: 0;
   transform: translateX(-100%);
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgb(var(--line) / 0.08),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, rgb(var(--line) / 0.08), transparent);
   animation: shimmer 1.6s infinite;
 }
 

@@ -69,7 +69,7 @@ export default function Page() {
 
         <EvidencePanel gene={selectedGene} />
 
-        <section className="stagger grid gap-5 md:grid-cols-2">
+        <section className="grid gap-5 md:grid-cols-2">
           <TargetGraph
             strainId={selectedId}
             selectedLocus={selectedGene?.locus ?? null}

@@ -18,7 +18,8 @@ export function Panel({
   return (
     <section
       className={clsx(
-        "rounded-2xl border border-line/10 bg-surface/80 shadow-card backdrop-blur-sm",
+        "reveal hover-lift glass rounded-2xl border border-line/10 shadow-card",
+        "hover:border-accent/25 hover:shadow-glow-sm",
         className,
       )}
     >

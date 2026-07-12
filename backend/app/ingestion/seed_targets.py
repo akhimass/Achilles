@@ -140,10 +140,11 @@ async def seed_targets(organism: str = ORGANISM) -> dict:
         targets = build_targets([dict(r) for r in rows])
 
         if targets:
-            async with session.begin():
-                await session.execute(
-                    text(
-                        """
+            # The read above already opened a transaction on this session; reuse it
+            # and commit (nesting session.begin() would raise "already begun").
+            await session.execute(
+                text(
+                    """
                         INSERT INTO targets (id, gene_id, mechanism, tractability, pdb_ids,
                                              rank_score, metadata)
                         VALUES (:id, :gene_id, :mechanism, CAST(:tractability AS jsonb),
@@ -155,20 +156,21 @@ async def seed_targets(organism: str = ORGANISM) -> dict:
                               rank_score = EXCLUDED.rank_score,
                               metadata = EXCLUDED.metadata
                         """
-                    ),
-                    [
-                        {
-                            "id": str(t.id),
-                            "gene_id": str(t.gene_id),
-                            "mechanism": t.mechanism,
-                            "tractability": json.dumps(t.tractability),
-                            "pdb_ids": t.pdb_ids,
-                            "rank_score": t.rank_score,
-                            "metadata": json.dumps(t.metadata),
-                        }
-                        for t in targets
-                    ],
-                )
+                ),
+                [
+                    {
+                        "id": str(t.id),
+                        "gene_id": str(t.gene_id),
+                        "mechanism": t.mechanism,
+                        "tractability": json.dumps(t.tractability),
+                        "pdb_ids": t.pdb_ids,
+                        "rank_score": t.rank_score,
+                        "metadata": json.dumps(t.metadata),
+                    }
+                    for t in targets
+                ],
+            )
+            await session.commit()
 
     top = targets[0] if targets else None
     print(

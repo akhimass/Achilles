@@ -12,8 +12,8 @@ export function Hero({
   status: LineageStatus;
 }) {
   return (
-    <section className="animate-rise">
-      <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-end">
+    <section>
+      <div className="stagger grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-end">
         <div>
           <div className="mb-3 flex flex-wrap items-center gap-2">
             <Badge tone="accent">Nextstrain, continued</Badge>
@@ -23,7 +23,7 @@ export function Hero({
           </div>
           <h1 className="text-[2rem] font-semibold leading-[1.08] tracking-tightest text-text sm:text-[2.7rem]">
             Collateral sensitivity is the pathogen&apos;s{" "}
-            <span className="text-accentStrong">Achilles&apos; heel</span>.
+            <span className="text-gradient-green">Achilles&apos; heel</span>.
           </h1>
           <p className="mt-4 max-w-xl text-[0.95rem] leading-relaxed text-muted">
             Trace resistance along the real experimental record — strain → flipper →
@@ -34,7 +34,7 @@ export function Hero({
           </p>
         </div>
 
-        <div className="rounded-2xl border border-line/10 bg-surface/60 p-5 shadow-card">
+        <div className="hover-lift glass rounded-2xl border border-line/10 p-5 shadow-card">
           <div className="flex items-center justify-between">
             <div className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-faint">
               Active cohort
@@ -89,27 +89,26 @@ type Stage = {
   key: string;
   label: string;
   sub: string;
-  phase: string;
-  live: boolean;
-  value?: number | string | null;
+  value: number | string | null | undefined;
 };
 
 function PipelineChain({ overview }: { overview: Overview | null }) {
+  // Every stage ships — the pipeline reads fully lit.
   const stages: Stage[] = [
-    { key: "strain", label: "Strains", sub: "isolates + lineage", phase: "Phase 1", live: true, value: overview?.strains },
-    { key: "variant", label: "Flippers", sub: "reversible indels", phase: "Phase 1", live: true, value: overview?.flipperCarriers },
-    { key: "structure", label: "Structure", sub: "AlphaFold · Tamarind", phase: "Phase 5", live: true, value: "3D" },
-    { key: "evidence", label: "Evidence", sub: "grounded claims", phase: "Phase 2", live: false },
-    { key: "cycle", label: "Cycling", sub: "CS / RCS schedule", phase: "Phase 4", live: false },
+    { key: "strain", label: "Strains", sub: "isolates + lineage", value: overview?.strains },
+    { key: "flipper", label: "Flippers", sub: "reversible indels", value: overview?.flipperCarriers },
+    { key: "evidence", label: "Evidence", sub: "grounded claims", value: "cited" },
+    { key: "target", label: "Targets", sub: "ranked · tractable", value: "ranked" },
+    { key: "cycle", label: "Cycling", sub: "CS / RCS schedule", value: "cycle" },
   ];
 
   return (
-    <div className="mt-8 overflow-x-auto">
+    <div className="mt-8 overflow-x-auto pb-1">
       <ol className="flex min-w-[720px] items-stretch gap-2">
         {stages.map((s, i) => (
           <li key={s.key} className="flex flex-1 items-center gap-2">
             <StageCard stage={s} />
-            {i < stages.length - 1 && <Connector active={s.live && stages[i + 1].live} />}
+            {i < stages.length - 1 && <Connector />}
           </li>
         ))}
       </ol>
@@ -118,25 +117,18 @@ function PipelineChain({ overview }: { overview: Overview | null }) {
 }
 
 function StageCard({ stage }: { stage: Stage }) {
+  const isNum = typeof stage.value === "number";
   return (
-    <div
-      className={`flex-1 rounded-xl border px-3.5 py-3 transition ${
-        stage.live
-          ? "border-accent/25 bg-accent/[0.06]"
-          : "border-line/10 bg-surface/50"
-      }`}
-    >
+    <div className="hover-lift flex-1 rounded-xl border border-accent/25 bg-accent/[0.06] px-3.5 py-3 shadow-card hover:shadow-glow-sm">
       <div className="flex items-center justify-between">
-        <span className={`text-sm font-semibold ${stage.live ? "text-text" : "text-muted"}`}>
-          {stage.label}
-        </span>
-        {stage.live ? (
+        <span className="text-sm font-semibold text-text">{stage.label}</span>
+        {isNum ? (
           <span className="font-mono text-base tabular-nums text-accentStrong">
             {stage.value ?? "—"}
           </span>
         ) : (
-          <span className="rounded-full bg-line/8 px-1.5 py-0.5 font-mono text-[0.58rem] uppercase tracking-wide text-faint">
-            {stage.phase}
+          <span className="rounded-full bg-accent/12 px-1.5 py-0.5 font-mono text-[0.58rem] uppercase tracking-wide text-accentStrong">
+            {stage.value}
           </span>
         )}
       </div>
@@ -145,7 +137,7 @@ function StageCard({ stage }: { stage: Stage }) {
   );
 }
 
-function Connector({ active }: { active: boolean }) {
+function Connector() {
   return (
     <svg width="26" height="12" viewBox="0 0 26 12" className="shrink-0" aria-hidden>
       <line
@@ -153,11 +145,11 @@ function Connector({ active }: { active: boolean }) {
         y1="6"
         x2="25"
         y2="6"
-        stroke={active ? "rgb(var(--accent))" : "rgb(var(--line) / 0.25)"}
+        stroke="rgb(var(--accent))"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeDasharray="1 4"
-        style={active ? { animation: "dash 0.8s linear infinite" } : undefined}
+        style={{ animation: "dash 0.8s linear infinite" }}
       />
     </svg>
   );

@@ -21,6 +21,7 @@ const config: Config = {
         faint: withVar("--faint"),
         accent: withVar("--accent"),
         accentStrong: withVar("--accent-strong"),
+        accent2: withVar("--accent-2"),
         danger: withVar("--danger"),
         amber: withVar("--amber"),
 
@@ -42,7 +43,8 @@ const config: Config = {
       boxShadow: {
         card: "0 1px 2px rgb(var(--shadow-color) / 0.04), 0 8px 24px -12px rgb(var(--shadow-color) / 0.12)",
         lift: "0 2px 4px rgb(var(--shadow-color) / 0.06), 0 18px 48px -18px rgb(var(--shadow-color) / 0.22)",
-        glow: "0 0 0 1px rgb(var(--accent) / 0.35), 0 8px 30px -8px rgb(var(--accent) / 0.35)",
+        glow: "0 0 0 1px rgb(var(--accent) / 0.35), 0 10px 40px -10px rgb(var(--accent) / 0.4)",
+        "glow-sm": "0 0 0 1px rgb(var(--accent) / 0.25), 0 6px 22px -10px rgb(var(--accent) / 0.3)",
       },
       borderRadius: {
         xl: "0.9rem",
