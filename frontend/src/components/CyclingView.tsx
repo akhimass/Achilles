@@ -51,13 +51,7 @@ export function CyclingView({ organism }: { organism: string }) {
       {status === "error" && (
         <Empty>Treatment service offline — start the API (`make backend`) and retry.</Empty>
       )}
-      {status === "empty" && (
-        <Empty>
-          No reciprocal collateral-sensitivity loop in the current data, so no cycle is
-          proposed. The public path seeds no resistance/sensitivity record; run the
-          BurkData demo locally to compute a cycle.
-        </Empty>
-      )}
+      {status === "empty" && <CyclingEmpty />}
       {status === "ready" && data && (
         <div className="animate-fade">
           <CycleLoop cycle={data.cycle} />
@@ -147,6 +141,44 @@ function Caveats({ items }: { items: string[] }) {
           </li>
         ))}
       </ul>
+    </div>
+  );
+}
+
+// Informative empty state for the public path — the cycle is computed from
+// experimental-evolution resistance/sensitivity data (shown in the local demo), so on
+// the public PubMLST deployment there's no cycle to draw. Explain the idea, don't blank.
+function CyclingEmpty() {
+  return (
+    <div className="rounded-xl border border-dashed border-line/15 bg-surface2/40 p-4">
+      <div className="grid place-items-center rounded-lg border border-dashed border-line/12 bg-surface/40 px-3 py-5">
+        <div className="flex items-center gap-3 opacity-70">
+          <span className="rounded-md border border-line/15 bg-surface px-2.5 py-1 font-mono text-xs text-text">A</span>
+          <svg width="56" height="30" viewBox="0 0 56 30" aria-hidden>
+            <path d="M6 9 H46 M42 5.5 L48 9 L42 12.5" stroke="rgb(var(--accent))" strokeWidth="1.3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M50 21 H10 M14 17.5 L8 21 L14 24.5" stroke="rgb(var(--accent))" strokeWidth="1.3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            <text x="28" y="4.5" textAnchor="middle" fontSize="6" fill="rgb(var(--faint))">sensitizes</text>
+            <text x="28" y="29" textAnchor="middle" fontSize="6" fill="rgb(var(--faint))">sensitizes</text>
+          </svg>
+          <span className="rounded-md border border-line/15 bg-surface px-2.5 py-1 font-mono text-xs text-text">B</span>
+        </div>
+      </div>
+      <p className="mt-3 text-[0.78rem] leading-relaxed text-muted">
+        Cycling walks a{" "}
+        <span className="text-text">reciprocal collateral-sensitivity</span> graph:
+        when resistance to drug A comes with sensitivity to B (and back), alternating
+        them is hypothesized to keep resistance from fixing. That graph is computed —
+        deterministically — from <span className="text-text">per-lineage
+        resistance/sensitivity transitions</span> measured in an experimental-evolution
+        record.
+      </p>
+      <p className="mt-2 text-[0.78rem] leading-relaxed text-muted">
+        This public deployment is seeded from PubMLST, which carries no such
+        resistance/sensitivity measurements — so there is no cycle to draw here, and
+        that&rsquo;s shown honestly rather than filled with placeholder data. The full
+        cycle (e.g. <span className="font-mono text-text">SXT → MEM → CAZ → CHL</span>)
+        appears in the local demo, which loads the experimental record.
+      </p>
     </div>
   );
 }

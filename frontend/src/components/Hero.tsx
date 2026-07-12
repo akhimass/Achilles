@@ -26,7 +26,7 @@ export function Hero({
             <span className="text-gradient-green">Achilles&apos; heel</span>.
           </h1>
           <p className="mt-4 max-w-xl text-[0.95rem] leading-relaxed text-muted">
-            Trace resistance along the real experimental record — strain → flipper →
+            Trace resistance along a real bacterial lineage — strain → flipper →
             structure → target → evidence — and turn reversible
             (&ldquo;flipper&rdquo;) mutation structure into evidence-backed
             antibiotic-cycling hypotheses. A deterministic core does the math;
@@ -44,16 +44,27 @@ export function Hero({
             </Badge>
           </div>
           <div className="mt-2 text-xl font-medium italic text-text">{ORGANISM}</div>
-          <p className="mt-1 text-xs text-muted">
-            Real experimental-evolution record: isolates evolved along parallel
-            lineages, with per-gene indel flippers vs the reference genome and
-            per-lineage resistance/sensitivity.
-          </p>
-          <dl className="mt-4 grid grid-cols-3 gap-3">
-            <MiniStat label="Isolates" value={overview?.strains} />
-            <MiniStat label="Flipper-carrying" value={overview?.flipperCarriers} tone="accent" />
-            <MiniStat label="Lineages" value={overview?.lineages.length} />
-          </dl>
+          {(() => {
+            const hasLineages = (overview?.lineages.length ?? 0) > 0;
+            return (
+              <>
+                <p className="mt-1 text-xs text-muted">
+                  {hasLineages
+                    ? "Experimental-evolution record: isolates evolved along parallel lineages, with per-gene indel flippers vs the reference genome and per-lineage resistance/sensitivity."
+                    : "Public Burkholderia multivorans isolates (PubMLST), with reversible MLST loci and resistance-gene families grounded to the literature. Experimental-evolution lineages and cycling appear in the local demo."}
+                </p>
+                <dl className="mt-4 grid grid-cols-3 gap-3">
+                  <MiniStat label="Isolates" value={overview?.strains} />
+                  <MiniStat label="Flipper-carrying" value={overview?.flipperCarriers} tone="accent" />
+                  {hasLineages ? (
+                    <MiniStat label="Lineages" value={overview?.lineages.length} />
+                  ) : (
+                    <MiniStat label="Countries" value={overview?.countries.length} />
+                  )}
+                </dl>
+              </>
+            );
+          })()}
         </div>
       </div>
 
@@ -96,7 +107,7 @@ function PipelineChain({ overview }: { overview: Overview | null }) {
   // Every stage ships — the pipeline reads fully lit.
   const stages: Stage[] = [
     { key: "strain", label: "Strains", sub: "isolates + lineage", value: overview?.strains },
-    { key: "flipper", label: "Flippers", sub: "reversible indels", value: overview?.flipperCarriers },
+    { key: "flipper", label: "Flippers", sub: "reversible loci", value: overview?.flipperCarriers },
     { key: "evidence", label: "Evidence", sub: "grounded claims", value: "cited" },
     { key: "target", label: "Targets", sub: "ranked · tractable", value: "ranked" },
     { key: "cycle", label: "Cycling", sub: "CS / RCS schedule", value: "cycle" },

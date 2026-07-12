@@ -42,8 +42,8 @@ export function StrainDetail({
           <Cursor />
           <div className="mt-2 text-sm font-medium text-text">No strain selected</div>
           <p className="mt-1 max-w-[15rem] text-xs leading-relaxed text-muted">
-            Click a node in the lineage to inspect its lineage, collateral profile, and
-            flipper genes.
+            Click a node in the lineage to inspect its metadata, flipper genes, and
+            (where available) its resistance/sensitivity profile.
           </p>
         </div>
       </Panel>
