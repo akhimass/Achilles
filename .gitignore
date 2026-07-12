@@ -26,3 +26,6 @@ out/
 /data/demo/bmultivorans_burkdata.json
 # OS
 .DS_Store
+
+# TS incremental build info (local build artifact)
+*.tsbuildinfo
