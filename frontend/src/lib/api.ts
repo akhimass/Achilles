@@ -96,8 +96,10 @@ export const api = {
   // Bring-your-own-strains: POST a genotype CSV → lineage graph + flippers.
   uploadStrains: (csv: string, organism = "your cohort") =>
     postCsv<UploadResult>(`/api/ingest/upload?organism=${encodeURIComponent(organism)}`, csv),
-  ingestExample: () =>
-    fetch(`${BASE}/api/ingest/example`, { cache: "no-store" }).then((r) => r.text()),
+  ingestExample: (cohort?: string) =>
+    fetch(`${BASE}/api/ingest/example${cohort ? `?cohort=${cohort}` : ""}`, {
+      cache: "no-store",
+    }).then((r) => r.text()),
   trajectory: (strainId: string | null, resisted?: string | null) => {
     const params = new URLSearchParams();
     if (strainId) params.set("strain_id", strainId);

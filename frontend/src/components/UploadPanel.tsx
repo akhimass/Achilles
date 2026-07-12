@@ -17,12 +17,12 @@ export function UploadPanel() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
 
-  async function run(csv: string) {
+  async function run(csv: string, organism = "your cohort") {
     setStatus("loading");
     setError(null);
     setSelectedId(null);
     try {
-      const r = await api.uploadStrains(csv);
+      const r = await api.uploadStrains(csv, organism);
       setResult(r);
       setStatus("ready");
     } catch (e) {
@@ -40,10 +40,14 @@ export function UploadPanel() {
     run(await file.text());
   }
 
-  async function tryExample() {
+  async function tryExample(cohort?: string) {
     try {
       setStatus("loading");
-      run(await api.ingestExample());
+      const organism =
+        cohort === "alt"
+          ? "Pseudomonas aeruginosa (illustrative)"
+          : "Burkholderia multivorans (PubMLST)";
+      run(await api.ingestExample(cohort), organism);
     } catch {
       setError("Could not load the example.");
       setStatus("error");
@@ -81,7 +85,8 @@ export function UploadPanel() {
       {(status === "idle" || status === "error") && (
         <Dropzone
           onPick={() => fileRef.current?.click()}
-          onExample={tryExample}
+          onExample={() => tryExample()}
+          onExampleAlt={() => tryExample("alt")}
           onDropFile={onFile}
           error={error}
         />
@@ -98,7 +103,8 @@ export function UploadPanel() {
         <div className="animate-fade">
           <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
             <p className="text-[0.78rem] text-muted">
-              Reconstructed a lineage over{" "}
+              Reconstructed a lineage for{" "}
+              <span className="text-text">{s.organism}</span> over{" "}
               <span className="text-text">{s.strains} isolates</span> ·{" "}
               <span className="text-text">{s.loci} loci</span>, and detected reversible loci —{" "}
               <span className="text-accentStrong">{s.flipper_carrying}</span> isolates carry a
@@ -133,11 +139,13 @@ export function UploadPanel() {
 function Dropzone({
   onPick,
   onExample,
+  onExampleAlt,
   onDropFile,
   error,
 }: {
   onPick: () => void;
   onExample: () => void;
+  onExampleAlt: () => void;
   onDropFile: (f: File) => void;
   error: string | null;
 }) {
@@ -175,7 +183,20 @@ function Dropzone({
           >
             Try an example
           </button>
+          <button
+            onClick={onExampleAlt}
+            className="rounded-lg border border-line/12 px-3 py-1.5 text-xs text-muted transition hover:border-line/25 hover:text-text"
+            title="A different organism + MLST scheme (illustrative) — proves the same deterministic core generalizes"
+          >
+            Try another organism
+          </button>
         </div>
+        <p className="mt-2 text-[0.64rem] text-faint">
+          &ldquo;Try an example&rdquo; is real <span className="text-muted">Burkholderia</span>{" "}
+          PubMLST data; &ldquo;another organism&rdquo; is an illustrative{" "}
+          <span className="text-muted">Pseudomonas</span>-scheme cohort — same core, different
+          organism.
+        </p>
         <p className="mt-3 max-w-md text-[0.68rem] leading-relaxed text-faint">
           One row per isolate: an <span className="font-mono text-muted">id</span> column plus one
           column per locus (MLST alleles, gene presence/absence, or SNP calls). Optional{" "}

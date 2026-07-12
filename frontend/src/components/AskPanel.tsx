@@ -4,10 +4,19 @@
 // card with its provenance and an evidence-strength bar, the optional model synthesis may
 // only phrase those numbered claims, and when nothing is grounded it REFUSES rather than
 // fabricate. Persona (researcher / physician / computational) sets the lens and caveats.
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
 import { Panel, Badge } from "./ui";
-import type { AskResponse, AskClaim, AskPersona } from "@/lib/types";
+import type {
+  AskResponse,
+  AskClaim,
+  AskPersona,
+  CycleResponse,
+  TargetsResponse,
+  RankedTarget,
+} from "@/lib/types";
+
+const ORGANISM = "Burkholderia multivorans";
 
 const PERSONA_LABEL: Record<AskPersona, string> = {
   researcher: "Researcher",
@@ -177,6 +186,10 @@ function Answer({ data }: { data: AskResponse }) {
         )}
       </div>
 
+      {/* Intent-routed viz — a real, grounded object for the question's intent */}
+      {data.intent === "treatment" && <RoutedCycle />}
+      {data.intent === "target" && <RoutedTarget />}
+
       {/* Evidence cards — the real, cited output */}
       <div>
         <div className="mb-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-faint">
@@ -202,6 +215,133 @@ function Answer({ data }: { data: AskResponse }) {
         </div>
       )}
     </div>
+  );
+}
+
+// ── Intent-routed grounded viz ───────────────────────────────────────────────
+// These pull from the SAME real endpoints as the console panels, so the "answer"
+// to a treatment/target question is a live cited object, not generated text.
+
+function RoutedShell({
+  kicker,
+  children,
+}: {
+  kicker: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="rounded-xl border border-line/12 bg-surface2/30 p-3">
+      <div className="mb-2 text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-accentStrong">
+        {kicker}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+function RoutedCycle() {
+  const [data, setData] = useState<CycleResponse | null>(null);
+  const [err, setErr] = useState(false);
+  useEffect(() => {
+    let live = true;
+    api.cycle(ORGANISM).then((d) => live && setData(d)).catch(() => live && setErr(true));
+    return () => {
+      live = false;
+    };
+  }, []);
+  if (err) return null;
+  if (!data) return <div className="skeleton h-16 rounded-xl" />;
+  if (!data.cycle.length) return null;
+  const cited = data.rcs_pairs.find((p) => p.provenance)?.provenance;
+  return (
+    <RoutedShell kicker="Because you asked about treatment · the cited cycle">
+      <div className="flex flex-wrap items-center gap-1.5">
+        {data.cycle.map((drug, i) => (
+          <span key={`${drug}-${i}`} className="flex items-center gap-1.5">
+            <span className="rounded-md border border-accent/25 bg-accent/[0.06] px-2 py-1 font-mono text-[0.7rem] text-text">
+              {drug}
+            </span>
+            {i < data.cycle.length - 1 && <span className="text-faint">→</span>}
+          </span>
+        ))}
+        <span className="ml-0.5 font-mono text-[0.6rem] text-faint">↻ repeat</span>
+      </div>
+      <div className="mt-2 flex flex-wrap items-center gap-1.5">
+        <Badge tone="amber">research hypothesis</Badge>
+        {cited?.pmid && (
+          <a
+            href={cited.pubmed_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-md bg-accent/10 px-1.5 py-0.5 font-mono text-[0.6rem] text-accentStrong ring-1 ring-inset ring-accent/25 hover:brightness-110"
+          >
+            PMID {cited.pmid}
+          </a>
+        )}
+        <span className="font-mono text-[0.6rem] text-faint">
+          {data.counts.reciprocal} RCS pairs
+        </span>
+      </div>
+    </RoutedShell>
+  );
+}
+
+function RoutedTarget() {
+  const [top, setTop] = useState<RankedTarget | null>(null);
+  const [err, setErr] = useState(false);
+  useEffect(() => {
+    let live = true;
+    api
+      .targets(null)
+      .then((d: TargetsResponse) => {
+        if (!live) return;
+        const best = [...d.targets].sort(
+          (a, b) => (b.rank_score ?? 0) - (a.rank_score ?? 0),
+        )[0];
+        setTop(best ?? null);
+      })
+      .catch(() => live && setErr(true));
+    return () => {
+      live = false;
+    };
+  }, []);
+  if (err) return null;
+  if (!top) return <div className="skeleton h-16 rounded-xl" />;
+  const pct = Math.round((top.rank_score ?? 0) * 100);
+  return (
+    <RoutedShell kicker="Because you asked about targets · top ranked">
+      <div className="flex items-start justify-between gap-2">
+        <div className="min-w-0">
+          <span className="font-mono text-[0.82rem] text-text">{top.name ?? top.locus_tag}</span>
+          {top.locus_tag && (
+            <span className="ml-1.5 font-mono text-[0.6rem] text-faint">{top.locus_tag}</span>
+          )}
+          {top.mechanism && <div className="mt-0.5 text-[0.72rem] text-muted">{top.mechanism}</div>}
+        </div>
+        <span className="font-mono text-sm text-accentStrong">{(top.rank_score ?? 0).toFixed(2)}</span>
+      </div>
+      <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-line/10">
+        <div className="h-full rounded-full bg-accent" style={{ width: `${pct}%` }} />
+      </div>
+      <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
+        <span className="font-mono text-[0.6rem] text-faint">
+          {top.evidence_counts.grounded}/{top.evidence_counts.total} edges grounded
+        </span>
+        {top.tractability?.bucket && (
+          <span className="rounded-md bg-line/8 px-1.5 py-0.5 font-mono text-[0.58rem] uppercase text-muted">
+            {top.tractability.bucket}
+          </span>
+        )}
+        {top.rationale_citations.slice(0, 2).map((a) => (
+          <span
+            key={a}
+            className="rounded-md bg-accent/10 px-1.5 py-0.5 font-mono text-[0.58rem] text-accentStrong ring-1 ring-inset ring-accent/25"
+          >
+            {a}
+          </span>
+        ))}
+      </div>
+    </RoutedShell>
   );
 }
 
