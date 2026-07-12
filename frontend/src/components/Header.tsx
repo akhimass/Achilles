@@ -3,7 +3,15 @@ import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 import type { LineageStatus } from "@/lib/useLineage";
 
-export function Header({ status }: { status: LineageStatus }) {
+export function Header({
+  status,
+  demo,
+  onToggleDemo,
+}: {
+  status: LineageStatus;
+  demo?: boolean;
+  onToggleDemo?: (next: boolean) => void;
+}) {
   return (
     <header className="animate-fade sticky top-0 z-30 border-b border-line/8 bg-bg/60 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-3">
@@ -19,13 +27,14 @@ export function Header({ status }: { status: LineageStatus }) {
               </span>
             </div>
             <div className="mt-1 hidden text-[0.7rem] text-muted sm:block">
-              Antimicrobial-resistance target &amp; treatment intelligence
+              Evidence-grounded discovery console
             </div>
           </div>
         </Link>
 
         <div className="flex items-center gap-2.5">
-          <ConnectionPill status={status} />
+          {onToggleDemo && <DemoToggle demo={!!demo} onToggle={onToggleDemo} />}
+          <ConnectionPill status={status} demo={demo} />
           <ThemeToggle />
         </div>
       </div>
@@ -33,10 +42,48 @@ export function Header({ status }: { status: LineageStatus }) {
   );
 }
 
-function ConnectionPill({ status }: { status: LineageStatus }) {
+function DemoToggle({ demo, onToggle }: { demo: boolean; onToggle: (n: boolean) => void }) {
+  return (
+    <button
+      onClick={() => onToggle(!demo)}
+      className={
+        "inline-flex items-center gap-2 rounded-full border px-2.5 py-1 text-[0.7rem] font-medium transition " +
+        (demo
+          ? "border-accent/30 bg-accent/10 text-accentStrong"
+          : "border-line/12 bg-surface/70 text-muted hover:text-text")
+      }
+      title="Load an example dataset (Burkholderia AMR) to populate the console"
+    >
+      <span
+        className={
+          "relative h-3.5 w-6 rounded-full transition-colors " +
+          (demo ? "bg-accent/40" : "bg-line/20")
+        }
+      >
+        <span
+          className={
+            "absolute top-0.5 h-2.5 w-2.5 rounded-full bg-surface shadow transition-all " +
+            (demo ? "left-3" : "left-0.5")
+          }
+        />
+      </span>
+      Demo data
+    </button>
+  );
+}
+
+function ConnectionPill({ status, demo }: { status: LineageStatus; demo?: boolean }) {
+  if (!demo) {
+    return (
+      <span className="hidden items-center gap-2 rounded-full border border-line/10 bg-surface/70 px-2.5 py-1 text-[0.7rem] font-medium text-muted sm:inline-flex">
+        <span className="h-1.5 w-1.5 rounded-full bg-faint" />
+        No dataset loaded
+      </span>
+    );
+  }
   const map = {
     loading: { label: "Connecting", cls: "text-amber", dot: "bg-amber" },
-    ready: { label: "Live · seeded demo", cls: "text-accentStrong", dot: "bg-accent" },
+    ready: { label: "Live · demo dataset", cls: "text-accentStrong", dot: "bg-accent" },
     empty: { label: "No data — run seed", cls: "text-muted", dot: "bg-faint" },
     error: { label: "API offline", cls: "text-danger", dot: "bg-danger" },
   }[status];

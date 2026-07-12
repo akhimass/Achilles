@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useLineage } from "@/lib/useLineage";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
+import { GenericOverview } from "@/components/GenericOverview";
 import { Panel } from "@/components/ui";
 import { LineageTree } from "@/components/LineageTree";
 import { StructureViewer } from "@/components/StructureViewer";
@@ -22,28 +23,33 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { AskPanel } from "@/components/AskPanel";
 import { ConsoleNav, PERSONAS, type Persona, type NavSection } from "@/components/ConsoleNav";
 
-const ORGANISM = "Burkholderia multivorans";
+// The one bundled example dataset. The console itself is domain-agnostic; this is loaded
+// only when the user turns on "Demo data".
+const DEMO_ORGANISM = "Burkholderia multivorans";
 const DEFAULT_GENE: GeneSelection = {
   locus: "A8H40_RS07590",
   label: "MarR (A8H40_RS07590)",
 };
 
-// The console read as a pipeline story. Each chapter is tagged with the audiences it
-// serves most; the sidebar filters to a persona's path (and "Everything" shows it all).
-const SECTIONS: NavSection[] = [
+// Chapters tagged with the audiences they serve and whether they need a loaded dataset
+// (`demoOnly`). Blank console shows only the always-on chapters; loading the demo reveals
+// the data-backed ones.
+const SECTIONS: (NavSection & { demoOnly?: boolean })[] = [
   { id: "overview", label: "Overview", group: "Start", personas: ["researcher", "physician", "computational"] },
-  { id: "ask", label: "Ask Achilles", group: "Start", personas: ["researcher", "physician", "computational"] },
-  { id: "prove", label: "Prove it", group: "Trust layer", personas: ["computational", "physician"] },
-  { id: "lineage", label: "Strains & lineage", group: "Evidence", personas: ["researcher"] },
-  { id: "evidence", label: "Search & claims", group: "Evidence", personas: ["researcher", "computational"] },
-  { id: "targets", label: "Target identification", group: "Discovery", personas: ["researcher", "computational"] },
-  { id: "treatment", label: "Treatment optimization", group: "Discovery", personas: ["physician", "researcher"] },
+  { id: "ask", label: "Ask", group: "Start", personas: ["researcher", "physician", "computational"] },
+  { id: "yourdata", label: "Your data", group: "Start", personas: ["researcher", "physician", "computational"] },
+  { id: "prove", label: "Prove it", group: "Trust layer", personas: ["computational", "physician"], demoOnly: true },
+  { id: "lineage", label: "Strains & lineage", group: "Evidence", personas: ["researcher"], demoOnly: true },
+  { id: "evidence", label: "Search & claims", group: "Evidence", personas: ["researcher", "computational"], demoOnly: true },
+  { id: "targets", label: "Target identification", group: "Discovery", personas: ["researcher", "computational"], demoOnly: true },
+  { id: "treatment", label: "Treatment optimization", group: "Discovery", personas: ["physician", "researcher"], demoOnly: true },
   { id: "how", label: "How it works", group: "About", personas: ["researcher", "physician", "computational"] },
 ];
 
 const CHAPTERS: Record<string, { kicker: string; title: string }> = {
-  overview: { kicker: "Start", title: "Active cohort & guarantees" },
-  ask: { kicker: "Ask", title: "Ask the evidence graph" },
+  overview: { kicker: "Start", title: "Discovery console" },
+  ask: { kicker: "Ask", title: "Ask your evidence graph" },
+  yourdata: { kicker: "Start", title: "Your data" },
   prove: { kicker: "Trust layer", title: "Prove it — recall, refusal, foresight" },
   lineage: { kicker: "Evidence in", title: "Strains & lineage" },
   evidence: { kicker: "Evidence graph", title: "Search & grounded claims" },
@@ -53,14 +59,29 @@ const CHAPTERS: Record<string, { kicker: string; title: string }> = {
 };
 
 export default function Page() {
+  const [demo, setDemo] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [selectedGene, setSelectedGene] = useState<GeneSelection>(DEFAULT_GENE);
   const [persona, setPersona] = useState<Persona>("all");
   const [active, setActive] = useState<string>("overview");
-  const { graph, status, error, byId, overview } = useLineage(ORGANISM);
+
+  const activeOrganism = demo ? DEMO_ORGANISM : null;
+  const { graph, status, error, byId, overview } = useLineage(activeOrganism);
 
   const selectedNode = selectedId ? (byId.get(selectedId) ?? null) : null;
   const maxFlip = overview?.maxFlip ?? 1;
+
+  // Read/write the demo flag from the URL so a populated console is shareable.
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("demo") === "1") setDemo(true);
+  }, []);
+  const toggleDemo = (next: boolean) => {
+    setDemo(next);
+    const url = new URL(window.location.href);
+    if (next) url.searchParams.set("demo", "1");
+    else url.searchParams.delete("demo");
+    window.history.replaceState({}, "", url);
+  };
 
   const selectStrainByLabel = (label: string) => {
     for (const [id, node] of byId) {
@@ -72,11 +93,14 @@ export default function Page() {
   };
 
   const visible = useMemo(
-    () => SECTIONS.filter((s) => persona === "all" || s.personas.includes(persona)),
-    [persona],
+    () =>
+      SECTIONS.filter(
+        (s) =>
+          (persona === "all" || s.personas.includes(persona)) && (demo || !s.demoOnly),
+      ),
+    [persona, demo],
   );
 
-  // Scrollspy — highlight the chapter nearest the top of the viewport.
   useEffect(() => {
     const ids = visible.map((s) => s.id);
     const obs = new IntersectionObserver(
@@ -100,16 +124,15 @@ export default function Page() {
     setActive(id);
   };
 
-  const personaBlurb =
-    persona !== "all" ? PERSONAS.find((p) => p.id === persona)?.blurb : null;
+  const personaBlurb = persona !== "all" ? PERSONAS.find((p) => p.id === persona)?.blurb : null;
 
   return (
     <div className="min-h-screen">
-      <Header status={status} />
+      <Header status={status} demo={demo} onToggleDemo={toggleDemo} />
 
       <div className="mx-auto flex max-w-[88rem] gap-8 px-6 pb-20 pt-9">
         <ConsoleNav
-          sections={SECTIONS}
+          sections={visible}
           active={active}
           persona={persona}
           onPersona={setPersona}
@@ -127,12 +150,26 @@ export default function Page() {
           )}
 
           <Chapter id="overview" visible={visible}>
-            <Hero overview={overview} status={status} />
-            <TrustBar />
+            {demo ? (
+              <>
+                <Hero overview={overview} status={status} />
+                <TrustBar />
+              </>
+            ) : (
+              <GenericOverview onLoadDemo={() => toggleDemo(true)} />
+            )}
           </Chapter>
 
           <Chapter id="ask" visible={visible}>
-            <AskPanel persona={persona} />
+            <AskPanel
+              persona={persona}
+              dataset={activeOrganism}
+              onLoadDemo={() => toggleDemo(true)}
+            />
+          </Chapter>
+
+          <Chapter id="yourdata" visible={visible}>
+            <UploadPanel />
           </Chapter>
 
           <Chapter id="prove" visible={visible}>
@@ -160,7 +197,6 @@ export default function Page() {
               </Panel>
               <StructureViewer locus={selectedGene?.locus ?? null} label={selectedGene?.label} />
             </section>
-            <UploadPanel />
             <section className="grid gap-5 lg:grid-cols-[1fr_1fr]">
               <StrainDetail
                 node={selectedNode}
@@ -190,7 +226,7 @@ export default function Page() {
           <Chapter id="treatment" visible={visible}>
             <TrajectoryPanel strainId={selectedId} onSelectStrainLabel={selectStrainByLabel} />
             <CyclingView
-              organism={ORGANISM}
+              organism={DEMO_ORGANISM}
               strainId={selectedId}
               strainLabel={selectedNode?.label ?? null}
             />
@@ -213,11 +249,11 @@ function Chapter({
   children,
 }: {
   id: string;
-  visible: NavSection[];
+  visible: (NavSection & { demoOnly?: boolean })[];
   children: React.ReactNode;
 }) {
   const meta = visible.find((s) => s.id === id);
-  if (!meta) return null; // filtered out for the current persona
+  if (!meta) return null; // filtered out for the current persona / blank console
   const c = CHAPTERS[id];
   return (
     <section id={id} className="scroll-mt-24 space-y-5">
@@ -250,18 +286,18 @@ function Footer() {
     <footer className="border-t border-line/8 pt-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.7rem] text-faint">
-          <span className="text-muted">Public sources:</span>
+          <span className="text-muted">Example dataset sources:</span>
           {sources.map((s) => (
             <span key={s} className="rounded-md bg-line/6 px-1.5 py-0.5 font-mono">
               {s}
             </span>
           ))}
           <span className="rounded-md border border-line/12 px-1.5 py-0.5 font-mono text-faint">
-            BurkData — local demo only
+            AMR demo: Burkholderia (one example)
           </span>
         </div>
         <div className="text-[0.7rem] text-faint">
-          Deterministic core · AlphaFold on top · provenance on every edge ·{" "}
+          Deterministic core · provenance on every edge · domain-agnostic ·{" "}
           <span className="text-muted">MIT</span>
         </div>
       </div>

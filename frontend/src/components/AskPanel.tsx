@@ -42,7 +42,15 @@ const EXAMPLES: Record<AskPersona, string[]> = {
   ],
 };
 
-export function AskPanel({ persona: pagePersona }: { persona?: string }) {
+export function AskPanel({
+  persona: pagePersona,
+  dataset,
+  onLoadDemo,
+}: {
+  persona?: string;
+  dataset?: string | null;
+  onLoadDemo?: () => void;
+}) {
   const seed: AskPersona =
     pagePersona === "physician" || pagePersona === "computational"
       ? pagePersona
@@ -84,6 +92,10 @@ export function AskPanel({ persona: pagePersona }: { persona?: string }) {
         chatbot: no ungrounded text.
       </p>
 
+      {dataset === null ? (
+        <BlankAsk onLoadDemo={onLoadDemo} />
+      ) : (
+        <>
       {/* Persona lens */}
       <div className="mb-2.5 inline-flex rounded-lg border border-line/12 bg-surface2/40 p-0.5">
         {(Object.keys(PERSONA_LABEL) as AskPersona[]).map((p) => (
@@ -136,7 +148,37 @@ export function AskPanel({ persona: pagePersona }: { persona?: string }) {
       )}
       {status === "loading" && <div className="mt-3 skeleton h-24 rounded-xl" />}
       {status === "ready" && data && <Answer data={data} />}
+        </>
+      )}
     </Panel>
+  );
+}
+
+function BlankAsk({ onLoadDemo }: { onLoadDemo?: () => void }) {
+  return (
+    <div className="rounded-xl border border-dashed border-line/15 bg-surface2/40 p-5 text-center">
+      <p className="mx-auto max-w-md text-[0.82rem] leading-relaxed text-muted">
+        No dataset is loaded. Ask answers <span className="text-text">only from grounded
+        evidence</span>, so it needs data first — load the example dataset, or bring your own
+        below and it becomes queryable.
+      </p>
+      <div className="mt-3 flex items-center justify-center gap-2">
+        {onLoadDemo && (
+          <button
+            onClick={onLoadDemo}
+            className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-[rgb(var(--bg))] transition hover:shadow-glow-sm"
+          >
+            Load the demo dataset
+          </button>
+        )}
+        <a
+          href="#yourdata"
+          className="rounded-lg border border-line/15 px-4 py-2 text-sm text-muted transition hover:border-line/30 hover:text-text"
+        >
+          Bring your own data
+        </a>
+      </div>
+    </div>
   );
 }
 

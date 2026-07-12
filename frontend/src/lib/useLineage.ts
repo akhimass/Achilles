@@ -81,13 +81,20 @@ function summarize(graph: LineageGraph): Overview {
   };
 }
 
-export function useLineage(organism: string): LineageState {
+export function useLineage(organism: string | null): LineageState {
   const [graph, setGraph] = useState<LineageGraph | null>(null);
-  const [status, setStatus] = useState<LineageStatus>("loading");
+  const [status, setStatus] = useState<LineageStatus>(organism ? "loading" : "empty");
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     let live = true;
+    // No active dataset (blank console) → don't fetch; sit in an empty/ready state.
+    if (!organism) {
+      setGraph(null);
+      setStatus("empty");
+      setError(null);
+      return;
+    }
     setStatus("loading");
     setGraph(null);
     setError(null);
