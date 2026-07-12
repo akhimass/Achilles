@@ -1,0 +1,19 @@
+{
+  "_about": "PUBLIC, cited reciprocal collateral-sensitivity pairs for Burkholderia multivorans. Unlike the BurkData-derived collateral rows (local-only), every pair here traces to a peer-reviewed publication and is redistributable — so the treatment/cycling beat renders on the public deploy WITH provenance, never as a blank panel. These are literature-REPORTED reciprocal CS relationships (resistance to A coincides with re-sensitization to B, and vice-versa), not values computed in this repo; exact per-lineage support counts are intentionally left null rather than fabricated.",
+  "organism": "Burkholderia multivorans",
+  "citation": {
+    "pmid": "32335276",
+    "doi": "10.1016/j.ijantimicag.2020.105994",
+    "title": "Reciprocal antibiotic collateral sensitivity in Burkholderia multivorans",
+    "journal": "International Journal of Antimicrobial Agents",
+    "year": 2020,
+    "note": "B. multivorans evolved to resistance against six drugs (chloramphenicol, ceftazidime, levofloxacin, meropenem, minocycline, trimethoprim-sulfamethoxazole). Collateral sensitivity was observed in 170/279 evolved strains; reciprocal CS pairs arose in >=25% of evolved strains. The pairs below are the highest-frequency reciprocal CS pairs the authors highlight as most clinically actionable for two-drug switching."
+  },
+  "reciprocal_pairs": [
+    {"drug_a": "meropenem", "drug_b": "trimethoprim-sulfamethoxazole", "abbr_a": "MEM", "abbr_b": "SXT", "tier": "high"},
+    {"drug_a": "meropenem", "drug_b": "levofloxacin", "abbr_a": "MEM", "abbr_b": "LVX", "tier": "high"},
+    {"drug_a": "ceftazidime", "drug_b": "trimethoprim-sulfamethoxazole", "abbr_a": "CAZ", "abbr_b": "SXT", "tier": "high"},
+    {"drug_a": "meropenem", "drug_b": "minocycline", "abbr_a": "MEM", "abbr_b": "MIN", "tier": "high"},
+    {"drug_a": "ceftazidime", "drug_b": "levofloxacin", "abbr_a": "CAZ", "abbr_b": "LVX", "tier": "high"}
+  ]
+}

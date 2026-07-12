@@ -1,0 +1,16 @@
+{
+  "_about": "Known small-molecule inhibitors per target, each tied to a GROUNDED evidence edge, so the docking/ADMET beat starts from real cited chemistry — not an invented ligand. SMILES carry a PubChem CID for auditability. Tamarind Bio runs the ADMET drug-property prediction and the docking pose into the AlphaFold structure.",
+  "organism": "Burkholderia multivorans",
+  "ligands": {
+    "A8H40_RS19975": [
+      {
+        "name": "CCCP",
+        "smiles": "C1=CC(=CC(=C1)Cl)NN=C(C#N)C#N",
+        "pubchem_cid": 2603,
+        "role": "protonophore / efflux inhibitor",
+        "citation": "CARD:ARO:3000074",
+        "note": "CCCP collapses the proton-motive force that powers the efflux transporter. The efflux edge 'is_target_of CCCP' is grounded to CARD:ARO:3000074 — so docking CCCP into the AlphaFold efflux structure starts from cited evidence, not a guess."
+      }
+    ]
+  }
+}
