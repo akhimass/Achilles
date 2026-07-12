@@ -312,6 +312,28 @@ export interface ValidationReport {
   };
 }
 
+// Red-team verdict — a judge-typed claim adjudicated against the grounded graph.
+export interface RedTeamVerdict {
+  claim: {
+    gene?: string | null;
+    locus?: string | null;
+    relation?: string | null;
+    target?: string | null;
+  };
+  verdict: "supported" | "weak" | "refused" | "unknown_gene";
+  grounded: boolean;
+  matched_target?: string | null;
+  matched_relation?: string | null;
+  provenance?: {
+    pmid?: string | null;
+    pubmed_url?: string | null;
+    db?: string | null;
+    acc?: string | null;
+    ref_url?: string | null;
+  };
+  reason: string;
+}
+
 // Grounded search over the evidence graph (from /api/search).
 export interface SearchResult {
   kind: "paper" | "gene" | "edge";

@@ -30,6 +30,75 @@ def load_benchmark() -> dict:
     return json.loads(BENCHMARK.read_text())
 
 
+# ─── Red-team: adjudicate a claim a judge types in, live ─────────────────────
+
+# Public gene aliases → locus, so a judge can type "MarR" not a locus tag.
+_GENE_ALIASES = {
+    "marr": "A8H40_RS07590",
+    "arac": "A8H40_RS24275", "mara": "A8H40_RS24275", "aracmara": "A8H40_RS24275",
+    "lysr": "A8H40_RS17945",
+    "efflux": "A8H40_RS19975", "dmt": "A8H40_RS19975", "effluxdmt": "A8H40_RS19975",
+    "responseregulator": "A8H40_RS00780", "responsereg": "A8H40_RS00780",
+}
+
+
+def resolve_locus(gene: str | None) -> str | None:
+    """Map a judge's gene input (name or locus tag) to a locus, or None."""
+    if not gene:
+        return None
+    g = gene.strip()
+    if g.upper().startswith("A8H40_"):
+        return g.upper()
+    key = "".join(c for c in g.lower() if c.isalnum())
+    return _GENE_ALIASES.get(key)
+
+
+def adjudicate(gene: str | None, target: str | None, edges: list[dict], relation: str | None = None) -> dict:
+    """Judge a free-typed claim against the grounded graph. Pure, deterministic.
+
+    Returns a verdict: ``supported`` (a grounded edge backs it, with citation),
+    ``weak`` (only an abstract-only mention — not corroborated), ``refused`` (no
+    evidence — the engine will not assert it), or ``unknown_gene``. The claim is never
+    accepted on faith; it must match real grounded evidence to be supported.
+    """
+    locus = resolve_locus(gene)
+    claim = {"gene": gene, "locus": locus, "relation": relation, "target": target}
+    if not locus:
+        return {"claim": claim, "verdict": "unknown_gene", "grounded": False,
+                "reason": f"'{gene}' is not a gene in the demo graph. Try MarR, AraC/MarA, "
+                          "LysR, efflux, or a locus tag."}
+    term = (target or "").strip().lower()
+    grounded_hit = abstract_hit = None
+    for e in edges:
+        if e.get("locus") != locus:
+            continue
+        if relation and e.get("relation") != relation:
+            continue
+        if term and term not in (e.get("target") or "").lower():
+            continue
+        if e.get("grounded"):
+            grounded_hit = grounded_hit or e
+        else:
+            abstract_hit = abstract_hit or e
+
+    if grounded_hit:
+        return {"claim": claim, "verdict": "supported", "grounded": True,
+                "matched_target": grounded_hit.get("target"),
+                "matched_relation": grounded_hit.get("relation"),
+                "provenance": grounded_hit.get("provenance") or {},
+                "reason": "A grounded evidence edge in the graph supports this claim."}
+    if abstract_hit:
+        return {"claim": claim, "verdict": "weak", "grounded": False,
+                "matched_target": abstract_hit.get("target"),
+                "matched_relation": abstract_hit.get("relation"),
+                "provenance": abstract_hit.get("provenance") or {},
+                "reason": "Only an abstract-only mention exists — not corroborated against a "
+                          "reference DB, so it is not asserted as validated."}
+    return {"claim": claim, "verdict": "refused", "grounded": False, "provenance": {},
+            "reason": "No grounded evidence in the graph supports this claim, so the engine "
+                      "refuses it rather than fabricate support."}
+
+
 def _match(control: dict, edges: list[dict]) -> dict | None:
     """Best edge supporting a control: grounded preferred, then abstract-only.
 

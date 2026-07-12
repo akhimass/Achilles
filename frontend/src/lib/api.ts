@@ -11,6 +11,7 @@ import type {
   SearchResponse,
   UploadResult,
   ValidationReport,
+  RedTeamVerdict,
 } from "./types";
 
 const BASE = process.env.NEXT_PUBLIC_API_BASE ?? "http://localhost:8000";
@@ -74,6 +75,10 @@ export const api = {
     get<CycleResponse>(`/api/treatment/cycle?organism=${encodeURIComponent(organism)}`),
   search: (q: string) => get<SearchResponse>(`/api/search?q=${encodeURIComponent(q)}`),
   validation: () => get<ValidationReport>("/api/validation"),
+  redteam: (gene: string, target: string) =>
+    get<RedTeamVerdict>(
+      `/api/validation/redteam?gene=${encodeURIComponent(gene)}&target=${encodeURIComponent(target)}`,
+    ),
   // Bring-your-own-strains: POST a genotype CSV → lineage graph + flippers.
   uploadStrains: (csv: string, organism = "your cohort") =>
     postCsv<UploadResult>(`/api/ingest/upload?organism=${encodeURIComponent(organism)}`, csv),

@@ -15,7 +15,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import get_session
 from app.graph_shaping import pubmed_url, reference_url
-from app.ingestion.validation import evaluate, load_benchmark
+from app.ingestion.validation import adjudicate, evaluate, load_benchmark
 
 router = APIRouter(prefix="/api/validation", tags=["validation"])
 
@@ -30,17 +30,11 @@ _EDGES_SQL = """
 """
 
 
-@router.get("")
-async def validation(
-    organism: str = _DEFAULT_ORGANISM,
-    session: AsyncSession = Depends(get_session),
-) -> dict:
-    """Run the grounded graph against the committed public ground-truth controls."""
+async def _fetch_edges(session: AsyncSession, organism: str) -> list[dict]:
     rows = (
         await session.execute(text(_EDGES_SQL), {"organism": organism})
     ).mappings().all()
-
-    edges = [
+    return [
         {
             "locus": r["locus"],
             "relation": r["relation"],
@@ -57,7 +51,33 @@ async def validation(
         for r in rows
     ]
 
+
+@router.get("")
+async def validation(
+    organism: str = _DEFAULT_ORGANISM,
+    session: AsyncSession = Depends(get_session),
+) -> dict:
+    """Run the grounded graph against the committed public ground-truth controls."""
+    edges = await _fetch_edges(session, organism)
     benchmark = load_benchmark()
     if organism:
         benchmark = {**benchmark, "organism": organism}
     return evaluate(benchmark, edges).model_dump()
+
+
+@router.get("/redteam")
+async def redteam(
+    gene: str,
+    target: str,
+    relation: str | None = None,
+    organism: str = _DEFAULT_ORGANISM,
+    session: AsyncSession = Depends(get_session),
+) -> dict:
+    """Adjudicate a claim a judge types in, live, against the grounded graph.
+
+    e.g. ?gene=MarR&target=vancomycin → 'refused' (no grounded evidence);
+         ?gene=MarR&target=ciprofloxacin → 'supported' (cited grounded edge).
+    The claim is never accepted on faith — only grounded evidence supports it.
+    """
+    edges = await _fetch_edges(session, organism)
+    return adjudicate(gene, target, edges, relation=relation)

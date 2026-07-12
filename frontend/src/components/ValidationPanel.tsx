@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
 import { clsx } from "@/lib/clsx";
 import { Panel, Badge } from "./ui";
-import type { ValidationReport, ValidationItem } from "@/lib/types";
+import type { ValidationReport, ValidationItem, RedTeamVerdict } from "@/lib/types";
 
 export function ValidationPanel() {
   const [data, setData] = useState<ValidationReport | null>(null);
@@ -93,9 +93,132 @@ export function ValidationPanel() {
               items={data.items.filter((i) => i.kind === "negative")}
             />
           </div>
+
+          <RedTeam />
         </div>
       )}
     </Panel>
+  );
+}
+
+const PRESETS: { gene: string; target: string; label: string; truth: "true" | "false" }[] = [
+  { gene: "MarR", target: "ciprofloxacin", label: "MarR → ciprofloxacin", truth: "true" },
+  { gene: "MarR", target: "vancomycin", label: "MarR → vancomycin", truth: "false" },
+  { gene: "AraC/MarA", target: "tigecycline", label: "AraC/MarA → tigecycline", truth: "true" },
+  { gene: "LysR", target: "tetracycline", label: "LysR → tetracycline", truth: "false" },
+];
+
+// Live precision test: a judge types (or picks) a claim; the engine adjudicates it
+// against grounded evidence and refuses anything it can't ground — watched in real time.
+function RedTeam() {
+  const [gene, setGene] = useState("MarR");
+  const [target, setTarget] = useState("");
+  const [result, setResult] = useState<RedTeamVerdict | null>(null);
+  const [busy, setBusy] = useState(false);
+
+  const run = (g: string, t: string) => {
+    setGene(g);
+    setTarget(t);
+    if (!g.trim() || !t.trim()) return;
+    setBusy(true);
+    api
+      .redteam(g.trim(), t.trim())
+      .then((v) => setResult(v))
+      .catch(() => setResult(null))
+      .finally(() => setBusy(false));
+  };
+
+  return (
+    <div className="mt-4 rounded-xl border border-line/12 bg-surface2/40 p-3">
+      <div className="mb-1 text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-faint">
+        Red-team it — inject a claim, watch the verdict
+      </div>
+      <p className="mb-2 text-[0.72rem] leading-relaxed text-muted">
+        Type a resistance claim. The engine only says <span className="text-text">supported</span>{" "}
+        if grounded evidence backs it — otherwise it <span className="text-text">refuses</span>,
+        rather than fabricate. Try a true one and a false one.
+      </p>
+      <div className="flex flex-wrap items-center gap-1.5">
+        <input
+          value={gene}
+          onChange={(e) => setGene(e.target.value)}
+          placeholder="gene (e.g. MarR)"
+          className="w-28 rounded-md border border-line/15 bg-surface/60 px-2 py-1 text-[0.74rem] text-text outline-none focus:border-accent/40"
+        />
+        <span className="text-[0.7rem] text-faint">confers resistance to</span>
+        <input
+          value={target}
+          onChange={(e) => setTarget(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && run(gene, target)}
+          placeholder="drug (e.g. vancomycin)"
+          className="w-36 rounded-md border border-line/15 bg-surface/60 px-2 py-1 text-[0.74rem] text-text outline-none focus:border-accent/40"
+        />
+        <button
+          type="button"
+          onClick={() => run(gene, target)}
+          disabled={busy}
+          className="rounded-md bg-accent/12 px-2.5 py-1 text-[0.72rem] font-medium text-accentStrong ring-1 ring-inset ring-accent/25 transition hover:bg-accent/20 disabled:opacity-50"
+        >
+          {busy ? "checking…" : "Test claim"}
+        </button>
+      </div>
+      <div className="mt-2 flex flex-wrap gap-1.5">
+        {PRESETS.map((p) => (
+          <button
+            key={p.label}
+            type="button"
+            onClick={() => run(p.gene, p.target)}
+            className={clsx(
+              "rounded-md px-1.5 py-0.5 font-mono text-[0.62rem] ring-1 ring-inset transition",
+              p.truth === "true"
+                ? "bg-line/6 text-muted ring-line/15 hover:text-text"
+                : "bg-amber/8 text-amber ring-amber/20 hover:bg-amber/15",
+            )}
+          >
+            {p.label} {p.truth === "false" ? "· planted" : ""}
+          </button>
+        ))}
+      </div>
+      {result && <Verdict v={result} />}
+    </div>
+  );
+}
+
+function Verdict({ v }: { v: RedTeamVerdict }) {
+  const tone =
+    v.verdict === "supported"
+      ? { cls: "border-accent/30 bg-accent/[0.06] text-accentStrong", label: "SUPPORTED" }
+      : v.verdict === "weak"
+        ? { cls: "border-amber/30 bg-amber/[0.06] text-amber", label: "WEAK — abstract-only" }
+        : v.verdict === "unknown_gene"
+          ? { cls: "border-line/20 bg-surface2/50 text-muted", label: "UNKNOWN GENE" }
+          : { cls: "border-amber/30 bg-amber/[0.06] text-amber", label: "REFUSED" };
+  const p = v.provenance || {};
+  const cite = p.acc ? `${p.db} ${p.acc}` : p.pmid ? `PMID ${p.pmid}` : null;
+  const href = p.ref_url || p.pubmed_url || undefined;
+  return (
+    <div className={clsx("animate-fade mt-2.5 rounded-lg border p-2.5", tone.cls)}>
+      <div className="flex items-center gap-2">
+        <span className="font-mono text-[0.7rem] font-semibold uppercase tracking-wide">
+          {tone.label}
+        </span>
+        <span className="font-mono text-[0.66rem] text-muted">
+          {v.claim.gene} → {v.claim.target}
+        </span>
+      </div>
+      <p className="mt-1 text-[0.72rem] leading-relaxed text-muted">{v.reason}</p>
+      {cite && (
+        <div className="mt-1">
+          {href ? (
+            <a href={href} target="_blank" rel="noopener noreferrer" className="font-mono text-[0.62rem] text-accentStrong hover:underline">
+              {cite}
+            </a>
+          ) : (
+            <span className="font-mono text-[0.62rem] text-faint">{cite}</span>
+          )}
+        </div>
+      )}
+    </div>
   );
 }
 

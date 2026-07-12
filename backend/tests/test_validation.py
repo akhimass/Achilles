@@ -64,6 +64,38 @@ def test_fabrication_is_flagged():
     assert rep.metrics["fabricated"] == 1 and rep.metrics["clean"] is False
 
 
+def test_resolve_locus_accepts_name_or_tag():
+    from app.ingestion.validation import resolve_locus
+
+    assert resolve_locus("MarR") == "A8H40_RS07590"
+    assert resolve_locus("efflux") == "A8H40_RS19975"
+    assert resolve_locus("A8H40_RS07590") == "A8H40_RS07590"
+    assert resolve_locus("not-a-gene") is None
+
+
+def test_redteam_supports_true_refuses_false_and_flags_weak():
+    from app.ingestion.validation import adjudicate
+
+    edges = [
+        {"locus": "A8H40_RS07590", "relation": "confers_resistance", "target": "ciprofloxacin",
+         "grounded": True, "provenance": {"db": "CARD", "acc": "ARO:3003378"}},
+        {"locus": "A8H40_RS07590", "relation": "implicates", "target": "tigecycline response",
+         "grounded": False, "provenance": {"pmid": "41822337"}},
+    ]
+    # True claim → supported, with its grounded citation.
+    yes = adjudicate("MarR", "ciprofloxacin", edges)
+    assert yes["verdict"] == "supported" and yes["grounded"] is True
+    assert yes["provenance"]["acc"] == "ARO:3003378"
+    # Planted-false claim → refused, not fabricated.
+    no = adjudicate("MarR", "vancomycin", edges)
+    assert no["verdict"] == "refused" and no["grounded"] is False
+    # Abstract-only mention → weak (not asserted as validated).
+    weak = adjudicate("MarR", "tigecycline", edges)
+    assert weak["verdict"] == "weak" and weak["grounded"] is False
+    # Unknown gene → honest 'unknown_gene', never a guess.
+    assert adjudicate("phlogiston", "anything", edges)["verdict"] == "unknown_gene"
+
+
 def test_committed_benchmark_is_wellformed():
     from app.ingestion.validation import load_benchmark
 
