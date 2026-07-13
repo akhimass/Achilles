@@ -11,7 +11,9 @@
 
 ## Blurb (~200 words)
 
-**Achilles** turns discovery into an evidence graph you can't fake. Point it at your data
+Drug-resistant infections kill ~1.27 million people a year (Lancet, 2022), and the hardest
+problem isn't naming a resistance gene — it's finding the *reversible* opening resistance
+creates. **Achilles** turns discovery into an evidence graph you can't fake. Point it at your data
 and it builds a provenance-checked graph where every claim carries a citation — a
 deterministic core does the math; the model only reads, retrieves, and cites. Its edge is
 verifiability you can break on stage. Against **29 independent public controls** it recovers

@@ -12,7 +12,10 @@ hypothesis**, said out loud.
 
 ### 0:00 — 0:18 · Open blank (the product, not the domain)
 **[DO]** Land on `/explore` — it's blank, "No dataset loaded."
-**SAY:** "This is Achilles — an evidence-grounded discovery console. It opens empty:
+**SAY (stakes + novelty, one breath):** "Drug-resistant infections kill about 1.27 million
+people a year (Lancet, 2022). Achilles goes after the opening resistance leaves behind — the
+reversible 'flipper' mutations — and turns them into cited, evidence-backed antibiotic-cycling
+hypotheses. This is Achilles — an evidence-grounded discovery console. It opens empty:
 bring your own data and it builds a graph where every claim carries a citation. Nothing is
 asserted without a source. Let me load our worked example."
 **[DO]** Click the **Demo data** toggle (top right) → it flips to the AMR dataset.
