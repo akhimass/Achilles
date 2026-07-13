@@ -16,6 +16,7 @@ import type {
   DockingResponse,
   AskResponse,
   AskPersona,
+  BridgeResponse,
 } from "./types";
 
 const BASE = process.env.NEXT_PUBLIC_API_BASE ?? "http://localhost:8000";
@@ -87,6 +88,8 @@ export const api = {
     ),
   validation: () => get<ValidationReport>("/api/validation"),
   docking: () => get<DockingResponse>("/api/docking"),
+  bridge: (gene: string) =>
+    get<BridgeResponse>(`/api/bridge?gene=${encodeURIComponent(gene)}`),
   retrodiction: (cutoff: number) =>
     get<RetrodictionReport>(`/api/validation/retrodiction?cutoff=${cutoff}`),
   redteam: (gene: string, target: string) =>

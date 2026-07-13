@@ -448,6 +448,47 @@ export interface AskResponse {
   counts: { claims: number; grounded: number; retrieved: number };
 }
 
+// Bridge (from /api/bridge) — one grounded finding, translated researcher → physician.
+export interface BridgeCitation {
+  label: string;
+  url?: string | null;
+}
+export interface BridgeClaim {
+  relation: string;
+  target: string;
+  citation: BridgeCitation;
+}
+export interface BridgeResearch {
+  lens: string;
+  gene: { locus?: string | null; name?: string | null; product?: string | null };
+  mechanism: string[];
+  summary: string;
+  target: {
+    rank_score?: number | null;
+    tractability_bucket?: string | null;
+    structure_available?: boolean;
+  } | null;
+  grounded_claims: BridgeClaim[];
+}
+export interface BridgeClinic {
+  lens: string;
+  drives_resistance_to: string[];
+  collateral_opening: { drug_a: string; drug_b: string; citation: BridgeCitation } | null;
+  cited_cycle: { cycle: string[]; summary?: string | null } | null;
+  actionable: string;
+  caveats: string[];
+}
+export interface BridgeResponse {
+  organism: string;
+  found: boolean;
+  reason?: string;
+  gene: { locus?: string | null; name?: string | null; product?: string | null };
+  research?: BridgeResearch;
+  clinic?: BridgeClinic;
+  handoff?: string;
+  provenance_carried?: number;
+}
+
 // Red-team verdict — a judge-typed claim adjudicated against the grounded graph.
 export interface RedTeamVerdict {
   claim: {
