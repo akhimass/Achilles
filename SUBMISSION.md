@@ -55,10 +55,17 @@ pairs). No BurkData or other private artifact is in the repo or the deployed ima
   to a numbered claim; refuses when nothing is grounded.
 - `GET /api/docking` → cited inhibitor (CCCP, PubChem 2603, CARD:ARO:3000074), **ready to
   dock** (no fabricated pose).
+- `GET /api/report/validation` → a downloadable, self-contained **HTML audit report** (head
+  fingerprint + cited-control table + embedded ledger + `curl` re-verify instructions). The
+  Validation panel offers "Download audit report (HTML)" and "ledger (JSON, re-verifiable)".
+- `/mcp` (+ `mcp_server/`, `.mcp.json`) → Achilles as **tools any Claude agent calls** in
+  Claude Code / Cowork (`ask`, `ground_claim`, `rank_targets`, `validate`, `bridge`) — it
+  cites, or it refuses. The showcase page has the tool set, config, and an example transcript.
 - `/methods` (+ `METHODS.md`) — deterministic core, grounding, validation@29, retrodiction,
   limitations, reproducibility.
 - Frontend at HEAD: blank/generic default, Demo-data toggle loads the AMR example, Ask +
-  persona lenses + "bring your own data" + the in-console research→clinic bridge all present.
+  persona lenses + "bring your own data" + the in-console research→clinic bridge, plus the
+  `/mcp` showcase and the downloadable audit report.
 
 ## One honest note for the pitch
 
