@@ -15,13 +15,14 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.bridge_shaping import shape_bridge
 from app.db import get_session
+from app.ingestion.domains import DEFAULT_ORGANISM
 from app.graph_shaping import pubmed_url, reference_url
 from app.ingestion.validation import resolve_locus
 from app.routers.treatment import CollateralPair, _CS_SQL, propose_cycle, shape_cycle
 
 router = APIRouter(prefix="/api/bridge", tags=["bridge"])
 
-_DEFAULT_ORGANISM = "Burkholderia multivorans"
+_DEFAULT_ORGANISM = DEFAULT_ORGANISM
 
 _GENE_SQL = """
     SELECT locus_tag, name, product, metadata->>'wp' AS wp

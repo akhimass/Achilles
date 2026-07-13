@@ -7,6 +7,7 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import get_session
+from app.ingestion.domains import DEFAULT_ORGANISM
 from app.graph_shaping import shape_evidence, shape_lineage
 
 router = APIRouter(prefix="/api/graph", tags=["graph"])
@@ -101,7 +102,7 @@ async def strain(id: str, session: AsyncSession = Depends(get_session)) -> dict:
 async def evidence(
     node_type: str = "gene",
     node_id: str = "",
-    organism: str = "Burkholderia multivorans",
+    organism: str = DEFAULT_ORGANISM,
     session: AsyncSession = Depends(get_session),
 ) -> dict:
     """Return the grounded evidence subgraph for a gene (for the EvidencePanel).

@@ -17,12 +17,13 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import get_session
+from app.ingestion.domains import DEFAULT_ORGANISM
 from app.export_shaping import build_evidence_export, evidence_export_csv
 from app.graph_shaping import shape_evidence
 
 router = APIRouter(prefix="/api/export", tags=["export"])
 
-_DEFAULT_ORGANISM = "Burkholderia multivorans"
+_DEFAULT_ORGANISM = DEFAULT_ORGANISM
 
 _GENE_SQL = """
     SELECT id, locus_tag, name, product FROM genes

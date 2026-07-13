@@ -134,6 +134,11 @@ PSEUDOMONAS = DomainConfig(
 REGISTRY: dict[str, DomainConfig] = {d.key: d for d in (BURKHOLDERIA, PSEUDOMONAS)}
 DEFAULT_DOMAIN = BURKHOLDERIA.key
 
+# Single source of truth for the default organism. Routers derive their organism default
+# from here instead of hard-coding the string, so changing the flagship domain (or its
+# organism) propagates everywhere and nothing drifts.
+DEFAULT_ORGANISM = REGISTRY[DEFAULT_DOMAIN].organism
+
 
 def get_domain(key: str | None) -> DomainConfig:
     """Look up a domain by key (case-insensitive); defaults to the flagship."""

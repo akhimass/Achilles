@@ -14,12 +14,13 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import get_session
+from app.ingestion.domains import DEFAULT_ORGANISM
 from app.graph_shaping import pubmed_url, reference_url
 from app.ingestion.validation import adjudicate, evaluate, load_benchmark, retrodict
 
 router = APIRouter(prefix="/api/validation", tags=["validation"])
 
-_DEFAULT_ORGANISM = "Burkholderia multivorans"
+_DEFAULT_ORGANISM = DEFAULT_ORGANISM
 
 # LEFT JOIN papers so each edge carries the publication year of its provenance paper —
 # the time axis the retrodiction split runs on. Reference-DB-only edges have year NULL.

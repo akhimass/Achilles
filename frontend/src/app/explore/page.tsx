@@ -26,7 +26,7 @@ import { ConsoleNav, PERSONAS, type Persona, type NavSection } from "@/component
 
 // The one bundled example dataset. The console itself is domain-agnostic; this is loaded
 // only when the user turns on "Demo data".
-const DEMO_ORGANISM = "Burkholderia multivorans";
+import { DEMO_ORGANISM } from "@/lib/config";
 const DEFAULT_GENE: GeneSelection = {
   locus: "A8H40_RS07590",
   label: "MarR (A8H40_RS07590)",

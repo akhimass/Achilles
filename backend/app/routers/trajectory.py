@@ -16,11 +16,12 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import get_session
+from app.ingestion.domains import DEFAULT_ORGANISM
 from app.ingestion.trajectories import LineageResSens, retrieve_trajectory
 
 router = APIRouter(prefix="/api/trajectory", tags=["trajectory"])
 
-_DEFAULT_ORGANISM = "Burkholderia multivorans"
+_DEFAULT_ORGANISM = DEFAULT_ORGANISM
 
 _STRAINS_SQL = """
     SELECT external_id, label,

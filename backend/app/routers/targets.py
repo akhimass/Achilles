@@ -14,11 +14,12 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import get_session
+from app.ingestion.domains import DEFAULT_ORGANISM
 from app.targets_shaping import apply_cached_rationales, shape_targets
 
 router = APIRouter(prefix="/api/targets", tags=["targets"])
 
-_DEFAULT_ORGANISM = "Burkholderia multivorans"
+_DEFAULT_ORGANISM = DEFAULT_ORGANISM
 
 _TARGETS_SQL = """
     SELECT t.id, t.gene_id, t.mechanism, t.tractability, t.pdb_ids, t.rank_score,

@@ -15,6 +15,7 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import get_session
+from app.ingestion.domains import DEFAULT_ORGANISM
 from app.ingestion.seed_literature import upsert_papers_and_edges
 
 router = APIRouter(prefix="/api/literature", tags=["literature"])
@@ -23,7 +24,7 @@ router = APIRouter(prefix="/api/literature", tags=["literature"])
 @router.post("/ingest")
 async def ingest(
     locus: str,
-    organism: str = "Burkholderia multivorans",
+    organism: str = DEFAULT_ORGANISM,
     limit: int = 20,
     session: AsyncSession = Depends(get_session),
 ) -> dict:

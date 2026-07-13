@@ -12,6 +12,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.ai.tamarind import get_structure
 from app.db import get_session
+from app.ingestion.domains import DEFAULT_ORGANISM
 
 router = APIRouter(prefix="/api/structure", tags=["structure"])
 
@@ -19,7 +20,7 @@ router = APIRouter(prefix="/api/structure", tags=["structure"])
 @router.get("")
 async def structure(
     locus: str,
-    organism: str = "Burkholderia multivorans",
+    organism: str = DEFAULT_ORGANISM,
     submit: bool = True,
     session: AsyncSession = Depends(get_session),
 ) -> dict:

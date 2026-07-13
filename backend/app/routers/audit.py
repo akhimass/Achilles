@@ -14,12 +14,13 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.audit import build_ledger, chain_head, observations_from_validation, verify_ledger
 from app.db import get_session
+from app.ingestion.domains import DEFAULT_ORGANISM
 from app.ingestion.validation import evaluate, load_benchmark
 from app.routers.validation import _fetch_edges
 
 router = APIRouter(prefix="/api/audit", tags=["audit"])
 
-_DEFAULT_ORGANISM = "Burkholderia multivorans"
+_DEFAULT_ORGANISM = DEFAULT_ORGANISM
 
 
 @router.get("")

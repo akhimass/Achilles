@@ -17,6 +17,7 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import get_session
+from app.ingestion.domains import DEFAULT_ORGANISM
 from app.search_shaping import (
     edge_candidate,
     gene_candidate,
@@ -26,7 +27,7 @@ from app.search_shaping import (
 
 router = APIRouter(prefix="/api/search", tags=["search"])
 
-_DEFAULT_ORGANISM = "Burkholderia multivorans"
+_DEFAULT_ORGANISM = DEFAULT_ORGANISM
 
 _PAPERS_SQL = "SELECT id, pmid, title, abstract, year FROM papers LIMIT 1000"
 _GENES_SQL = (

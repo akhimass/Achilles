@@ -11,7 +11,7 @@ import { Panel, Badge } from "./ui";
 import type { GeneSelection } from "./StrainDetail";
 import type { RankedTarget, TargetsResponse } from "@/lib/types";
 
-const ORGANISM = "Burkholderia multivorans";
+import { DEMO_ORGANISM as ORGANISM } from "@/lib/config";
 
 export function TargetGraph({
   strainId,

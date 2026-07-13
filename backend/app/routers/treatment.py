@@ -14,12 +14,13 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import get_session
+from app.ingestion.domains import DEFAULT_ORGANISM
 from app.ingestion.collateral import CollateralPair, propose_cycle
 from app.treatment_shaping import shape_cycle
 
 router = APIRouter(prefix="/api/treatment", tags=["treatment"])
 
-_DEFAULT_ORGANISM = "Burkholderia multivorans"
+_DEFAULT_ORGANISM = DEFAULT_ORGANISM
 
 _CS_SQL = """
     SELECT organism, drug_a, drug_b, reciprocal, strength, n_lineages, metadata

@@ -14,12 +14,13 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import get_session
+from app.ingestion.domains import DEFAULT_ORGANISM
 from app.qa import build_answer, citation_label
 from app.search_shaping import edge_candidate, gene_candidate, paper_candidate, rank_results
 
 router = APIRouter(prefix="/api/ask", tags=["ask"])
 
-_DEFAULT_ORGANISM = "Burkholderia multivorans"
+_DEFAULT_ORGANISM = DEFAULT_ORGANISM
 
 _PAPERS_SQL = "SELECT id, pmid, title, abstract, year FROM papers LIMIT 1000"
 _GENES_SQL = "SELECT locus_tag, name, product, uniprot_acc FROM genes WHERE organism = :organism"

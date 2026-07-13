@@ -2,7 +2,7 @@
 import { Badge } from "./ui";
 import type { LineageStatus, Overview } from "@/lib/useLineage";
 
-const ORGANISM = "Burkholderia multivorans";
+import { DEMO_ORGANISM as ORGANISM } from "@/lib/config";
 
 export function Hero({
   overview,
