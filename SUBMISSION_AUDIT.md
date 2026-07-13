@@ -18,14 +18,19 @@ real data — already exists and is (mostly) live.
 
 - **Database (Supabase): seeded.** 70 strains, 12 genes, 61 evidence edges (44 grounded),
   96 papers, 5 ranked targets, 10 cited collateral-sensitivity pairs.
-- **Backend (Railway): up and correct.** `/api/validation` returns 9/9 recovered, 4/4
-  refused, **0 fabricated**, every claim cited to CARD + PMID. The prove-it engine is live.
-- **Frontend (Vercel): READY but 5 commits behind** (`282b25a`). Live today: prove-it,
-  red-team, retrodiction, docking, cycling, targets, lineage, structures. **Not yet live:**
-  Ask Achilles, the persona sidebar, the blank/demo-toggle reframe, the generic landing,
-  and the `/api/domains` registry (confirmed 404 on live).
+- **Backend (Railway): up and correct.** `/api/validation` returns **12/12 recovered ·
+  17/17 adversarial refused · 0 fabricated** (29 public controls), every claim cited to
+  CARD + PMID; `/api/audit` re-verifies the result as a hash-chained ledger; `/api/bridge`
+  translates one grounded finding researcher → physician. The prove-it engine is live.
+- **Frontend (Vercel): pushed to HEAD** (`f06ce89`). Now live/deploying: prove-it (29
+  controls), red-team, retrodiction, docking, cycling, targets, lineage, structures, Ask
+  Achilles, the persona sidebar, the blank/demo-toggle reframe, the generic landing +
+  `/explore` console, the in-console research→clinic **bridge** (`/bridge`), `/methods`, and
+  the tamper-evident **audit ledger** (`/api/audit`).
 
-**Action:** push `a46093f` (+ its 4 ancestors) → Vercel & Railway auto-redeploy → live == HEAD.
+**Action:** all commits are on `origin/main` (`f06ce89`) → Vercel & Railway auto-redeploy →
+live == HEAD. Re-check `/api/validation` (12/12 · 17/17 · 0) and `/api/audit` (head
+fingerprint + verified) once the redeploy lands.
 
 ## Where we stand vs the Discord field
 
@@ -35,7 +40,7 @@ are computational-biology-literate and will reward rigor and reproducibility.
 
 | Competitor (Discord) | Their edge | How Achilles compares |
 |---|---|---|
-| **Ubaid — enhancer checker** | 0.80 cross-lab AUROC on 93,435 independent designs; flags grounded in TF motifs | Most quantitatively rigorous rival. Achilles' validation is a *harder property* (recovers known + refuses false + **anticipates future** via time-split retrodiction, 0 fabrications) but on small N (13 controls). **Lead with the property and the live red-team, not the raw N.** |
+| **Ubaid — enhancer checker** | 0.80 cross-lab AUROC on 93,435 independent designs; flags grounded in TF motifs | Most quantitatively rigorous rival. Achilles' validation is a *harder property* (recovers known + refuses a 17-strong adversarial battery + **anticipates future** via time-split retrodiction, 0 fabrications) across **29 controls**, written to a re-verifiable ledger. **Lead with the property, the live red-team, and the tamper-evident ledger.** |
 | **TrialBridge (Angelo)** — trial feasibility from RWE | "provable vs not-evaluable per criterion" | Same provability discipline, different domain. Achilles' new domain-agnostic framing makes this an *adjacent* use case, not a competitor. |
 | **Phebe — PKU / decentralized science** | "make non-verifiable claims verifiable by design" | Philosophically identical thesis. Achilles is the general-purpose engine for that idea. |
 | **Steven — neuroimaging biomarkers** | Alzheimer's imaging | Different domain; no overlap. |
@@ -67,8 +72,9 @@ Record from **HEAD** (push first) or localhost so Ask + the reframe are present.
 
 1. **Open blank (10s).** "Achilles is a domain-agnostic, evidence-grounded discovery
    console — bring your data, every claim stays cited." Toggle **Demo data → AMR**.
-2. **Prove it (35s).** Validation panel: 9/9 recovered, 4/4 refused, **0 fabricated**, each
-   cited. "Most tools claim accuracy; this one proves it."
+2. **Prove it (35s).** Validation panel: 12/12 recovered, 17/17 adversarial refused,
+   **0 fabricated** (29 controls), each cited — and re-verifiable via the hash-chained
+   ledger. "Most tools claim accuracy; this one proves it, and you can re-check the proof."
 3. **Red-team, live (30s).** Type a false claim (`MarR → vancomycin`) → **refused**. Then a
    true one (`MarR → ciprofloxacin`) → **supported, cited**. This is the emotional peak.
 4. **Retrodiction (30s).** Slide cutoff to 2019 → AraC/MarA **anticipates** its 2020
@@ -96,8 +102,9 @@ Record from **HEAD** (push first) or localhost so Ask + the reframe are present.
 > **Achilles** is an evidence-grounded discovery console. Point it at your data and it
 > builds a provenance-checked graph where every claim carries a citation — a deterministic
 > core does the math, and the model only reads, retrieves, and cites. Its edge is
-> verifiability you can break live: it recovers known biology (9/9), refuses planted false
-> claims (0 fabrications), and on a time-split hold-out **anticipates** findings before the
-> confirming paper. Demonstrated end-to-end on antimicrobial resistance — reversible targets
+> verifiability you can break live: it recovers known biology (12/12), refuses a 17-strong
+> adversarial battery of false claims (0 fabrications) across 29 controls on a re-verifiable
+> ledger, and on a time-split hold-out **anticipates** findings before the confirming paper.
+> Demonstrated end-to-end on antimicrobial resistance — reversible targets
 > from collateral sensitivity, AlphaFold structures, a cited antibiotic-cycling hypothesis —
 > the pipeline is domain-agnostic and reproducible from public data. MIT.

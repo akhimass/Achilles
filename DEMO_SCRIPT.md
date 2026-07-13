@@ -1,4 +1,4 @@
-# Achilles — demo voiceover (~3 min, one take)
+# Achilles — demo voiceover (~3.5 min, one take)
 
 **Record at:** https://achilles-science.vercel.app  ·  have a second tab on `/explore`.
 Every beat below is verified against the live site at submission. Read the **SAY** lines
@@ -17,12 +17,14 @@ bring your own data and it builds a graph where every claim carries a citation. 
 asserted without a source. Let me load our worked example."
 **[DO]** Click the **Demo data** toggle (top right) → it flips to the AMR dataset.
 
-### 0:18 — 0:52 · Prove it (the thing a search box can't do)
+### 0:18 — 0:56 · Prove it (the thing a search box can't do)
 **[DO]** Scroll to the **Prove it** chapter.
-**SAY:** "Most tools claim accuracy. Achilles proves it, live, against independent public
-ground truth. It recovers nine of nine known resistance relationships — each cited to CARD
-and a PubMed ID — refuses four of four planted false claims, and fabricates nothing. Zero.
-That last number is the whole point."
+**SAY:** "Most tools claim accuracy. Achilles proves it, live, against 29 independent public
+controls. It recovers twelve of twelve known resistance relationships — each cited to CARD
+and a PubMed ID — refuses all seventeen claims in an adversarial battery of plausible
+falsehoods, and fabricates nothing. Zero. And the whole result is written to a
+tamper-evident, hash-chained ledger — you can re-verify it yourself at `/api/audit`. Numbers
+you can't fake, receipts you can re-check."
 
 ### 0:52 — 1:24 · Red-team it (let the judge break it)
 **[DO]** In the red-team box, type gene **MarR**, target **vancomycin** → **Test claim**.
@@ -55,7 +57,14 @@ scroll to docking.
 to a known efflux inhibitor — CCCP — traced to a CARD accession and ready to dock into that
 structure. Cited chemistry, not an invented molecule."
 
-### 2:44 — 3:00 · It's not an AMR app (close)
+### 2:44 — 3:06 · The bridge (bench → bedside, same receipts)
+**[DO]** Still on the selected target — click **Clinical translation for {gene} →** (jumps
+to the Treatment chapter's bridge, tied to that gene).
+**SAY:** "One click turns that bench finding into a physician-facing summary — same grounded
+evidence, clinician framing, and flagged in bold as research evidence, not medical advice.
+The researcher and the physician read the same receipts. That handoff is the product."
+
+### 3:06 — 3:22 · It's not an AMR app (close)
 **[DO]** Go to **Your data**; hover **Try another organism**; then gesture to the toggle.
 **SAY:** "And none of this is bacteria-specific. Drop any organism's data and the same
 deterministic core runs. A deterministic core, provenance on every edge, reproducible from
@@ -64,12 +73,15 @@ public data, MIT. That's Achilles."
 ---
 
 ## If you have 60 seconds (cut-down)
-Blank → toggle demo → **Prove it (9/9, 4/4, 0)** → **red-team refuse+support** → one line:
-"grounded or it refuses, reproducible from public data." Stop there — the red-team is the
-moment that lands.
+Blank → toggle demo → **Prove it (12/12 recovered · 17/17 refused · 0 fabricated, on a
+tamper-evident ledger)** → **red-team refuse+support** → **bridge** (bench→bedside, same
+receipts) → one line: "grounded or it refuses, reproducible from public data." Stop there —
+the red-team and the ledger are the moments that land.
 
 ## Do-not-say list
 - Don't say "docked pose" — say "ready to dock."
 - Don't say "predicts treatment" — say "a research hypothesis."
-- Don't lead with the benchmark size (13 controls); lead with the *property* and the live
-  red-team.
+- Don't imply the bridge is medical advice — it's the same **research** evidence, clinician-
+  framed, and says so on screen.
+- Lead with the *property* (recover known biology **and** refuse a large adversarial
+  battery, verifiably) — the 29-control size and the re-verifiable ledger back it up.

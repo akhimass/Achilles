@@ -15,17 +15,20 @@
 and it builds a provenance-checked graph where every claim carries a citation — a
 deterministic core does the math, and the language model only reads, retrieves, and cites.
 Its edge is verifiability you can break on stage: type a false claim and watch it refuse.
-It recovers known biology (**9/9**), refuses planted falsehoods (**4/4**), and fabricates
-nothing (**0**). On a time-split hold-out it goes further — **anticipating** relationships
-before the confirming paper was published. Ask a question in plain language and the answer
-is composed only from cited evidence, or it declines rather than invent. Demonstrated
+Against **29 independent public controls** it recovers known biology (**12/12**), refuses an
+adversarial battery of plausible falsehoods (**17/17**), and fabricates nothing (**0**) —
+and writes the whole result to a **tamper-evident, hash-chained ledger** anyone can
+re-verify. On a time-split hold-out it goes further — **anticipating** relationships before
+the confirming paper was published. Ask a question in plain language and the answer is
+composed only from cited evidence, or it declines rather than invent. Demonstrated
 end-to-end on antimicrobial resistance: Achilles names not the gene *associated* with
 resistance but the **reversible target** resistance *creates* through collateral
-sensitivity, folds it with AlphaFold, and proposes a cited antibiotic-cycling hypothesis —
-a research hypothesis, never medical advice. The same pipeline is domain-agnostic: bring
-your own data, or reproduce the entire graph offline from public sources (PubMLST, Europe
-PMC, CARD, UniProt, ChEMBL). Deterministic core, provenance on every edge, reproducible
-from public data, MIT.
+sensitivity, folds it with AlphaFold, proposes a cited antibiotic-cycling hypothesis, and
+**bridges bench to bedside** — translating the same grounded finding into a physician-facing
+summary (research evidence, clinician-framed, never medical advice). The same pipeline is
+domain-agnostic: bring your own data, or reproduce the entire graph offline from public
+sources (PubMLST, Europe PMC, CARD, UniProt, ChEMBL). Deterministic core, provenance on
+every edge, reproducible from public data, MIT.
 
 ## Reproduce from public data
 
@@ -42,16 +45,24 @@ pairs). No BurkData or other private artifact is in the repo or the deployed ima
 
 ## Verified live (at submission)
 
-- `GET /api/validation` → 9/9 recovered, 4/4 refused, **0 fabricated**, every claim cited
-  to CARD + PMID.
+- `GET /api/validation` → **12/12 recovered · 17/17 adversarial refused · 0 fabricated**
+  (29 public controls), every claim cited to CARD + PMID.
+- `GET /api/audit` → the prove-it result as a **sha256 hash-chained ledger** (head
+  fingerprint + per-entry chain); `POST /api/audit/verify` re-checks the chain — tamper-
+  evident and reproducible.
 - `GET /api/validation/redteam?gene=MarR&target=vancomycin` → **refused** (honest, no
   fabrication).
+- `GET /api/bridge` → one grounded finding translated **researcher → physician** (same
+  citations, clinician framing, flagged research-not-advice); mirrored in-console in the
+  Treatment chapter, tied to the selected gene.
 - `GET /api/ask` → grounded, cited answer with an LLM synthesis whose every sentence maps
   to a numbered claim; refuses when nothing is grounded.
 - `GET /api/docking` → cited inhibitor (CCCP, PubChem 2603, CARD:ARO:3000074), **ready to
   dock** (no fabricated pose).
+- `/methods` (+ `METHODS.md`) — deterministic core, grounding, validation@29, retrodiction,
+  limitations, reproducibility.
 - Frontend at HEAD: blank/generic default, Demo-data toggle loads the AMR example, Ask +
-  persona lenses + "bring your own data" all present.
+  persona lenses + "bring your own data" + the in-console research→clinic bridge all present.
 
 ## One honest note for the pitch
 
