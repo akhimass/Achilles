@@ -128,22 +128,6 @@ flowchart TD
 - **Contracts:** Pydantic models in `backend/app/models/` mirror
   `frontend/src/lib/types.ts` — extend with optional fields, never break a shape.
 
-## Reproduce from public data
-
-```bash
-cp backend/.env.example backend/.env   # works out of the box; keys only for live/AI features
-make db            # Postgres + pgvector (docker), schema auto-loaded
-make seed-public   # PubMLST lineage + committed public caches (no private data)
-make backend       # FastAPI  :8000
-make frontend      # Next.js  :3000  → open it
-```
-
-`make seed-public` needs **no network and no API key** — it replays a committed public
-corpus into the evidence graph. The deployed public database was seeded by exactly this
-path (70 strains, 490 variants, 12 genes, 61 edges / 44 grounded, 96 papers, 5 targets,
-10 cited collateral-sensitivity pairs). Set `ANTHROPIC_API_KEY` / `TAMARIND_API_KEY` only
-to *build new* literature or fold *new* targets. Supabase deploy: see [`DEPLOY.md`](DEPLOY.md).
-
 ## Domain-agnostic by construction
 
 Domains are config, not forks. [`backend/app/ingestion/domains.py`](backend/app/ingestion/domains.py)

@@ -22,8 +22,7 @@ export function GenericOverview({ onLoadDemo }: { onLoadDemo: () => void }) {
           <p className="mt-4 max-w-xl text-[0.95rem] leading-relaxed text-muted">
             Point Achilles at strains, variants, and literature — every claim carries a
             citation, a deterministic core does the math, and the model only extracts and
-            narrates grounded claims. Start from the Burkholderia multivorans demo, or
-            upload your own genotype CSV.
+            narrates grounded claims. Run a demo, or use it on your own.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <button

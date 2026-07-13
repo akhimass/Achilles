@@ -18,17 +18,9 @@ export function Header({
         <Link href="/" className="flex items-center gap-3 transition-opacity hover:opacity-80">
           <Mark />
           <div className="leading-none">
-            <div className="flex items-center gap-2">
-              <span className="text-[1.35rem] font-semibold tracking-tightest text-gradient-green">
-                Achilles
-              </span>
-              <span className="rounded-full border border-line/12 px-1.5 py-0.5 font-mono text-[0.6rem] uppercase tracking-wider text-faint">
-                v1 · Phases 1–5
-              </span>
-            </div>
-            <div className="mt-1 hidden text-[0.7rem] text-muted sm:block">
-              Evidence-grounded AMR console
-            </div>
+            <span className="text-[1.35rem] font-semibold tracking-tightest text-gradient-green">
+              Achilles
+            </span>
           </div>
         </Link>
 
