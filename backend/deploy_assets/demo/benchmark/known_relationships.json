@@ -1,21 +1,37 @@
 {
-  "_about": "Independent, public ground-truth controls for the self-validation engine. POSITIVE controls are well-established resistance relationships (each cited to a public CARD/ARO accession or the canonical literature); the engine must recover them from GROUNDED evidence edges. NEGATIVE controls are mechanistically false or unsupported relationships; the engine must NOT assert them (0 fabrications). This checks that the grounded graph captures real biology and refuses falsehood — a property a search tool can't demonstrate.",
+  "_about": "Independent, public ground-truth controls for the self-validation engine. POSITIVE controls are well-established resistance relationships (each cited to a public CARD/ARO accession); the engine must RECOVER them from GROUNDED evidence edges. NEGATIVE controls are an ADVERSARIAL BATTERY of plausible-sounding but mechanistically false relationships — exactly the traps a hallucinating model would fall into. The engine must REFUSE every one (0 fabrications). Recovering known biology AND refusing a large battery of falsehoods is the property a search box or an ungrounded LLM cannot demonstrate.",
   "organism": "Burkholderia multivorans",
   "positives": [
     {"gene": "MarR", "locus": "A8H40_RS07590", "relation": "implicates", "target_terms": ["efflux"], "citation": "CARD:ARO:3000718", "note": "MarR represses marRAB; derepression drives efflux — textbook."},
     {"gene": "MarR", "locus": "A8H40_RS07590", "relation": "implicates", "target_terms": ["AcrAB", "acrB"], "citation": "CARD:ARO:3003378", "note": "MarR → AcrAB-TolC multidrug efflux pump."},
+    {"gene": "MarR", "locus": "A8H40_RS07590", "relation": "implicates", "target_terms": ["multidrug"], "citation": "CARD:ARO:3003378", "note": "MarR derepression drives a multidrug-resistance phenotype."},
     {"gene": "MarR", "locus": "A8H40_RS07590", "relation": "confers_resistance", "target_terms": ["ciprofloxacin", "fluoroquinolone"], "citation": "CARD:ARO:3003378", "note": "MarR derepression → fluoroquinolone resistance."},
     {"gene": "AraC/MarA", "locus": "A8H40_RS24275", "relation": "confers_resistance", "target_terms": ["multidrug", "MDR"], "citation": "CARD:ARO:3000823", "note": "MarA-family activator → AcrAB-TolC overexpression → MDR."},
     {"gene": "AraC/MarA", "locus": "A8H40_RS24275", "relation": "confers_resistance", "target_terms": ["tigecycline"], "citation": "CARD:ARO:3000823", "note": "MarA activation → tigecycline resistance via efflux."},
     {"gene": "AraC/MarA", "locus": "A8H40_RS24275", "relation": "confers_resistance", "target_terms": ["ciprofloxacin", "fluoroquinolone"], "citation": "CARD:ARO:3000823", "note": "MarA → fluoroquinolone resistance."},
+    {"gene": "AraC/MarA", "locus": "A8H40_RS24275", "relation": "implicates", "target_terms": ["acrB", "acrA", "AcrAB"], "citation": "CARD:ARO:3000823", "note": "MarA activates the AcrAB-TolC efflux operon."},
     {"gene": "efflux (DMT)", "locus": "A8H40_RS19975", "relation": "confers_resistance", "target_terms": ["tetracycline"], "citation": "CARD:ARO:3007321", "note": "DMT-family efflux transporter → tetracycline resistance."},
+    {"gene": "efflux (DMT)", "locus": "A8H40_RS19975", "relation": "confers_resistance", "target_terms": ["antimicrobial", "antibiotics"], "citation": "CARD:ARO:3007321", "note": "DMT-family efflux transporter → broad antimicrobial resistance."},
     {"gene": "efflux (DMT)", "locus": "A8H40_RS19975", "relation": "implicates", "target_terms": ["efflux", "MexF"], "citation": "CARD:ARO:3000798", "note": "DMT transporter → efflux activity."},
     {"gene": "efflux (DMT)", "locus": "A8H40_RS19975", "relation": "is_target_of", "target_terms": ["CCCP", "inhibitor"], "citation": "CARD:ARO:3000074", "note": "Efflux is collapsed by the protonophore CCCP / efflux-pump inhibitors."}
   ],
   "negatives": [
-    {"gene": "MarR", "locus": "A8H40_RS07590", "relation": "confers_resistance", "target_terms": ["vancomycin"], "reason": "Vancomycin targets Gram-positive cell-wall synthesis; Burkholderia is intrinsically vancomycin-resistant via its outer membrane, not via MarR/efflux. A MarR→vancomycin resistance edge would be a fabrication."},
-    {"gene": "MarR", "locus": "A8H40_RS07590", "relation": "is_target_of", "target_terms": ["penicillin"], "reason": "MarR is a transcriptional regulator, not a penicillin target. Nonsense pairing."},
-    {"gene": "LysR", "locus": "A8H40_RS17945", "relation": "confers_resistance", "target_terms": ["tetracycline"], "reason": "No grounded evidence links this LysR-family regulator to tetracycline resistance. The engine must refuse, not invent."},
-    {"gene": "response regulator", "locus": "A8H40_RS00780", "relation": "confers_resistance", "target_terms": ["ciprofloxacin"], "reason": "This two-component response regulator has no grounded fluoroquinolone-resistance evidence; asserting it would be unsupported."}
+    {"gene": "MarR", "locus": "A8H40_RS07590", "relation": "confers_resistance", "target_terms": ["vancomycin"], "reason": "Vancomycin targets Gram-positive cell-wall synthesis; Burkholderia is intrinsically vancomycin-resistant via its outer membrane, not via MarR/efflux."},
+    {"gene": "MarR", "locus": "A8H40_RS07590", "relation": "confers_resistance", "target_terms": ["colistin"], "reason": "Colistin resistance is LPS modification (pmrAB/arn), not a MarR/efflux phenotype."},
+    {"gene": "MarR", "locus": "A8H40_RS07590", "relation": "confers_resistance", "target_terms": ["daptomycin"], "reason": "Daptomycin is a Gram-positive lipopeptide; irrelevant to a Gram-negative efflux regulator."},
+    {"gene": "MarR", "locus": "A8H40_RS07590", "relation": "is_target_of", "target_terms": ["penicillin"], "reason": "MarR is a transcriptional regulator, not a penicillin target."},
+    {"gene": "MarR", "locus": "A8H40_RS07590", "relation": "is_target_of", "target_terms": ["rifampin", "rifampicin"], "reason": "Rifampin targets RNA polymerase, not the MarR regulator."},
+    {"gene": "AraC/MarA", "locus": "A8H40_RS24275", "relation": "confers_resistance", "target_terms": ["colistin"], "reason": "Efflux overexpression does not confer colistin resistance (LPS-mediated)."},
+    {"gene": "AraC/MarA", "locus": "A8H40_RS24275", "relation": "confers_resistance", "target_terms": ["linezolid"], "reason": "Linezolid is a Gram-positive oxazolidinone acting on the ribosome; unrelated to this activator."},
+    {"gene": "AraC/MarA", "locus": "A8H40_RS24275", "relation": "is_target_of", "target_terms": ["meropenem"], "reason": "A transcriptional activator is not the molecular target of a carbapenem."},
+    {"gene": "efflux (DMT)", "locus": "A8H40_RS19975", "relation": "confers_resistance", "target_terms": ["vancomycin"], "reason": "Vancomycin is not a substrate of this efflux transporter; no grounded evidence."},
+    {"gene": "efflux (DMT)", "locus": "A8H40_RS19975", "relation": "confers_resistance", "target_terms": ["isoniazid"], "reason": "Isoniazid is an anti-tuberculosis prodrug; irrelevant to Burkholderia efflux."},
+    {"gene": "efflux (DMT)", "locus": "A8H40_RS19975", "relation": "is_target_of", "target_terms": ["rifampin", "rifampicin"], "reason": "Rifampin is not an inhibitor/target of this transporter."},
+    {"gene": "LysR", "locus": "A8H40_RS17945", "relation": "confers_resistance", "target_terms": ["tetracycline"], "reason": "No grounded evidence links this LysR-family regulator to tetracycline resistance."},
+    {"gene": "LysR", "locus": "A8H40_RS17945", "relation": "confers_resistance", "target_terms": ["ciprofloxacin"], "reason": "No grounded evidence links this LysR-family regulator to fluoroquinolone resistance."},
+    {"gene": "LysR", "locus": "A8H40_RS17945", "relation": "is_target_of", "target_terms": ["meropenem"], "reason": "A regulator is not the molecular target of a carbapenem."},
+    {"gene": "response regulator", "locus": "A8H40_RS00780", "relation": "confers_resistance", "target_terms": ["ciprofloxacin"], "reason": "This two-component response regulator has no grounded fluoroquinolone-resistance evidence."},
+    {"gene": "response regulator", "locus": "A8H40_RS00780", "relation": "confers_resistance", "target_terms": ["tetracycline"], "reason": "No grounded evidence links this response regulator to tetracycline resistance."},
+    {"gene": "response regulator", "locus": "A8H40_RS00780", "relation": "is_target_of", "target_terms": ["colistin"], "reason": "A response regulator is not the molecular target of colistin."}
   ]
 }

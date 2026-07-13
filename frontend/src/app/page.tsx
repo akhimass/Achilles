@@ -319,8 +319,8 @@ function Capabilities() {
 function ProveIt() {
   const stats = [
     { n: "100%", label: "edges cited", sub: "provenance required" },
-    { n: "9/9", label: "known biology recovered", sub: "positive controls" },
-    { n: "4/4", label: "false claims refused", sub: "negative controls" },
+    { n: "12/12", label: "known biology recovered", sub: "positive controls" },
+    { n: "17/17", label: "adversarial claims refused", sub: "the traps a hallucinator falls for" },
     { n: "0", label: "fabricated edges", sub: "on the demo graph" },
   ];
   return (

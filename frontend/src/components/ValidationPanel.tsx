@@ -55,11 +55,12 @@ export function ValidationPanel() {
       {status === "ready" && data && m && (
         <div className="animate-fade">
           <p className="mb-3 text-[0.8rem] leading-relaxed text-muted">
-            A retrieval tool returns whatever is in its index. Achilles is held to
-            independent, publicly-cited ground truth — it must{" "}
-            <span className="text-text">recover</span> known resistance biology from
-            grounded evidence and <span className="text-text">refuse</span> planted false
-            claims. Computed live, every recovery cited.
+            A retrieval tool returns whatever is in its index. Achilles is held to{" "}
+            <span className="text-text">{m.positives + m.negatives} independent, publicly-cited
+            controls</span>: it must <span className="text-text">recover</span> known resistance
+            biology from grounded evidence and <span className="text-text">refuse</span> an
+            adversarial battery of {m.negatives} plausible-but-false claims — the traps a
+            hallucinating model falls for. Computed live, every recovery cited.
           </p>
 
           <div className="grid grid-cols-3 gap-2.5">
@@ -70,9 +71,9 @@ export function ValidationPanel() {
               tone="accent"
             />
             <Metric
-              label="False refused"
+              label="Adversarial refused"
               value={`${m.refused}/${m.negatives}`}
-              sub="precision controls"
+              sub="traps, all declined"
               tone="accent"
             />
             <Metric
@@ -83,13 +84,41 @@ export function ValidationPanel() {
             />
           </div>
 
+          <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-[0.7rem] text-faint">
+            <span>
+              <span className="font-mono text-accentStrong">
+                {Math.round(m.recovery_rate * 100)}%
+              </span>{" "}
+              recall
+            </span>
+            <span className="text-line/20">·</span>
+            <span>
+              <span className="font-mono text-accentStrong">
+                {m.fabricated === 0
+                  ? "100%"
+                  : `${Math.round((100 * m.recovered) / (m.recovered + m.fabricated))}%`}
+              </span>{" "}
+              precision
+            </span>
+            <span className="text-line/20">·</span>
+            <span>
+              <span className="font-mono text-accentStrong">{m.negatives}</span> adversarial
+              claims refused
+            </span>
+            <span className="text-line/20">·</span>
+            <span>
+              <span className="font-mono text-accentStrong">{m.positives + m.negatives}</span>{" "}
+              public controls
+            </span>
+          </div>
+
           <div className="mt-4 grid gap-3 md:grid-cols-2">
             <Controls
               title="Known-true → recovered"
               items={data.items.filter((i) => i.kind === "positive")}
             />
             <Controls
-              title="Known-false → refused"
+              title="Adversarial battery → refused"
               items={data.items.filter((i) => i.kind === "negative")}
             />
           </div>

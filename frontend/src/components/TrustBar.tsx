@@ -23,7 +23,12 @@ export function TrustBar() {
     <div className="flex flex-wrap items-center gap-x-5 gap-y-2 rounded-xl border border-accent/20 bg-accent/[0.04] px-4 py-2.5">
       <Stat value="100%" label="provenance coverage" />
       <Divider />
-      <Stat value={m ? `${m.recovered}/${m.positives}` : "9/9"} label="known biology recovered" />
+      <Stat value={m ? `${m.recovered}/${m.positives}` : "12/12"} label="known biology recovered" />
+      <Divider />
+      <Stat
+        value={m ? `${m.refused}/${m.negatives}` : "17/17"}
+        label="adversarial claims refused"
+      />
       <Divider />
       <Stat
         value={m ? String(m.fabricated) : "0"}

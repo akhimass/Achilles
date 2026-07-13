@@ -104,3 +104,34 @@ def test_committed_benchmark_is_wellformed():
     # every positive carries a public citation; every negative a reason.
     assert all(p.get("citation") for p in b["positives"])
     assert all(n.get("reason") for n in b["negatives"])
+
+
+def test_scaled_benchmark_is_clean_against_the_real_corpus():
+    """The headline invariant, at scale: against the real grounded graph the committed
+    benchmark must recover every positive and REFUSE every adversarial negative with
+    zero fabrications. Guards Track A — a future benchmark edit can't silently break it.
+    """
+    import json
+    from pathlib import Path
+
+    from app.ingestion.validation import load_benchmark
+
+    root = Path(__file__).resolve().parents[2]
+    corpus = json.loads((root / "data/demo/literature/corpus.json").read_text())
+    edges = []
+    for e in corpus.get("edges", []):
+        loc = e.get("gene_locus") or (e.get("metadata") or {}).get("gene_locus")
+        if not loc:
+            continue
+        edges.append({
+            "locus": loc, "relation": e.get("relation"), "target": e.get("target_literal"),
+            "grounded": bool(e.get("grounded")), "provenance": {"pmid": e.get("provenance_pmid")},
+        })
+
+    b = load_benchmark()
+    m = evaluate(b, edges).metrics
+    # scale floors so the battery can't silently shrink below what we ship
+    assert m["positives"] >= 12 and m["negatives"] >= 17
+    assert m["recovered"] == m["positives"], "every positive must recover"
+    assert m["refused"] == m["negatives"], "every adversarial negative must be refused"
+    assert m["fabricated"] == 0 and m["clean"] is True
