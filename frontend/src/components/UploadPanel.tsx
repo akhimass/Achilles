@@ -204,13 +204,19 @@ function Dropzone({
           <span className="font-mono text-muted">country</span>. Runs deterministically in
           your session.
         </p>
-        <p className="mt-2.5 inline-flex items-center gap-1.5 rounded-md border border-accent/25 bg-accent/[0.06] px-2.5 py-1 text-[0.68rem] font-medium text-accentStrong">
+        <a
+          href="https://github.com/akhimass/Achilles/blob/main/PRIVACY.md"
+          target="_blank"
+          rel="noreferrer"
+          className="mt-2.5 inline-flex items-center gap-1.5 rounded-md border border-accent/25 bg-accent/[0.06] px-2.5 py-1 text-[0.68rem] font-medium text-accentStrong transition-colors hover:border-accent/50 hover:bg-accent/[0.1]"
+        >
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
             <rect x="4" y="11" width="16" height="9" rx="2" />
             <path d="M8 11V7a4 4 0 0 1 8 0v4" />
           </svg>
           Private by design — parsed in memory, never stored, never sent to the model.
-        </p>
+          <span className="text-accentStrong/70">Read the guarantee →</span>
+        </a>
       </div>
       {error && (
         <p className="mt-2 rounded-lg border border-danger/25 bg-danger/[0.06] px-3 py-2 text-xs text-danger">

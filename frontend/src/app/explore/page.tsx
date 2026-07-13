@@ -317,7 +317,15 @@ function Footer() {
         </div>
         <div className="text-[0.7rem] text-faint">
           Deterministic core · provenance on every edge ·{" "}
-          <span className="text-muted">MIT</span>
+          <a
+            href="https://github.com/akhimass/Achilles/blob/main/PRIVACY.md"
+            target="_blank"
+            rel="noreferrer"
+            className="text-muted underline decoration-line/30 underline-offset-2 transition-colors hover:text-accentStrong"
+          >
+            Your data stays yours →
+          </a>{" "}
+          · <span className="text-muted">MIT</span>
         </div>
       </div>
     </footer>
