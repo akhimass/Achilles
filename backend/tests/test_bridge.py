@@ -6,7 +6,10 @@ across the handoff; and when there's nothing to translate it says so rather than
 
 from __future__ import annotations
 
+import asyncio
+
 from app.bridge_shaping import shape_bridge
+from app.routers.bridge import bridge
 
 _GENE = {"locus": "A8H40_RS07590", "name": "MarR", "product": "MarR family regulator"}
 
@@ -60,3 +63,49 @@ def test_only_grounded_edges_with_citations_become_claims():
     b = shape_bridge(_GENE, edges, organism="X")
     assert all(c["citation"] for c in b["research"]["grounded_claims"])
     assert not any(c["target"] == "uncited thing" for c in b["research"]["grounded_claims"])
+
+
+# --- Router-level regression: the handler must read the DB row by its real column
+# name (`locus_tag`, per _GENE_SQL), not `locus`. A wrong key 500s every real gene
+# (NoSuchColumnError) — which the pure shape tests above cannot catch. ---
+
+class _FakeResult:
+    def __init__(self, rows):
+        self._rows = rows
+
+    def mappings(self):
+        return self
+
+    def first(self):
+        return self._rows[0] if self._rows else None
+
+    def all(self):
+        return self._rows
+
+
+class _FakeSession:
+    """Returns canned mappings keyed off the SQL text, mimicking a live gene row."""
+
+    async def execute(self, stmt, params=None):
+        sql = str(stmt)
+        if "FROM genes WHERE locus_tag" in sql:
+            # Note: the real query aliases the column as `locus_tag`, not `locus`.
+            return _FakeResult([{"locus_tag": "A8H40_RS07590", "name": "MarR",
+                                 "product": "MarR family regulator", "wp": "WP_1"}])
+        if "FROM evidence_edges" in sql:
+            return _FakeResult([{"relation": "confers_resistance", "target": "ciprofloxacin",
+                                 "provenance_pmid": "40855113", "provenance_db": "CARD",
+                                 "provenance_acc": "ARO:3003378"}])
+        if "FROM targets" in sql:
+            return _FakeResult([{"rank_score": 0.57, "tractability": {"bucket": "novel"},
+                                 "pdb_ids": []}])
+        return _FakeResult([])  # collateral pairs — empty is fine (cycle=None)
+
+
+def test_bridge_router_reads_gene_row_by_real_column_name():
+    out = asyncio.run(bridge(gene="A8H40_RS07590", organism="Burkholderia multivorans",
+                             session=_FakeSession()))
+    assert out["found"] is True
+    assert out["gene"]["locus"] == "A8H40_RS07590"
+    assert "ciprofloxacin" in out["clinic"]["drives_resistance_to"]
+    assert out["provenance_carried"] >= 1

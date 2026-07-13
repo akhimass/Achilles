@@ -59,7 +59,7 @@ async def bridge(
         return {"gene": {"locus": locus}, "found": False,
                 "reason": f"'{gene}' is not a gene in this dataset."}
 
-    gene_row = {"locus": grow["locus"], "name": grow["name"], "product": grow["product"]}
+    gene_row = {"locus": grow["locus_tag"], "name": grow["name"], "product": grow["product"]}
 
     edges = [
         {
