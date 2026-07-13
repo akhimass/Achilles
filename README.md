@@ -1,70 +1,95 @@
-# Achilles
+<p align="center"><img src="frontend/public/logo.svg" alt="Achilles" width="340"></p>
 
-**Find the pathogen's Achilles' heel — the vulnerability that resistance creates.**
+<p align="center"><b>An evidence-grounded discovery console — grounded answers you can re-verify, not take on trust.</b></p>
 
-Achilles is an AI-native database and web app for **antimicrobial-resistance (AMR)
-target identification and treatment optimization**. Nextstrain shows you *how strains
-are related*; Achilles continues the chain — **strain → flipper → structure → target →
-literature evidence** — and turns reversible ("flipper") mutation structure into
-evidence-backed antibiotic-cycling hypotheses.
+<p align="center"><em>Deterministic core · provenance on every edge · reproducible from public data · MIT</em></p>
 
-> When a bug evolves resistance to one drug, it often becomes *more* sensitive to
-> another. That trade-off — **collateral sensitivity** — is the weak point evolution
-> hands us. Achilles makes it findable, grounded, and citable.
-
-<p align="center"><em>Deterministic core · AlphaFold on top · provenance on every edge</em></p>
+<p align="center">
+<a href="https://achilles-science.vercel.app">Live app</a> ·
+<a href="https://achilles-science.vercel.app/methods">Methods</a> ·
+<a href="https://achilles-science.vercel.app/bridge">Research ⇄ clinic bridge</a>
+</p>
 
 ---
 
-## The one idea that governs everything
+Point Achilles at your data — strains, variants, a literature set — and it builds a
+**provenance-checked evidence graph**: every claim carries a citation, a deterministic
+core does the math, and the language model only reads, retrieves, and cites. Nothing is
+asserted without a source, and the whole validation result reduces to a **tamper-evident
+hash-chained ledger you can re-verify**.
 
-**The product is the graph, not the pipeline or the viz.** The core object is an
-`evidence_edge`: `(source, relation, target, provenance, confidence)`. **Provenance is
-never null** — every edge points to a PubMed PMID and, where corroborated, a CARD/ARO
-or UniProt accession. *If a claim can't be grounded, it doesn't become an edge.*
+The console is **domain-agnostic**. Antimicrobial resistance (*Burkholderia multivorans*)
+is the worked example, loaded behind a "Demo data" toggle — not the product's identity.
 
-A deterministic Python core does all the computing (parsing, lineage/flipper
-detection, collateral-sensitivity math). The LLM is used for exactly two things —
-extracting typed claims from literature, and narrating with citations. **It never
-invents a number.**
+## The one idea
 
-## What you can do in the demo
+**Claude proposes, code decides.** A deterministic Python core computes everything
+quantitative — lineage reconstruction, flipper (allele-reversal) detection, the target
+rank score, the collateral-sensitivity math. The model does exactly two things: extracts
+typed claims from literature, and narrates already-computed results with citations. It
+never invents a number, a score, or a schedule.
 
-1. **Trace a real lineage.** An interactive D3 tree of *Burkholderia multivorans*
-   isolates, each node colored by its **flipper load** (reversible loci along its
-   evolutionary path). Click a strain to inspect it.
-2. **Fold a target in 3D.** Pick a flipper gene and its protein is folded by
-   **AlphaFold via [Tamarind Bio](https://www.tamarind.bio/)** (RCSB fallback for
-   known structures), rendered in 3D and colored by per-residue **pLDDT** confidence.
-   The MarR multidrug-resistance regulator ships pre-folded (pLDDT 88).
-3. **Read the evidence, with receipts.** Select a gene and the **Evidence panel**
-   shows each resistance edge — relation + target, a confidence gradient, a
-   grounded/abstract-only badge, and clickable **PMID / CARD-ARO / UniProt** chips.
-   Grounded edges look solid; abstract-only edges are honestly weaker.
-4. **Rank the druggable targets.** The **Targets panel** promotes evidence-supported
-   genes to candidate targets, each with a **deterministic 0–1 rank_score** (grounded-
-   evidence support × flipper strength), a **ChEMBL tractability** signal (a *novel*
-   target with no known chemical matter, or *drugged*), a **citation-backed rationale**,
-   and a one-click jump to its 3D structure. MarR lands as a top target with its
-   AlphaFold model reachable.
-5. **Read the cycling hypothesis.** The **Cycling panel** renders a deterministic
-   antibiotic **cycle** walked over the reciprocal collateral-sensitivity graph (e.g.
-   `SXT → MEM → CAZ → CHL`), with its supporting RCS pairs, a plain summary, and
-   always-on **caveats** — a research hypothesis, never a treatment recommendation.
+The core object is an evidence edge — `(source, relation, target, provenance, confidence)`
+— and **provenance is never null**: a PubMed PMID and, where corroborated, a CARD/ARO,
+UniProt, or ChEMBL accession. If a claim can't be grounded, it doesn't become an edge.
 
-Everything runs **fully offline** from a committed public corpus — the demo never
-depends on a live API succeeding on camera. The rank_score, cycle, and tractability
-are all computed deterministically; the LLM only narrates (opt-in), never scores.
+## Verify it yourself
+
+This is the part a search box or a black box can't do. On the live app, in the
+**Validation** chapter:
+
+- **Recall + adversarial refusal, live.** Held to **29 independent, publicly-cited
+  controls**: it recovers known biology (**12/12**), refuses an adversarial battery of
+  plausible-but-false claims — the traps a hallucinating model falls for (**17/17**) — and
+  fabricates nothing (**0**). `GET /api/validation`.
+- **Red-team it.** Type your own claim; it says *supported* (with a citation) only if
+  grounded evidence backs it, otherwise *refused*. `GET /api/validation/redteam`.
+- **Retrodiction — foresight, not just recall.** Freeze the literature at a cutoff year and
+  measure how many later-confirmed relationships the pre-cutoff graph already pointed at.
+  No false claim is ever "anticipated." `GET /api/validation/retrodiction`.
+- **Tamper-evident audit ledger.** Every control verdict is an entry in a sha256
+  hash-chain, so the whole result is one fingerprint. "Re-verify" re-walks it; a "Tamper
+  test" flips a verdict and shows exactly where the chain breaks. `GET /api/audit` ·
+  `POST /api/audit/verify`.
+
+## What's in the console
+
+Load the demo (or bring your own data) and the pipeline lights up:
+
+1. **Lineage & flippers** — an interactive tree over allelic distance, nodes colored by
+   flipper load (reversible loci along each isolate's path). Organism-agnostic: drop any
+   genotype CSV in *Bring your own data*.
+2. **Evidence graph** — grounded search + per-gene evidence with confidence gradients and
+   clickable PMID / CARD-ARO / UniProt chips; grounded vs abstract-only is visually
+   distinct.
+3. **Target identification** — evidence-supported genes ranked by a deterministic 0–1 score
+   with ChEMBL tractability and a citation-backed rationale.
+4. **Structure & docking** — the target folded by **AlphaFold via
+   [Tamarind Bio](https://www.tamarind.bio/)** (colored by pLDDT), and a **cited** efflux
+   inhibitor (CCCP, CARD:ARO:3000074) *ready to dock* into it — cited chemistry, no
+   fabricated pose.
+5. **Treatment optimization** — a deterministic antibiotic **cycle** over the reciprocal
+   collateral-sensitivity graph, pairs cited to the literature (PMID 32335276), always
+   labelled a **research hypothesis, never a treatment recommendation**.
+6. **Ask Achilles** — grounded Q&A: the answer is built only from cited evidence (every
+   claim numbered and linked), or it refuses. `GET /api/ask`.
+7. **Research ⇄ clinic bridge** — one grounded finding shown to a researcher (mechanism,
+   target, structure) and a physician (drugs it drives resistance to, the cited
+   collateral-sensitivity opening) at once, carrying the same citations across the handoff.
+   `GET /api/bridge`.
+
+Everything runs **fully offline** from a committed public corpus — the demo never depends
+on a live API succeeding on camera.
 
 ## How grounding works (the credibility gate)
 
 ```
-Europe PMC abstracts ──▶ LLM extraction (typed claims) ──▶ grounding vs CARD/ARO + UniProt ──▶ decide_edge
+Europe PMC abstracts ─▶ LLM extraction (typed claims) ─▶ grounding vs CARD/ARO + UniProt ─▶ decide_edge
 ```
 
 | Outcome | Edge? | Provenance | Confidence |
 |---|---|---|---|
-| Corroborated by a reference DB | ✅ `grounded` | PMID **+** ARO/UniProt accession | ≥ 0.5 |
+| Corroborated by a reference DB | ✅ `grounded` | PMID **+** ARO / UniProt accession | ≥ 0.5 |
 | Stated in the abstract only | ✅ `abstract-only` | PMID only | < 0.5 |
 | No textual support | ❌ dropped | — | — |
 
@@ -75,88 +100,71 @@ proposes, deterministic rules dispose.
 
 ```mermaid
 flowchart TD
-  A["Public data<br/>Europe PMC · CARD/ARO · UniProt · ChEMBL · PubMLST · NCBI"] --> B["ingestion / sources<br/>(deterministic: parse · lineage · flipper · score · collateral)"]
+  A["Public data<br/>Europe PMC · CARD/ARO · UniProt · ChEMBL · PubMLST · NCBI"] --> B["ingestion / sources<br/>deterministic: parse · lineage · flipper · score · collateral"]
   B --> C[("Postgres + pgvector<br/>the evidence graph")]
-  C --> D["AI layer (Claude)<br/>extract · ground · narrate — never computes numbers"]
   T["Tamarind Bio · AlphaFold"] --> C
+  C --> D["AI layer (Claude)<br/>extract · ground · narrate — never computes numbers"]
   D --> C
-  C --> E["FastAPI"]
-  E --> F["Next.js app<br/>lineage · 3D structure · evidence · targets · cycling"]
+  C --> E["FastAPI<br/>validation · audit · retrodiction · ask · bridge · targets · treatment"]
+  E --> F["Next.js console<br/>persona-navigated: prove-it · evidence · targets · treatment · bridge"]
 ```
 
-- **Backend:** FastAPI, SQLAlchemy 2 (async), Pydantic v2, Postgres + pgvector.
+- **Backend:** FastAPI, SQLAlchemy 2 (async), Pydantic v2, Postgres + pgvector. 136 tests.
 - **AI layer:** Anthropic API (config-driven models), structured-output extraction +
   reference grounding; Tamarind Bio for AlphaFold structure prediction.
-- **Frontend:** Next.js (App Router), TypeScript, Tailwind, **Geist** fonts; D3
-  lineage tree, 3Dmol.js structure viewer.
+- **Frontend:** Next.js (App Router), TypeScript, Tailwind, Geist. D3 lineage tree, Mol\*
+  structure viewer.
 - **Contracts:** Pydantic models in `backend/app/models/` mirror
   `frontend/src/lib/types.ts` — extend with optional fields, never break a shape.
 
-## Quickstart
+## Reproduce from public data
 
 ```bash
-cp .env.example .env         # works out of the box; add keys only for live/AI features
-make db                      # Postgres + pgvector (docker), schema auto-loaded
-make seed                    # load the demo graph (offline, idempotent)
-make backend                 # FastAPI on :8000
-make frontend                # Next.js on :3000  → open it
+cp backend/.env.example backend/.env   # works out of the box; keys only for live/AI features
+make db            # Postgres + pgvector (docker), schema auto-loaded
+make seed-public   # PubMLST lineage + committed public caches (no private data)
+make backend       # FastAPI  :8000
+make frontend      # Next.js  :3000  → open it
 ```
 
-`make seed` needs **no network and no API key** — it replays a committed public
-corpus (PubMed abstracts + CARD/UniProt reference facts) into the evidence graph. Set
-`ANTHROPIC_API_KEY` / `TAMARIND_API_KEY` only to *build new* literature or fold *new*
-targets on demand.
+`make seed-public` needs **no network and no API key** — it replays a committed public
+corpus into the evidence graph. The deployed public database was seeded by exactly this
+path (70 strains, 490 variants, 12 genes, 61 edges / 44 grounded, 96 papers, 5 targets,
+10 cited collateral-sensitivity pairs). Set `ANTHROPIC_API_KEY` / `TAMARIND_API_KEY` only
+to *build new* literature or fold *new* targets. Supabase deploy: see [`DEPLOY.md`](DEPLOY.md).
 
-## Deploy on Supabase (Postgres + pgvector)
+## Domain-agnostic by construction
 
-Achilles ships a turnkey Supabase project under [`supabase/`](supabase/):
-
-```bash
-supabase link --project-ref <your-ref>      # from the Supabase dashboard
-supabase db push                            # applies supabase/migrations/ (the schema)
-psql "$SUPABASE_DB_URL" -f supabase/seed.sql # loads the public evidence graph
-```
-
-Then point the API at it with an **asyncpg** URL:
-`DATABASE_URL=postgresql+asyncpg://postgres:<pwd>@db.<ref>.supabase.co:5432/postgres`.
-
-`supabase/seed.sql` is **public data only** (regenerate with `make supabase-bundle`);
-BurkData is never included. See [`supabase/README.md`](supabase/README.md) for the
-psql-only path and details. The Supabase **MCP connector** can automate provisioning
-but must be authorized first (claude.ai connector settings, or `/mcp` in interactive
-Claude Code) — it can't OAuth from a sandboxed session.
-
-## Bring your own strains
-
-Drop a genotype CSV (one row per isolate: an `id` column + one column per locus —
-MLST alleles, gene presence/absence, or SNP calls; optional `year`/`country`) into the
-**"Bring your own strains"** panel. The same deterministic core reconstructs your
-lineage (MST over allelic distance) and detects reversible (flipper) loci — stateless,
-nothing stored. `POST /api/ingest/upload` (raw CSV body) returns the lineage graph.
+Domains are config, not forks. [`backend/app/ingestion/domains.py`](backend/app/ingestion/domains.py)
+holds a registry; `seed.py` derives its organism and reference genes from it (a test proves
+the config *is* what drives ingestion). `GET /api/domains` reports each domain and whether
+it can seed today. A second organism (*Pseudomonas aeruginosa*) is scaffolded — its PubMLST
+DB, MLST scheme, and corpus builder are wired; populating its grounded data is a documented,
+network-run step (real accessions only, never invented): see [`DRIVE_B.md`](DRIVE_B.md). The
+deterministic core is already organism-agnostic — proven by a generalization test and by
+*Bring your own data*.
 
 ## Data & ethics
 
-- **Public sources only** in this repo: Europe PMC / PubMed, CARD (ARO via EBI OLS),
-  UniProt, PubMLST, NCBI. Evidence edges are keyed to public gene symbols / reference
-  locus tags.
-- **The richer local dataset (BurkData) is private** (unpublished experimental-
-  evolution data) and is **never committed** — it's git-ignored, and no committed
-  artifact is derived from it. With it present locally, `make seed` loads the real 47-
-  isolate / 11-lineage experiment; without it (a fresh clone), the seed falls back to
-  the public PubMLST lineage. Both paths give a working evidence + structure demo.
-- Cycling suggestions are **research hypotheses, not treatment recommendations.**
+- **Public sources only** in this repo: Europe PMC / PubMed, CARD (ARO), UniProt, ChEMBL,
+  PubMLST, NCBI, AlphaFold (via Tamarind), RCSB. Edges are keyed to public gene symbols /
+  reference locus tags.
+- **The richer local dataset (BurkData) is private** (unpublished experimental-evolution
+  data), git-ignored, and **never committed** — no committed artifact is derived from it.
+- Cycling suggestions and the clinical bridge are **research decision-support, not a
+  diagnosis, prescription, or treatment recommendation.**
 
-## Status
+## Limitations (stated plainly)
 
-| Phase | What | State |
-|---|---|---|
-| 1 | Data in, lineage tree out | ✅ shipped |
-| 2 | Literature → grounded evidence edges | ✅ shipped |
-| 3 | Target ranking + ChEMBL tractability | ✅ shipped |
-| 4 | Collateral-sensitivity cycling | ✅ shipped |
-| 5 (beat) | AlphaFold structure viewer (Tamarind) | ✅ shipped |
+- The 29-control set is small relative to a large-N benchmark; the strength is the
+  *property* (recall + adversarial refusal + zero fabrication) and the live red-team + ledger.
+- The second domain is a scaffold — the pipeline is wired for it, but its grounded data must
+  be fetched, not assumed.
+- Docking shows a cited inhibitor *ready to dock*; a computed pose requires a Tamarind run.
+- Lineage is a deterministic reconstruction from allelic distance, not a validated phylogeny.
 
-See `CLAUDE.md` for the full design brief and phase plan.
+Full write-up at [`METHODS.md`](METHODS.md) (and live at `/methods`). Design brief in
+[`CLAUDE.md`](CLAUDE.md).
 
 ## License
 

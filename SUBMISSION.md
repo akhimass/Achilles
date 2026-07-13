@@ -13,22 +13,18 @@
 
 **Achilles** turns discovery into an evidence graph you can't fake. Point it at your data
 and it builds a provenance-checked graph where every claim carries a citation — a
-deterministic core does the math, and the language model only reads, retrieves, and cites.
-Its edge is verifiability you can break on stage: type a false claim and watch it refuse.
-Against **29 independent public controls** it recovers known biology (**12/12**), refuses an
-adversarial battery of plausible falsehoods (**17/17**), and fabricates nothing (**0**) —
-and writes the whole result to a **tamper-evident, hash-chained ledger** anyone can
-re-verify. On a time-split hold-out it goes further — **anticipating** relationships before
-the confirming paper was published. Ask a question in plain language and the answer is
-composed only from cited evidence, or it declines rather than invent. Demonstrated
-end-to-end on antimicrobial resistance: Achilles names not the gene *associated* with
-resistance but the **reversible target** resistance *creates* through collateral
-sensitivity, folds it with AlphaFold, proposes a cited antibiotic-cycling hypothesis, and
-**bridges bench to bedside** — translating the same grounded finding into a physician-facing
-summary (research evidence, clinician-framed, never medical advice). The same pipeline is
-domain-agnostic: bring your own data, or reproduce the entire graph offline from public
-sources (PubMLST, Europe PMC, CARD, UniProt, ChEMBL). Deterministic core, provenance on
-every edge, reproducible from public data, MIT.
+deterministic core does the math; the model only reads, retrieves, and cites. Its edge is
+verifiability you can break on stage. Against **29 independent public controls** it recovers
+known biology (**12/12**), refuses an adversarial battery of plausible falsehoods
+(**17/17**), and fabricates nothing (**0**) — and writes the result to a **tamper-evident,
+hash-chained ledger** anyone can re-verify. On a time-split hold-out it goes further,
+**anticipating** relationships before the confirming paper was published. Ask a question in
+plain language and the answer is built only from cited evidence, or it declines. Shown
+end-to-end on antimicrobial resistance: it names not the gene *associated* with resistance
+but the **reversible target** resistance *creates*, folds it with AlphaFold, proposes a
+cited cycling hypothesis, and **bridges bench to bedside** — the same grounded finding,
+clinician-framed, never medical advice. The pipeline is domain-agnostic and reproducible
+offline from public data. Deterministic core, provenance on every edge, MIT.
 
 ## Reproduce from public data
 
