@@ -448,6 +448,35 @@ export interface AskResponse {
   counts: { claims: number; grounded: number; retrieved: number };
 }
 
+// Audit (from /api/audit) — tamper-evident, re-verifiable ledger over the prove-it result.
+export interface AuditEntry {
+  index: number;
+  kind: string;
+  gene: string;
+  locus?: string | null;
+  relation?: string | null;
+  target_terms: string[];
+  verdict: string;
+  grounded: boolean;
+  citation?: string | null;
+  prev_hash: string;
+  entry_hash: string;
+}
+export interface AuditReport {
+  organism: string;
+  algorithm: string;
+  metrics: ValidationReport["metrics"];
+  entries: number;
+  head: string;
+  ledger: AuditEntry[];
+}
+export interface AuditVerify {
+  valid: boolean;
+  checked: number;
+  break_at: number | null;
+  head: string;
+}
+
 // Bridge (from /api/bridge) — one grounded finding, translated researcher → physician.
 export interface BridgeCitation {
   label: string;

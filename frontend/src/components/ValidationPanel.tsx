@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
 import { clsx } from "@/lib/clsx";
 import { Panel, Badge } from "./ui";
+import { AuditLedger } from "./AuditLedger";
 import type { ValidationReport, ValidationItem, RedTeamVerdict } from "@/lib/types";
 
 export function ValidationPanel() {
@@ -122,6 +123,8 @@ export function ValidationPanel() {
               items={data.items.filter((i) => i.kind === "negative")}
             />
           </div>
+
+          <AuditLedger />
 
           <RedTeam />
         </div>

@@ -17,6 +17,9 @@ import type {
   AskResponse,
   AskPersona,
   BridgeResponse,
+  AuditReport,
+  AuditVerify,
+  AuditEntry,
 } from "./types";
 
 const BASE = process.env.NEXT_PUBLIC_API_BASE ?? "http://localhost:8000";
@@ -90,6 +93,14 @@ export const api = {
   docking: () => get<DockingResponse>("/api/docking"),
   bridge: (gene: string) =>
     get<BridgeResponse>(`/api/bridge?gene=${encodeURIComponent(gene)}`),
+  audit: () => get<AuditReport>("/api/audit"),
+  auditVerify: (ledger: AuditEntry[]) =>
+    fetch(`${BASE}/api/audit/verify`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ledger }),
+      cache: "no-store",
+    }).then((r) => r.json() as Promise<AuditVerify>),
   retrodiction: (cutoff: number) =>
     get<RetrodictionReport>(`/api/validation/retrodiction?cutoff=${cutoff}`),
   redteam: (gene: string, target: string) =>
