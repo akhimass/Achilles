@@ -16,47 +16,63 @@ grounded evidence graph becomes callable primitives, and the agent inherits the 
 
 All tools hit the live API (`ACHILLES_API_BASE`, default the public deployment). No key needed.
 
-## Run it
+## Run it (one-time setup)
+
+The `mcp` SDK needs Python **3.10+** (macOS system `python3` is 3.9), so use a dedicated
+virtualenv — the repo's `.mcp.json` already points at it:
 
 ```bash
-cd mcp_server && pip install -r requirements.txt
-# points at the public deployment by default; override for a local backend:
-ACHILLES_API_BASE=http://localhost:8000 python -m mcp_server.server   # run from the repo root
+# from the repo root — creates mcp_server/.venv (gitignored) with the right Python + deps
+python3 -m venv mcp_server/.venv          # use any Python >= 3.10 (e.g. python3.13)
+mcp_server/.venv/bin/pip install -r mcp_server/requirements.txt
+```
+
+Smoke-test it (defaults to the public deployment; Ctrl-C to stop):
+
+```bash
+mcp_server/.venv/bin/python -m mcp_server.server                          # run from the repo root
+ACHILLES_API_BASE=http://localhost:8000 mcp_server/.venv/bin/python -m mcp_server.server  # local backend
 ```
 
 ## Add to Claude Code
 
+The root [`.mcp.json`](../.mcp.json) already points at `mcp_server/.venv/bin/python`, so once
+the venv exists Claude Code **auto-discovers** the server — just run `claude` from the repo
+root. To register it explicitly instead:
+
 ```bash
-# from the repo root
-claude mcp add achilles -- python -m mcp_server.server
+claude mcp add achilles -- "$(pwd)/mcp_server/.venv/bin/python" -m mcp_server.server
 ```
 
-or in `.mcp.json`:
-
-```json
-{
-  "mcpServers": {
-    "achilles": {
-      "command": "python",
-      "args": ["-m", "mcp_server.server"],
-      "env": { "ACHILLES_API_BASE": "https://achilles-production-2565.up.railway.app" }
-    }
-  }
-}
-```
-
-Then, in a Claude Code / Cowork session:
+Then, in a session:
 
 > **You:** Is MarR → ciprofloxacin resistance grounded? And what are the top targets?
 > **Claude:** *(calls `ground_claim` → supported, CARD:ARO:3003378; `rank_targets` → …)*
 > **You:** Ask Achilles what re-sensitizes after meropenem, as a physician.
 > **Claude:** *(calls `ask` → cited answer + the research-not-advice caveat)*
 
-## Add to Cowork
+## Add to Cowork (via the Claude Desktop bridge)
 
-Run the server (above), then add it as a local MCP connector in Cowork's connector settings
-(command `python -m mcp_server.server`, run from the repo root, with `ACHILLES_API_BASE`
-set). Cowork's Claude can then call the Achilles tools directly from any workflow.
+This is a **local stdio** server, so it is *not* added through Cowork's "Connectors" UI —
+that flow is for remote servers reached by URL. Register it in **Claude Desktop**, which
+bridges local servers into Cowork. Add to
+`~/Library/Application Support/Claude/claude_desktop_config.json` (the `bash -c` wrapper sets
+the working directory so `-m` can find the package):
+
+```json
+{
+  "mcpServers": {
+    "achilles": {
+      "command": "bash",
+      "args": ["-c", "cd /ABSOLUTE/PATH/TO/switchback && mcp_server/.venv/bin/python -m mcp_server.server"],
+      "env": { "ACHILLES_API_BASE": "https://achilles-production-2565.up.railway.app" }
+    }
+  }
+}
+```
+
+Fully quit and reopen Claude Desktop, start a new Cowork chat, then enable **achilles** via
+the **+** (lower-left) → Connectors. No API key needed — every tool hits the public deployment.
 
 ## Why this matters
 

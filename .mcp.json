@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "achilles": {
-      "command": "python",
+      "command": "mcp_server/.venv/bin/python",
       "args": ["-m", "mcp_server.server"],
       "env": {
         "ACHILLES_API_BASE": "https://achilles-production-2565.up.railway.app"
