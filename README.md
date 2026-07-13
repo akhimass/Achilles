@@ -122,7 +122,7 @@ flowchart TD
   E --> F["Next.js console<br/>persona-navigated: prove-it · evidence · targets · treatment · bridge"]
 ```
 
-- **Backend:** FastAPI, SQLAlchemy 2 (async), Pydantic v2, Postgres + pgvector. 139 tests.
+- **Backend:** FastAPI, SQLAlchemy 2 (async), Pydantic v2, Postgres + pgvector. 142 tests.
 - **AI layer:** Anthropic API (config-driven models), structured-output extraction +
   reference grounding; Tamarind Bio for AlphaFold structure prediction.
 - **Frontend:** Next.js (App Router), TypeScript, Tailwind, Geist. D3 lineage tree, Mol\*

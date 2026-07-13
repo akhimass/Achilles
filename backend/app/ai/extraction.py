@@ -10,7 +10,7 @@ from __future__ import annotations
 from pydantic import BaseModel, Field
 
 from app.ai import prompts
-from app.ai.client import structured
+from app.ai.client import ModelRefusal, structured
 from app.config import settings
 from app.models.domain import Paper
 
@@ -29,16 +29,24 @@ class ExtractionResult(BaseModel):
 
 
 async def extract_claims(paper: Paper) -> ExtractionResult:
-    """Extract structured resistance claims from a paper's abstract."""
+    """Extract structured resistance claims from a paper's abstract.
+
+    A refused abstract (the safety classifier occasionally trips on AMR text) simply
+    contributes no claims — we skip it rather than crash the whole corpus build. No claims
+    means no edges from this paper, which is consistent with "provenance or it doesn't exist."
+    """
     if not paper.abstract:
         return ExtractionResult(claims=[])
-    return await structured(
-        schema=ExtractionResult,
-        system=prompts.EXTRACT_SYSTEM,
-        user=prompts.EXTRACT_USER.format(
-            pmid=paper.pmid or "n/a",
-            title=paper.title,
-            abstract=paper.abstract,
-        ),
-        model=settings.model_extract,
-    )
+    try:
+        return await structured(
+            schema=ExtractionResult,
+            system=prompts.EXTRACT_SYSTEM,
+            user=prompts.EXTRACT_USER.format(
+                pmid=paper.pmid or "n/a",
+                title=paper.title,
+                abstract=paper.abstract,
+            ),
+            model=settings.model_extract,
+        )
+    except ModelRefusal:
+        return ExtractionResult(claims=[])
