@@ -86,8 +86,10 @@ on a live API succeeding on camera.
 Achilles isn't just an app — it's grounded science any Claude agent can call. The
 [**Achilles MCP server**](mcp_server/) exposes the graph as tools in Claude Code and Cowork:
 `ask`, `ground_claim`, `rank_targets`, `validate`, `bridge`. A `.mcp.json` at the repo root
-makes Claude Code discover it automatically. The agent inherits the guarantee — it cites, or
-it refuses:
+makes Claude Code discover it automatically, and a companion **Claude Skill**
+([`.claude/skills/achilles/`](.claude/skills/achilles/SKILL.md)) teaches any Claude session
+when to reach for each tool and how to keep the cite-or-refuse guarantee intact. The agent
+inherits the guarantee — it cites, or it refuses:
 
 > **You:** Is MarR → ciprofloxacin resistance grounded, and what are the top targets?
 > **Claude:** *(calls `ground_claim` → supported, CARD:ARO:3003378; `rank_targets` → …)*
