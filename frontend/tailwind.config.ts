@@ -32,9 +32,8 @@ const config: Config = {
         resist: "#d85a30", // coral — resistance
       },
       fontFamily: {
-        // Geist (shadcn default), self-hosted via next/font.
         sans: ["var(--font-geist-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
-        serif: ["var(--font-geist-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        serif: ["var(--font-source-serif)", "ui-serif", "Georgia", "serif"],
         mono: ["var(--font-geist-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       letterSpacing: {

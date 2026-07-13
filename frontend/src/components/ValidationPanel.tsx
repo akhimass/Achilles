@@ -32,7 +32,7 @@ export function ValidationPanel() {
 
   return (
     <Panel
-      title="Prove it — the engine checks itself"
+      title="Self-validation against public controls"
       aside={
         m ? (
           <Badge tone={m.clean ? "accent" : "danger"}>
