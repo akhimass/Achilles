@@ -157,6 +157,11 @@ deterministic core is already organism-agnostic — proven by a generalization t
 
 ## Data & ethics
 
+- **Your data stays yours.** Data you upload in *Bring your own data* is processed in
+  memory and returned — never written to the database, never sent to the model, never
+  logged (verified: the upload path imports no DB and no AI layer). See
+  [`PRIVACY.md`](PRIVACY.md) for the guarantee and the owner-scoped isolation architecture
+  for saved projects.
 - **Public sources only** in this repo: Europe PMC / PubMed, CARD (ARO), UniProt, ChEMBL,
   PubMLST, NCBI, AlphaFold (via Tamarind), RCSB. Edges are keyed to public gene symbols /
   reference locus tags.
