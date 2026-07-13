@@ -4,14 +4,20 @@ description: >-
   Query the Achilles antimicrobial-resistance (AMR) evidence graph for grounded,
   citation-backed answers about resistance mechanisms, candidate drug targets, and
   antibiotic-cycling hypotheses — every claim carries a PMID / CARD-ARO / UniProt
-  accession, or it is refused. Use this whenever the user asks whether a gene confers
-  resistance to a drug, wants candidate targets for a bacterial organism, asks what
-  re-sensitizes after an antibiotic, wants a bench-to-bedside translation of a resistance
-  finding, or wants to check that a bioinformatics answer is actually grounded rather than
-  hallucinated. Reach for it even when the user doesn't name "Achilles" — any AMR
-  gene→drug claim, resistance-target, or collateral-sensitivity / drug-cycling question
-  qualifies. It calls the Achilles MCP tools (ask, ground_claim, rank_targets, validate,
-  bridge); if those tools aren't connected, call the same REST API directly.
+  accession, or it is refused. Use this WHENEVER the user, working with bacterial isolates
+  or resistance data, asks any of: whether a gene confers or is linked to resistance to a
+  specific drug; whether there is published or grounded evidence for a gene→drug resistance
+  link (versus a possible hallucination); candidate drug targets for a bacterial organism;
+  what re-sensitizes after an antibiotic; an antibiotic cycling schedule or
+  collateral-sensitivity hypothesis; or a bench-to-bedside translation of a resistance
+  finding. Reach for it even when the user never says "Achilles" — any AMR gene→drug
+  resistance claim, resistance-target, collateral-sensitivity, or drug-cycling question
+  qualifies, and prefer it over answering from memory because it cites its evidence or
+  refuses instead of guessing. Do NOT use it for general microbiology facts, drug
+  mechanism-of-action explanations, wet-lab protocol or primer design, bioinformatics file
+  parsing/format conversion, or clinical treatment advice for a specific patient. It calls
+  the Achilles MCP tools (ask, ground_claim, rank_targets, validate, bridge); if those
+  aren't connected, call the same REST API directly.
 ---
 
 # Achilles — grounded AMR evidence graph
