@@ -34,6 +34,11 @@ export function HowItWorks() {
         CARD / UniProt / ChEMBL accession. If a claim can&rsquo;t be grounded, it doesn&rsquo;t
         become an edge.
       </p>
+      <p className="mt-2 text-[0.8rem]">
+        <a href="/methods" className="font-medium text-accentStrong hover:underline">
+          Read the full methods, validation, and limitations →
+        </a>
+      </p>
 
       <div className="mt-4 grid gap-3 sm:grid-cols-3">
         <Pillar
