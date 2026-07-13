@@ -24,9 +24,12 @@ import json
 import re
 from pathlib import Path
 
+from uuid import NAMESPACE_URL, uuid5
+
 from app.ai.extraction import ExtractedClaim, ExtractionResult, extract_claims
 from app.ai.grounding import GroundingVerdict, decide_edge, ground_claim
 from app.config import settings
+from app.ingestion.domains import get_domain
 from app.ingestion.seed import _burk_gene_id
 from app.models.domain import EvidenceEdge, Paper
 from app.sources import europepmc
@@ -102,6 +105,31 @@ _KEEP_RELATIONS = {"confers_resistance", "sensitizes_to", "is_target_of", "impli
 MAX_EDGES_PER_GENE = 24
 
 
+def _corpus_for_domain(domain) -> list[dict]:
+    """Build a corpus spec (per-gene queries + topic regex) for ANY domain from its
+    registry config. Pure. Burkholderia keeps its hand-tuned CORPUS above (so the
+    committed corpus reproduces byte-for-byte); other domains are derived from their
+    reference-gene catalog + literature query. Empty when reference genes aren't yet
+    populated — the builder then exits rather than invent a corpus.
+    """
+    if domain.key == "burkholderia":
+        return CORPUS
+    spec: list[dict] = []
+    for g in domain.reference_genes:
+        sym = g.get("name") or g.get("locus_tag")
+        # a permissive topic regex from the gene symbol's alphanumeric tokens
+        toks = [t for t in re.split(r"[^a-z0-9]+", (sym or "").lower()) if len(t) >= 3]
+        topic = "|".join(re.escape(t) for t in toks) or re.escape((sym or "gene").lower())
+        spec.append({
+            "locus": g["locus_tag"],
+            "symbol": sym,
+            "ground_symbol": sym,
+            "queries": [f"{domain.organism} {sym} resistance efflux", domain.europepmc_query],
+            "topic": topic,
+        })
+    return spec
+
+
 def _is_topical(paper: Paper, topic: str) -> bool:
     text = f"{paper.title}\n{paper.abstract or ''}".lower()
     return re.search(topic, text) is not None
@@ -165,7 +193,7 @@ async def _ground(claim: ExtractedClaim, organism: str, *, gene_term: str) -> Gr
 
 
 async def harvest_gene(
-    entry: dict, organism: str, *, per_query_limit: int = 30
+    entry: dict, organism: str, *, per_query_limit: int = 30, gene_id_fn=_burk_gene_id
 ) -> tuple[dict[str, Paper], list[tuple[EvidenceEdge, Paper]]]:
     """Fetch → extract → ground → decide for one gene. Returns its papers + edges."""
     papers: dict[str, Paper] = {}
@@ -179,7 +207,7 @@ async def harvest_gene(
     topical = {pmid: p for pmid, p in papers.items() if _is_topical(p, entry["topic"])}
 
     topic = entry["topic"]
-    gene_id = _burk_gene_id(entry["locus"])
+    gene_id = gene_id_fn(entry["locus"])
     ground_symbol = entry.get("ground_symbol", entry["symbol"])
     extracted_by = f"ai/extraction.py@{settings.model_extract}"
     candidates: list[tuple[EvidenceEdge, Paper]] = []
@@ -239,13 +267,34 @@ def _serialize_edge(edge: EvidenceEdge, paper: Paper) -> dict:
     return d
 
 
-async def build() -> dict:
+async def build(domain_key: str = "burkholderia") -> dict:
+    """Build a domain's literature corpus. Burkholderia (default) reproduces the committed
+    corpus.json byte-for-byte. Any other registered domain builds from its reference-gene
+    catalog + literature query, writing data/demo/literature/<key>_corpus.json.
+    """
+    domain = get_domain(domain_key)
+    corpus = _corpus_for_domain(domain)
+    if not corpus:
+        print(
+            f"make-corpus: domain '{domain.key}' has no reference genes to harvest — "
+            "populate its reference_genes (real NCBI/UniProt accessions) first "
+            "(see DRIVE_B.md). Nothing built; nothing fabricated."
+        )
+        return {}
+    organism = domain.organism
+    snapshot_path = SNAPSHOT if domain.key == "burkholderia" else LIT_DIR / f"{domain.key}_corpus.json"
+    gene_id_fn = (
+        _burk_gene_id
+        if domain.key == "burkholderia"
+        else (lambda locus: uuid5(NAMESPACE_URL, f"achilles/gene/{organism}/{locus}"))
+    )
+
     all_papers: dict[str, Paper] = {}
     all_edges: list[dict] = []
     per_gene: dict[str, int] = {}
-    for entry in CORPUS:
+    for entry in corpus:
         print(f"harvesting {entry['symbol']} ({entry['locus']}) …")
-        papers, edges = await harvest_gene(entry, ORGANISM)
+        papers, edges = await harvest_gene(entry, organism, gene_id_fn=gene_id_fn)
         all_papers.update(papers)
         all_edges.extend(_serialize_edge(e, p) for e, p in edges)
         per_gene[entry["locus"]] = len(edges)
@@ -254,7 +303,7 @@ async def build() -> dict:
     grounded = sum(1 for e in all_edges if e["grounded"])
     snapshot = {
         "meta": {
-            "organism": ORGANISM,
+            "organism": organism,
             "source": "Europe PMC (abstracts) + CARD/ARO + UniProt (grounding)",
             "note": "Public data only. Edges keyed to public gene symbols/locus tags.",
             "n_papers": len(all_papers),
@@ -262,19 +311,24 @@ async def build() -> dict:
             "n_grounded": grounded,
             "pct_grounded": round(100 * grounded / len(all_edges), 1) if all_edges else 0.0,
             "edges_per_gene": per_gene,
-            "queries": [q for e in CORPUS for q in e["queries"]],
+            "queries": [q for e in corpus for q in e["queries"]],
         },
         "papers": [p.model_dump(mode="json") for p in all_papers.values()],
         "edges": all_edges,
     }
-    _write(SNAPSHOT, snapshot)
+    _write(snapshot_path, snapshot)
     m = snapshot["meta"]
     print(
-        f"\ncorpus: {m['n_papers']} papers, {m['n_edges']} edges "
-        f"({m['pct_grounded']}% grounded) -> {SNAPSHOT}"
+        f"\ncorpus ({organism}): {m['n_papers']} papers, {m['n_edges']} edges "
+        f"({m['pct_grounded']}% grounded) -> {snapshot_path}"
     )
     return snapshot
 
 
 if __name__ == "__main__":
-    asyncio.run(build())
+    import sys
+
+    _key = "burkholderia"
+    if "--domain" in sys.argv:
+        _key = sys.argv[sys.argv.index("--domain") + 1]
+    asyncio.run(build(_key))

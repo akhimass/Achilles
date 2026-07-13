@@ -69,3 +69,22 @@ def test_fetch_adapter_routes_by_domain():
     sig = inspect.signature(pubmlst.fetch_isolates)
     assert "isolates_db" in sig.parameters and "loci" in sig.parameters
     assert hasattr(pubmlst, "fetch_domain_isolates")
+
+
+def test_corpus_spec_is_domain_driven_and_never_fabricated():
+    from app.ingestion.domains import DomainConfig
+    from app.sources.make_literature_snapshot import CORPUS, _corpus_for_domain
+
+    # Burkholderia keeps its hand-tuned corpus verbatim (byte-identical reproducibility).
+    assert _corpus_for_domain(BURKHOLDERIA) is CORPUS
+    # A scaffold with no reference genes yields NO corpus — never invents one.
+    assert _corpus_for_domain(PSEUDOMONAS) == []
+    # A domain WITH real reference genes yields a valid per-gene harvest spec.
+    d = DomainConfig(
+        key="x", organism="Testium example", pubmlst_isolates_db="u", mlst_loci=("a",),
+        reference_genes=({"locus_tag": "L1", "name": "MexR", "product": "regulator"},),
+        europepmc_query="Testium resistance efflux",
+    )
+    spec = _corpus_for_domain(d)
+    assert len(spec) == 1
+    assert spec[0]["locus"] == "L1" and spec[0]["symbol"] == "MexR" and spec[0]["queries"]
