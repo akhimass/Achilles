@@ -18,13 +18,14 @@ export function Panel({
   return (
     <section
       className={clsx(
-        "rounded-lg border border-line/12 bg-surface/80 shadow-card",
+        "reveal hover-lift glass rounded-2xl border border-line/10 shadow-card",
+        "hover:border-accent/25 hover:shadow-glow-sm",
         className,
       )}
     >
       {title && (
-        <header className="flex items-center justify-between gap-3 border-b border-line/10 px-4 py-2.5">
-          <h2 className="text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-faint">
+        <header className="flex items-center justify-between gap-3 border-b border-line/8 px-4 py-3">
+          <h2 className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-faint">
             {title}
           </h2>
           {aside}
@@ -54,7 +55,7 @@ export function Badge({
   return (
     <span
       className={clsx(
-        "inline-flex items-center gap-1.5 rounded px-1.5 py-0.5 text-[0.68rem] font-medium ring-1 ring-inset",
+        "inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[0.68rem] font-medium ring-1 ring-inset",
         tones[tone],
         className,
       )}

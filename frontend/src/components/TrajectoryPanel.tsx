@@ -46,7 +46,7 @@ export function TrajectoryPanel({
 
   return (
     <Panel
-      title="What evolved lineages did next"
+      title="What real evolution did next"
       aside={
         <span className="flex items-center gap-1.5">
           <Badge tone="accent">retrieved, not predicted</Badge>

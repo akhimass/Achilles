@@ -47,7 +47,7 @@ export function RetrodictionPanel() {
 
   return (
     <Panel
-      title="Retrodiction — foresight before the paper"
+      title="Retrodiction — would it have called it before the paper?"
       aside={
         m ? (
           <Badge tone={m.clean ? "accent" : "danger"}>

@@ -98,11 +98,11 @@ body {
   position: absolute;
   border-radius: 50%;
   filter: blur(90px);
-  opacity: 0.28;
+  opacity: 0.5;
   will-change: transform;
 }
 .dark .aurora-blob {
-  opacity: 0.22;
+  opacity: 0.4;
 }
 .aurora-a {
   width: 46vmax;
@@ -148,9 +148,23 @@ body {
   -webkit-backdrop-filter: blur(14px) saturate(1.15);
 }
 
-/* Quiet accent text — no shine animation. */
+/* Animated green gradient text (for accents/headlines). */
 .text-gradient-green {
-  color: rgb(var(--accent-strong));
+  background-image: linear-gradient(
+    100deg,
+    rgb(var(--accent-strong)),
+    rgb(var(--accent-2)),
+    rgb(var(--accent)),
+    rgb(var(--accent-strong))
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 7s linear infinite;
+}
+@keyframes shine {
+  to { background-position: 220% center; }
 }
 
 /* ─── Scrollbars ─────────────────────────────────────────────────────────── */

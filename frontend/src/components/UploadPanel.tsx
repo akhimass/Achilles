@@ -58,7 +58,7 @@ export function UploadPanel() {
 
   return (
     <Panel
-      title="Upload strains"
+      title="Bring your own strains"
       aside={
         s ? (
           <span className="flex items-center gap-1.5">
