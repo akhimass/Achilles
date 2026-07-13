@@ -47,9 +47,12 @@ drop policy if exists "saved_projects: owner can delete" on public.saved_project
 create policy "saved_projects: owner can delete"
   on public.saved_projects for delete using (auth.uid() = owner);
 
--- Keep updated_at fresh on edits.
+-- Keep updated_at fresh on edits. `search_path = ''` pins resolution (now() lives in
+-- pg_catalog, always searched) so the function can't be hijacked via search_path.
 create or replace function public.touch_updated_at()
-  returns trigger language plpgsql as $$
+  returns trigger language plpgsql
+  set search_path = ''
+  as $$
 begin
   new.updated_at = now();
   return new;
