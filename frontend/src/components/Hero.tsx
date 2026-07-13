@@ -22,8 +22,8 @@ export function Hero({
             </Badge>
           </div>
           <h1 className="text-[2rem] font-semibold leading-[1.08] tracking-tightest text-text sm:text-[2.7rem]">
-            Reversible targets from{" "}
-            <span className="text-gradient-green">resistance structure</span>.
+            Reversible resistance targets you can{" "}
+            <span className="text-gradient-green">verify</span>.
           </h1>
           <p className="mt-4 max-w-xl text-[0.95rem] leading-relaxed text-muted">
             Most target-ID tools name a gene associated with resistance. Achilles ranks

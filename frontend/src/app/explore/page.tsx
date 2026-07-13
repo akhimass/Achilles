@@ -21,6 +21,7 @@ import { RetrodictionPanel } from "@/components/RetrodictionPanel";
 import { TrustBar } from "@/components/TrustBar";
 import { HowItWorks } from "@/components/HowItWorks";
 import { AskPanel } from "@/components/AskPanel";
+import { BridgePanel } from "@/components/BridgePanel";
 import { ConsoleNav, PERSONAS, type Persona, type NavSection } from "@/components/ConsoleNav";
 
 // The one bundled example dataset. The console itself is domain-agnostic; this is loaded
@@ -220,10 +221,28 @@ export default function Page() {
               selectedLocus={selectedGene?.locus ?? null}
               onViewStructure={setSelectedGene}
             />
+            <div className="flex justify-end">
+              <button
+                onClick={() => jump("treatment")}
+                className="rounded-full border border-accent/25 bg-accent/10 px-3.5 py-1.5 text-[0.75rem] font-medium text-accentStrong transition hover:bg-accent/20"
+              >
+                Clinical translation for {selectedGene?.label ?? "the target"} →
+              </button>
+            </div>
             <DockingPanel />
           </Chapter>
 
           <Chapter id="treatment" visible={visible}>
+            <Panel
+              title="Research → clinic bridge"
+              aside={
+                <span className="font-mono text-[0.68rem] text-faint">
+                  {selectedGene?.label ?? "select a target"}
+                </span>
+              }
+            >
+              <BridgePanel gene={selectedGene?.locus ?? "A8H40_RS07590"} />
+            </Panel>
             <TrajectoryPanel strainId={selectedId} onSelectStrainLabel={selectStrainByLabel} />
             <CyclingView
               organism={DEMO_ORGANISM}
