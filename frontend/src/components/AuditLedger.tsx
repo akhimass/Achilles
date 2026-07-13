@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
 import type { AuditReport, AuditVerify, AuditEntry } from "@/lib/types";
 
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE ?? "http://localhost:8000";
+
 export function AuditLedger() {
   const [report, setReport] = useState<AuditReport | null>(null);
   const [ledger, setLedger] = useState<AuditEntry[] | null>(null);
@@ -63,6 +65,17 @@ export function AuditLedger() {
     setLedger(report.ledger);
     setTampered(false);
     setVerify({ valid: true, checked: report.entries, break_at: null, head: report.head });
+  };
+
+  const downloadLedger = () => {
+    if (!ledger) return;
+    const blob = new Blob([JSON.stringify({ ledger }, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "achilles-audit-ledger.json";
+    a.click();
+    URL.revokeObjectURL(url);
   };
 
   if (status === "loading") return <div className="skeleton mt-4 h-24 rounded-xl" />;
@@ -124,6 +137,20 @@ export function AuditLedger() {
         <span className="font-mono text-[0.62rem] text-faint">
           {verify.checked} entries checked
         </span>
+      </div>
+
+      <div className="mt-1.5 flex flex-wrap items-center gap-3 text-[0.68rem]">
+        <a
+          href={`${API_BASE}/api/report/validation`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-accentStrong hover:underline"
+        >
+          ↓ Download audit report (HTML)
+        </a>
+        <button onClick={downloadLedger} className="text-muted transition hover:text-text">
+          ↓ ledger (JSON, re-verifiable)
+        </button>
       </div>
 
       {!verify.valid && verify.break_at !== null && (

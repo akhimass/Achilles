@@ -41,6 +41,9 @@ export function HowItWorks() {
         <a href="/bridge" className="font-medium text-accentStrong hover:underline">
           See the research ⇄ clinic bridge →
         </a>
+        <a href="/mcp" className="font-medium text-accentStrong hover:underline">
+          Call it from Claude (MCP) →
+        </a>
       </p>
 
       <div className="mt-4 grid gap-3 sm:grid-cols-3">

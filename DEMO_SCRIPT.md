@@ -1,4 +1,4 @@
-# Achilles — demo voiceover (~3.5 min, one take)
+# Achilles — demo voiceover (~3.75 min, one take)
 
 **Record at:** https://achilles-science.vercel.app  ·  have a second tab on `/explore`.
 Every beat below is verified against the live site at submission. Read the **SAY** lines
@@ -69,6 +69,15 @@ The researcher and the physician read the same receipts. That handoff is the pro
 **SAY:** "And none of this is bacteria-specific. Drop any organism's data and the same
 deterministic core runs. A deterministic core, provenance on every edge, reproducible from
 public data, MIT. That's Achilles."
+
+### 3:22 — 3:44 · And Claude can call it (Claude Code / Cowork)
+**[DO]** Switch to a Claude Code or Cowork window with the Achilles MCP connected. Type:
+*"Is MarR → ciprofloxacin grounded, and what re-sensitizes after meropenem, as a physician?"*
+**SAY:** "Everything you just saw is also a tool. Here's Claude — in Cowork — calling
+Achilles: it grounds the claim to a CARD accession, and answers the treatment question only
+from cited evidence, flagged research-not-advice. Claude doing trustworthy science through a
+tool that can't hallucinate. That's the platform."
+_(No MCP set up on camera? Show the `/mcp` page instead and read the same line.)_
 
 ---
 

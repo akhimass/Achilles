@@ -20,6 +20,7 @@ from app.routers import (
     graph,
     ingest,
     literature,
+    report,
     search,
     structure,
     targets,
@@ -52,6 +53,7 @@ app.include_router(ask.router)
 app.include_router(domains.router)
 app.include_router(bridge.router)
 app.include_router(audit.router)
+app.include_router(report.router)
 
 
 @app.get("/health")
