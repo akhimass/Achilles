@@ -28,16 +28,22 @@ create index if not exists saved_projects_owner_idx
 alter table public.saved_projects enable row level security;
 
 -- Owner-scoped policies. No public/anon access — the only way in is as the row's owner.
+-- Postgres has no `create policy if not exists`, so drop-then-create keeps this file
+-- idempotent (safe to re-run without a "policy already exists" error).
+drop policy if exists "saved_projects: owner can select" on public.saved_projects;
 create policy "saved_projects: owner can select"
   on public.saved_projects for select using (auth.uid() = owner);
 
+drop policy if exists "saved_projects: owner can insert" on public.saved_projects;
 create policy "saved_projects: owner can insert"
   on public.saved_projects for insert with check (auth.uid() = owner);
 
+drop policy if exists "saved_projects: owner can update" on public.saved_projects;
 create policy "saved_projects: owner can update"
   on public.saved_projects for update
   using (auth.uid() = owner) with check (auth.uid() = owner);
 
+drop policy if exists "saved_projects: owner can delete" on public.saved_projects;
 create policy "saved_projects: owner can delete"
   on public.saved_projects for delete using (auth.uid() = owner);
 

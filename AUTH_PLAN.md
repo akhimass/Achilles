@@ -33,10 +33,17 @@ BYO upload  ──▶  FastAPI /api/ingest/upload  ──▶  deterministic line
 
 ## Finish steps (needs Supabase keys + a live test)
 
-1. **Apply the migration.**
+1. **Apply the migration — apply ONLY this file, do not `supabase db push`.**
+   The live database was built from `db/schema.sql` + `supabase/seed.sql`, **not**
+   migration-managed. `supabase db push` would also try to apply
+   `20260101000000_init.sql`, which collides with the already-live schema. Apply just the
+   saved-projects file directly:
    ```bash
-   supabase db push          # or: psql "$SUPABASE_DB_URL" -f supabase/migrations/20260102000000_saved_projects.sql
+   psql "$SUPABASE_DB_URL" -f supabase/migrations/20260102000000_saved_projects.sql
    ```
+   The file is idempotent (guarded `create table … if not exists` + `drop policy if exists`
+   before each policy), so re-running it is safe. Only reach for `supabase db push` if/when
+   this project is fully migration-managed.
 2. **Enable Auth** in the Supabase dashboard (magic link and/or Google). No backend change.
 3. **Frontend deps + env.**
    ```bash
