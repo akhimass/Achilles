@@ -29,7 +29,7 @@ export interface Overview {
   founders: number;
 }
 
-function summarize(graph: LineageGraph): Overview {
+export function summarize(graph: LineageGraph): Overview {
   const nodes = graph.nodes;
   const maxFlip = Math.max(0, ...nodes.map((n) => n.flipper_count));
   const hist = Array(maxFlip + 1).fill(0);

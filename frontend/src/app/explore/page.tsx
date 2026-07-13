@@ -27,7 +27,9 @@ import { ConsoleNav, PERSONAS, type Persona, type NavSection } from "@/component
 // The one bundled example dataset. The console itself is domain-agnostic; this is loaded
 // only when the user turns on "Demo data".
 import { DEMO_ORGANISM } from "@/lib/config";
-const DEFAULT_GENE: GeneSelection = {
+// Demo-scoped initial gene selection (the grounded chapters that use it are demo-only).
+// Non-null so it can serve as a stable fallback for the bridge panel.
+const DEFAULT_GENE: NonNullable<GeneSelection> = {
   locus: "A8H40_RS07590",
   label: "MarR (A8H40_RS07590)",
 };
@@ -241,7 +243,7 @@ export default function Page() {
                 </span>
               }
             >
-              <BridgePanel gene={selectedGene?.locus ?? "A8H40_RS07590"} />
+              <BridgePanel gene={selectedGene?.locus ?? DEFAULT_GENE.locus} />
             </Panel>
             <TrajectoryPanel strainId={selectedId} onSelectStrainLabel={selectStrainByLabel} />
             <CyclingView

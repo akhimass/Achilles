@@ -2,10 +2,12 @@
 // Bring your own strains: drop a genotype CSV and the SAME deterministic core that
 // powers the demo reconstructs your lineage and detects reversible (flipper) loci —
 // stateless, no upload stored. Turns "does it work on my data?" into a 5-second yes.
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { api } from "@/lib/api";
+import { summarize } from "@/lib/useLineage";
 import { Panel, Badge } from "./ui";
 import { LineageTree } from "./LineageTree";
+import { Insights } from "./Insights";
 import type { UploadResult } from "@/lib/types";
 
 type Status = "idle" | "loading" | "ready" | "error";
@@ -55,6 +57,9 @@ export function UploadPanel() {
   }
 
   const s = result?.summary;
+  // Deterministic cohort insights (flipper distribution, geography/timeline) computed
+  // client-side from the uploaded graph — the SAME summary the demo uses, on your data.
+  const overview = useMemo(() => (result ? summarize(result) : null), [result]);
 
   return (
     <Panel
@@ -123,13 +128,16 @@ export function UploadPanel() {
               analyze another
             </button>
           </div>
-          <LineageTree
-            graph={result}
-            status="ready"
-            error={null}
-            selectedId={selectedId}
-            onSelect={setSelectedId}
-          />
+          <div className="grid gap-5 lg:grid-cols-[1.55fr_1fr]">
+            <LineageTree
+              graph={result}
+              status="ready"
+              error={null}
+              selectedId={selectedId}
+              onSelect={setSelectedId}
+            />
+            <Insights overview={overview} />
+          </div>
         </div>
       )}
     </Panel>

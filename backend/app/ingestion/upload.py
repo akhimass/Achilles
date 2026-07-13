@@ -132,12 +132,16 @@ def build_upload_graph(content: bytes | str, *, organism: str = "uploaded cohort
     flip_count = {u: len(s) for u, s in flippers.items()}
 
     id_by_uuid = {sid[r["id"]]: r["id"] for r in records}
+    # Surface parsed metadata (year) onto nodes so the uploaded cohort gets the same
+    # deterministic Insights (timeline) the demo shows — same LineageNode shape.
+    year_by_uuid = {sid[r["id"]]: r.get("year") for r in records}
     nodes = [
         {
             "id": str(u),
             "label": id_by_uuid[u],
             "parent_id": (str(parent_uuid[u]) if parent_uuid[u] else None),
             "flipper_count": flip_count.get(u, 0),
+            "year": year_by_uuid.get(u),
         }
         for u in parent_uuid
     ]

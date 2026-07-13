@@ -51,32 +51,37 @@ export function Insights({ overview }: { overview: Overview | null }) {
           </div>
         </div>
 
-        <div className="h-px bg-line/8" />
-
-        <div>
-          <div className="mb-2 flex items-center justify-between">
-            <SectionLabel>{useLineages ? "Lineages" : "Geography"}</SectionLabel>
-            <span className="text-[0.68rem] text-faint">
-              {useLineages ? `${lineages.length} paths · ${founders} founders` : `${countries.length} countries`}
-            </span>
-          </div>
-          <ul className="grid grid-cols-1 gap-1.5 sm:grid-cols-2">
-            {groups.map((g) => (
-              <li key={g.name} className="flex items-center gap-2">
-                <span className="w-10 shrink-0 truncate font-mono text-[0.68rem] text-muted">{g.name}</span>
-                <span className="relative h-2 flex-1 overflow-hidden rounded-full bg-line/8">
-                  <span
-                    className="absolute inset-y-0 left-0 rounded-full bg-accent/70"
-                    style={{ width: `${(g.count / maxGroup) * 100}%` }}
-                  />
+        {/* Geography/lineages only when the cohort actually carries that metadata —
+            an uploaded CSV without country/lineage columns skips this cleanly. */}
+        {groups.length > 0 && (
+          <>
+            <div className="h-px bg-line/8" />
+            <div>
+              <div className="mb-2 flex items-center justify-between">
+                <SectionLabel>{useLineages ? "Lineages" : "Geography"}</SectionLabel>
+                <span className="text-[0.68rem] text-faint">
+                  {useLineages ? `${lineages.length} paths · ${founders} founders` : `${countries.length} countries`}
                 </span>
-                <span className="w-5 shrink-0 text-right font-mono text-[0.68rem] text-faint">
-                  {g.count}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
+              </div>
+              <ul className="grid grid-cols-1 gap-1.5 sm:grid-cols-2">
+                {groups.map((g) => (
+                  <li key={g.name} className="flex items-center gap-2">
+                    <span className="w-10 shrink-0 truncate font-mono text-[0.68rem] text-muted">{g.name}</span>
+                    <span className="relative h-2 flex-1 overflow-hidden rounded-full bg-line/8">
+                      <span
+                        className="absolute inset-y-0 left-0 rounded-full bg-accent/70"
+                        style={{ width: `${(g.count / maxGroup) * 100}%` }}
+                      />
+                    </span>
+                    <span className="w-5 shrink-0 text-right font-mono text-[0.68rem] text-faint">
+                      {g.count}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
+        )}
 
         <div className="h-px bg-line/8" />
 
