@@ -1,0 +1,23 @@
+<svg width="360" height="88" viewBox="0 0 360 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="g" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="3" />
+    </filter>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#52E2AC" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#26D0BE" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+  <!-- mark -->
+  <rect x="10" y="12" width="64" height="64" rx="15" fill="#0D1712" stroke="url(#ring)" stroke-width="1.5"/>
+  <g transform="translate(20,21) scale(1.95)">
+    <circle cx="17.6" cy="18" r="4.4" fill="#2EC88E" opacity="0.5" filter="url(#g)"/>
+    <path d="M5 12 H11 M11 12 L17 6 M11 12 L17 18" stroke="#9FBFB1" stroke-width="1.7" stroke-linecap="round"/>
+    <circle cx="4.5" cy="12" r="1.7" fill="#9FBFB1"/>
+    <circle cx="17.5" cy="6" r="1.7" fill="#9FBFB1"/>
+    <circle cx="17.6" cy="18" r="2.5" fill="#52E2AC"/>
+  </g>
+  <!-- wordmark -->
+  <text x="92" y="52" font-family="Geist, Inter, 'Helvetica Neue', Arial, sans-serif" font-size="40" font-weight="600" letter-spacing="-1" fill="#E9F1ED">Achilles</text>
+  <text x="94" y="72" font-family="ui-monospace, 'SFMono-Regular', Menlo, monospace" font-size="12.5" letter-spacing="0.5" fill="#7FA08F">evidence-grounded discovery console</text>
+</svg>

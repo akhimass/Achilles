@@ -5,9 +5,25 @@ import { Aurora } from "@/components/Aurora";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Achilles — AMR target & treatment intelligence",
+  metadataBase: new URL("https://achilles-science.vercel.app"),
+  title: "Achilles — evidence-grounded discovery console",
   description:
-    "Trace resistance from strain to variant to target to structure to evidence, with provenance on every link. Collateral sensitivity is the pathogen's Achilles' heel.",
+    "A domain-agnostic discovery console: point it at your data and it builds a provenance-checked evidence graph — every claim cited, or it refuses. Deterministic core, reproducible from public data. Shown end-to-end on antimicrobial resistance.",
+  applicationName: "Achilles",
+  openGraph: {
+    title: "Achilles — evidence-grounded discovery console",
+    description:
+      "Point it at your data and it builds a provenance-checked evidence graph — every claim cited, or it refuses. Reproducible from public data. Shown end-to-end on antimicrobial resistance.",
+    siteName: "Achilles",
+    url: "https://achilles-science.vercel.app",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Achilles — evidence-grounded discovery console",
+    description:
+      "A provenance-checked evidence graph: every claim cited, or it refuses. Deterministic core, reproducible from public data.",
+  },
 };
 
 // Set the theme before first paint so there is no flash of the wrong palette.
