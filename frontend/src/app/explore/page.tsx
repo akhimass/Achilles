@@ -38,7 +38,7 @@ const SECTIONS: (NavSection & { demoOnly?: boolean })[] = [
   { id: "overview", label: "Overview", group: "Start", personas: ["researcher", "physician", "computational"] },
   { id: "ask", label: "Ask", group: "Start", personas: ["researcher", "physician", "computational"] },
   { id: "yourdata", label: "Your data", group: "Start", personas: ["researcher", "physician", "computational"] },
-  { id: "prove", label: "Prove it", group: "Trust layer", personas: ["computational", "physician"], demoOnly: true },
+  { id: "prove", label: "Validation", group: "Trust layer", personas: ["computational", "physician"], demoOnly: true },
   { id: "lineage", label: "Strains & lineage", group: "Evidence", personas: ["researcher"], demoOnly: true },
   { id: "evidence", label: "Search & claims", group: "Evidence", personas: ["researcher", "computational"], demoOnly: true },
   { id: "targets", label: "Target identification", group: "Discovery", personas: ["researcher", "computational"], demoOnly: true },
@@ -47,15 +47,15 @@ const SECTIONS: (NavSection & { demoOnly?: boolean })[] = [
 ];
 
 const CHAPTERS: Record<string, { kicker: string; title: string }> = {
-  overview: { kicker: "Start", title: "Discovery console" },
-  ask: { kicker: "Ask", title: "Ask your evidence graph" },
+  overview: { kicker: "Start", title: "Overview" },
+  ask: { kicker: "Ask", title: "Ask the evidence graph" },
   yourdata: { kicker: "Start", title: "Your data" },
-  prove: { kicker: "Trust layer", title: "Prove it — recall, refusal, foresight" },
-  lineage: { kicker: "Evidence in", title: "Strains & lineage" },
+  prove: { kicker: "Trust", title: "Validation & foresight" },
+  lineage: { kicker: "Evidence", title: "Strains & lineage" },
   evidence: { kicker: "Evidence graph", title: "Search & grounded claims" },
-  targets: { kicker: "Pillar 1", title: "Target identification" },
-  treatment: { kicker: "Pillar 2", title: "Treatment optimization" },
-  how: { kicker: "Reproducibility", title: "How this works" },
+  targets: { kicker: "Analysis", title: "Target identification" },
+  treatment: { kicker: "Analysis", title: "Treatment optimization" },
+  how: { kicker: "Methods", title: "How this works" },
 };
 
 export default function Page() {
@@ -297,7 +297,7 @@ function Footer() {
           </span>
         </div>
         <div className="text-[0.7rem] text-faint">
-          Deterministic core · provenance on every edge · domain-agnostic ·{" "}
+          Deterministic core · provenance on every edge ·{" "}
           <span className="text-muted">MIT</span>
         </div>
       </div>

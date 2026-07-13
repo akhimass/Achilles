@@ -53,7 +53,7 @@ function Nav() {
             href="/explore"
             className="group inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-2 text-[0.82rem] font-semibold text-[rgb(var(--bg))] shadow-glow-sm transition hover:shadow-glow"
           >
-            Launch console
+            Open console
             <Arrow />
           </Link>
         </div>
@@ -71,7 +71,7 @@ function Hero() {
         <div className="stagger">
           <div className="mb-5 flex flex-wrap items-center gap-2">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/25 bg-accent/10 px-2.5 py-1 text-[0.7rem] font-medium text-accentStrong">
-              <Dot /> bring your own data
+              <Dot /> antimicrobial resistance
             </span>
             <span className="rounded-full border border-line/12 px-2.5 py-1 font-mono text-[0.68rem] text-muted">
               provenance on every edge
@@ -79,18 +79,16 @@ function Hero() {
           </div>
 
           <h1 className="text-[2.7rem] font-semibold leading-[1.02] tracking-tightest text-text sm:text-[4rem]">
-            An evidence-grounded
+            Evidence graph for
             <br />
-            <span className="text-gradient-green">discovery console</span>.
+            <span className="text-gradient-green">antimicrobial resistance</span>.
           </h1>
 
           <p className="mt-6 max-w-xl text-[1.02rem] leading-relaxed text-muted">
-            Point Achilles at your data — strains, variants, entities, a literature set —
-            and it builds a <span className="text-text">provenance-checked evidence
-            graph</span>: every claim carries a citation, a deterministic core does the math,
-            and the model only reads, retrieves, and cites. Nothing is asserted without a
-            source. Shown end-to-end on <span className="text-text">antimicrobial
-            resistance</span> — but the console is domain-agnostic.
+            Achilles links strain → variant → mechanism → target → literature with a
+            citation on every edge. Lineage, flippers, and collateral-sensitivity math are
+            computed deterministically; the model only extracts and narrates grounded claims.
+            Built for AMR researchers tracking resistance across bacterial strains.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -98,7 +96,7 @@ function Hero() {
               href="/explore"
               className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-[0.95rem] font-semibold text-[rgb(var(--bg))] shadow-glow-sm transition hover:shadow-glow"
             >
-              Launch the console
+              Open console
               <Arrow />
             </Link>
             <a
@@ -110,11 +108,11 @@ function Hero() {
           </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.78rem] text-faint">
-            <Stat n="100%" label="provenance coverage" />
+            <Stat n="100%" label="edges cited" />
             <span className="text-line/20">·</span>
-            <Stat n="0" label="fabricated claims" />
+            <Stat n="0" label="ungrounded claims" />
             <span className="text-line/20">·</span>
-            <Stat n="retrieved" label="not predicted" />
+            <Stat n="public" label="data only" />
           </div>
         </div>
 
@@ -250,18 +248,18 @@ function HeroGraphic() {
 function Idea() {
   return (
     <section id="idea" className="mx-auto max-w-6xl px-6 py-20">
-      <SectionHeading eyebrow="the idea · shown on AMR" title="Most tools stop at the gene. Achilles finds the opening." />
+      <SectionHeading eyebrow="the idea" title="From association to collateral sensitivity." />
       <div className="reveal mt-10 grid gap-5 md:grid-cols-2">
         <div className="rounded-2xl border border-line/10 bg-surface2/30 p-6">
           <div className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-faint">
-            Everyone else
+            Typical target ID
           </div>
           <p className="mt-3 text-lg leading-snug text-muted">
             &ldquo;This gene is <em>associated</em> with resistance.&rdquo;
           </p>
           <p className="mt-3 text-sm leading-relaxed text-faint">
-            A correlation from a screen. No mechanism, no direction, no receipts — and
-            nothing that tells you what to do about it.
+            A correlation from a screen — often without mechanism, directionality, or a
+            clear next experiment.
           </p>
         </div>
         <div className="glass rounded-2xl border border-accent/25 p-6 shadow-glow-sm">
@@ -274,9 +272,9 @@ function Idea() {
             re-sensitizes to <span className="text-gradient-green">B</span>.&rdquo;
           </p>
           <p className="mt-3 text-sm leading-relaxed text-muted">
-            The collateral-sensitivity opening resistance <em>creates</em> — folded in 3D,
-            grounded in literature (PMID + CARD/UniProt), and confirmed by what real
-            evolved lineages did next. Every edge carries provenance or it doesn&apos;t exist.
+            Collateral-sensitivity structure computed from the graph, structures folded in
+            3D, and every claim grounded to literature (PMID + CARD/UniProt). No edge
+            without provenance.
           </p>
         </div>
       </div>
@@ -297,7 +295,7 @@ function Capabilities() {
   ];
   return (
     <section id="capabilities" className="mx-auto max-w-6xl px-6 py-20">
-      <SectionHeading eyebrow="what it does · AMR example" title="Six grounded steps, one continuous graph." />
+      <SectionHeading eyebrow="capabilities" title="Six steps on one continuous graph." />
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((it) => (
           <div
@@ -320,23 +318,23 @@ function Capabilities() {
 
 function ProveIt() {
   const stats = [
-    { n: "100%", label: "provenance coverage", sub: "every edge cited" },
-    { n: "9/9", label: "known biology recovered", sub: "100% recall" },
-    { n: "4/4", label: "false claims refused", sub: "precision controls" },
-    { n: "0", label: "fabricated edges", sub: "provably clean" },
+    { n: "100%", label: "edges cited", sub: "provenance required" },
+    { n: "9/9", label: "known biology recovered", sub: "positive controls" },
+    { n: "4/4", label: "false claims refused", sub: "negative controls" },
+    { n: "0", label: "fabricated edges", sub: "on the demo graph" },
   ];
   return (
     <section id="proof" className="mx-auto max-w-6xl px-6 py-20">
       <div className="glass reveal rounded-3xl border border-line/10 p-8 shadow-card sm:p-12">
         <SectionHeading
-          eyebrow="prove it"
-          title="A retrieval tool is only as good as what it refuses."
+          eyebrow="validation"
+          title="Held to public ground-truth controls."
           center
         />
         <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-muted">
-          On the example dataset, Achilles is held to independent, publicly-cited ground
-          truth: it must recover known biology <em>and</em> refuse planted false claims.
-          Computed live, every recovery cited — the same discipline holds for any dataset.
+          On the demo dataset, Achilles is scored against independent public controls:
+          recover known relationships from grounded evidence, and refuse planted false
+          claims. Computed live; every recovery carries a citation.
         </p>
         <div className="mt-10 grid grid-cols-2 gap-5 lg:grid-cols-4">
           {stats.map((s) => (
@@ -386,18 +384,18 @@ function FinalCta() {
         <div className="bg-grid pointer-events-none absolute inset-0 opacity-40" aria-hidden />
         <div className="relative">
           <h2 className="text-3xl font-semibold tracking-tightest text-text sm:text-[2.6rem]">
-            Ground your discovery in <span className="text-gradient-green">evidence</span>.
+            Explore the live <span className="text-gradient-green">evidence graph</span>.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-[0.95rem] leading-relaxed text-muted">
-            Open the console blank and bring your own data, or load the antimicrobial-
-            resistance example — lineage, structures, grounded targets, and a cited cycling
-            hypothesis, all reproducible from public data.
+            Open the console blank and upload strains, or load the Burkholderia multivorans
+            demo — lineage, structures, grounded targets, and a cited cycling hypothesis,
+            reproducible from public data.
           </p>
           <Link
             href="/explore"
             className="group mt-8 inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-[1rem] font-semibold text-[rgb(var(--bg))] shadow-glow-sm transition hover:shadow-glow"
           >
-            Launch the console
+            Open console
             <Arrow />
           </Link>
         </div>
@@ -412,10 +410,10 @@ function Footer() {
       <div className="flex flex-col items-center justify-between gap-3 text-[0.72rem] text-faint sm:flex-row">
         <span>
           <span className="text-gradient-green font-semibold">Achilles</span> · deterministic
-          core · AlphaFold on top · provenance on every edge
+          core · provenance on every edge
         </span>
         <span>
-          Public data + your own · domain-agnostic ·{" "}
+          Public data · AMR ·{" "}
           <a href="https://github.com/akhimass/Achilles" target="_blank" rel="noopener noreferrer" className="hover:text-text">
             MIT
           </a>

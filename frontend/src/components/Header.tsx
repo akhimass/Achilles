@@ -27,7 +27,7 @@ export function Header({
               </span>
             </div>
             <div className="mt-1 hidden text-[0.7rem] text-muted sm:block">
-              Evidence-grounded discovery console
+              Evidence-grounded AMR console
             </div>
           </div>
         </Link>

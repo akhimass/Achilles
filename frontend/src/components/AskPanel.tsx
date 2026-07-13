@@ -83,13 +83,12 @@ export function AskPanel({
   return (
     <Panel
       title="Ask Achilles"
-      aside={<span className="font-mono text-[0.68rem] text-faint">cited or it refuses</span>}
+      aside={<span className="font-mono text-[0.68rem] text-faint">grounded only</span>}
     >
       <p className="mb-3 text-[0.8rem] leading-relaxed text-muted">
-        Ask in plain language. The answer is built <span className="text-text">only from
+        Ask in plain language. Answers are built <span className="text-text">only from
         grounded evidence</span> in the graph — every claim numbered and cited — and the
-        engine <span className="text-text">refuses</span> when nothing supports it. Not a
-        chatbot: no ungrounded text.
+        engine <span className="text-text">refuses</span> when nothing supports it.
       </p>
 
       {dataset === null ? (

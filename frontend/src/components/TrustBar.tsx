@@ -32,7 +32,7 @@ export function TrustBar() {
       />
       <Divider />
       <span className="text-[0.72rem] text-muted">
-        retrieved from real evidence · <span className="text-text">try to break it below ↓</span>
+        retrieved from grounded evidence · <span className="text-text">validation below ↓</span>
       </span>
     </div>
   );

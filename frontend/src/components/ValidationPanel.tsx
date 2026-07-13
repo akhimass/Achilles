@@ -32,7 +32,7 @@ export function ValidationPanel() {
 
   return (
     <Panel
-      title="Prove it — the engine checks itself"
+      title="Self-validation"
       aside={
         m ? (
           <Badge tone={m.clean ? "accent" : "danger"}>
@@ -78,7 +78,7 @@ export function ValidationPanel() {
             <Metric
               label="Fabricated"
               value={`${m.fabricated}`}
-              sub={m.clean ? "provably clean" : "review needed"}
+              sub={m.clean ? "clean on controls" : "review needed"}
               tone={m.clean ? "accent" : "danger"}
             />
           </div>

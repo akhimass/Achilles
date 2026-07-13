@@ -11,20 +11,19 @@ export function GenericOverview({ onLoadDemo }: { onLoadDemo: () => void }) {
       <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center">
         <div>
           <div className="mb-3 flex flex-wrap items-center gap-2">
-            <Badge tone="accent">bring your own data</Badge>
+            <Badge tone="accent">upload or demo</Badge>
             <Badge tone="neutral">
-              <span className="font-mono">cited or it refuses</span>
+              <span className="font-mono">provenance required</span>
             </Badge>
           </div>
           <h1 className="text-[2rem] font-semibold leading-[1.08] tracking-tightest text-text sm:text-[2.6rem]">
-            An evidence-grounded <span className="text-gradient-green">discovery console</span>.
+            Load a cohort into the <span className="text-gradient-green">evidence graph</span>.
           </h1>
           <p className="mt-4 max-w-xl text-[0.95rem] leading-relaxed text-muted">
-            Point it at your data — strains, variants, entities, a literature set — and it
-            builds a provenance-checked evidence graph: every claim carries a citation, a
-            deterministic core does the math, and the model only reads, retrieves, and cites.
-            Nothing is asserted without a source. The console is domain-agnostic; an
-            antimicrobial-resistance dataset is included as one worked example.
+            Point Achilles at strains, variants, and literature — every claim carries a
+            citation, a deterministic core does the math, and the model only extracts and
+            narrates grounded claims. Start from the Burkholderia multivorans demo, or
+            upload your own genotype CSV.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <button
@@ -56,9 +55,9 @@ export function GenericOverview({ onLoadDemo }: { onLoadDemo: () => void }) {
               No claim is shown as validated without a source; grounded vs. abstract-only is
               visually distinct everywhere.
             </Guarantee>
-            <Guarantee title="Cited or it refuses">
-              Ask a question and the answer is built only from grounded evidence — or it
-              declines, rather than fabricate.
+            <Guarantee title="Cited or refused">
+              Ask answers only from grounded evidence — or declines when nothing supports
+              the question.
             </Guarantee>
           </ul>
         </div>
